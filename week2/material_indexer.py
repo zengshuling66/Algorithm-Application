@@ -1,34 +1,51 @@
 from pathlib import Path
 
+def validate_root(root): #raise：主动抛出异常
+    if not root.exists():
+        raise FileNotFoundError(f"路径不存在：{root}")
+
+    if not root.is_dir():
+        raise NotADirectoryError(f"路径不是文件夹：{root}")
+    
+
 def scan_folder(root):
     file_count = 0
     folder_count = 0
     extension_count = {}
     files = []
+    errors = []
 
     for path in root.rglob("*"):
-        if path.is_file():
-            file_count += 1
+        try:
+            if path.is_file():
+                file_count += 1
 
-            suffix = path.suffix.lower()
-            if suffix == "":
-                suffix = "no_suffix"
+                suffix = path.suffix.lower()
+                if suffix == "":
+                    suffix = "no_suffix"
 
-            if suffix not in extension_count:
-                extension_count[suffix] = 0
-            extension_count[suffix] += 1
+                if suffix not in extension_count:
+                    extension_count[suffix] = 0
+                extension_count[suffix] += 1
 
-            file_info = {
+                file_info = {
+                    "path": str(path),
+                    "name": path.name, #文件名
+                    "suffix": suffix,
+                    "size": path.stat().st_size,
+                    "parent_dir": path.parent.name,
+                }
+                files.append(file_info)
+
+            elif path.is_dir():
+                folder_count += 1
+
+        except OSError as error: #某个文件访问失败时，不让整个扫描任务失败，而是记录这个坏文件，继续处理后面的文件
+            errors.append({
                 "path": str(path),
-                "name": path.name, #文件名
-                "suffix": suffix,
-                "size": path.stat().st_size,
-                "parent_dir": path.parent.name,
-            }
-            files.append(file_info)
-
-        elif path.is_dir():
-            folder_count += 1
+                "error_type": type(error).__name__,
+                "message": str(error),
+            })
 
     return {
         "root": str(root),
@@ -36,7 +53,9 @@ def scan_folder(root):
         "folder_count": folder_count,
         "extension_count": extension_count,
         "files": files,
-    }
+        "errors": errors,
+        "error_count": len(errors),
+        }
 
 
 def generate_markdown_report(report, top_n=10):
@@ -50,6 +69,7 @@ def generate_markdown_report(report, top_n=10):
     lines.append("")
     lines.append(f"- 文件数量：{report['file_count']}")
     lines.append(f"- 文件夹数量：{report['folder_count']}")
+    lines.append(f"- 跳过文件数量：{report['error_count']}")
     lines.append("")
 
     lines.append("## 文件类型统计")
@@ -74,6 +94,22 @@ def generate_markdown_report(report, top_n=10):
         parent_dir = file_info["parent_dir"].replace("|", "\\|")
         lines.append(f"| {file_name} | {parent_dir} | {round(size_mb, 2)} |")
 
+    lines.append("")
+    lines.append("## 扫描异常")
+    lines.append("")
+
+    if report["error_count"] == 0:
+        lines.append("本次扫描没有遇到文件访问异常。")
+    else:
+        lines.append("| 路径 | 错误类型 | 错误信息 |")
+        lines.append("| --- | --- | --- |")
+
+        for error in report["errors"][:10]: #只展示前 10 个错误
+            error_path = error["path"].replace("|", "\\|")
+            error_type = error["error_type"].replace("|", "\\|")
+            message = error["message"].replace("|", "\\|")
+            lines.append(f"| {error_path} | {error_type} | {message} |")
+
     return "\n".join(lines)
 
 
@@ -89,20 +125,23 @@ def main():
     root = Path(r"C:\Users\Administrator\Desktop\OneDrive - 南方科技大学\丁师兄训练营")
     output_path = output_dir / "资料索引报告.md"
 
-    if not root.exists():
-        print("路径不存在：", root)
-        return
+    try:
+        validate_root(root)
 
-    if not root.is_dir():
-        print("路径不是文件夹：", root)
-        return
+        report = scan_folder(root)
+        markdown_content = generate_markdown_report(report, top_n=10)
+        save_report(markdown_content, output_path)
 
-    report = scan_folder(root)
-    markdown_content = generate_markdown_report(report, top_n=10)
-    save_report(markdown_content, output_path)
+        print("报告已生成：", output_path)
 
-    print("报告已生成：", output_path)
+    except FileNotFoundError as error:
+        print("输入路径错误：", error)
 
+    except NotADirectoryError as error:
+        print("输入路径错误：", error)
+
+    except OSError as error:
+        print("文件系统错误：", error)
 
 if __name__ == "__main__":
     main()
