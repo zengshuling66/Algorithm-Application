@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 def validate_root(root): #raise：主动抛出异常
@@ -117,6 +118,24 @@ def save_report(content, output_path):
     output_path.write_text(content, encoding="utf-8") #encoding="utf-8" 是为了支持中文
 
 
+def save_json_report(report, output_path):
+    json_content = json.dumps(report, ensure_ascii=False, indent=2) #把 Python 字典 report 转成 JSON 字符串
+    #ensure_ascii=False表示中文不要转义；indent=2表示格式化输出，缩进2个空格
+    output_path.write_text(json_content, encoding="utf-8")
+
+#把 Python 对象直接写入文件
+# with open(output_path, "w", encoding="utf-8") as f:
+#     json.dump(report, f, ensure_ascii=False, indent=2)
+
+# 函数	         输入	           输出	            记忆方式
+# json.dumps()	Python对象	      JSON 字符串	    s表示 string
+# json.dump()	Python对象+文件	  写入 JSON 文件	直接 dump 到文件
+# json.loads()	JSON字符串	      Python 对象	   从 string 读回来
+# json.load()	JSON文件	      Python 对象	   从文件读回来
+# 带 s：处理字符串
+# 不带 s：处理文件
+
+
 def main():
     project_dir = Path(__file__).resolve().parent
     output_dir = project_dir / "output"
@@ -124,6 +143,7 @@ def main():
 
     root = Path(r"C:\Users\Administrator\Desktop\OneDrive - 南方科技大学\丁师兄训练营")
     output_path = output_dir / "资料索引报告.md"
+    json_output_path = output_dir / "资料索引数据.json"
 
     try:
         validate_root(root)
@@ -131,8 +151,10 @@ def main():
         report = scan_folder(root)
         markdown_content = generate_markdown_report(report, top_n=10)
         save_report(markdown_content, output_path)
+        save_json_report(report, json_output_path)
 
         print("报告已生成：", output_path)
+        print("JSON数据已生成：", json_output_path)
 
     except FileNotFoundError as error:
         print("输入路径错误：", error)
