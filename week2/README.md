@@ -12,15 +12,48 @@
 - 记录每个文件的基础 metadata
 - 按文件大小找出最大的若干个文件
 - 生成 Markdown 报告
+- 生成 JSON 数据
 - 将输出结果保存到 output 目录
+- 处理单个文件访问异常
 
 ## 项目结构
 
 ```text
 week2/
+├── api.py
 ├── material_indexer.py
 ├── README.md
 ├── requirements.txt
-├── output/
-│   └── 资料索引报告.md
-└── notes/
+└── output/
+    ├── 资料索引报告.md
+    └── 资料索引数据.json
+```
+
+## 运行方式
+
+生成资料索引报告：
+
+```powershell
+python -X utf8 .\material_indexer.py
+```
+
+启动 FastAPI 服务：
+
+```powershell
+python -m uvicorn api:app --reload
+```
+
+浏览器访问：
+
+```text
+http://127.0.0.1:8000/health
+http://127.0.0.1:8000/summary
+http://127.0.0.1:8000/files
+http://127.0.0.1:8000/files?limit=3
+```
+
+生成最大的 5 个文件报告：
+
+```powershell
+python -X utf8 .\material_indexer.py --top-n 5
+```

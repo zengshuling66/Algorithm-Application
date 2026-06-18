@@ -1,13 +1,13 @@
 {
   "root": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营",
-  "file_count": 2221,
-  "folder_count": 586,
+  "file_count": 2284,
+  "folder_count": 640,
   "extension_count": {
     ".pdf": 137,
     ".docx": 12,
-    ".md": 24,
-    ".json": 357,
-    "no_suffix": 138,
+    ".md": 25,
+    ".json": 397,
+    "no_suffix": 155,
     ".jpg": 78,
     ".zip": 12,
     ".doc": 13,
@@ -18,9 +18,9 @@
     ".mp4": 224,
     ".rar": 1,
     ".pptx": 31,
-    ".py": 434,
+    ".py": 435,
     ".bat": 2,
-    ".txt": 91,
+    ".txt": 92,
     ".sh": 16,
     ".csv": 2,
     ".bak": 1,
@@ -43,7 +43,7 @@
     ".model": 9,
     ".npy": 2,
     ".safetensors": 10,
-    ".jsonl": 63,
+    ".jsonl": 66,
     ".下载": 74,
     ".pyc": 1,
     ".sample": 14
@@ -61,6 +61,13 @@
       "name": "git版本管理.docx",
       "suffix": ".docx",
       "size": 19188,
+      "parent_dir": "丁师兄训练营"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\三个月大模型应用算法实习冲刺计划.md",
+      "name": "三个月大模型应用算法实习冲刺计划.md",
+      "suffix": ".md",
+      "size": 45031,
       "parent_dir": "丁师兄训练营"
     },
     {
@@ -13731,7 +13738,7 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\COMMIT_EDITMSG",
       "name": "COMMIT_EDITMSG",
       "suffix": "no_suffix",
-      "size": 43,
+      "size": 861,
       "parent_dir": ".git"
     },
     {
@@ -13766,7 +13773,7 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\index",
       "name": "index",
       "suffix": "no_suffix",
-      "size": 1061,
+      "size": 1165,
       "parent_dir": ".git"
     },
     {
@@ -13826,17 +13833,31 @@
       "parent_dir": "week1"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\week2\\api.py",
+      "name": "api.py",
+      "suffix": ".py",
+      "size": 1088,
+      "parent_dir": "week2"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\week2\\material_indexer.py",
       "name": "material_indexer.py",
       "suffix": ".py",
-      "size": 5871,
+      "size": 8087,
       "parent_dir": "week2"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\week2\\README.md",
       "name": "README.md",
       "suffix": ".md",
-      "size": 876,
+      "size": 1445,
+      "parent_dir": "week2"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\week2\\requirements.txt",
+      "name": "requirements.txt",
+      "suffix": ".txt",
+      "size": 16,
       "parent_dir": "week2"
     },
     {
@@ -13850,7 +13871,7 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\week2\\output\\资料索引数据.json",
       "name": "资料索引数据.json",
       "suffix": ".json",
-      "size": 839054,
+      "size": 862058,
       "parent_dir": "output"
     },
     {
@@ -13976,7 +13997,7 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\logs\\HEAD",
       "name": "HEAD",
       "suffix": "no_suffix",
-      "size": 2714,
+      "size": 3259,
       "parent_dir": "logs"
     },
     {
@@ -14064,6 +14085,20 @@
       "parent_dir": "30"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\37\\27da3480cd28cb9e4f316a02d7cf1aeeeb45d7",
+      "name": "27da3480cd28cb9e4f316a02d7cf1aeeeb45d7",
+      "suffix": "no_suffix",
+      "size": 112,
+      "parent_dir": "37"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\37\\e5cb9811d7b4e2f07b895b33b713293022489d",
+      "name": "e5cb9811d7b4e2f07b895b33b713293022489d",
+      "suffix": "no_suffix",
+      "size": 658,
+      "parent_dir": "37"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\3d\\26a9aa922a795020cad1982855a5f6b5bdc007",
       "name": "26a9aa922a795020cad1982855a5f6b5bdc007",
       "suffix": "no_suffix",
@@ -14120,6 +14155,20 @@
       "parent_dir": "6f"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\7a\\6a81c36248abbe686253ac400147ef5349ca36",
+      "name": "6a81c36248abbe686253ac400147ef5349ca36",
+      "suffix": "no_suffix",
+      "size": 1283,
+      "parent_dir": "7a"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\7b\\2d2361989ea87665e500586fea409b4018c13a",
+      "name": "2d2361989ea87665e500586fea409b4018c13a",
+      "suffix": "no_suffix",
+      "size": 2195,
+      "parent_dir": "7b"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\7f\\584a73891b5f8f445f6247107fe4ce46fe4689",
       "name": "584a73891b5f8f445f6247107fe4ce46fe4689",
       "suffix": "no_suffix",
@@ -14127,11 +14176,39 @@
       "parent_dir": "7f"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\7f\\b975e868937bcdf421a696a719ffb88add3f67",
+      "name": "b975e868937bcdf421a696a719ffb88add3f67",
+      "suffix": "no_suffix",
+      "size": 1281,
+      "parent_dir": "7f"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\83\\6ad32aa48813203b8c2afa660f0f79f37c14ce",
+      "name": "6ad32aa48813203b8c2afa660f0f79f37c14ce",
+      "suffix": "no_suffix",
+      "size": 2482,
+      "parent_dir": "83"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\92\\75b146da6ffe9622ddc9255b0be63f279324ad",
+      "name": "75b146da6ffe9622ddc9255b0be63f279324ad",
+      "suffix": "no_suffix",
+      "size": 1971,
+      "parent_dir": "92"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\95\\bf0d8506c36c53ca0d688e115ca03cb457e8e8",
       "name": "bf0d8506c36c53ca0d688e115ca03cb457e8e8",
       "suffix": "no_suffix",
       "size": 1115,
       "parent_dir": "95"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\97\\dc7cd8c1fd2f07d8ec79a1117664c5ebaf2842",
+      "name": "dc7cd8c1fd2f07d8ec79a1117664c5ebaf2842",
+      "suffix": "no_suffix",
+      "size": 32,
+      "parent_dir": "97"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\a4\\db3cc80861e83ea029912f6b5344dab89dbc4e",
@@ -14148,11 +14225,46 @@
       "parent_dir": "aa"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\ab\\d2b4628a8fa5e33b86268ff90f58025e56bd94",
+      "name": "d2b4628a8fa5e33b86268ff90f58025e56bd94",
+      "suffix": "no_suffix",
+      "size": 199,
+      "parent_dir": "ab"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\b3\\666e2b08b6144d43027bb34245137d7a34a47b",
+      "name": "666e2b08b6144d43027bb34245137d7a34a47b",
+      "suffix": "no_suffix",
+      "size": 183,
+      "parent_dir": "b3"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\b8\\a1f79e957f9b5429a6d89f69bf9d383dadef25",
+      "name": "a1f79e957f9b5429a6d89f69bf9d383dadef25",
+      "suffix": "no_suffix",
+      "size": 852,
+      "parent_dir": "b8"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\dc\\c77df939216b5c6dc7bf1d64331a7124abb75e",
+      "name": "c77df939216b5c6dc7bf1d64331a7124abb75e",
+      "suffix": "no_suffix",
+      "size": 131,
+      "parent_dir": "dc"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\e0\\878b90edd99d1797add8166b1b88df0fec2d26",
       "name": "878b90edd99d1797add8166b1b88df0fec2d26",
       "suffix": "no_suffix",
       "size": 131,
       "parent_dir": "e0"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\e1\\34a6b519886dd2c96880c29c51ffce91ecc1fe",
+      "name": "34a6b519886dd2c96880c29c51ffce91ecc1fe",
+      "suffix": "no_suffix",
+      "size": 63910,
+      "parent_dir": "e1"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\e2\\f89f0833c39d71dda4c6e1dc601cdd584a065c",
@@ -14169,11 +14281,25 @@
       "parent_dir": "e5"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\e8\\1bc017b27a43cd35ba944c756ea225e4b16697",
+      "name": "1bc017b27a43cd35ba944c756ea225e4b16697",
+      "suffix": "no_suffix",
+      "size": 102,
+      "parent_dir": "e8"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\e9\\c5b26c1ec742032fbf501561e72800b1f0ec52",
       "name": "c5b26c1ec742032fbf501561e72800b1f0ec52",
       "suffix": "no_suffix",
       "size": 741,
       "parent_dir": "e9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\ef\\857fed6252c3133af379e96d0b73f7b6084781",
+      "name": "857fed6252c3133af379e96d0b73f7b6084781",
+      "suffix": "no_suffix",
+      "size": 112,
+      "parent_dir": "ef"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\f0\\0e63f6d8dfd8acfe5c938ed8bdcd4670eff0dd",
@@ -14183,11 +14309,25 @@
       "parent_dir": "f0"
     },
     {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\f7\\d855cfd946ed0994db79d2fc807dee810b36ac",
+      "name": "d855cfd946ed0994db79d2fc807dee810b36ac",
+      "suffix": "no_suffix",
+      "size": 62993,
+      "parent_dir": "f7"
+    },
+    {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\f9\\f72a793510650c4fa9924352199c803bd56961",
       "name": "f72a793510650c4fa9924352199c803bd56961",
       "suffix": "no_suffix",
       "size": 6124,
       "parent_dir": "f9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\objects\\fc\\4942721e9f8c9c59063b295b18f6df653acb96",
+      "name": "4942721e9f8c9c59063b295b18f6df653acb96",
+      "suffix": "no_suffix",
+      "size": 103,
+      "parent_dir": "fc"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\logs\\refs\\heads\\main",
@@ -14200,7 +14340,7 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\logs\\refs\\heads\\week2-python-engineering",
       "name": "week2-python-engineering",
       "suffix": "no_suffix",
-      "size": 540,
+      "size": 1085,
       "parent_dir": "heads"
     },
     {
@@ -14221,7 +14361,7 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\.git\\logs\\refs\\remotes\\origin\\week2-python-engineering",
       "name": "week2-python-engineering",
       "suffix": "no_suffix",
-      "size": 462,
+      "size": 616,
       "parent_dir": "origin"
     },
     {
@@ -14480,7 +14620,14 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\logs\\omx-2026-06-17.jsonl",
       "name": "omx-2026-06-17.jsonl",
       "suffix": ".jsonl",
-      "size": 1768,
+      "size": 5083,
+      "parent_dir": "logs"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\logs\\omx-2026-06-18.jsonl",
+      "name": "omx-2026-06-18.jsonl",
+      "suffix": ".jsonl",
+      "size": 5301,
       "parent_dir": "logs"
     },
     {
@@ -14620,7 +14767,14 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\logs\\tmux-hook-2026-06-17.jsonl",
       "name": "tmux-hook-2026-06-17.jsonl",
       "suffix": ".jsonl",
-      "size": 784,
+      "size": 4018,
+      "parent_dir": "logs"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\logs\\tmux-hook-2026-06-18.jsonl",
+      "name": "tmux-hook-2026-06-18.jsonl",
+      "suffix": ".jsonl",
+      "size": 3136,
       "parent_dir": "logs"
     },
     {
@@ -14760,21 +14914,28 @@
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\logs\\turns-2026-06-17.jsonl",
       "name": "turns-2026-06-17.jsonl",
       "suffix": ".jsonl",
-      "size": 5934,
+      "size": 32980,
+      "parent_dir": "logs"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\logs\\turns-2026-06-18.jsonl",
+      "name": "turns-2026-06-18.jsonl",
+      "suffix": ".jsonl",
+      "size": 26220,
       "parent_dir": "logs"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\hud-state.json",
       "name": "hud-state.json",
       "suffix": ".json",
-      "size": 331,
+      "size": 428,
       "parent_dir": "state"
     },
     {
       "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\notify-hook-state.json",
       "name": "notify-hook-state.json",
       "suffix": ".json",
-      "size": 2625,
+      "size": 7613,
       "parent_dir": "state"
     },
     {
@@ -15595,6 +15756,286 @@
       "suffix": ".json",
       "size": 369,
       "parent_dir": "019ed3b1-4395-7550-aafb-5933f5e918ee"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed3b5-d55b-7a60-85fa-f24b4db147d8\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed3b5-d55b-7a60-85fa-f24b4db147d8"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed3bc-0c11-70e3-b15b-58c090d7a383\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed3bc-0c11-70e3-b15b-58c090d7a383"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed3c1-0f0b-77d0-bf04-ee0654f2bf42\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed3c1-0f0b-77d0-bf04-ee0654f2bf42"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed479-253a-71e1-a1ff-6224e5ae6be6\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed479-253a-71e1-a1ff-6224e5ae6be6"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed483-82d5-7a81-8eda-b6fd70d44204\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed483-82d5-7a81-8eda-b6fd70d44204"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed488-52ff-7dc2-a01b-f28a6fb55577\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed488-52ff-7dc2-a01b-f28a6fb55577"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed490-ecae-7ae2-a8b1-e0c2f3f90e9b\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed490-ecae-7ae2-a8b1-e0c2f3f90e9b"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed494-cc2f-7b91-ab90-2a4cec2de681\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed494-cc2f-7b91-ab90-2a4cec2de681"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed49a-49d9-7641-af77-fd909e0a58e8\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed49a-49d9-7641-af77-fd909e0a58e8"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed4a5-6c14-7ee3-9e1e-39dff8c738a5\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed4a5-6c14-7ee3-9e1e-39dff8c738a5"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed4ab-decd-7e00-96e9-7e84dcd18148\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed4ab-decd-7e00-96e9-7e84dcd18148"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed4b3-8b3d-7e80-90de-aad9fc8d24ef\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed4b3-8b3d-7e80-90de-aad9fc8d24ef"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed4b9-0e8f-7343-87a0-15fa1ec3e031\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed4b9-0e8f-7343-87a0-15fa1ec3e031"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed4bc-ce43-7ff1-910a-2a5b4f3cfdbd\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed4bc-ce43-7ff1-910a-2a5b4f3cfdbd"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed4c1-29d3-79e3-9d0a-861029828bb0\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed4c1-29d3-79e3-9d0a-861029828bb0"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed858-480b-7bd1-830a-4f0aa89363d1\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed858-480b-7bd1-830a-4f0aa89363d1"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed85e-36d3-7ac3-9ddb-3d3f4abe9c6b\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed85e-36d3-7ac3-9ddb-3d3f4abe9c6b"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed863-961c-71f1-92d4-5bd66e0d17a9\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed863-961c-71f1-92d4-5bd66e0d17a9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed868-6fd8-70a3-824f-b18372aaefdd\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed868-6fd8-70a3-824f-b18372aaefdd"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed86c-59a7-7992-ba5b-215a8f760fe1\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed86c-59a7-7992-ba5b-215a8f760fe1"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed873-5fb2-7a41-a579-00f226bb73b4\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed873-5fb2-7a41-a579-00f226bb73b4"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed879-5b08-7021-a73b-17ae583e8af9\\hud-state.json",
+      "name": "hud-state.json",
+      "suffix": ".json",
+      "size": 309,
+      "parent_dir": "019ed879-5b08-7021-a73b-17ae583e8af9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed879-5b08-7021-a73b-17ae583e8af9\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed879-5b08-7021-a73b-17ae583e8af9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed881-5acf-7d92-b2f8-016429d6bb7c\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed881-5acf-7d92-b2f8-016429d6bb7c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed886-174f-73e0-b306-133af0db5a5c\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed886-174f-73e0-b306-133af0db5a5c"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed88a-6b1d-7980-b6df-da5acb84961a\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed88a-6b1d-7980-b6df-da5acb84961a"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed88f-ce63-7502-91fa-64b29b98d2e4\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed88f-ce63-7502-91fa-64b29b98d2e4"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed894-64bc-75e3-b739-440d0909ce93\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed894-64bc-75e3-b739-440d0909ce93"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed899-c2e9-7cc0-bbbd-057f7d035fc4\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed899-c2e9-7cc0-bbbd-057f7d035fc4"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed89d-9c11-7351-a892-12a14f5a4254\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed89d-9c11-7351-a892-12a14f5a4254"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8a2-c242-72f2-a91c-963a14c14163\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8a2-c242-72f2-a91c-963a14c14163"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8a5-9b0c-72c1-abc0-761dcec69dfd\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8a5-9b0c-72c1-abc0-761dcec69dfd"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8a7-f341-7c42-ac4c-664774bda1c9\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8a7-f341-7c42-ac4c-664774bda1c9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8ab-aa2b-7331-bcfb-51bef3898cbc\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8ab-aa2b-7331-bcfb-51bef3898cbc"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8b2-70b3-7022-ae52-0229dc05d564\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8b2-70b3-7022-ae52-0229dc05d564"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8b6-3d19-7d71-85cb-74ecc3df3380\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8b6-3d19-7d71-85cb-74ecc3df3380"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8bc-8ac4-7b02-9bb9-41af58d101dc\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8bc-8ac4-7b02-9bb9-41af58d101dc"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8c6-5a89-76f2-95fe-7f670189d9ab\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8c6-5a89-76f2-95fe-7f670189d9ab"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8ca-7442-7110-afb4-9943c553489b\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8ca-7442-7110-afb4-9943c553489b"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\.omx\\state\\sessions\\019ed8cf-1b14-75d2-9ce8-1172945afce4\\prompt-routing-state.json",
+      "name": "prompt-routing-state.json",
+      "suffix": ".json",
+      "size": 369,
+      "parent_dir": "019ed8cf-1b14-75d2-9ce8-1172945afce4"
     }
   ],
   "errors": [],
