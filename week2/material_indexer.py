@@ -23,7 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__) #创建当前文件专用的 logger
 
 
-class IndexerConfig: #配置参数，定义一个类，也就是“对象的模板”
+class IndexerConfig: #配置参数，定义一个类，也就是“对象的模板”，以后每一个文件都可以用这个模板表示
     def __init__(self, root: Path, output_dir: Path, top_n: int = 10): #__init__ 是初始化方法，创建对象时会自动执行
         self.root = root
         self.output_dir = output_dir
