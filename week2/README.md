@@ -17,6 +17,8 @@
 - 提供 FastAPI 查询接口
 - 使用 Pydantic 约束响应结构
 - 使用 Query 校验接口参数
+- 使用 HTTPException 转换文件系统异常
+- 使用 pytest 和 TestClient 验证错误路径
 
 ## 项目结构
 
@@ -24,6 +26,7 @@
 week2/
 ├── api.py
 ├── material_indexer.py
+├── test_api.py
 ├── README.md
 ├── requirements.txt
 └── output/
@@ -64,6 +67,18 @@ http://127.0.0.1:8000/largest-files?limit=5&min_size=104857600
 http://127.0.0.1:8000/extensions
 http://127.0.0.1:8000/docs
 ```
+
+## 测试
+
+```powershell
+python -m pytest -q
+```
+
+错误状态码：
+
+- `422`：请求参数校验失败
+- `500`：服务端扫描目录配置错误
+- `503`：文件系统暂时不可用
 
 ## 输出文件
 
