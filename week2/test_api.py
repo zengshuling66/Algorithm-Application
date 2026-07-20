@@ -1,8 +1,9 @@
+import pytest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 from fastapi.testclient import TestClient
-from api import app
+from api import app, generate_file_events
 
 
 client = TestClient(app) #TestClient：不启动浏览器和 Uvicorn，直接模拟 HTTP 请求
@@ -46,3 +47,67 @@ def test_scan_os_error_returns_503(tmp_path): #tmp_path：pytest 自动提供的
 
     assert response.status_code == 503 #assert：声明预期结果；不成立时测试失败
     assert response.json()["detail"]["code"] == "SCAN_SERVICE_UNAVAILABLE"
+
+def test_generate_file_events_yields_one_by_one():
+    files = [
+        {"name": "guide.pdf", "suffix": ".pdf"},
+        {"name": "notes.txt", "suffix": ".txt"},
+    ]
+
+    events = generate_file_events(files, limit=1)
+
+    assert iter(events) is events #生成器本身就是迭代器
+
+    first_event = next(events) #得到文件事件
+    done_event = next(events) #limit=1：第二个文件没有被产生；得到完成事件
+
+    assert first_event == {
+        "event": "file",
+        "index": 1,
+        "total": 1,
+        "name": "guide.pdf",
+        "suffix": ".pdf",
+    }
+
+    assert done_event == {
+        "event": "done",
+        "total": 1,
+    }
+
+    with pytest.raises(StopIteration):
+        next(events) #第三次next调用时，生成器耗尽，抛出 StopIteration
+
+def test_stream_files_returns_sse():
+    fake_report = {
+        "files": [
+            {"name": "guide.pdf", "suffix": ".pdf"},
+            {"name": "notes.txt", "suffix": ".txt"},
+        ]
+    }
+
+    with patch("api.load_scan_report", return_value=fake_report):
+        with client.stream(
+            "GET",
+            "/stream/files",
+            params={"limit": 1, "delay": 0},
+        ) as response:
+            body = "".join(response.iter_text())
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith(
+        "text/event-stream"
+    )
+    assert "event: file\n" in body
+    assert '"name": "guide.pdf"' in body
+    assert "notes.txt" not in body
+    assert "event: done\n" in body
+
+def test_stream_files_rejects_negative_delay():
+    response = client.get(
+        "/stream/files",
+        params={"delay": -0.1},
+    )
+
+    assert response.status_code == 422
+
+#运行python -m pytest -q进行测试

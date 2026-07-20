@@ -4,7 +4,7 @@
 
 这个项目用于扫描本地资料目录，提取文件路径、文件名、后缀、大小、所在目录等元数据，并生成 Markdown 报告和 JSON 数据。
 
-在此基础上，项目通过 FastAPI 提供查询接口，支持按数量限制、按后缀筛选、按最小文件大小过滤，以及查看最大文件和文件类型统计。
+在此基础上，项目通过 FastAPI 提供查询接口，支持按数量限制、按后缀筛选、按最小文件大小过滤、查看最大文件和文件类型统计，以及通过 SSE 流式返回文件事件。
 
 它对应后续 RAG 项目中的“资料整理与元数据构建”阶段。
 
@@ -18,7 +18,9 @@
 - 使用 Pydantic 约束响应结构
 - 使用 Query 校验接口参数
 - 使用 HTTPException 转换文件系统异常
-- 使用 pytest 和 TestClient 验证错误路径
+- 使用生成器逐个产生文件事件
+- 使用 SSE 流式返回文件事件，并检测客户端断开
+- 使用 pytest 和 TestClient 验证错误路径与流式接口
 
 ## 项目结构
 
@@ -53,6 +55,7 @@ GET /files
 GET /files/by-suffix
 GET /largest-files
 GET /extensions
+GET /stream/files
 GET /docs
 ```
 
@@ -67,6 +70,14 @@ http://127.0.0.1:8000/largest-files?limit=5&min_size=104857600
 http://127.0.0.1:8000/extensions
 http://127.0.0.1:8000/docs
 ```
+
+PowerShell 中验证 SSE 流式输出：
+
+```powershell
+curl.exe -N "http://127.0.0.1:8000/stream/files?limit=3&delay=0.2"
+```
+
+流式接口依次发送 `file` 事件，并在结束时发送一个 `done` 事件。响应类型为 `text/event-stream`。
 
 ## 测试
 

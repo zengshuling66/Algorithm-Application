@@ -1,11 +1,15 @@
 import logging
+import asyncio
+import json
 from typing import Any
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 # Pydantic 在 FastAPI 里用于定义数据模型，约束接口输入输出，并自动生成接口文档。
 # BaseModel：Pydantic 所有数据模型的基类，你自己定义的模型类都继承它。
 # Field：给字段增加说明、示例、约束，用于文档和校验。
 from material_indexer import build_config, scan_folder, validate_root
+from collections.abc import AsyncIterator, Iterator
 
 # 路由函数负责 HTTP 请求处理
 # 业务函数负责业务逻辑
@@ -94,6 +98,58 @@ def load_scan_report() -> dict[str, Any]:
 # 422	参数格式或校验不通过	limit=0、缺少 suffix    #请求还没进入路由函数，就被 FastAPI/Pydantic 的参数校验拦住了
 # 500	服务端代码或配置错误	配置的扫描根目录不存在/response_model 缺少字段，服务端返回结构错误
 # 503	依赖暂时不可用	       文件系统、数据库或模型服务暂时失败
+
+#生成器 Generator
+#含有 yield 的函数叫生成器函数，调用它时，函数体不会立刻执行，而是返回生成器对象，然后一次next只产生一个值
+#生成器是特殊的迭代器。所有生成器都是迭代器，但迭代器不一定由生成器函数创建。
+def generate_file_events(files: list[dict], limit: int) -> Iterator[dict[str, Any]]: #返回一个能够逐个产生字典的迭代器Iterator
+    """逐个产生文件事件，供后续流式接口消费。"""
+
+    total = min(len(files), limit)
+
+    for index, file_info in enumerate(files[:total], start=1): #取前 total 个文件
+        #每次产生一个事件后暂停。第二次调用 next() 时，从暂停位置继续
+        yield {
+            "event": "file",
+            "index": index,
+            "total": total,
+            "name": file_info["name"],
+            "suffix": file_info["suffix"],
+        }
+
+    #最后循环结束后继续执行：
+    yield {
+        "event": "done",
+        "total": total,
+    }
+    #再下一次调用 next()，函数真正结束并触发 StopIteration
+
+async def generate_file_sse(
+    files: list[dict],
+    limit: int,
+    delay: float,
+    request: Request,
+) -> AsyncIterator[str]:
+    """把结构化文件事件转换成 SSE 文本事件。"""
+    #SSE全称 Server-Sent Events，中文通常叫“服务器发送事件”，它允许一次 HTTP 请求建立长连接后，服务器不断向客户端发送文本事件。
+
+    for event in generate_file_events(files, limit): #消费前面写好的同步生成器，每次拿到一个字典。
+        if await request.is_disconnected(): #检查客户端是否已经关闭页面或取消请求
+            logger.info("客户端已断开文件流")
+            break
+
+        payload = json.dumps(event, ensure_ascii=False) #把 Python 字典转换为 JSON 字符串，ensure_ascii=False 可以让中文保持中文
+
+        yield (
+            f"event: {event['event']}\n" #event:：事件类型，这里是file/done；第一个 \n：结束当前字段
+            f"data: {payload}\n\n" #data:：事件数据；第二个 \n：结束整个SSE事件
+        )
+        #产生一个完整 SSE 事件，StreamingResponse 获取到它后就能立即发送
+
+        if delay > 0 and event["event"] != "done":
+            await asyncio.sleep(delay) #模拟大模型生成下一段内容所需的时间；done 后不再等待，因为已经没有下一条事件。
+            #time.sleep()阻塞线程，await asyncio.sleep() 会把控制权交回事件循环
+            #SSE等待下一条事件时使用 await asyncio.sleep()，其他请求仍然可以被 FastAPI 处理
 
 # @app.get("/xxx")：把 Python 函数注册成 HTTP GET 接口
 @app.get("/health") #表示把下面这个函数注册成一个 GET 接口，路径是 /health
@@ -189,6 +245,43 @@ def extension_stats():
         "folder_count": report["folder_count"],
         "extension_count": report["extension_count"],
     }
+
+#添加流式路由
+@app.get("/stream/files") #SSE返回的是多个连续文本片段，不是一个完整 JSON 对象，因此不能直接使用普通 Pydantic response_model
+async def stream_files(
+    request: Request,
+    limit: int = Query(
+        default=5,
+        ge=1,
+        le=100,
+        description="最多流式返回多少个文件",
+    ),
+    delay: float = Query(
+        default=0.2,
+        ge=0,
+        le=2,
+        description="相邻事件之间的模拟延迟，单位为秒",
+    ),
+):
+    report = load_scan_report()
+
+    event_stream = generate_file_sse(
+        files=report["files"],
+        limit=limit,
+        delay=delay,
+        request=request,
+    )
+
+    return StreamingResponse(
+        event_stream,
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
+#load_scan_report()仍会先完成整个目录扫描，然后才开始流式返回文件事件。
+#所以它目前是“扫描结果流”，不是严格意义上的“实时扫描进度”。真正的扫描进度需要把 scan_folder()的遍历过程本身改造成生成器。
 
 #week2中启动后端：python -m uvicorn api:app --reload
 # http://127.0.0.1:8000/docs FastAPI 会自动生成接口文档
