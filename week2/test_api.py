@@ -1,4 +1,5 @@
 import pytest
+import sqlite3
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -109,5 +110,93 @@ def test_stream_files_rejects_negative_delay():
     )
 
     assert response.status_code == 422
+
+def test_create_scan_saves_history():
+    fake_report = {
+        "root": "C:/materials",
+        "file_count": 20,
+        "folder_count": 5,
+        "error_count": 0,
+    }
+
+    with (
+        patch("api.load_scan_report", return_value=fake_report),
+        patch("api.save_scan_history", return_value=7) as mocked_save,
+    ):
+        response = client.post("/scans")
+
+    assert response.status_code == 201
+    assert response.json() == {
+        "id": 7,
+        "root": "C:/materials",
+        "file_count": 20,
+        "folder_count": 5,
+        "error_count": 0,
+    }
+    mocked_save.assert_called_once_with(fake_report)
+
+
+def test_list_scan_history_returns_records():
+    fake_scans = [
+        {
+            "id": 2,
+            "root": "C:/materials",
+            "file_count": 30,
+            "folder_count": 8,
+            "error_count": 1,
+            "created_at": "2026-07-23 08:00:00",
+        }
+    ]
+
+    with patch(
+        "api.list_scan_history",
+        return_value=fake_scans,
+    ) as mocked_list:
+        response = client.get(
+            "/scans",
+            params={"limit": 1},
+        )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "limit": 1,
+        "count": 1,
+        "scans": fake_scans,
+    }
+    mocked_list.assert_called_once_with(limit=1)
+
+
+def test_scan_history_rejects_invalid_limit():
+    response = client.get(
+        "/scans",
+        params={"limit": 0},
+    )
+
+    assert response.status_code == 422
+
+
+def test_create_scan_database_error_returns_503():
+    fake_report = {
+        "root": "C:/materials",
+        "file_count": 20,
+        "folder_count": 5,
+        "error_count": 0,
+    }
+
+    with (
+        patch("api.load_scan_report", return_value=fake_report),
+        patch(
+            "api.save_scan_history",
+            side_effect=sqlite3.OperationalError(
+                "模拟数据库不可用"
+            ),
+        ),
+    ):
+        response = client.post("/scans")
+
+    assert response.status_code == 503
+    assert response.json()["detail"]["code"] == (
+        "DATABASE_UNAVAILABLE"
+    )
 
 #运行python -m pytest -q进行测试

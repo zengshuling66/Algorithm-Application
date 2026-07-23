@@ -1,6 +1,7 @@
 import logging
 import asyncio
 import json
+import sqlite3
 from typing import Any
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
@@ -10,16 +11,29 @@ from pydantic import BaseModel, Field
 # Field：给字段增加说明、示例、约束，用于文档和校验。
 from material_indexer import build_config, scan_folder, validate_root
 from collections.abc import AsyncIterator, Iterator
+from contextlib import asynccontextmanager
+from database import (
+    init_database,
+    list_scan_history,
+    save_scan_history,
+)
 
 # 路由函数负责 HTTP 请求处理
 # 业务函数负责业务逻辑
 # 底层函数负责文件、数据库或模型调用
 
+@asynccontextmanager
+async def lifespan(_: FastAPI): #lifespan中文可以理解成“应用生命周期”
+    init_database() # yield 前：服务启动时执行
+    yield           # 服务运行期间；我们只需要启动时初始化数据库，因此 yield 后暂时没有代码。
+                    # yield 后：服务关闭时执行
+
 #创建一个 API 应用
 app = FastAPI(
     title="资料索引 API",
     version="0.1.0",
-    description="扫描训练营资料目录，并提供文件查询、后缀筛选和大小过滤接口"
+    description="扫描训练营资料目录，并提供文件查询、后缀筛选和大小过滤接口",
+    lifespan=lifespan
 )
 
 logger = logging.getLogger(__name__)
@@ -49,6 +63,30 @@ class ExtensionStatsResponse(BaseModel):
     file_count: int = Field(description="文件总数")
     folder_count: int = Field(description="文件夹总数")
     extension_count: dict[str, int] = Field(description="不同文件后缀的数量统计")
+
+#→ 创建一条扫描记录后的响应
+class ScanCreatedResponse(BaseModel):
+    id: int = Field(description="本次扫描记录 ID")
+    root: str = Field(description="扫描根目录")
+    file_count: int = Field(description="扫描到的文件数量")
+    folder_count: int = Field(description="扫描到的文件夹数量")
+    error_count: int = Field(description="扫描过程中跳过的异常数量")
+
+#→ 一条完整的历史记录
+class ScanHistoryItem(BaseModel):
+    id: int = Field(description="扫描记录 ID")
+    root: str = Field(description="扫描根目录")
+    file_count: int = Field(description="文件数量")
+    folder_count: int = Field(description="文件夹数量")
+    error_count: int = Field(description="异常数量")
+    created_at: str = Field(description="扫描记录创建时间")
+
+#→ 多条历史记录组成的列表响应
+class ScanHistoryListResponse(BaseModel):
+    limit: int = Field(description="最多返回多少条记录")
+    count: int = Field(description="本次实际返回的记录数")
+    scans: list[ScanHistoryItem] = Field(description="扫描历史列表")
+
 
 def filter_files_by_min_size(files: list[dict], min_size: int) -> list[dict]:
     filtered_files = []
@@ -282,6 +320,68 @@ async def stream_files(
     )
 #load_scan_report()仍会先完成整个目录扫描，然后才开始流式返回文件事件。
 #所以它目前是“扫描结果流”，不是严格意义上的“实时扫描进度”。真正的扫描进度需要把 scan_folder()的遍历过程本身改造成生成器。
+
+@app.post( #不同于GET用于读取资源，正常情况下不改变服务端状态；POST用于创建资源，改变服务端状态。
+    "/scans",
+    response_model=ScanCreatedResponse,
+    status_code=201, #201 Created：成功创建了新资源
+)
+def create_scan():
+    report = load_scan_report()
+
+    try:
+        scan_id = save_scan_history(report)
+
+    except sqlite3.Error as error:
+        logger.exception("保存扫描历史失败")
+
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "code": "DATABASE_UNAVAILABLE",
+                "message": "扫描完成，但扫描历史暂时无法保存",
+            },
+        ) from error
+
+    return {
+        "id": scan_id,
+        "root": report["root"],
+        "file_count": report["file_count"],
+        "folder_count": report["folder_count"],
+        "error_count": report["error_count"],
+    }
+
+@app.get( #这个接口不创建新数据，只读取已有记录，所以使用 GET
+    "/scans",
+    response_model=ScanHistoryListResponse,
+)
+def get_scan_history(
+    limit: int = Query(
+        default=10,
+        ge=1,
+        le=100,
+        description="最多返回多少条扫描历史",
+    ),
+):
+    try:
+        scans = list_scan_history(limit=limit)
+
+    except sqlite3.Error as error:
+        logger.exception("查询扫描历史失败")
+
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "code": "DATABASE_UNAVAILABLE",
+                "message": "扫描历史暂时无法查询",
+            },
+        ) from error
+
+    return {
+        "limit": limit,
+        "count": len(scans), #表示本次实际返回多少条，不是数据库历史总数
+        "scans": scans,
+    }
 
 #week2中启动后端：python -m uvicorn api:app --reload
 # http://127.0.0.1:8000/docs FastAPI 会自动生成接口文档
