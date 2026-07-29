@@ -17,6 +17,7 @@ from database import (
     list_scan_history,
     save_scan_history,
 )
+from cache import TTLCache
 
 # 路由函数负责 HTTP 请求处理
 # 业务函数负责业务逻辑
@@ -37,6 +38,9 @@ app = FastAPI(
 )
 
 logger = logging.getLogger(__name__)
+
+SCAN_REPORT_CACHE_KEY = "scan_report"
+scan_report_cache = TTLCache(default_ttl=30.0)
 
 class FileInfo(BaseModel): #定义一个叫 FileInfo 的数据模型，它继承 BaseModel，所以 Pydantic 能识别它、校验它、把它展示到 /docs 里
     path: str = Field(description="文件完整路径")
@@ -87,6 +91,12 @@ class ScanHistoryListResponse(BaseModel):
     count: int = Field(description="本次实际返回的记录数")
     scans: list[ScanHistoryItem] = Field(description="扫描历史列表")
 
+class CacheStatsResponse(BaseModel):
+    hits: int = Field(description="缓存命中次数")
+    misses: int = Field(description="缓存未命中次数")
+    size: int = Field(description="当前缓存条目数量")
+    hit_rate: float = Field(description="缓存命中率，范围为 0 到 1")
+
 
 def filter_files_by_min_size(files: list[dict], min_size: int) -> list[dict]:
     filtered_files = []
@@ -97,15 +107,39 @@ def filter_files_by_min_size(files: list[dict], min_size: int) -> list[dict]:
 
     return filtered_files
     
-def load_scan_report() -> dict[str, Any]:
-    """读取扫描报告，并把底层文件系统异常转换成 HTTP 异常。"""
+def load_scan_report(
+    force_refresh: bool = False, #默认允许使用缓存
+) -> dict[str, Any]:
+    """优先读取缓存，未命中时扫描目录，并把底层文件系统异常转换成 HTTP 异常。"""
+
+    if not force_refresh:
+        cached_report = scan_report_cache.get(
+            SCAN_REPORT_CACHE_KEY
+        )
+
+        if cached_report is not None:
+            logger.info("扫描报告缓存命中")
+            return cached_report #缓存命中时直接 return，后面的目录扫描不会执行
+
+        logger.info("扫描报告缓存未命中")
+    else:
+        logger.info("强制刷新扫描报告")
 
     config = build_config() #复用资料索引器里的配置
 
     try:
         validate_root(config.root) #检查扫描目录是否存在
-        return scan_folder(config.root) #重新扫描资料目录，拿到结构化报告，FastAPI 会自动把 Python 的 list/dict 转成 JSON
+        report = scan_folder(config.root) #重新扫描资料目录，拿到结构化报告，FastAPI 会自动把 Python 的 list/dict 转成 JSON
 
+        #扫描成功后使用 set()，否则下一次请求仍然会重复扫描
+        scan_report_cache.set(
+            SCAN_REPORT_CACHE_KEY,
+            report,
+        )
+
+        return report
+
+    #扫描异常时不会写入缓存，原来的异常处理仍然有效
     except (FileNotFoundError, NotADirectoryError) as error:
         logger.exception("扫描根目录配置错误") #它只能在 except 中使用，会自动记录当前异常的 traceback
 
@@ -321,13 +355,15 @@ async def stream_files(
 #load_scan_report()仍会先完成整个目录扫描，然后才开始流式返回文件事件。
 #所以它目前是“扫描结果流”，不是严格意义上的“实时扫描进度”。真正的扫描进度需要把 scan_folder()的遍历过程本身改造成生成器。
 
-@app.post( #不同于GET用于读取资源，正常情况下不改变服务端状态；POST用于创建资源，改变服务端状态。
+#不同于GET用于读取资源，正常情况下不改变服务端状态；POST用于创建资源，改变服务端状态。
+@app.post(
     "/scans",
     response_model=ScanCreatedResponse,
     status_code=201, #201 Created：成功创建了新资源
 )
 def create_scan():
-    report = load_scan_report()
+    report = load_scan_report(force_refresh=True) #POST/scans：明确要求创建一次新的扫描记录，不能拿旧缓存冒充新扫描
+    #强制刷新完成后，新报告仍会写入缓存，因此后续 GET 可以直接复用最新结果
 
     try:
         scan_id = save_scan_history(report)
@@ -381,6 +417,27 @@ def get_scan_history(
         "limit": limit,
         "count": len(scans), #表示本次实际返回多少条，不是数据库历史总数
         "scans": scans,
+    }
+
+@app.get(
+    "/cache/stats",
+    response_model=CacheStatsResponse,
+)
+def get_cache_stats():
+    stats = scan_report_cache.stats()
+
+    total_requests = stats["hits"] + stats["misses"]
+
+    if total_requests == 0:
+        hit_rate = 0.0
+    else:
+        hit_rate = stats["hits"] / total_requests
+
+    return {
+        "hits": stats["hits"],
+        "misses": stats["misses"],
+        "size": stats["size"],
+        "hit_rate": round(hit_rate, 4),
     }
 
 #week2中启动后端：python -m uvicorn api:app --reload

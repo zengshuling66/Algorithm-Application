@@ -5,6 +5,12 @@ from types import SimpleNamespace
 from unittest.mock import patch
 from fastapi.testclient import TestClient
 from api import app, generate_file_events
+from api import (
+    app,
+    generate_file_events,
+    load_scan_report,
+    scan_report_cache,
+)
 
 
 client = TestClient(app) #TestClient：不启动浏览器和 Uvicorn，直接模拟 HTTP 请求
@@ -120,8 +126,14 @@ def test_create_scan_saves_history():
     }
 
     with (
-        patch("api.load_scan_report", return_value=fake_report),
-        patch("api.save_scan_history", return_value=7) as mocked_save,
+        patch(
+            "api.load_scan_report",
+            return_value=fake_report,
+        ) as mocked_load,
+        patch(
+            "api.save_scan_history",
+            return_value=7,
+        ) as mocked_save,
     ):
         response = client.post("/scans")
 
@@ -133,6 +145,10 @@ def test_create_scan_saves_history():
         "folder_count": 5,
         "error_count": 0,
     }
+
+    mocked_load.assert_called_once_with(
+        force_refresh=True
+    )
     mocked_save.assert_called_once_with(fake_report)
 
 
@@ -198,5 +214,79 @@ def test_create_scan_database_error_returns_503():
     assert response.json()["detail"]["code"] == (
         "DATABASE_UNAVAILABLE"
     )
+
+def test_load_scan_report_uses_cache(tmp_path):
+    fake_config = SimpleNamespace(root=tmp_path)
+    fake_report = {
+        "root": str(tmp_path),
+        "files": [],
+    }
+
+    scan_report_cache.clear()
+
+    try:
+        with (
+            patch("api.build_config", return_value=fake_config),
+            patch("api.validate_root") as mocked_validate,
+            patch(
+                "api.scan_folder",
+                return_value=fake_report,
+            ) as mocked_scan,
+        ):
+            first_report = load_scan_report()
+            second_report = load_scan_report()
+
+        assert first_report == fake_report
+        assert second_report == fake_report
+        mocked_validate.assert_called_once_with(tmp_path)
+        mocked_scan.assert_called_once_with(tmp_path)
+
+    finally:
+        scan_report_cache.clear()
+
+def test_force_refresh_bypasses_cache(tmp_path):
+    fake_config = SimpleNamespace(root=tmp_path)
+    old_report = {"version": 1}
+    new_report = {"version": 2}
+
+    scan_report_cache.clear()
+
+    try:
+        with (
+            patch("api.build_config", return_value=fake_config),
+            patch("api.validate_root"),
+            patch(
+                "api.scan_folder",
+                side_effect=[old_report, new_report],
+            ) as mocked_scan,
+        ):
+            first_report = load_scan_report()
+            refreshed_report = load_scan_report(
+                force_refresh=True
+            )
+            cached_report = load_scan_report()
+
+        assert first_report == old_report
+        assert refreshed_report == new_report
+        assert cached_report == new_report
+        assert mocked_scan.call_count == 2
+
+    finally:
+        scan_report_cache.clear()
+
+def test_cache_stats_returns_metrics():
+    response = client.get("/cache/stats")
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert set(body) == {
+        "hits",
+        "misses",
+        "size",
+        "hit_rate",
+    }
+    assert 0.0 <= body["hit_rate"] <= 1.0
 
 #运行python -m pytest -q进行测试
