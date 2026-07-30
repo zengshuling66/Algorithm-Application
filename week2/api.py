@@ -164,12 +164,13 @@ def load_scan_report(
         ) from error
 
 # 状态码 含义	                当前项目场景
-# 200	请求成功	           查询完成，即使结果为空
+# 200	请求成功	           查询完成，结果可以为空
+# 201   资源创建成功            创建扫描历史
 # 400	请求业务含义不合理	    传入不支持的参数组合     #参数合法，但业务逻辑发现不合理，主动返回400
-# 404	客户端请求的资源不存在	根据文件 ID 查询不到文件/请求不存在的接口
-# 422	参数格式或校验不通过	limit=0、缺少 suffix    #请求还没进入路由函数，就被 FastAPI/Pydantic 的参数校验拦住了
+# 404	客户端请求的资源不存在	请求错误路径或不存在的记录
+# 422	参数格式或校验不通过	limit=0、缺少 suffix    #请求还没进入路由函数，就被 FastAPI/Pydantic的参数校验拦住了
 # 500	服务端代码或配置错误	配置的扫描根目录不存在/response_model 缺少字段，服务端返回结构错误
-# 503	依赖暂时不可用	       文件系统、数据库或模型服务暂时失败
+# 503	外部依赖暂时不可用	    文件系统、数据库或模型服务故障
 
 #生成器 Generator
 #含有 yield 的函数叫生成器函数，调用它时，函数体不会立刻执行，而是返回生成器对象，然后一次next只产生一个值
@@ -223,7 +224,8 @@ async def generate_file_sse(
             #time.sleep()阻塞线程，await asyncio.sleep() 会把控制权交回事件循环
             #SSE等待下一条事件时使用 await asyncio.sleep()，其他请求仍然可以被 FastAPI 处理
 
-# @app.get("/xxx")：把 Python 函数注册成 HTTP GET 接口
+# @app.get("/xxx")是路由装饰器，它把普通 Python函数注册为指定路径的 GET接口。
+# 请求到达时，FastAPI 根据路由表调用函数，并负责参数解析、校验和响应序列化。
 @app.get("/health") #表示把下面这个函数注册成一个 GET 接口，路径是 /health
 def health():
     return {"status": "ok"} #FastAPI 会自动把 Python 字典转换成 JSON
@@ -362,11 +364,11 @@ async def stream_files(
     status_code=201, #201 Created：成功创建了新资源
 )
 def create_scan():
-    report = load_scan_report(force_refresh=True) #POST/scans：明确要求创建一次新的扫描记录，不能拿旧缓存冒充新扫描
+    report = load_scan_report(force_refresh=True) #POST/scans：明确要求创建一次新的扫描记录，跳过旧缓存
     #强制刷新完成后，新报告仍会写入缓存，因此后续 GET 可以直接复用最新结果
 
     try:
-        scan_id = save_scan_history(report)
+        scan_id = save_scan_history(report) #开启 SQLite 事务，参数化 SQL 写入 scan_history
 
     except sqlite3.Error as error:
         logger.exception("保存扫描历史失败")
@@ -439,6 +441,48 @@ def get_cache_stats():
         "size": stats["size"],
         "hit_rate": round(hit_rate, 4),
     }
+
+
+# GET 请求完整数据流
+# 访问：GET /files?limit=5&min_size=1024
+# 代码依次经历：
+# 1. Uvicorn 接收 HTTP 请求
+# 2. FastAPI 根据 @app.get("/files") 找到 list_files()
+# 3. Query 校验 limit 和 min_size                       请求校验：发生在进入路由函数之前
+# 4. list_files() 调用 load_scan_report()
+# 5. load_scan_report() 查询 TTL 缓存
+# 6. 缓存命中则直接返回，未命中才扫描目录
+# 7. filter_files_by_min_size() 过滤小文件
+# 8. 按 limit 截断结果
+# 9. FileListResponse 校验并过滤响应字段                 响应校验：发生在路由函数 return 之后
+# 10. FastAPI 把 Python dict/list 序列化为 JSON
+
+# POST 请求完整数据流
+# 访问：POST /scans
+# 依次发生：
+# 1. FastAPI 调用 create_scan()
+# 2. load_scan_report(force_refresh=True) 跳过旧缓存
+# 3. 重新扫描文件夹
+# 4. 使用最新扫描报告覆盖缓存
+# 5. save_scan_history(report) 开启 SQLite 事务
+# 6. 参数化 SQL 写入 scan_history
+# 7. 成功后提交事务，返回新记录 ID
+# 8. ScanCreatedResponse 校验返回结果
+# 9. FastAPI 返回 201 Created
+
+# SSE 数据流
+# 访问：GET /stream/files?limit=3&delay=0.2
+# 流程是：
+# load_scan_report()
+# → generate_file_events()
+# → generate_file_sse()
+# → StreamingResponse
+# → 客户端逐条收到 file 和 done 事件
+# generate_file_events() 是同步生成器，逐个产生 Python 字典。
+# generate_file_sse() 是异步生成器，把字典转换为 SSE 文本，并使用：await asyncio.sleep(delay)
+# 等待期间会把执行权交还事件循环，因此其他请求仍然可以被处理。
+
+
 
 #week2中启动后端：python -m uvicorn api:app --reload
 # http://127.0.0.1:8000/docs FastAPI 会自动生成接口文档

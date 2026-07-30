@@ -49,7 +49,7 @@ def init_database(db_path: Path = DB_PATH) -> None:
         connection.commit() #commit()可以理解为“确认保存”
 
     except sqlite3.Error:
-        connection.rollback()
+        connection.rollback() #rollback()撤销当前事务中的未提交修改
         raise
 
     finally:
