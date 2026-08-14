@@ -14,12 +14,25 @@
 - `torch.no_grad()`、梯度清零和梯度下降
 - 手写一元线性模型训练循环，使参数收敛到 `weight=2`、`bias=1`
 
+### Day 2：标准训练框架与数据加载
+
+- 使用 `nn.Module` 和 `nn.Linear` 定义模型
+- 使用 `nn.MSELoss` 和 `torch.optim.SGD` 完成标准训练循环
+- 理解 `zero_grad → forward → loss → backward → step`
+- 使用 `TensorDataset` 和 `DataLoader` 进行mini-batch训练
+- 区分epoch、batch和step
+- 划分训练集与验证集
+- 使用 `model.train()`、`model.eval()` 和 `torch.no_grad()`
+- 通过训练损失和验证损失判断过拟合
+
 ## 文件说明
 
 ```text
 week3/
 ├── tensor_demo.py      # Tensor、维度操作和矩阵乘法
 ├── autograd_demo.py    # 自动求导、梯度下降和线性模型训练
+├── nn_training_demo.py
+├── dataloader_training_demo.py
 └── README.md
 ```
 
