@@ -25,6 +25,15 @@
 - 使用 `model.train()`、`model.eval()` 和 `torch.no_grad()`
 - 通过训练损失和验证损失判断过拟合
 
+### Day 3：Tokenizer 与 Embedding
+
+- 实现字符级 Tokenizer，并建立 `token_to_id` 和 `id_to_token`
+- 理解 `[PAD]`、`[UNK]`、Padding、Truncation 和 Attention Mask
+- 将多条文本整理成 `[batch_size, sequence_length]` 的批量张量
+- 使用 `nn.Embedding` 将 Token ID 转换为 Token Embedding
+- 使用 Masked Mean Pooling 得到固定维度的文本向量
+- 理解 Tokenizer、Token ID、Token Embedding 和 Text Embedding 的区别
+
 ## 文件说明
 
 ```text
@@ -33,6 +42,7 @@ week3/
 ├── autograd_demo.py    # 自动求导、梯度下降和线性模型训练
 ├── nn_training_demo.py
 ├── dataloader_training_demo.py
+├── tokenizer_embedding_demo.py
 └── README.md
 ```
 
@@ -55,6 +65,7 @@ conda activate pytorch
 ```powershell
 python tensor_demo.py
 python autograd_demo.py
+python tokenizer_embedding_demo.py
 ```
 
 `autograd_demo.py` 的训练结果应表现为损失持续下降，最终参数接近：
