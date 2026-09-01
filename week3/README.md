@@ -34,6 +34,15 @@
 - 使用 Masked Mean Pooling 得到固定维度的文本向量
 - 理解 Tokenizer、Token ID、Token Embedding 和 Text Embedding 的区别
 
+### Day 4：Sentence Embedding 与最小语义检索
+
+- 使用 `BAAI/bge-small-zh-v1.5` 生成 512 维句向量
+- 理解 L2 归一化、点积与余弦相似度
+- 使用矩阵乘法批量计算查询和文档相似度
+- 使用 `torch.topk` 返回高分文档
+- 保留并返回 `text`、`source`、`page` 和 `score`
+- 实现最小可复用 `EmbeddingRetriever`
+
 ## 文件说明
 
 ```text
@@ -43,6 +52,7 @@ week3/
 ├── nn_training_demo.py
 ├── dataloader_training_demo.py
 ├── tokenizer_embedding_demo.py
+├── embedding_retriever.py
 └── README.md
 ```
 
@@ -56,21 +66,4 @@ week3/
 
 ```powershell
 conda activate pytorch
-```
-
-## 运行方式
-
-在 `week3` 目录执行：
-
-```powershell
-python tensor_demo.py
-python autograd_demo.py
-python tokenizer_embedding_demo.py
-```
-
-`autograd_demo.py` 的训练结果应表现为损失持续下降，最终参数接近：
-
-```text
-weight = 2
-bias = 1
 ```
