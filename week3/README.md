@@ -43,6 +43,15 @@
 - 保留并返回 `text`、`source`、`page` 和 `score`
 - 实现最小可复用 `EmbeddingRetriever`
 
+### Day 5：单头自注意力
+
+- 手写 Q/K/V 投影与 Scaled Dot-Product Attention
+- 理解 `QKᵀ`、缩放、Softmax 和权重加权
+- 实现 Padding Mask 与 Causal Mask
+- 验证注意力权重、输出 shape 和屏蔽结果
+- 定向学习《Attention Is All You Need》3.1–3.2
+- 力扣：字符串解码
+
 ## 文件说明
 
 ```text
@@ -53,6 +62,8 @@ week3/
 ├── dataloader_training_demo.py
 ├── tokenizer_embedding_demo.py
 ├── embedding_retriever.py
+├── single_head_attention_demo.py  # 单头注意力与两种 Mask
+├── requirements.txt
 └── README.md
 ```
 
@@ -67,3 +78,8 @@ week3/
 ```powershell
 conda activate pytorch
 ```
+
+## 安装依赖
+
+```powershell
+python -m pip install -r .\week3\requirements.txt
