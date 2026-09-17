@@ -37,7 +37,7 @@ def scaled_dot_product_attention(query, key, value, attention_mask=None, is_caus
             #       长度 1 自动扩展成 4，变为 [1,4,4]，广播会把同一份 Key Mask 复制给所有 Query 行：广播不会计算新数值，只是逻辑上重复原来的值
             # 想遮住分数矩阵的列，就让 Mask 的最后一维对应列；缺少的 Query 行维放在中间并设为 1
 
-            # 这里的 == 0 不是赋值，而是逐个检查张量中的元素是不是 0，它的类型是布尔类型true和false
+            # 这里的 == 0 不是赋值，而是逐个检查张量中的元素是不是 0，它的类型是布尔类型true和false。
             # masked_fill 根据布尔 Mask 选择位置：True 的位置被替换，False 的位置保留原值。
         )
 

@@ -52,6 +52,17 @@
 - 定向学习《Attention Is All You Need》3.1–3.2
 - 力扣：字符串解码
 
+### Day 6：Multi-Head Attention 与 Transformer Block
+
+- 手写 Multi-Head Self-Attention，完成多头拆分、并行注意力和 Head 合并
+- 验证 Padding Mask、Causal Mask、注意力权重与输出 shape
+- 实现残差连接、LayerNorm、FFN 和原始 Post-LN Transformer Block
+- 对比 Post-LN 与 Pre-LN 的执行顺序和输出分布
+- 实现 RMSNorm、SwiGLU 和现代 Pre-Norm Transformer Block
+- 理解 Encoder、Encoder-Decoder 与 Decoder-only 的区别
+- 理解 RoPE、MHA、MQA、GQA、KV Cache 和 MoE 的作用
+- 定向阅读《Attention Is All You Need》并映射 MiniMind 核心模块
+
 ## 文件说明
 
 ```text
@@ -63,6 +74,7 @@ week3/
 ├── tokenizer_embedding_demo.py
 ├── embedding_retriever.py
 ├── single_head_attention_demo.py  # 单头注意力与两种 Mask
+├── transformer_block_demo.py  # 多头注意力与现代 Transformer Block
 ├── requirements.txt
 └── README.md
 ```
@@ -83,3 +95,4 @@ conda activate pytorch
 
 ```powershell
 python -m pip install -r .\week3\requirements.txt
+```
