@@ -1,0 +1,108 @@
+# Week 3：PyTorch 与大模型基础
+
+本目录用于学习 PyTorch 张量、自动求导和神经网络训练的基础机制，并为后续 Embedding、Attention 和 Transformer 学习做准备。
+
+## 当前进度
+
+### Day 1：Tensor 与自动求导
+
+- Tensor 的 `shape`、`dtype`、`device`、`ndim` 和 `numel`
+- 张量索引、切片、聚合、广播和形状变换
+- `reshape`、`unsqueeze`、`squeeze`、`transpose` 和 `permute`
+- 逐元素运算、点积、矩阵乘法与 `Q @ K^T` 的形状变化
+- `requires_grad`、计算图、反向传播和梯度累加
+- `torch.no_grad()`、梯度清零和梯度下降
+- 手写一元线性模型训练循环，使参数收敛到 `weight=2`、`bias=1`
+
+### Day 2：标准训练框架与数据加载
+
+- 使用 `nn.Module` 和 `nn.Linear` 定义模型
+- 使用 `nn.MSELoss` 和 `torch.optim.SGD` 完成标准训练循环
+- 理解 `zero_grad → forward → loss → backward → step`
+- 使用 `TensorDataset` 和 `DataLoader` 进行mini-batch训练
+- 区分epoch、batch和step
+- 划分训练集与验证集
+- 使用 `model.train()`、`model.eval()` 和 `torch.no_grad()`
+- 通过训练损失和验证损失判断过拟合
+
+### Day 3：Tokenizer 与 Embedding
+
+- 实现字符级 Tokenizer，并建立 `token_to_id` 和 `id_to_token`
+- 理解 `[PAD]`、`[UNK]`、Padding、Truncation 和 Attention Mask
+- 将多条文本整理成 `[batch_size, sequence_length]` 的批量张量
+- 使用 `nn.Embedding` 将 Token ID 转换为 Token Embedding
+- 使用 Masked Mean Pooling 得到固定维度的文本向量
+- 理解 Tokenizer、Token ID、Token Embedding 和 Text Embedding 的区别
+
+### Day 4：Sentence Embedding 与最小语义检索
+
+- 使用 `BAAI/bge-small-zh-v1.5` 生成 512 维句向量
+- 理解 L2 归一化、点积与余弦相似度
+- 使用矩阵乘法批量计算查询和文档相似度
+- 使用 `torch.topk` 返回高分文档
+- 保留并返回 `text`、`source`、`page` 和 `score`
+- 实现最小可复用 `EmbeddingRetriever`
+
+### Day 5：单头自注意力
+
+- 手写 Q/K/V 投影与 Scaled Dot-Product Attention
+- 理解 `QKᵀ`、缩放、Softmax 和权重加权
+- 实现 Padding Mask 与 Causal Mask
+- 验证注意力权重、输出 shape 和屏蔽结果
+- 定向学习《Attention Is All You Need》3.1–3.2
+- 力扣：字符串解码
+
+### Day 6：Multi-Head Attention 与 Transformer Block
+
+- 手写 Multi-Head Self-Attention，完成多头拆分、并行注意力和 Head 合并
+- 验证 Padding Mask、Causal Mask、注意力权重与输出 shape
+- 实现残差连接、LayerNorm、FFN 和原始 Post-LN Transformer Block
+- 对比 Post-LN 与 Pre-LN 的执行顺序和输出分布
+- 实现 RMSNorm、SwiGLU 和现代 Pre-Norm Transformer Block
+- 理解 Encoder、Encoder-Decoder 与 Decoder-only 的区别
+- 理解 RoPE、MHA、MQA、GQA、KV Cache 和 MoE 的作用
+- 定向阅读《Attention Is All You Need》并映射 MiniMind 核心模块
+
+### Day 7：结构化 Prompt 与最小检索链路
+
+- 将检索结果整理为带编号、来源和页码的 Context
+- 区分 System、Context、Question 和 Output Format
+- 使用 System Prompt 约束依据范围、拒答规则和资料中的恶意指令
+- 将 query、retrieval results 和 Prompt 组装成模型 messages
+- 完成 `query -> embedding retrieval -> context -> prompt` 最小链路
+- 理解 Top-K、相关性阈值、检索噪声和 Prompt Injection
+
+## 文件说明
+
+```text
+week3/
+├── tensor_demo.py      # Tensor、维度操作和矩阵乘法
+├── autograd_demo.py    # 自动求导、梯度下降和线性模型训练
+├── nn_training_demo.py
+├── dataloader_training_demo.py
+├── tokenizer_embedding_demo.py
+├── embedding_retriever.py
+├── single_head_attention_demo.py  # 单头注意力与两种 Mask
+├── transformer_block_demo.py  # 多头注意力与现代 Transformer Block
+├── prompt_builder.py  # 检索结果格式化与结构化 Prompt
+├── requirements.txt
+└── README.md
+```
+
+## 运行环境
+
+- Python 3.9
+- PyTorch 2.8.0
+- CUDA 可用时自动使用 GPU
+
+激活环境：
+
+```powershell
+conda activate pytorch
+```
+
+## 安装依赖
+
+```powershell
+python -m pip install -r .\week3\requirements.txt
+```

@@ -4,7 +4,6 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 from fastapi.testclient import TestClient
-from api import app, generate_file_events
 from api import (
     app,
     generate_file_events,
