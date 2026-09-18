@@ -63,6 +63,15 @@
 - 理解 RoPE、MHA、MQA、GQA、KV Cache 和 MoE 的作用
 - 定向阅读《Attention Is All You Need》并映射 MiniMind 核心模块
 
+### Day 7：结构化 Prompt 与最小检索链路
+
+- 将检索结果整理为带编号、来源和页码的 Context
+- 区分 System、Context、Question 和 Output Format
+- 使用 System Prompt 约束依据范围、拒答规则和资料中的恶意指令
+- 将 query、retrieval results 和 Prompt 组装成模型 messages
+- 完成 `query -> embedding retrieval -> context -> prompt` 最小链路
+- 理解 Top-K、相关性阈值、检索噪声和 Prompt Injection
+
 ## 文件说明
 
 ```text
@@ -75,6 +84,7 @@ week3/
 ├── embedding_retriever.py
 ├── single_head_attention_demo.py  # 单头注意力与两种 Mask
 ├── transformer_block_demo.py  # 多头注意力与现代 Transformer Block
+├── prompt_builder.py  # 检索结果格式化与结构化 Prompt
 ├── requirements.txt
 └── README.md
 ```
