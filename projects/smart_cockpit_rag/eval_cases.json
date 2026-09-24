@@ -1,0 +1,180 @@
+[
+  {
+    "id": "q_screen_auto_001",
+    "question": "中央显示屏自动模式怎样切换日夜显示？",
+    "answerable": true,
+    "reference_answer": "可选择日出到日落或自定时段，系统按所选方式切换日间与夜间模式。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 263,
+      "anchor": "日出到日落"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_outside_001",
+    "question": "中国足球的队长是谁？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "question_origin": "stage12_gold",
+    "split": "dev"
+  },
+  {
+    "id": "q_unlock_scope_001",
+    "question": "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？",
+    "answerable": true,
+    "reference_answer": "单门模式仅解锁当前车门；全车模式解锁全车车门。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 43,
+      "anchor": "无钥匙解锁设置为单门"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_heat_level_001",
+    "question": "前排座椅加热有几级？控制开关会按什么顺序切换？",
+    "answerable": true,
+    "reference_answer": "加热有低、中、高三级；控制开关在关、低、中、高之间循环。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 115,
+      "anchor": "加热分三级调节"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_heat_warning_001",
+    "question": "什么情况下不应使用前排座椅加热？",
+    "answerable": true,
+    "reference_answer": "如果乘员身体无法感知座椅温度，不应使用前排座椅加热功能。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 115,
+      "anchor": "请勿使用前排座椅加热功能"
+    },
+    "question_origin": "manual_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "q_autohold_epb_001",
+    "question": "Auto Hold 已激活时，哪些情况会使它停用并启用 EPB？",
+    "answerable": true,
+    "reference_answer": "松开驾驶员安全带、打开驾驶员侧车门、超出 Auto Hold 工作时间，或挂入驻车挡 P，任一情况出现都会使 Auto Hold 停用并启用 EPB。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 159,
+      "anchor": "将自动停用"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_fcta_alert_001",
+    "question": "FCTA 在什么车速和场景下，会怎样提醒前方侧向碰撞风险？",
+    "answerable": true,
+    "reference_answer": "车速在 4-15 km/h，车辆驶出停车位或经过交叉路口，且监测到前方侧向碰撞风险时，会通过仪表提示信息和蜂鸣声提醒驾驶员。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 197,
+      "anchor": "4 - 15 km/h"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_tailgate_obstacle_001",
+    "question": "尾门关闭时碰到障碍物，车辆运动与静止时的动作有何不同？",
+    "answerable": true,
+    "reference_answer": "车辆运动时，尾门停止关闭并保持在当前位置；车辆静止时，尾门停止关闭并打开至设置的开启位置。两种情况都会伴有长鸣音。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 34,
+      "anchor": "车辆运动时"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_key_interference_001",
+    "question": "使用走近走远感应式电动尾门时，哪些情况可能使智能钥匙偶发异常？",
+    "answerable": true,
+    "reference_answer": "车辆处于充电桩、大型停车场、变电站等有信号干扰的地方，或智能钥匙与干扰设备放在一起时，可能受到干扰并偶发功能异常。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 33,
+      "anchor": "充电桩、大型停车场、变电站"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_neck_collision_001",
+    "question": "车辆追尾后，前排座椅外观看起来没坏，还需要检查吗？",
+    "answerable": true,
+    "reference_answer": "需要由 Lynk & Co 领克中心检查前排靠背，因为颈椎保护系统内部部件可能需要更换；不要自行维修。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 107,
+      "anchor": "即便座椅外观并未受损"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_fan_panel_001",
+    "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+    "answerable": true,
+    "reference_answer": "按压风速/副驾温度调节切换按钮；对应图标亮起后，旋转风速/副驾温度调节旋钮，可以开启或关闭鼓风机，也可以调节鼓风机转速。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 244,
+      "anchor": "风速/副驾温度调节切换按钮"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  },
+  {
+    "id": "q_fan_levels_001",
+    "question": "空调风速共有几个可设置的等级？",
+    "answerable": true,
+    "reference_answer": "空调风速共有 9 个可设置的等级。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 243,
+      "anchor": "风速共有9个速度等级可设置"
+    },
+    "question_origin": "manual_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "q_acc_limits_001",
+    "question": "ACC 能代替驾驶员驾驶吗？严重雨雪或能见度低时应怎样使用？",
+    "answerable": true,
+    "reference_answer": "ACC 不能代替驾驶员，驾驶员仍须负责安全驾驶。手册提示在严重雨雪、能见度低等较差驾驶条件下不要使用 ACC。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 176,
+      "anchor": "ACC对驾驶员来说是一种辅助功能"
+    },
+    "question_origin": "manual_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "q_usb_uses_001",
+    "question": "手册明确写了中央扶手箱的 Type A 和 Type C 接口分别能做什么？",
+    "answerable": true,
+    "reference_answer": "Type A 接口支持数据传输和充电；该段落写明 Type C 接口可为手机、平板等智能设备充电。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 131,
+      "anchor": "Type A接口支持数据传输和"
+    },
+    "question_origin": "stage12_gold_adapted",
+    "split": "dev"
+  }
+]
