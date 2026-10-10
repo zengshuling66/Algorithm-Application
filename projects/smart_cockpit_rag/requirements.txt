@@ -1,2 +1,8 @@
 pypdf==6.19.0
 pytest==8.4.2
+numpy==1.26.4
+torch==2.8.0
+sentence-transformers==5.1.2
+qdrant-client==1.15.1
+
+# FAISS 1.11.0 is installed via Conda on Windows/Python 3.9; see README.md.
