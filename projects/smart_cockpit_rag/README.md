@@ -1,6 +1,8 @@
 # 智能座舱汽车知识大脑 RAG
 
-当前进度：Week4 Day5 持久化检索主线。已完成 PDF 解析、文本切块、来源与内容哈希传递、初版评测题集校验、BGE Embedding + FAISS 精确检索基线，以及 Qdrant 本地持久化、稳定 ID 幂等写入、来源与文件版本过滤和独立查询入口。检索结果包含正文、来源、PDF 物理页码和相似度分数。项目尚未接入答案生成或完整拒答判断，暂不能作为完整 RAG 系统运行；目前的 `evaluation.py` 不计算检索或回答质量指标。
+当前进度：Week4 Day6 命令行最小 RAG 闭环。已完成 PDF 解析、文本切块、来源与内容哈希传递、初版评测题集校验、BGE Embedding + FAISS 精确检索基线，以及 Qdrant 本地持久化、稳定 ID 幂等写入、来源与文件版本过滤；新增结构化证据 Prompt 和 OpenAI-compatible 生成适配层，由 `query.py` 串联检索、生成和引用展示。
+
+一条座舱问题已使用豆包完成真实回答与人工引用核对。后续生成测试固定使用火山方舟 `deepseek-v4.1-flash`；当前尚未收到该配置的完整 RAG 输出，不将其记录为已通过的端到端结果。完整拒答判断、自动引用支持核验和题集质量评测尚未实现；`evaluation.py` 仍只校验题集字段。
 
 ## 当前数据流程
 
@@ -21,6 +23,9 @@ query.py: source_id + content_hash + 问题
   -> query_batch[0]: 取出形状为 (512,) 的单个问题向量
   -> vector_store.search_points: 同时过滤 source_id 和 content_hash，执行余弦检索
   -> 检索结果: payload 中的正文、来源、页码等字段 + 相似度分数
+  -> prompt_builder.build_messages: 编号证据、来源、物理页码 + system/user 消息
+  -> generation.generate_answer: 读取模型配置，调用生成 API，检查完整性与非空回答
+  -> 输出: Prompt 版本、答案和模型生成的引用、响应模型标识、token 用量
 ```
 
 导入时 `chunks[i]` 与 `vectors[i]` 必须一一对应，`build_points()` 按相同顺序配对，将正文及来源字段保存到对应向量的 payload；独立查询时由数据库返回 payload，不再依赖原进程中的 `chunks` 列表。
@@ -35,15 +40,17 @@ FAISS 的 `build_faiss_index()` 和 `search_chunks()` 保留为 Day4 学习基�
 | `chunking.py` | 按页切块，传递 metadata，生成可读的稳定 chunk ID |
 | `retrieval.py` | 加载 BGE、编码文本、保留 FAISS 基线，并提供持久化检索函数 |
 | `vector_store.py` | 将 chunk ID 映射为 UUID，创建或检查集合、写入记录、过滤检索、关闭客户端 |
-| `query.py` | 读取来源、文件哈希及问题三个参数，查询已存在的数据库 |
+| `prompt_builder.py` | 组织证据与 system/user 消息，要求依据资料回答、引用及无依据拒答，记录 Prompt 版本 |
+| `generation.py` | 读取密钥、地址和模型环境变量，调用兼容 API，检查回答完整性，返回回答及用量 |
+| `query.py` | 读取来源、文件哈希及问题，串联持久化检索、Prompt 组装、生成和终端展示 |
 | `evaluation.py` | 校验评测题集字段，目前不执行检索或生成评测 |
 | `test_chunking.py`、`test_vector_store.py` | 检查切块边界、来源传递、幂等写入、持久化及范围隔离 |
 
 ## 环境与运行
 
-当前实测环境为 Python 3.9.23、`pypdf==6.19.0`、`pytest==8.4.2`、`numpy==1.26.4`、`sentence-transformers==5.1.2`、`torch==2.8.0+cu129`、`qdrant-client==1.15.1` 和 CPU FAISS 1.11.0。Embedding 模型为 `BAAI/bge-small-zh-v1.5`。导入时模型编码可使用 GPU，编码结果转为 CPU 上的连续 NumPy `float32` 数组；独立查询入口明确使用 CPU。
+当前实测环境为 Python 3.9.23、`pypdf==6.19.0`、`pytest==8.4.2`、`numpy==1.26.4`、`sentence-transformers==5.1.2`、`torch==2.8.0+cu129`、`qdrant-client==1.15.1`、`openai==2.48.0` 和 CPU FAISS 1.11.0。Embedding 模型为 `BAAI/bge-small-zh-v1.5`。导入时模型编码可使用 GPU，编码结果转为 CPU 上的连续 NumPy `float32` 数组；独立查询入口明确使用 CPU。
 
-`requirements.txt` 已记录 PDF 解析、测试、NumPy、PyTorch、Sentence Transformers 和 Qdrant 客户端的版本；FAISS 按本机实际安装方式单独记录为 Conda 依赖。当前代码仍通过 `retrieval.py` 导入 `faiss`，暂不能移除该依赖。现有环境已安装这些依赖，不需要重复安装；以下命令从本项目目录执行，尚未在全新环境中验证整套安装流程：
+`requirements.txt` 已记录 PDF 解析、测试、NumPy、PyTorch、Sentence Transformers、Qdrant 客户端和 OpenAI SDK 的版本；FAISS 按本机实际安装方式单独记录为 Conda 依赖。这里使用 OpenAI SDK 作为兼容协议客户端，不代表模型请求发送到 OpenAI 服务。当前代码仍通过 `retrieval.py` 导入 `faiss`，暂不能移除该依赖。现有环境已安装这些依赖，不需要重复安装；以下命令从本项目目录执行，尚未在全新环境中验证整套安装流程：
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -74,6 +81,36 @@ python -m pytest -q .\projects\smart_cockpit_rag
 
 上面的 `$pdf` 是训练营目录中的本地样本路径。使用其他有权处理的 PDF 时，把它替换为对应文件路径，并为不同资料分配不同的 `source_id`；同一资料更新后沿用原 `source_id`。原始车主手册不随本项目代码提交；使用前应确认资料的使用和再分发权限。
 
+### 生成模型配置
+
+后续学习测试固定使用火山方舟 DeepSeek-V4.1-Flash，不继续进行豆包与 DeepSeek 官方接口的来回切换。当前用户选择的 Coding Plan 连接配置为：
+
+| 环境变量 | 内容 |
+| --- | --- |
+| `LLM_API_KEY` | 用户自己的火山 Coding Plan API Key，不写入仓库或日志 |
+| `LLM_BASE_URL` | `https://ark.cn-beijing.volces.com/api/coding/v3` |
+| `LLM_MODEL` | `deepseek-v4.1-flash` |
+
+适用范围：上述配置仅记录当前学习环境，不表示普通业务调用获得了套餐授权。官方说明 Coding Plan 额度用于支持的 AI 编程工具，不能用于普通 API 调用；正式业务应改用允许业务调用的普通方舟 API 及其对应密钥、地址和 Model ID。普通 API 费用不计入 Coding Plan 套餐，不应混用两类地址和凭证。参见 [套餐使用范围](https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh) 和 [Coding Plan 模型与地址](https://docs.volcengine.com/docs/ark/coding-plan-personal-ai-deepseek-harness?lang=zh)。
+
+密钥输入命令单独执行，等待提示后再粘贴真实密钥；引号内是提示文字，不是密钥：
+
+```powershell
+$secureKey = Read-Host "Paste your Volcengine API Key" -AsSecureString
+```
+
+输入完成后，在同一个终端配置其余环境变量；以下只记录当前学习环境的连接参数，不将模型写死在业务代码中：
+
+```powershell
+$env:LLM_API_KEY = [System.Net.NetworkCredential]::new("", $secureKey).Password
+$env:LLM_BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3"
+$env:LLM_MODEL = "deepseek-v4.1-flash"
+```
+
+这些变量仅在当前终端及其子进程生效，新终端需要重新配置。当前代码没有自动加载 `.env`，不能只创建该文件就假设配置已被读取。更换生成模型不会重建 BGE 文档向量；更换 Embedding 模型或编码方式则需要重新考虑向量与集合的兼容性。配置别名不等于永久固定底层权重，回归时应记录实际返回的 `model`、Prompt 版本和日期。
+
+`generation.py` 当前固定 `max_tokens=1024`、`stream=False`、关闭思考、60 秒网络操作超时和 `max_retries=0`。`finish_reason` 不是 `stop` 或回答为空时会抛出异常；配置缺失、鉴权、余额、超时及服务端错误目前仍直接暴露，尚无统一错误响应或生产重试策略。具体字段支持范围以所选模型和供应商接口为准。
+
 ### 查询已有数据库
 
 先成功执行一次 `retrieval.py` 导入资料，再运行独立查询入口。以下参数对应当前本地样本；替换 PDF 后应使用新文件的实际哈希，不能沿用示例哈希。
@@ -96,7 +133,7 @@ $question = "无钥匙解锁设为单门和全车时，触摸前门把手内部�
 python .\projects\smart_cockpit_rag\query.py $sourceId $contentHash $question
 ```
 
-查询入口只编码问题，不需要传 PDF 路径或重新生成文档向量。无匹配记录时打印 `No matching evidence found.`；这只是检索为空的提示，不是完整的生成拒答机制。数据库或集合尚不存在、模型不可用或参数非法时，当前脚本仍可能直接报错，尚无统一错误处理。
+查询入口只编码问题，不需要传 PDF 路径或重新生成文档向量。有证据时会发送一次真实生成请求，使用前确认环境变量、接口使用范围及计费方式；无匹配记录时打印 `No matching evidence found.` 并提前返回，不调用生成模型。空检索拦截和 Prompt 中的拒答要求不等于已经实现完整的证据充分性判断。数据库或集合尚不存在、模型不可用或参数非法时，当前脚本仍可能直接报错，尚无统一错误处理。
 
 ## 当前验证结果
 
@@ -135,6 +172,15 @@ Day4 示例问题保留在 `retrieval.py` 的 `main()` 中；Day5 新增的 `que
 
 实现原则参考 [Qdrant point 与幂等写入说明](https://qdrant.tech/documentation/manage-data/points/)；测试成功不代表所有非法输入、崩溃恢复或生产并发路径均已覆盖。
 
+### Day6 最小 RAG 与调用边界
+
+- Prompt 版本为 `cockpit-rag-v1`。检索结果按本次排名编号，`[1]` 是第一条证据，不是 PDF 第 1 页；编号通过 payload 映射到真实文件名和物理页码。
+- `build_messages()` 返回 system/user 两条消息，包含回答规则、检索正文、来源、页码和用户问题，不读取或附带评测集参考答案。资料中的指令被要求视为数据，但目前没有经过对抗测试，不能宣称已防御 Prompt 注入。
+- 用户提供的真实豆包输出：单门模式仅解锁当前车门，全车模式解锁全车车门，引用 `[1]` 指向 `train_a.pdf` 物理第 43 页；人工核对与该页证据一致。响应模型为 `doubao-seed-2-1-pro`，输入 666 tokens、输出 58 tokens、总计 724，思考 tokens 为 0。仅验证这一条问题，不推断整体正确率或模型优劣。
+- DeepSeek 官方 `deepseek-flash` 已完成用户的 `API_OK` 基础连通性验证，但不作为后续项目基线，也不将它算作完整 RAG 验证。后续基线是火山方舟 `deepseek-v4.1-flash`，其完整问答结果待学习者提供。
+- 原有 6 项项目测试通过；另在进程内检查了真实检索与 Prompt 组装、空问题/空证据拒绝、空检索不调用生成，以及模拟 SDK 的回答/用量解析、截断和空回答拒绝。这些额外检查未保存为测试文件，不宣称已纳入持久化自动回归套件；模拟响应不代表真实模型质量。
+- 排查时发现密钥误输入为一个控制字符，真实只读接口返回空响应的 400；正常输入密钥后基础调用成功。密钥存在不等于密钥有效，也不能只凭 400 认定模型不支持或供应商故障。
+
 ## 初版评测题集
 
 `eval_cases.json` 目前包含 14 条题目：13 条可回答、1 条不可回答，全部暂列入开发集（`split: "dev"`）。每条题目记录问题、是否可回答及题目来源；可回答题还记录参考答案、资料 `source_id`、PDF 物理页码和原文定位词。参考答案与证据仅供后续评测使用，不应传入被测 RAG 的生成 Prompt。
@@ -157,6 +203,6 @@ python evaluation.py eval_cases.json
 - 导入入口 `retrieval.py` 每次仍重新解析并编码全部资料，FAISS 基线也仍在该入口重建；独立查询入口 `query.py` 已避免这些工作，但每次启动仍加载一次 Embedding 模型。
 - 当前只验证单份真实 PDF，以及人工测试数据上的来源/文件哈希过滤；尚无核实后的车型、年款、官方手册版本 metadata、用户权限过滤或服务接口。
 - Qdrant 当前为本地模式，客户端用完即关闭以释放资源和本地锁；尚未验证多进程并发读写、服务端部署、HNSW 性能、负载或故障恢复。
-- 当前检索结果仅在终端展示，尚未实现答案生成、证据不足拒答、引用支持核验或端到端质量评测。
+- 当前已实现命令行答案生成与模型生成的引用展示，尚无程序化引用映射展示、自动引用支持核验、可靠的证据不足拒答或端到端题集质量评测；一条人工核验样例不能替代回归评测。
 - 更换 Embedding 模型或编码配置后，需要重新生成资料向量并重建匹配索引，不能只替换问题编码模型。集合名包含模型标识，但尚无完整模型/处理配置清单；维度相同并不能证明两个模型的向量兼容。
 - 后续按学习计划补充资料解析抽查、可核实的车型/版本 metadata、生成与拒答、检索质量评测以及更新/删除流程，不把当前原型的结果当作最终项目效果或真实生产上线。
