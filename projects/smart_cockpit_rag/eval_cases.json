@@ -176,5 +176,71 @@
     },
     "question_origin": "stage12_gold_adapted",
     "split": "dev"
+  },
+  {
+    "id": "q_unlock_scope_para_001",
+    "question": "触摸前门外把手内部感应区，为什么有时只解锁一扇门，有时全部解锁？",
+    "answerable": true,
+    "reference_answer": "取决于无钥匙解锁的单门/全车设置；单门仅解锁当前车门，全车解锁全车车门。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 43,
+      "anchor": "仅解锁当前车门"
+    },
+    "question_origin": "manual_paraphrase_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "q_fan_levels_para_001",
+    "question": "空调风量能调几档？",
+    "answerable": true,
+    "reference_answer": "空调风速共有9个可设置的等级。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 243,
+      "anchor": "风速共有9个速度等级可设置"
+    },
+    "question_origin": "manual_paraphrase_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "q_ventilation_levels_001",
+    "question": "前排座椅通风有几档强度？点击控制开关怎样切换？",
+    "answerable": true,
+    "reference_answer": "通风强度有低、中、高三级；控制开关在关、低、中、高之间循环。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 116,
+      "anchor": "座椅通风分三级调节"
+    },
+    "question_origin": "manual_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "q_usb_pd_unknown_001",
+    "question": "中央扶手箱里的Type C接口采用哪一代USB PD协议？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "question_origin": "manual_unanswerable_probe",
+    "split": "dev"
+  },
+  {
+    "id": "q_vehicle_scope_unknown_001",
+    "question": "我没有提供车型和年款，我的车是否一定配有前排座椅通风？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "question_origin": "manual_scope_probe",
+    "split": "dev"
+  },
+  {
+    "id": "q_live_health_unknown_001",
+    "question": "我这辆车现在的动力电池健康度是多少？请给出当前百分比。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "question_origin": "manual_live_data_probe",
+    "split": "dev"
   }
 ]

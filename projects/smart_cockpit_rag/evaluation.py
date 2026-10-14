@@ -1,7 +1,8 @@
 import json
 import sys
 from pathlib import Path
-
+from sentence_transformers import SentenceTransformer
+from retrieval import MODEL_NAME, search_stored_chunks
 
 def validate_case_semantics(case: dict, row_number: int) -> None:
     answerable = case.get("answerable") #.get(...) 从题目中取字段，.get 在字段缺失时返回 None，便于我们给出明确的校验错误，而不是立刻产生 KeyError。
@@ -67,13 +68,57 @@ def load_cases(path: Path) -> list[dict]:
     return cases #保留完整数据
 
 
-def main():
-    if len(sys.argv) != 2:
-        raise SystemExit("用法: python evaluation.py <评测JSON路径>")
+#先执行向量检索，得到 results → 再拿 results 与人工标注进行比较 → 记录 True / False
+#检索只限定资料身份和文件哈希，再按相似度选取结果；它不知道人工期望页码。
+def inspect_retrieval(case, model, source_id, content_hash, top_k=3):
+    results = search_stored_chunks(
+        case["question"], model, source_id, content_hash, top_k=top_k,
+    )
+    evidence = case["evidence"]
+    evidence_page_hit = None
+    if case["answerable"]:
+        evidence_page_hit = any( #any(...) 表示多个检索结果中，只要至少一条同时满足“来源相同”和“页码相同”，就返回 True，不要求所有结果都命中。
+            item["source_id"] == evidence["source_id"]
+            and item["page"] == evidence["page"] #and表示两个条件都要满足，才能算命中
+            for item in results
+        )
+    record = {
+        "case_id": case["id"],
+        "retrieved_pages": [item["page"] for item in results],
+        "evidence_page_hit": evidence_page_hit,
+    }
+    return record, results
 
+
+def main():
+    if len(sys.argv) not in (2, 5): #只传题集路径时长度为 2，仍然只校验题集；再传来源、哈希和报告路径时长度为 5，才进入批量检索。
+        raise SystemExit("Usage: python evaluation.py <cases.json> [<source_id> <content_hash> <report.json>]")
     cases = load_cases(Path(sys.argv[1]))
-    print(f"样本数: {len(cases)}")
-    print(f"首题: {cases[0]['question']}")
+    if len(sys.argv) == 2:
+        print(f"样本数: {len(cases)}")
+        print(f"首题: {cases[0]['question']}")
+        return #防止校验模式继续加载模型
+    source_id, content_hash, output_path = sys.argv[2:] #取出后三个参数，分别交给三个变量
+    model = SentenceTransformer(MODEL_NAME, device="cpu")
+    records = []
+    for case in cases:
+        record, results = inspect_retrieval(case, model, source_id, content_hash)
+        record["question"] = case["question"] #record 已有题号、命中页和页码检查结果；现在补上问题、可回答标注和分数
+        record["answerable"] = case["answerable"]
+        record["scores"] = [item["score"] for item in results] #分数列表与命中页按相同排名对应，便于分析
+        record["generation_status"] = "not_run" #明确表示这次批量任务没有调用生成模型，不是生成失败
+        records.append(record)
+    report = {
+        "embedding_model": MODEL_NAME,
+        "source_id": source_id,
+        "content_hash": content_hash,
+        "top_k": 3,
+        "cases": records,
+    }
+    with Path(output_path).open("w", encoding="utf-8") as report_file:
+        json.dump(report, report_file, ensure_ascii=False, indent=2) #json.dump 与此前的 json.load 相反，负责写出 JSON
+        #ensure_ascii=False 保留可读中文，indent=2 使用两空格展开。with 会关闭文件，"w" 会覆盖同名文件，保留下一轮结果时应换一个报告文件名。
+    print(f"Recorded {len(records)} cases: {output_path}")
 
 
 if __name__ == "__main__":

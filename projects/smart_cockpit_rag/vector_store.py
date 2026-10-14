@@ -29,6 +29,7 @@ COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5" #COLLECTION_NAME 是集合�
 #           ↓
 # 交给接收单个问题向量的 search_points
 
+#组装数据库记录：把向量放入 vector，把完整 chunk 字典放入 payload；向量负责相似度计算，payload 负责保存正文与来源信息。
 def build_points(chunks: list[dict], vectors: np.ndarray):
     if vectors.ndim != 2: #先确认二维
         raise ValueError("vectors must be a 2D matrix")
@@ -41,13 +42,13 @@ def build_points(chunks: list[dict], vectors: np.ndarray):
         point = models.PointStruct( #PointStruct(...) 构造一条记录
             id=point_id, #id 接收稳定 ID
             vector=vector.tolist(), #vector.tolist() 把 NumPy 一维数组转为普通 Python 数字列表，长度仍是 512
-            payload=chunk.copy(), #保存正文、页码、来源等字段的字典副本
+            payload=chunk.copy(), #保存正文、文件名、页码、source_id、content_hash 等字段的字典副本
         )
         points.append(point)
     return points
 
 
-#单独负责数据库保存，便于后续独立入库入口复用，也能测试重复导入行为
+#真正写入数据库并持久化：单独负责数据库保存，写入本地 Qdrant，便于后续独立入库入口复用，也能测试重复导入行为
 def save_points(points, dimension: int): #输入是记录列表和向量维度，输出是写入前、写入后的数量
     client = QdrantClient(path=str(STORAGE_PATH))
     try: #try 包围数据库操作；finally 无论正常返回还是中途异常都会执行
@@ -80,11 +81,11 @@ def search_points(query_vector, source_id, content_hash, top_k=3):
     if not source_id or not content_hash:
         raise ValueError("Explicit source_id and content_hash are required")
 
-    scope = models.Filter( #Filter 是过滤规则对象
+    scope = models.Filter( #Filter 是过滤规则对象，限定资料及版本
         must=[ #must 是条件列表，含义是列表里的条件全部满足，相当于逻辑 AND
             models.FieldCondition( #FieldCondition 描述某个字段的要求
-                key="source_id",
-                match=models.MatchValue(value=source_id),
+                key="source_id", #数据库记录的字段名
+                match=models.MatchValue(value=source_id), #此次查询传入的值
             ),
             models.FieldCondition(
                 key="content_hash",
@@ -104,7 +105,7 @@ def search_points(query_vector, source_id, content_hash, top_k=3):
         response = client.query_points( #执行相似度检索
             collection_name=COLLECTION_NAME,
             query=query_vector.tolist(),
-            query_filter=scope,
+            query_filter=scope, #过滤器，只在符合身份和版本的记录中，找与问题向量最相似的top_k条。
             limit=top_k, #指定最多返回几条，如果匹配记录少于 top_k，就返回实际可用数量
             with_payload=True, #要求附带正文和来源
             with_vectors=False, #不返回每条文档的 512 个原始数字，因为组织引用只需要正文、来源和分数
