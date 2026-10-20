@@ -5,7 +5,7 @@ from pathlib import Path
 from sentence_transformers import SentenceTransformer
 from ingestion import load_pdf_pages
 from chunking import build_chunks
-from vector_store import build_points, save_points, search_points
+from vector_store import DEFAULT_TOP_K, build_points, save_points, search_points
 
 MODEL_NAME = "BAAI/bge-small-zh-v1.5"
 QUERY_INSTRUCTION = "为这个句子生成表示以用于检索相关文章："
@@ -20,7 +20,7 @@ def build_faiss_index(vectors: np.ndarray): #标明参数预期是 NumPy 数组�
     return index
 
 #负责“问题编码 + FAISS 查询”，后面由Qdrant代替
-def search_chunks(query, model, index, chunks, top_k=3):
+def search_chunks(query, model, index, chunks, top_k=DEFAULT_TOP_K):
     query = query.strip() #字符串清理：去掉两端空白
     if not query: #拒绝空问题
         raise ValueError("query must not be empty")
@@ -46,7 +46,7 @@ def search_chunks(query, model, index, chunks, top_k=3):
     return results
 
 
-def search_stored_chunks(query, model, source_id, content_hash, top_k=3): #source_id 和 content_hash 决定查询哪份资料、哪个文件版本
+def search_stored_chunks(query, model, source_id, content_hash, top_k=DEFAULT_TOP_K): #source_id 和 content_hash 决定查询哪份资料、哪个文件版本
     query = query.strip()
     if not query:
         raise ValueError("query must not be empty")
@@ -119,7 +119,7 @@ def main():
 
     query = "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？"
     # results = search_chunks(query, model, index, chunks, top_k=3)
-    results = search_stored_chunks(query, model, source_id, content_hash=chunks[0]["content_hash"], top_k=3)
+    results = search_stored_chunks(query, model, source_id, content_hash=chunks[0]["content_hash"], top_k=DEFAULT_TOP_K)
     #这里chunks[0]["content_hash"]是从第一个块中读取当前 PDF 的文件哈希。同一文件的全部块都有这个哈希，所以不是只检索第一块，而是限定在该文件版本的全部块中检索。
 
     print("\nquery:", query)
@@ -129,6 +129,7 @@ def main():
             f"score={result['score']:.4f}"
         )
         print(result["text"])
+        print("metadata:", result["brand"], result["section"], result["model_year"])
 
 
 if __name__ == "__main__":

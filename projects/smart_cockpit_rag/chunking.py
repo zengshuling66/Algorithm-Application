@@ -48,44 +48,59 @@ def split_text(
     return chunks
 
 #先看旧逻辑：外层 for 逐页处理；split_text() 对这一页的正文切块；内层 enumerate(..., start=1) 给这一页的块从 1 编号；append() 把块字典放入最终列表。
-def build_chunks(
-    page_records: list[dict],
-    chunk_size: int = DEFAULT_CHUNK_SIZE,
-    overlap: int = DEFAULT_OVERLAP,
-) -> list[dict]:
+# def build_chunks(
+#     page_records: list[dict],
+#     chunk_size: int = DEFAULT_CHUNK_SIZE,
+#     overlap: int = DEFAULT_OVERLAP,
+# ) -> list[dict]:
+#     chunks = []
+
+#     for page_record in page_records:
+#         page_chunks = split_text(
+#             text=page_record["text"],
+#             chunk_size=chunk_size,
+#             overlap=overlap,
+#         )
+
+#         for chunk_index, chunk_text in enumerate(
+#             page_chunks,
+#             start=1,
+#         ):
+#             chunk_id = (
+#                 f"{page_record['source_id']}:"
+#                 f"{page_record['content_hash']}:"
+#                 f"s{chunk_size}:o{overlap}:"
+#                 f"p{page_record['page']}:c{chunk_index}"
+#             ) #chunk_id 依次包含：资料身份、文件内容哈希、切块参数、PDF 页码、页内块序号
+
+#             chunks.append(
+#                 {
+#                     "chunk_id": chunk_id, #唯一标识
+#                     "text": chunk_text,
+#                     "source": page_record["source"],
+#                     "source_id": page_record["source_id"],
+#                     "content_hash": page_record["content_hash"],
+#                     "page": page_record["page"],
+#                     "chunk_index": chunk_index,
+#                     "char_count": len(chunk_text), #检查切分长度是否符合预期
+#                 }
+#             )
+
+#     return chunks
+
+
+def build_chunks(page_records, chunk_size=DEFAULT_CHUNK_SIZE, overlap=DEFAULT_OVERLAP):
     chunks = []
-
-    for page_record in page_records:
-        page_chunks = split_text(
-            text=page_record["text"],
-            chunk_size=chunk_size,
-            overlap=overlap,
-        )
-
-        for chunk_index, chunk_text in enumerate(
-            page_chunks,
-            start=1,
-        ):
-            chunk_id = (
-                f"{page_record['source_id']}:"
-                f"{page_record['content_hash']}:"
-                f"s{chunk_size}:o{overlap}:"
-                f"p{page_record['page']}:c{chunk_index}"
-            ) #chunk_id 依次包含：资料身份、文件内容哈希、切块参数、PDF 页码、页内块序号
-
-            chunks.append(
-                {
-                    "chunk_id": chunk_id, #唯一标识
-                    "text": chunk_text,
-                    "source": page_record["source"],
-                    "source_id": page_record["source_id"],
-                    "content_hash": page_record["content_hash"],
-                    "page": page_record["page"],
-                    "chunk_index": chunk_index,
-                    "char_count": len(chunk_text), #检查切分长度是否符合预期
-                }
-            )
-
+    for record in page_records: #条件表达式让正文继续按窗口切分，而表格直接作为一条完整文本。
+        texts = ([record["text"]] if record.get("kind") == "table"
+                 else split_text(record["text"], chunk_size, overlap))
+        suffix = (f":{record['pipeline_version']}:{record['block_id']}" #suffix将解析版本和块身份加入ID，避免同页多条表格记录都叫c1而互相覆盖
+                  if record.get("pipeline_version") else "")
+        for index, text in enumerate(texts, start=1):
+            chunk_id = (f"{record['source_id']}:{record['content_hash']}:"
+                        f"s{chunk_size}:o{overlap}:p{record['page']}:c{index}{suffix}")
+            chunks.append({**record, "chunk_id": chunk_id, "text": text,
+                           "chunk_index": index, "char_count": len(text)})
     return chunks
 
 
@@ -106,7 +121,8 @@ def main():
     chunks = build_chunks(page_records)
 
     print(f"PDF总页数: {total_pages}")
-    print(f"有文本的页面数: {len(page_records)}")
+    print(f"有文本的页面数: {len({r['page'] for r in page_records})}")
+    #for r in ... 遍历记录，r["page"] 取页码，外面的 {...} 是集合，会去重，最后 len() 统计不同页码的数量。
     print(f"无文本的页面数: {len(empty_pages)}")
     print(f"chunk总数: {len(chunks)}")
 

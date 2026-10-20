@@ -2,7 +2,7 @@ import json
 import sys
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
-from retrieval import MODEL_NAME, search_stored_chunks
+from retrieval import DEFAULT_TOP_K, MODEL_NAME, search_stored_chunks
 
 def validate_case_semantics(case: dict, row_number: int) -> None:
     answerable = case.get("answerable") #.get(...) 从题目中取字段，.get 在字段缺失时返回 None，便于我们给出明确的校验错误，而不是立刻产生 KeyError。
@@ -70,7 +70,7 @@ def load_cases(path: Path) -> list[dict]:
 
 #先执行向量检索，得到 results → 再拿 results 与人工标注进行比较 → 记录 True / False
 #检索只限定资料身份和文件哈希，再按相似度选取结果；它不知道人工期望页码。
-def inspect_retrieval(case, model, source_id, content_hash, top_k=3):
+def inspect_retrieval(case, model, source_id, content_hash, top_k=DEFAULT_TOP_K):
     results = search_stored_chunks(
         case["question"], model, source_id, content_hash, top_k=top_k,
     )
@@ -100,9 +100,10 @@ def main():
         return #防止校验模式继续加载模型
     source_id, content_hash, output_path = sys.argv[2:] #取出后三个参数，分别交给三个变量
     model = SentenceTransformer(MODEL_NAME, device="cpu")
+    top_k = DEFAULT_TOP_K
     records = []
     for case in cases:
-        record, results = inspect_retrieval(case, model, source_id, content_hash)
+        record, results = inspect_retrieval(case, model, source_id, content_hash, top_k=top_k)
         record["question"] = case["question"] #record 已有题号、命中页和页码检查结果；现在补上问题、可回答标注和分数
         record["answerable"] = case["answerable"]
         record["scores"] = [item["score"] for item in results] #分数列表与命中页按相同排名对应，便于分析
@@ -112,7 +113,7 @@ def main():
         "embedding_model": MODEL_NAME,
         "source_id": source_id,
         "content_hash": content_hash,
-        "top_k": 3,
+        "top_k": top_k,
         "cases": records,
     }
     with Path(output_path).open("w", encoding="utf-8") as report_file:

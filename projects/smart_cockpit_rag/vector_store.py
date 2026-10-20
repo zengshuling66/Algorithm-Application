@@ -6,7 +6,10 @@ from pathlib import Path
 
 STORAGE_PATH = Path(__file__).resolve().parent / ".qdrant"
 #__file__ 是当前脚本路径，resolve() 转成绝对路径，parent 取项目目录，/ ".qdrant" 拼接存储目录。这让终端切换目录时仍使用同一个数据库。
-COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5" #COLLECTION_NAME 是集合名称，包含当前模型标识
+# COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5" #COLLECTION_NAME 是集合名称，包含当前模型标识
+COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_v1"
+#save_points() 和 search_points() 都读取这个常量，所以以后会向新集合保存、从新集合查询。
+DEFAULT_TOP_K = 3
 
 # 1. 文档向量矩阵 (469, 512)
 # 它有 469 行，每行是一个文本块的向量；每条向量有 512 个数字：
@@ -75,7 +78,7 @@ def save_points(points, dimension: int): #输入是记录列表和向量维度�
         client.close() #close() 释放资源和本地锁，不删除数据库
 
 
-def search_points(query_vector, source_id, content_hash, top_k=3):
+def search_points(query_vector, source_id, content_hash, top_k=DEFAULT_TOP_K):
     if query_vector.ndim != 1 or top_k <= 0:
         raise ValueError("Use a 1D query vector and positive top_k")
     if not source_id or not content_hash:
