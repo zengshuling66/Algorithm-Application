@@ -1,0 +1,126 @@
+[
+    {
+        "id": "test_01",
+        "question": "雨量感应自动雨刷处于AUTO挡时，向上和向下旋转拨杆滚轮分别怎样影响灵敏度？",
+        "answerable": true,
+        "reference_answer": "向上旋转滚轮增加自动雨刷灵敏度；向下旋转滚轮降低自动雨刷灵敏度。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 64,
+            "anchor": "向上旋转滚轮"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_02",
+        "question": "天窗和遮阳帘完全关闭时，轻按控制按钮一次与短时间内将按钮按到底两次，打开效果有什么不同？",
+        "answerable": true,
+        "reference_answer": "轻按一次先打开遮阳帘，需再次按按钮才能打开天窗；短时间内将按钮按到底两次，遮阳帘和天窗同时打开。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 110,
+            "anchor": "遮阳帘和全景天窗同时打开"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_03",
+        "question": "智能远近光控制在什么环境和车速条件下开启？大雾或大雨时能完全依赖它吗？",
+        "answerable": true,
+        "reference_answer": "环境光线较暗、滚轮处于相应位置且车速在40 km/h以上时开启；大雾或大雨时可能需要手动切换远近光灯，不能完全依赖系统。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 85,
+            "anchor": "40 km/h"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_04",
+        "question": "开启充电外部灯效后，日间行车灯会一直闪到充电结束吗？",
+        "answerable": true,
+        "reference_answer": "不会。充电外部灯效开启后，充电时日间行车灯闪烁2分钟后熄灭。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 297,
+            "anchor": "闪烁 2 分钟"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_05",
+        "question": "OTA升级对挡位和网络有什么要求？条件不满足时，“更新”按钮会怎样？",
+        "answerable": true,
+        "reference_answer": "车辆应位于驻车挡P且网络连接正常；若不满足更新条件，“更新”按钮置灰，无法选择。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 325,
+            "anchor": "车辆挡位位于驻车挡"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_06",
+        "question": "车流中紧急停车时，手册要求何时穿安全背心？背心放在哪里？",
+        "answerable": true,
+        "reference_answer": "应在下车前穿上安全背心；安全背心放在手套箱内。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 339,
+            "anchor": "安全背心放置于手套箱内"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_07",
+        "question": "制动系统参数表中，制动液规格和制动踏板自由行程范围分别是什么？",
+        "answerable": true,
+        "reference_answer": "制动液规格为DOT 4；制动踏板自由行程为10至15 mm。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 351,
+            "anchor": "制动踏板自由行程"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_08",
+        "question": "整车断电或电子锁机械故障导致充电枪无法拔出时，可以通过什么装置手动解锁？该装置位于哪里？",
+        "answerable": true,
+        "reference_answer": "可使用应急解锁拉线手动解锁充电枪；拉线位于发动机舱左侧，拆除左侧装饰罩后可见。",
+        "evidence": {
+            "source_id": "training_manual_a",
+            "page": 336,
+            "anchor": "左侧发动机舱处"
+        },
+        "question_origin": "manual_holdout_from_pdf",
+        "split": "test"
+    },
+    {
+        "id": "test_09",
+        "question": "手册的方向盘自动加热说明，给出的车内温度启动阈值具体是多少摄氏度？",
+        "answerable": false,
+        "reference_answer": null,
+        "evidence": null,
+        "review_notes": "核对PDF物理第120至121页相关说明：仅写车内温度低于一定值且电量充足时自动启动，未给出具体摄氏度阈值。应说明该说明未提供数值，不得自行补出温度。",
+        "question_origin": "manual_holdout_missing_field_probe",
+        "split": "test"
+    },
+    {
+        "id": "test_10",
+        "question": "仅依据手册“车辆远程升级（OTA）”这一节，给出本次升级包的SHA-256校验值。",
+        "answerable": false,
+        "reference_answer": null,
+        "evidence": null,
+        "review_notes": "核对PDF物理第325至326页该节：说明升级条件、流程、提示及注意事项，没有给出本次升级包或其SHA-256值。不得编造，也不能把PDF文件的content_hash当作OTA升级包校验值。",
+        "question_origin": "manual_holdout_missing_field_probe",
+        "split": "test"
+    }
+]

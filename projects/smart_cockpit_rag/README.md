@@ -2,7 +2,7 @@
 
 基于车主手册的检索增强问答项目。将 PDF 解析为带来源信息的文本块，使用本地 BGE 编码、Qdrant 持久化检索和兼容 Chat Completions 的模型接口生成回答，并展示资料引用。
 
-当前提供命令行问答与初版检索评测，定位为单资料工程化原型，不宣称生产上线或完整质量验收。
+当前提供 LangChain 编排的命令行问答、直接函数调用基线与初版检索评测，定位为单资料工程化原型，不宣称生产上线或完整质量验收。
 
 ## 功能与架构
 
@@ -11,11 +11,12 @@
 - 文件内容哈希、稳定 chunk ID 和幂等写入，支持按资料身份及文件版本过滤。
 - 通过绑定资料身份与哈希的配置读取品牌、未知车型/年款及页眉区域，提取章节并写入数据库 payload。
 - 本地向量检索、结构化证据 Prompt、答案与引用展示、模型及 token 用量输出。
-- 评测题集字段校验、批量检索观察，以及切块和向量库自动测试。
+- 使用 LangChain Document、Runnable 和 ChatPromptTemplate 组织原有检索及生成模块，保留证据身份、排名和运行状态。
+- 开发集与冻结测试集分离，支持题集字段校验、批量检索观察，以及切块、向量库和 Prompt 自动测试。
 
 ```text
 资料入库：PDF + source_id + Metadata 配置 -> 正文/表格记录 -> chunks -> BGE 向量 -> Qdrant
-在线问答：问题 + source_id + content_hash -> BGE -> 过滤检索 -> 证据 Prompt -> LLM
+在线问答：问题 + source_id + content_hash -> BGE -> 过滤检索 -> Document -> 证据 Prompt -> 兼容 SDK -> LLM
 检索评测：题集 -> 检索 -> 对照标注来源与页码 -> JSON 报告
 ```
 
@@ -28,12 +29,19 @@
 | [retrieval.py](retrieval.py) | 文本与问题编码、入库入口、持久化检索及 FAISS 基线 |
 | [vector_store.py](vector_store.py) | Qdrant 集合检查、写入、过滤检索与资源关闭 |
 | [prompt_builder.py](prompt_builder.py) | 编号证据，组织回答规则、来源与页码 |
-| [generation.py](generation.py) | 调用生成接口，检查回答完整性，返回模型及用量 |
-| [query.py](query.py) | 串联检索、Prompt、生成与命令行输出 |
+| [generation.py](generation.py) | 调用生成接口，检查结束标记与非空内容，返回答案、模型及用量 |
+| [query.py](query.py) | 保留直接函数调用的问答基线 |
+| [langchain_adapter.py](langchain_adapter.py) | 将检索字典转换为 Document，保留正文、chunk ID、metadata 和检索排名 |
+| [langchain_retrieval.py](langchain_retrieval.py) | 用 Runnable 包装原检索函数与 Document 转换，提供仅检索入口 |
+| [langchain_prompt.py](langchain_prompt.py) | 复用原 Prompt 规则和证据格式，通过 ChatPromptTemplate 生成 SDK 消息 |
+| [langchain_query.py](langchain_query.py) | 组装并执行问答链，保留状态、证据、Prompt 版本、实际模型和用量 |
 | [evaluation.py](evaluation.py) | 校验题集，记录逐题或批量检索结果，不调用生成 API |
 | [test_chunking.py](test_chunking.py)、[test_vector_store.py](test_vector_store.py) | 切块边界、metadata、持久化、幂等写入与范围隔离测试 |
+| [test_langchain_prompt.py](test_langchain_prompt.py) | 新旧 Prompt 消息一致性与空证据校验测试 |
 
 Qdrant 是当前持久化检索后端，使用本地模式，无需额外启动服务器。FAISS `IndexFlatIP` 保留为精确检索基线；入库入口仍执行其自检，但独立问答不重建 FAISS 索引，也不重新解析或编码整份 PDF。
+
+LangChain 只负责数据适配与流程编排，实际检索仍由 BGE/Qdrant 完成，生成仍调用现有 SDK 适配函数；没有因引入框架更换索引、提高 top-k 或修改 Prompt 规则。当前使用 `langchain-core`，未引入 LangGraph，也没有自动获得检索质量、引用校验或真实流式能力。
 
 ## 快速开始
 
@@ -41,7 +49,7 @@ Qdrant 是当前持久化检索后端，使用本地模式，无需额外启动�
 
 ### 1. 准备环境
 
-当前项目环境为 Windows、Conda 环境 `cockpit-rag`、Python 3.11.17、PyTorch `2.8.0+cpu`、FAISS CPU 1.11.0 和 NumPy 1.26.4；主要依赖版本见 [requirements.txt](requirements.txt)。原 `pytorch` / Python 3.9 环境仅保留用于历史基线，不作为当前解析依赖的安装目标。
+当前项目环境为 Windows、Conda 环境 `cockpit-rag`、Python 3.11.17、PyTorch `2.8.0+cpu`、FAISS CPU 1.11.0、NumPy 1.26.4 和 `langchain-core==1.6.13`；主要依赖版本见 [requirements.txt](requirements.txt)。原 `pytorch` / Python 3.9 环境仅保留用于历史基线，不作为当前依赖的安装目标。
 
 从仓库根目录执行以下参考安装步骤；整套流程尚未在全新环境中验证：
 
@@ -58,6 +66,8 @@ python -m pip install -r requirements.txt
 首次使用 `BAAI/bge-small-zh-v1.5` 需要下载权重或准备可用的本地缓存；安装 Python 包不等于模型权重已就绪。问答与批量评测明确使用 CPU 编码。
 
 本地缓存完整时，可在当前 PowerShell 中设置 `$env:HF_HUB_OFFLINE = "1"`，避免 Hugging Face 联网检查和重试。首次下载其他模型前执行 `Remove-Item Env:HF_HUB_OFFLINE -ErrorAction SilentlyContinue`，然后重新运行脚本；仅不再输入设置命令不会清除当前会话中的已有值。该设置不替代模型缓存，也不关闭其他供应商的生成 API。
+
+LangChain 检索和问答入口另外设置了 `local_files_only=True`，因此即使清除离线环境变量，也不会通过这两个入口自动下载权重；首次准备当前 BGE 缓存可在允许联网时使用下面的入库入口。
 
 ### 2. 导入资料
 
@@ -99,32 +109,36 @@ python -B chunking.py $pdf $sourceId
 $secureKey = Read-Host "Paste API Key here" -AsSecureString
 ```
 
-再在同一个终端执行以下配置，运行前必须替换两个占位值：
+再在同一个终端配置当前使用的 DeepSeek 官方接口，密钥必须来自该供应商，不能沿用方舟密钥：
 
 ```powershell
 $env:LLM_API_KEY = [System.Net.NetworkCredential]::new("", $secureKey).Password
-$env:LLM_BASE_URL = "<BASE_URL>"
-$env:LLM_MODEL = "<MODEL_ID>"
+$env:LLM_BASE_URL = "https://api.deepseek.com"
+$env:LLM_MODEL = "deepseek-flash"
 ```
 
 这些变量仅对当前终端及其子进程生效。输入隐藏不代表密钥全程加密：转换后密钥以普通字符串保存在进程环境中；不要打印或截图密钥。
 
-已核验的生成基线为火山方舟 `deepseek-v4.1-flash`，实测连接地址为 `https://ark.cn-beijing.volces.com/api/coding/v3`，实际响应标识为 `deepseek-v4-1-flash`。这只记录验证环境，不表示获得业务调用授权；Coding Plan 官方限定用于支持的 AI 编程工具，普通 RAG 调用应使用允许该用途的接口、凭证和计费方式，不能混用套餐与普通 API 配置。参见 [供应商使用范围](https://docs.volcengine.com/docs/ark/coding-plan-personal-plan-overview?lang=zh)。
+2026-10-22已用上述配置验证 LangChain 单题真实问答，实际响应模型为 `deepseek-flash`。接口地址和模型名参见 [DeepSeek 官方接入文档](https://api-docs.deepseek.com/)。更换供应商不需要重新编码同一份资料，但前后质量对照须固定生成条件，不能把供应商变化归为检索算法收益；模型别名也不保证底层权重永久不变。
 
-当前请求使用 `max_tokens=1024`、非流式输出、60 秒网络操作超时、零自动重试，以及关闭思考的供应商扩展字段 `thinking.type=disabled`。更换供应商时须确认这些字段兼容；仅支持 Chat Completions 协议不代表支持所有扩展参数。
+当前请求使用 `max_tokens=1024`、非流式输出、60 秒网络操作超时、零自动重试，以及通过 `extra_body` 传入 `thinking.type=disabled` 关闭思考，参见 [DeepSeek 思考模式配置](https://api-docs.deepseek.com/guides/thinking_mode/)。更换供应商时须确认这些字段兼容；仅支持 Chat Completions 协议不代表支持所有扩展参数。
 
 ### 4. 运行问答
 
-沿用入库步骤中的资料身份和文件哈希，在配置好生成接口的同一个终端执行：
+沿用入库步骤中的资料身份和文件哈希，在配置好生成接口的同一个终端运行 LangChain 问答入口：
 
 ```powershell
 $question = "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？"
-python -B query.py $sourceId $contentHash $question
+python -B langchain_query.py $sourceId $contentHash $question
 ```
 
-输出包含 Prompt 版本、答案与模型生成的引用、实际响应模型和 token 用量。引用编号按本次检索排名生成，`[1]` 不是 PDF 第 1 页；文件名和物理页码来自检索记录。
+输出包含 Prompt 版本、`status`、答案与模型生成的引用、每条候选证据的 chunk ID/物理页码/正文，以及实际响应模型和 token 用量。`generated` 只表示生成完成，不表示事实或引用已自动校验；`no_evidence` 表示检索为空，程序返回保守回答，模型和用量为 `None`，不会发起生成请求。
 
-存在检索结果时会发起真实生成请求，产生供应商对应费用。无匹配记录时打印 `No matching evidence found.`，不调用生成；回答为空或 `finish_reason` 不是 `stop` 时抛出异常。空检索拦截和 Prompt 拒答规则不等于已经实现可靠的证据充分性判断。
+引用编号按本次检索排名生成，`[1]` 不是 PDF 第1页；文件名和物理页码来自检索记录。入口逐条打印的 `evidence:` 是候选上下文，不代表模型在答案中引用了全部候选。返回状态保留原始 Document 和消息，但当前命令行不会自动保存机器可读生成报告。
+
+仅查看检索、不调用生成模型时使用 `python -B langchain_retrieval.py $sourceId $contentHash $question`。原问答基线仍可通过 `python -B query.py $sourceId $contentHash $question` 运行；其空结果提示为 `No matching evidence found.`，不输出上述链状态。
+
+存在检索结果时，两个问答入口都会发起真实生成请求并产生供应商对应费用；回答为空或 `finish_reason` 不是 `stop` 时抛出异常。空检索拦截和 Prompt 拒答规则不等于可靠的证据充分性判断。模型在链外加载，可在同一进程中复用；每次重新运行命令仍会重新创建进程并加载模型。
 
 用完密钥后可清除当前终端变量：
 
@@ -160,7 +174,15 @@ Remove-Variable secureKey -ErrorAction SilentlyContinue
 
 ### 检索观察
 
-[eval_cases.json](eval_cases.json) 包含 20 道开发题：16 道可回答、4 道不可回答，覆盖原始问法、自然语言改写、无答案及资料适用范围不明。样本包含唯一 `id`、问题、`answerable`、题目来源和 `split`；可回答题还包含参考答案及来源、页码、定位词，不可回答题的答案与证据必须为 `null`。
+题集按文件分离，当前共40条：
+
+| 文件 | 划分 | 可回答 / 不可回答 | 用途 |
+| --- | --- | --- | --- |
+| [eval_cases.json](eval_cases.json) | dev，20条 | 16 / 4 | 普通问答、改写、无答案及资料适用范围回归 |
+| [table_eval_cases_v1.json](table_eval_cases_v1.json) | dev，10条 | 8 / 2 | 表格解析与检索回归 |
+| [eval_test_v1.json](eval_test_v1.json) | test，10条 | 8 / 2 | 冻结的问题留出集，用于配置固定后的最终评测 |
+
+样本包含唯一 `id`、问题、`answerable`、题目来源和 `split`；可回答题还包含参考答案及来源、页码、定位词，不可回答题的答案与证据必须为 `null`。不可回答题的 `review_notes` 保存相关章节缺失信息的人工核验说明，当前保留但不参与评分。
 
 参考答案和标注证据只用于检索后的核对，不传入被测 RAG 的过滤条件或生成 Prompt。字段校验不替代原文核验；当前脚本读取传入文件中的全部题目，不自动根据 `split` 分组。
 
@@ -171,7 +193,11 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 第一条命令只校验字段，不加载 Embedding 权重或调用生成 API。第二条加载一次 BGE 后复用，保存逐题记录；它会覆盖同名报告，应为不同实验使用不同文件名。
 
-[table_eval_cases_v1.json](table_eval_cases_v1.json) 另有10道表格开发回归题，8道可回答、2道不可回答，可替换上述命令的题集参数使用。两组现有题都属于已观察的开发数据；独立冻结测试集及按 `split` 分组运行仍待完成。表格真实问答前后对照复用 `query.py`，不由 `evaluation.py` 自动执行生成或评分。
+表格开发集可替换上述命令的题集参数使用；历史表格真实问答前后对照复用 `query.py`，不由 `evaluation.py` 自动执行生成或评分。
+
+`eval_test_v1.json` 已核对原文、完成字段校验，并于2026-10-22登记冻结基线；与30条dev无重复题号或完全相同问题，按问题族复核，不将同题改写移入test。当前仅为同一手册的问题留出集，不代表跨资料泛化评测。开发与方案选择只用dev；test尚未运行检索或生成，待最终配置固定后使用，不根据test结果筛题或调参数。标注确需纠错时记录原因与新版本，不静默覆盖。
+
+冻结时题集文件的字节 SHA-256 为 `4b2e8373a12a7f66b7f3d2563bbeef2a619d96c977b6f0b57c5a41cac3e1c226`，可用 `Get-FileHash -LiteralPath eval_test_v1.json -Algorithm SHA256` 核对。它不是PDF的 `content_hash`，格式化也会改变该指纹；冻结是使用与版本约定，不是文件只读锁定。测试集字段校验通过不表示检索、生成或拒答质量通过，当前未报告test准确率。
 
 | 报告字段 | 含义 |
 | --- | --- |
@@ -181,7 +207,7 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 ### 验证快照
 
-核对范围：2026-10-16表格前后对照、2026-10-19 Metadata落库与自动测试。当前真实语料仍只有 `train_a.pdf`。
+核对范围：2026-10-16表格前后对照、2026-10-19 Metadata落库，以及2026-10-22 LangChain接入、单题问答、题集和自动测试。当前真实语料仍只有 `train_a.pdf`。
 
 | 项目 | 已核验结果 |
 | --- | --- |
@@ -224,25 +250,30 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 这些结果仅有人工核验截图，尚未写入机器可读生成报告，也不会更新检索报告中的 `not_run`。少量成功样例不代表整体准确率、稳定拒答能力或模型对比结论；模型别名也不保证底层权重永久不变。
 
+当前 LangChain 入口已用 DeepSeek 官方 `deepseek-flash` 验证无钥匙单门/全车开发题：候选物理页为43/44/41，答案与43页两种解锁规则一致，引用 `[1]` 正确；Prompt仍为 `cockpit-rag-v1`，本次输入785、输出51、合计836 tokens。该结果依据学习者提供的真实终端输出核验，仅覆盖一个dev问题。上面的表格对照与三题快照来自历史方舟模型，不等于当前官方接口的整套质量回归，不能跨供应商直接归因或合并指标。
+
 ### 自动测试
 
 ```powershell
-python -B -m pytest -q test_chunking.py test_vector_store.py
+python -B -m pytest -q test_chunking.py test_vector_store.py test_langchain_prompt.py
+python -m pip check
 ```
 
-2026-10-19复跑6项测试通过：5项切块测试覆盖窗口与重叠、空文本、跨页metadata、非法参数和ID变化；1项临时数据库集成测试覆盖持久化、重复写入、来源/版本过滤、payload保留与空范围结果。人工构造的测试向量用于验证存储行为，不评估Embedding语义质量；新增页眉配置的正确性还需原文抽查，不能由既有6项测试代替。生成接口与端到端质量尚未纳入持久化自动回归套件。
+2026-10-22复跑8项测试通过，依赖检查无冲突：5项切块测试覆盖窗口与重叠、空文本、跨页metadata、非法参数和ID变化；1项临时数据库集成测试覆盖持久化、重复写入、来源/版本过滤、payload保留与空范围结果；2项Prompt测试检查新旧消息完全一致（含正文中的字面花括号）及空Document列表报错。
+
+这些测试不调用付费API，不运行冻结test的问答。人工构造的向量用于验证存储行为，不评估Embedding语义质量；Prompt一致性也不证明答案正确或引用支持结论。完整链的空检索分支、供应商异常、生成质量与引用语义尚未纳入持久化自动回归套件，metadata正确性仍需原文抽查。
 
 ## 已知限制与后续方向
 
-- **资料质量：**只验证一份真实PDF，支持当前可检测的原生文本表格，不保证所有表格均被发现。表头识别存在启发式边界，相邻文字只作为归属待核验的上下文，未实现OCR、跨页表格拼接或完整版面理解；正文字符切块仍可能打断语义。
+- **资料质量：**只验证一份真实PDF，支持当前可检测的原生文本表格，不保证所有表格均被发现。表头识别存在启发式边界，相邻文字只作为归属待核验的上下文，未实现OCR、跨页表格拼接或完整版面理解；部分双栏正文仍有交错，字符切块也可能打断语义。
 - **适用范围：**品牌与章节字段已入库，具体车型/年款仍未知；固定页眉区域及单资料配置不直接推广到其他手册，尚无车型过滤、自动适用性判断或已核实的官方资料版本映射。
-- **检索质量：**目前为单路向量检索，尚无 BM25、混合融合、重排或系统性参数对照。20 题全为开发集，未建立独立冻结测试集。
+- **检索质量：**目前为单路向量检索，尚无 BM25、混合融合、重排或系统性参数对照。10条冻结test尚未终测，现有质量数字来自小开发集，不能作为独立测试成绩。
 - **答案与安全：**引用列表由模型生成，存在与正文不一致的已知案例；尚无自动引用支持核验、可靠的证据充分性判断或 Prompt 注入对抗验证。
 - **索引生命周期：**尚无资料更新/删除后的旧索引清理、完整处理版本记录或跳过重复编码机制，不能声称增量维护已经完成。
 - **服务与可靠性：**尚无 FastAPI、流式输出、统一错误响应、请求追踪或生产重试；本地 Qdrant 未验证多进程并发、大规模检索或故障恢复。
 - **复现范围：**整套新环境安装与最终回归仍待验证。本地 BGE 是当前 Embedding 实现，不宣称已调用 Embedding API；密钥、数据库和原始资料不随代码提交。
 
-后续优先接入LangChain必要组件、冻结独立测试集，使用开发集比较混合检索及重排，并完善引用契约与分层评测，再完成服务化、索引生命周期与可复现的端到端验收。只记录可核验结果，不将计划中的能力写成已实现功能。
+后续使用开发集比较BM25、向量、混合检索及重排，完善引用契约与分层评测，再完成服务化、索引生命周期、冻结test终测与干净环境复现。只记录可核验结果，不将框架接入等同于质量改善，也不将计划中的能力写成已实现功能。
 
 ## 技术参考
 
@@ -252,3 +283,6 @@ python -B -m pytest -q test_chunking.py test_vector_store.py
 - [Qdrant 客户端本地模式及版本说明](https://github.com/qdrant/qdrant-client/blob/v1.15.1/README.md)
 - [Qdrant point 与幂等写入](https://qdrant.tech/documentation/manage-data/points/)
 - [FAISS 相似度与距离规则](https://github.com/facebookresearch/faiss/wiki/MetricType-and-distances)
+- [LangChain Runnable 顺序组合](https://reference.langchain.com/python/langchain-core/runnables/base/RunnableSequence)
+- [LangChain 聊天 Prompt 模板](https://reference.langchain.com/python/langchain-core/prompts/chat/ChatPromptTemplate)
+- [DeepSeek 官方 API](https://api-docs.deepseek.com/)
