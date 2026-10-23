@@ -1,7 +1,7 @@
 import sys
 from langchain_core.runnables import RunnableLambda
 from sentence_transformers import SentenceTransformer
-from langchain_retrieval import build_retriever
+from langchain_retrieval import build_hybrid_retriever
 from langchain_prompt import build_langchain_messages
 from generation import generate_answer
 from retrieval import MODEL_NAME
@@ -32,7 +32,7 @@ def main():
         raise SystemExit("Usage: python langchain_query.py <source_id> <content_hash> <query>")
     source_id, content_hash, question = sys.argv[1:]
     model = SentenceTransformer(MODEL_NAME, device="cpu", local_files_only=True)
-    retriever = build_retriever(model, source_id, content_hash)
+    retriever = build_hybrid_retriever(model, source_id, content_hash)
     result = build_qa_chain(retriever).invoke(question)
     print("prompt version:", result["prompt_version"])
     print("status:", result["status"])

@@ -121,3 +121,30 @@ def search_points(query_vector, source_id, content_hash, top_k=DEFAULT_TOP_K):
         return results
     finally:
         client.close()
+
+
+#我们的payload保存了完整chunk字典，因此可以直接从数据库读取，不需要重新调用build_chunks()，重复处理PDF，也确保BM25和向量检索两路检索的语料一致。
+# 指定集合＋资料身份＋文件哈希
+# → 读取匹配记录的 payload
+# → 恢复成 Python 字典列表
+def load_stored_chunks(source_id, content_hash):
+    if not source_id or not content_hash:
+        raise ValueError("Explicit source_id and content_hash are required")
+    scope = models.Filter(must=[ #must 要求两个字段同时匹配
+        models.FieldCondition(key="source_id", match=models.MatchValue(value=source_id)),
+        models.FieldCondition(key="content_hash", match=models.MatchValue(value=content_hash)),
+    ])
+    client = QdrantClient(path=str(STORAGE_PATH))
+    try:
+        chunks, offset = [], None
+        while True: #points, offset 分别接收本批记录和下一批游标
+            points, offset = client.scroll( #scroll只遍历数据，不计算相似度；这里过滤参数叫 scroll_filter，不是原查询的 query_filter
+                collection_name=COLLECTION_NAME, scroll_filter=scope,
+                offset=offset, limit=128, with_payload=True, with_vectors=False, #128 是每批读取数量
+            )
+            chunks.extend(point.payload.copy() for point in points)
+            #extend(...)将每条 payload 副本逐一加入列表，而不是把整批列表作为一个元素加入。只读 payload、不取向量，因为 BM25 使用文字。
+            if offset is None: #第一次游标为 None，随后循环传入返回的游标；返回 None 才表示读完。
+                return chunks
+    finally:
+        client.close()
