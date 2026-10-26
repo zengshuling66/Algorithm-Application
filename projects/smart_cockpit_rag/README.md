@@ -11,13 +11,15 @@
 - 文件内容哈希、稳定 chunk ID 和幂等写入，支持按资料身份及文件版本过滤。
 - 通过绑定资料身份与哈希的配置读取品牌、未知车型/年款及页眉区域，提取章节并写入数据库 payload。
 - 本地 BGE 向量检索、BM25 关键词检索及 RRF 融合，两路使用同一资料身份和文件版本范围。
+- 仅检索入口可选预训练 cross-encoder 精排，对 RRF 前10候选重新打分后取3条；问答默认仍为不精排的混合检索。
 - 结构化证据 Prompt、答案与引用展示、模型及 token 用量输出；尚未实现结构化答案与自动引用契约校验。
 - 使用 LangChain Document、Runnable 和 ChatPromptTemplate 组织原有检索及生成模块，保留证据身份、排名和运行状态。
-- 开发集与冻结测试集分离，支持题集字段校验、批量向量检索观察，以及切块、向量库、Prompt 和 RRF 自动测试。
+- 开发集与冻结测试集分离，支持题集字段校验、批量向量检索观察，以及切块、向量库、Prompt、RRF 和精排契约自动测试。
 
 ```text
 资料入库：PDF + source_id + Metadata 配置 -> 正文/表格记录 -> chunks -> BGE 向量 -> Qdrant
 在线问答：问题 + source_id + content_hash -> 同范围向量/BM25 各取候选 -> RRF -> Top3 Document -> 证据 Prompt -> 兼容 SDK -> LLM
+可选精排检索：同范围两路候选 -> RRF Top10 -> cross-encoder -> Top3 Document（尚未接入问答入口）
 检索评测：题集 -> 向量检索 -> 对照标注来源与页码 -> JSON 报告
 ```
 
@@ -31,23 +33,27 @@
 | [vector_store.py](vector_store.py) | Qdrant 集合检查、写入、过滤检索、同范围 payload 分批读取与资源关闭 |
 | [bm25_retrieval.py](bm25_retrieval.py) | 中文分词、构建范围内 BM25 统计、按关键词召回，不读取原 PDF 或调用生成模型 |
 | [hybrid_retrieval.py](hybrid_retrieval.py) | 两路候选召回、按 chunk ID 合并、RRF 排序，保留各路名次与原始分数 |
+| [reranking.py](reranking.py) | 加载固定版本的预训练 cross-encoder，对问题与候选正文打分，保留原记录并按精排分排序 |
 | [prompt_builder.py](prompt_builder.py) | 编号证据，组织回答规则、来源与页码 |
 | [generation.py](generation.py) | 调用生成接口，检查结束标记与非空内容，返回答案、模型及用量 |
 | [query.py](query.py) | 保留直接函数调用的问答基线 |
 | [langchain_adapter.py](langchain_adapter.py) | 将检索字典转换为 Document，保留正文、chunk ID、metadata 和检索排名 |
-| [langchain_retrieval.py](langchain_retrieval.py) | 用 Runnable 包装向量或混合检索及 Document 转换，提供可选择模式的仅检索入口 |
+| [langchain_retrieval.py](langchain_retrieval.py) | 用 Runnable 包装向量、混合或混合后精排及 Document 转换，提供可选择模式的仅检索入口 |
 | [langchain_prompt.py](langchain_prompt.py) | 复用原 Prompt 规则和证据格式，通过 ChatPromptTemplate 生成 SDK 消息 |
 | [langchain_query.py](langchain_query.py) | 默认使用混合检索组装问答链，保留状态、证据、Prompt 版本、实际模型和用量 |
 | [evaluation.py](evaluation.py) | 校验题集，记录逐题或批量向量检索结果，不调用生成 API |
 | [test_chunking.py](test_chunking.py)、[test_vector_store.py](test_vector_store.py) | 切块边界、metadata、持久化、幂等写入与范围隔离测试 |
 | [test_langchain_prompt.py](test_langchain_prompt.py) | 新旧 Prompt 消息一致性与空证据校验测试 |
 | [test_hybrid_retrieval.py](test_hybrid_retrieval.py) | RRF 合并顺序、总分、各路名次与原始分数、输入不变及空列表检查 |
+| [test_reranking.py](test_reranking.py) | 使用假模型检查精排排序、同分顺序、原记录不变、空输入及非法分数，不评估真实模型质量 |
 
 Qdrant 是当前持久化检索后端，使用本地模式，无需额外启动服务器。FAISS `IndexFlatIP` 保留为精确检索基线；入库入口仍执行其自检，但独立问答不重建 FAISS 索引，也不重新解析或编码整份 PDF。
 
 LangChain 只负责数据适配与流程编排，实际召回由 BGE/Qdrant 和 BM25 完成，融合由独立函数执行，生成仍调用现有 SDK 适配函数；没有因引入框架更换索引、提高最终 top-k 或修改 Prompt 规则。当前使用 `langchain-core`，未引入 LangGraph，也没有自动获得检索质量、引用校验或真实流式能力。
 
 BM25 从当前 Qdrant 集合按 `source_id` 和 `content_hash` 读取已入库的 payload，不重新解析 PDF 或编码整份资料。构建检索器时建立一次分词和词频统计，同一进程内可复用；语料更新后须重新构建检索器。向量路仅编码当前问题，两路目前顺序执行，不宣称并行或具备大规模稀疏索引服务能力。
+
+精排直接读取候选正文，不修改 BGE 向量或数据库。构建精排检索器时加载一次模型，同一链的多次调用可复用；新启命令仍重新加载。精排只能重排已召回候选，不能补回未进入候选集的证据，也不保证领域表格排序一定改善。
 
 ## 快速开始
 
@@ -74,6 +80,8 @@ python -m pip install -r requirements.txt
 本地缓存完整时，可在当前 PowerShell 中设置 `$env:HF_HUB_OFFLINE = "1"`，避免 Hugging Face 联网检查和重试。首次下载其他模型前执行 `Remove-Item Env:HF_HUB_OFFLINE -ErrorAction SilentlyContinue`，然后重新运行脚本；仅不再输入设置命令不会清除当前会话中的已有值。该设置不替代模型缓存，也不关闭其他供应商的生成 API。
 
 LangChain 检索和问答入口另外设置了 `local_files_only=True`，因此即使清除离线环境变量，也不会通过这两个入口自动下载权重；首次准备当前 BGE 缓存可在允许联网时使用下面的入库入口。
+
+精排另需 `BAAI/bge-reranker-base` 权重，代码固定 revision 为 `2cfc18c9415c912f9d8155881c133215df768a70`，不能用 BGE Embedding 缓存代替。现有机器已缓存；新机器首次准备时，先解除上述离线设置，再由使用者在允许联网时执行 `python -B -c "from reranking import build_reranker; build_reranker(local_files_only=False)"`。日常入口默认只读缓存，缺少权重会报错；精排不需要生成 API Key。
 
 ### 2. 导入资料
 
@@ -151,9 +159,12 @@ python -B langchain_query.py $sourceId $contentHash $question
 python -B langchain_retrieval.py $sourceId $contentHash $question vector
 python -B bm25_retrieval.py $sourceId $contentHash $question
 python -B langchain_retrieval.py $sourceId $contentHash $question hybrid
+python -B langchain_retrieval.py $sourceId $contentHash $question rerank
 ```
 
-`langchain_retrieval.py` 省略最后的模式参数时仍默认 `vector`；这与 `langchain_query.py` 的混合问答默认值不同。混合输出的 `score` 是 RRF 总分，`retrieval_ranks` 保存两路名次，`retrieval_scores` 保存两路原始分数，Document 的 `retrieval_rank` 是融合后的最终名次。不可把三种分数直接比较或套用同一个拒答阈值。
+`langchain_retrieval.py` 省略最后的模式参数时仍默认 `vector`；这与 `langchain_query.py` 的混合问答默认值不同，后者尚不接受精排模式。混合输出的 `score` 是 RRF 总分，`retrieval_ranks` 保存两路名次，`retrieval_scores` 保存两路原始分数；精排额外保留 `rrf_rank` 和 `rerank_score`，不覆盖原 `score`。Document 的 `retrieval_rank` 是当前模式输出的最终名次，因此精排后的 `score` 不一定降序。精排分数为原始 logit，可为负数，不是概率；不同分数不能直接比较或套用同一个拒答阈值。
+
+从题集选取单题时，Windows PowerShell 5.1 应先用括号完成 JSON 转换，再逐题过滤，避免把数组整体交给筛选器。例如：`$question = ((Get-Content -Raw -Encoding UTF8 .\table_eval_cases_v1.json | ConvertFrom-Json) | Where-Object { $_.id -eq "table_07" }).question`。
 
 原向量问答基线仍可通过 `python -B query.py $sourceId $contentHash $question` 运行；其空结果提示为 `No matching evidence found.`，不输出上述链状态。
 
@@ -176,7 +187,8 @@ Remove-Variable secureKey -ErrorAction SilentlyContinue
 | BM25 召回 | `jieba` 分词、英文小写化；`BM25Okapi(k1=1.5, b=0.75)`，排除无查询词重合的候选 |
 | 混合候选 | `hybrid_retrieval.py` 中 `DEFAULT_CANDIDATE_K=10`，两路分别最多10条；这是初始值，不是已调优结论 |
 | 融合 | 按 `chunk_id` 合并，以各路 `1 / (60 + rank)` 累加排序，同分按 ID 排序；每路输入约定 ID 唯一 |
-| 最终数量 | `vector_store.py` 中 `DEFAULT_TOP_K=3`；混合先取每路候选再截取最终3条，向量基线与评测仍引用此值 |
+| 精排 | `BAAI/bge-reranker-base`，固定上述 revision，CPU / float32，问题与正文配对输入，`max_length=512`、`batch_size=4`、Identity 输出原始分数；同分按原RRF名次排序 |
+| 最终数量 | `vector_store.py` 中 `DEFAULT_TOP_K=3`；混合直接取最终3条，可选精排先保留RRF前10再取3条，向量基线与评测仍引用此值 |
 | 持久化 | 本项目目录下 `.qdrant/`，已通过 `.gitignore` 忽略 |
 | 当前集合 | `cockpit_manual_bge_small_zh_v1_5_tables_v1`，604条 |
 | 历史基线集合 | `cockpit_manual_bge_small_zh_v1_5`，469条，不因切换常量而自动重建或删除 |
@@ -230,7 +242,7 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 ### 验证快照
 
-核对范围：表格前后对照、Metadata落库、LangChain接入与历史单题问答，以及2026-10-23混合检索的三条dev观察和自动测试。当前真实语料仍只有 `train_a.pdf`。
+核对范围：表格前后对照、Metadata落库、LangChain接入与历史单题问答、2026-10-23混合检索观察，以及2026-10-26可选精排接线、有限dev对照和自动测试。当前真实语料仍只有 `train_a.pdf`。
 
 | 项目 | 已核验结果 |
 | --- | --- |
@@ -285,6 +297,18 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 这些只是三条dev的检索观察，尤其表格必须核对行内容而非仅看125页命中；不代表全开发集、生成准确率或冻结test成绩。还以临时离线生成桩检查了混合Document到Prompt/问答链的传递及空证据不调用生成器，但该检查不属于持久化pytest套件，也不是供应商真实回答。切换后的完整生成质量仍待验证。
 
+可选精排使用同一次 RRF 前10候选，保持资料、BGE、最终 top-3 和 Prompt 不变，有限 dev 观察如下，未调用生成 API：
+
+| 开发题 | 不精排 | 精排后 | 判断边界 |
+| --- | --- | --- | --- |
+| FCTA 提醒场景 | 197页在第3名 | 197页升至第1名 | 仅该题首条证据排名改善 |
+| `table_07` ISOFIX的D与B行 | B、D、A行 | 普通座椅表U/L行、D行、B行 | D/B仍完整保留，但干扰行由RRF第10升至第1，不是全面改善 |
+| 无钥匙单门/全车 | 43、44、41页 | 43、44、41页 | 顺序未变 |
+
+上述精排函数的同候选对照属于有限观察；另已运行保存后的 `rerank` CLI，确认 `table_07` 返回3条，最终名次1/2/3对应RRF名次10/2/1，身份、正文、各路记录与两类分数均保留。没有据此更新完整dev、生成或冻结test指标，尚不能判定精排应作为问答默认。
+
+CPU / float32 下，使用 `table_07` 同一10候选预热一次，再计时5轮，学习者实际运行的精排平均耗时为0.39秒；最长配对输入207 tokens，超过512的数量为0；模型参数体积1060.655 MiB。计时不含模型加载、召回和长度统计，不是端到端延迟、P95或稳定性能承诺；参数体积不是进程RSS或峰值内存。只说明本题无截断风险，不推广到全部资料或dev。完整质量、截断与资源对照仍待统一评测。
+
 ### 自动测试
 
 ```powershell
@@ -292,7 +316,7 @@ python -B -m pytest -q
 python -m pip check
 ```
 
-2026-10-23复跑9项测试通过，依赖检查无冲突：5项切块测试覆盖窗口与重叠、空文本、跨页metadata、非法参数和ID变化；1项临时数据库集成测试覆盖持久化、重复写入、来源/版本过滤、payload保留与空范围结果；2项Prompt测试检查新旧消息完全一致（含正文中的字面花括号）及空Document列表报错；1项RRF测试检查合并排序、总分、两路名次与原始分数、原输入未改写及空结果。
+2026-10-26复跑13项测试通过：5项切块测试覆盖窗口与重叠、空文本、跨页metadata、非法参数和ID变化；1项临时数据库集成测试覆盖持久化、重复写入、来源/版本过滤、payload保留与空范围结果；2项Prompt测试检查新旧消息完全一致（含正文中的字面花括号）及空Document列表报错；1项RRF测试检查合并排序、总分、两路名次与原始分数、原输入未改写及空结果；4项精排契约测试检查排序与同分顺序、原记录和RRF分不变、原名次、空结果，以及分数数量、NaN和Inf异常。精排单元测试使用假模型，不下载权重或衡量模型效果；上次依赖检查无冲突。
 
 这些测试不调用付费API，不运行冻结test的问答。人工构造的向量用于验证存储行为，不评估Embedding语义质量；Prompt一致性也不证明答案正确或引用支持结论。完整链的空检索分支、供应商异常、生成质量与引用语义尚未纳入持久化自动回归套件，metadata正确性仍需原文抽查。
 
@@ -300,17 +324,19 @@ python -m pip check
 
 - **资料质量：**只验证一份真实PDF，支持当前可检测的原生文本表格，不保证所有表格均被发现。表头识别存在启发式边界，相邻文字只作为归属待核验的上下文，未实现OCR、跨页表格拼接或完整版面理解；部分双栏正文仍有交错，字符切块也可能打断语义。
 - **适用范围：**品牌与章节字段已入库，具体车型/年款仍未知；固定页眉区域及单资料配置不直接推广到其他手册，尚无车型过滤、自动适用性判断或已核实的官方资料版本映射。
-- **检索质量：**已接入BM25、向量与RRF，LangChain问答默认混合；尚无cross-encoder重排或完整dev多策略对照。每路输入ID唯一是RRF前提，当前未保留同路重复容错；扩展召回源时须维持此约定。10条冻结test尚未终测，现有质量数字来自小开发集，不能作为独立测试成绩。
+- **检索质量：**已接入BM25、向量、RRF及仅检索入口的可选cross-encoder；LangChain问答仍默认混合，尚无完整dev四策略对照。精排存在把同页另一张表的干扰行提到首位的案例，不能用页命中、分数变高或模型接通代替质量判定。每路输入ID唯一是RRF前提，当前未保留同路重复容错；扩展召回源时须维持此约定。10条冻结test尚未终测，现有质量数字来自小开发集，不能作为独立测试成绩。
 - **答案与安全：**引用列表由模型生成，存在与正文不一致的已知案例；尚无自动引用支持核验、可靠的证据充分性判断或 Prompt 注入对抗验证。
 - **索引生命周期：**尚无资料更新/删除后的旧索引清理、完整处理版本记录或跳过重复编码机制，不能声称增量维护已经完成。
 - **服务与可靠性：**尚无 FastAPI、流式输出、统一错误响应、请求追踪或生产重试；本地 Qdrant 未验证多进程并发、大规模检索或故障恢复。
 - **复现范围：**整套新环境安装与最终回归仍待验证。本地 BGE 是当前 Embedding 实现，不宣称已调用 Embedding API；密钥、数据库和原始资料不随代码提交。
 
-后续在当前混合检索基础上加入重排，使用同一开发集完成四种策略对照，完善引用契约与分层评测，再完成服务化、索引生命周期、冻结test终测与干净环境复现。只记录可核验结果，不将框架接入等同于质量改善，也不将计划中的能力写成已实现功能。
+后续使用同一开发集完成向量、BM25、RRF、RRF加精排四种策略对照，再决定问答是否采用精排；完善引用契约与分层评测，完成服务化、索引生命周期、冻结test终测与干净环境复现。只记录可核验结果，不将框架接入等同于质量改善，也不将计划中的能力写成已实现功能。
 
 ## 技术参考
 
 - [BGE 模型说明](https://huggingface.co/BAAI/bge-small-zh-v1.5)
+- [BGE 精排模型说明](https://huggingface.co/BAAI/bge-reranker-base)
+- [Sentence Transformers 召回与精排](https://www.sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html)
 - [pdfplumber 文本与表格解析](https://github.com/jsvine/pdfplumber)
 - [Hugging Face 离线与缓存配置](https://huggingface.co/docs/huggingface_hub/package_reference/environment_variables#hfhuboffline)
 - [Qdrant 客户端本地模式及版本说明](https://github.com/qdrant/qdrant-client/blob/v1.15.1/README.md)
