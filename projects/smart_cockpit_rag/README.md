@@ -12,13 +12,13 @@
 - 通过绑定资料身份与哈希的配置读取品牌、未知车型/年款及页眉区域，提取章节并写入数据库 payload。
 - 本地 BGE 向量检索、BM25 关键词检索及 RRF 融合，两路使用同一资料身份和文件版本范围。
 - 仅检索入口可选预训练 cross-encoder 精排，对 RRF 前10候选重新打分后取3条；问答默认仍为不精排的混合检索。
-- 结构化证据 Prompt、答案与引用展示、模型及 token 用量输出；尚未实现结构化答案与自动引用契约校验。
+- 结构化答案与引用契约：模型只返回回答状态、答案和证据 ID，程序检查 JSON、字段及 ID，再从本次可信证据映射组装来源与页码；不等于自动验证答案事实或引用支持关系。
 - 使用 LangChain Document、Runnable 和 ChatPromptTemplate 组织原有检索及生成模块，保留证据身份、排名和运行状态。
-- 开发集与冻结测试集分离，支持题集字段校验、批量向量检索观察，以及切块、向量库、Prompt、RRF 和精排契约自动测试。
+- 开发集与冻结测试集分离，支持题集字段校验、批量向量检索观察，以及切块、向量库、Prompt、RRF、精排与答案契约自动测试。
 
 ```text
 资料入库：PDF + source_id + Metadata 配置 -> 正文/表格记录 -> chunks -> BGE 向量 -> Qdrant
-在线问答：问题 + source_id + content_hash -> 同范围向量/BM25 各取候选 -> RRF -> Top3 Document -> 证据 Prompt -> 兼容 SDK -> LLM
+在线问答：问题 + source_id + content_hash -> 同范围向量/BM25 各取候选 -> RRF -> Top3 Document -> 本次证据 ID 映射 -> JSON Prompt -> 兼容 SDK/LLM -> JSON 与 ID 校验 -> 可信引用
 可选精排检索：同范围两路候选 -> RRF Top10 -> cross-encoder -> Top3 Document（尚未接入问答入口）
 检索评测：题集 -> 向量检索 -> 对照标注来源与页码 -> JSON 报告
 ```
@@ -36,20 +36,22 @@
 | [reranking.py](reranking.py) | 加载固定版本的预训练 cross-encoder，对问题与候选正文打分，保留原记录并按精排分排序 |
 | [prompt_builder.py](prompt_builder.py) | 编号证据，组织回答规则、来源与页码 |
 | [generation.py](generation.py) | 调用生成接口，检查结束标记与非空内容，返回答案、模型及用量 |
+| [answer_contract.py](answer_contract.py) | 为最终 Document 建立本次证据映射，解析模型 JSON、检查字段及引用 ID，并从映射回取完整来源 |
 | [query.py](query.py) | 保留直接函数调用的问答基线 |
 | [langchain_adapter.py](langchain_adapter.py) | 将检索字典转换为 Document，保留正文、chunk ID、metadata 和检索排名 |
 | [langchain_retrieval.py](langchain_retrieval.py) | 用 Runnable 包装向量、混合或混合后精排及 Document 转换，提供可选择模式的仅检索入口 |
-| [langchain_prompt.py](langchain_prompt.py) | 复用原 Prompt 规则和证据格式，通过 ChatPromptTemplate 生成 SDK 消息 |
-| [langchain_query.py](langchain_query.py) | 默认使用混合检索组装问答链，保留状态、证据、Prompt 版本、实际模型和用量 |
+| [langchain_prompt.py](langchain_prompt.py) | 保留原文本 Prompt，另用 ChatPromptTemplate 构建只向模型提供证据 ID/正文的结构化消息 |
+| [langchain_query.py](langchain_query.py) | 默认混合检索，通过 prepare/answer 串联证据映射、结构化生成及校验，保留运行状态、回答状态、可信引用、模型和用量 |
 | [evaluation.py](evaluation.py) | 校验题集，记录逐题或批量向量检索结果，不调用生成 API |
 | [test_chunking.py](test_chunking.py)、[test_vector_store.py](test_vector_store.py) | 切块边界、metadata、持久化、幂等写入与范围隔离测试 |
 | [test_langchain_prompt.py](test_langchain_prompt.py) | 新旧 Prompt 消息一致性与空证据校验测试 |
 | [test_hybrid_retrieval.py](test_hybrid_retrieval.py) | RRF 合并顺序、总分、各路名次与原始分数、输入不变及空列表检查 |
 | [test_reranking.py](test_reranking.py) | 使用假模型检查精排排序、同分顺序、原记录不变、空输入及非法分数，不评估真实模型质量 |
+| [test_answer_contract.py](test_answer_contract.py) | 检查合法回答/拒答及 JSON、字段、状态、类型、重复/未知 ID 和无引用回答的拒绝路径 |
 
 Qdrant 是当前持久化检索后端，使用本地模式，无需额外启动服务器。FAISS `IndexFlatIP` 保留为精确检索基线；入库入口仍执行其自检，但独立问答不重建 FAISS 索引，也不重新解析或编码整份 PDF。
 
-LangChain 只负责数据适配与流程编排，实际召回由 BGE/Qdrant 和 BM25 完成，融合由独立函数执行，生成仍调用现有 SDK 适配函数；没有因引入框架更换索引、提高最终 top-k 或修改 Prompt 规则。当前使用 `langchain-core`，未引入 LangGraph，也没有自动获得检索质量、引用校验或真实流式能力。
+LangChain 只负责数据适配与流程编排，实际召回由 BGE/Qdrant 和 BM25 完成，融合由独立函数执行，生成仍调用现有 SDK 适配函数；索引和最终 top-k 未因框架接入而改变。结构化 Prompt 和引用契约由项目代码显式实现，不是框架自动赋予的能力。当前使用 `langchain-core`，未引入 LangGraph、自动引用语义评测或真实流式输出。
 
 BM25 从当前 Qdrant 集合按 `source_id` 和 `content_hash` 读取已入库的 payload，不重新解析 PDF 或编码整份资料。构建检索器时建立一次分词和词频统计，同一进程内可复用；语料更新后须重新构建检索器。向量路仅编码当前问题，两路目前顺序执行，不宣称并行或具备大规模稀疏索引服务能力。
 
@@ -58,6 +60,16 @@ BM25 从当前 Qdrant 集合按 `source_id` 和 `content_hash` 读取已入库�
 ## 快速开始
 
 以下示例使用 Windows PowerShell。进入项目目录后，入库、问答和评测命令均在同一目录执行。
+
+在新开的终端中设置以下编码，尤其用于把 Python 输出通过管道交给 `Tee-Object` 时；同一会话中无需逐条命令重复设置：
+
+```powershell
+$utf8 = [System.Text.UTF8Encoding]::new($false)
+$OutputEncoding = $utf8
+[Console]::OutputEncoding = $utf8
+```
+
+`$OutputEncoding` 控制 PowerShell 传给外部程序的文本编码，控制台输出编码也须与 Python 输出匹配；仅启用 Python 的 `-X utf8` 不会替 PowerShell 设置读取编码。Windows PowerShell 5.1 的 `Tee-Object` 日志文件可能使用 UTF-16，这与文本已发生错误解码是两回事。jieba 的普通启动信息写到 stderr，可能被 PowerShell 标红；须结合 traceback、退出码和后续结果判断，不能单凭红色文本认定调用失败。
 
 ### 1. 准备环境
 
@@ -137,6 +149,8 @@ $env:LLM_MODEL = "deepseek-flash"
 
 当前请求使用 `max_tokens=1024`、非流式输出、60 秒网络操作超时、零自动重试，以及通过 `extra_body` 传入 `thinking.type=disabled` 关闭思考，参见 [DeepSeek 思考模式配置](https://api-docs.deepseek.com/guides/thinking_mode/)。更换供应商时须确认这些字段兼容；仅支持 Chat Completions 协议不代表支持所有扩展参数。
 
+LangChain 问答通过 `generate_json_answer()` 开启 `response_format={"type":"json_object"}`，Prompt 包含 JSON 要求及示例，参见 [DeepSeek JSON Output](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)。`generate_answer()` 的 `json_mode` 默认关闭，保留直接问答基线。JSON Output 不等于严格 JSON Schema 或事实保证；截断和空内容由生成函数报错，非法 JSON 或引用契约由解析器报错，不自动修复或伪装成正常拒答。
+
 ### 4. 运行问答
 
 已有资料无需再次入库。在配置好生成接口的同一个终端，从当前资料配置读取身份和文件哈希，运行默认混合检索的 LangChain 问答入口：
@@ -149,9 +163,11 @@ $question = "无钥匙解锁设为单门和全车时，触摸前门把手内部�
 python -B langchain_query.py $sourceId $contentHash $question
 ```
 
-输出包含 Prompt 版本、`status`、答案与模型生成的引用、每条候选证据的 chunk ID/物理页码/正文，以及实际响应模型和 token 用量。`generated` 只表示生成完成，不表示事实或引用已自动校验；`no_evidence` 表示检索为空，程序返回保守回答，模型和用量为 `None`，不会发起生成请求。
+输出包含 Prompt 版本、运行层 `status`、答案、回答层 `answer_status`、程序组装的 `citations`、每条候选证据的 chunk ID/物理页码/正文，以及实际响应模型和 token 用量。`generated` 表示生成和 JSON/字段/ID 检查完成，不表示答案事实或引用支持关系已自动验证；模型可在此状态下返回 `answered` 或 `refused`。`no_evidence` 表示检索为空，程序直接返回 `refused`，模型和用量为 `None`，不会发起生成请求。
 
-引用编号按本次检索排名生成，`[1]` 不是 PDF 第1页；文件名和物理页码来自检索记录。入口逐条打印的 `evidence:` 是候选上下文，不代表模型在答案中引用了全部候选。返回状态保留原始 Document 和消息，但当前命令行不会自动保存机器可读生成报告。
+最终 Document 按顺序映射为本次的 `E1`、`E2` 等编号，不是 PDF 页码或跨请求稳定身份。模型只返回 `answer_status`、非空 `answer` 和无重复字符串 `evidence_ids`；`answered` 至少引用一条本次证据，`refused` 可引用相关证据或返回空列表。来源文件、资料身份、文件哈希、页码、chunk ID 和正文由程序从映射表回取，不采信模型另写的来源字段。合法 ID 不保证结论由该证据支持。
+
+入口逐条打印的 `evidence:` 是全部候选上下文，不代表模型引用了全部候选。返回状态保留 Document、证据映射和消息，但当前 CLI 不自动保存机器可读生成报告；终端验收脚本保存的混合日志也不冒充完整评测报告。直接 `query.py` 仍使用旧文本 Prompt 及模型生成的引用，未同步为结构化契约。
 
 仅查看检索、不调用生成模型或配置 API Key，可分别运行：
 
@@ -193,7 +209,7 @@ Remove-Variable secureKey -ErrorAction SilentlyContinue
 | 当前集合 | `cockpit_manual_bge_small_zh_v1_5_tables_v1`，604条 |
 | 历史基线集合 | `cockpit_manual_bge_small_zh_v1_5`，469条，不因切换常量而自动重建或删除 |
 | 解析与 Metadata | `pipeline_version=tables-v1`；品牌、车型、年款、章节与来源字段随 payload 保存，未知值保留 `None` |
-| Prompt | `cockpit-rag-v1`，约束证据范围、引用及无依据拒答 |
+| Prompt | LangChain 结构化问答使用 `cockpit-rag-json-v1`；直接文本问答及旧消息一致性基线保留 `cockpit-rag-v1` |
 
 上述切块及检索值是当前源码默认值，不是已开放的命令行配置项。
 
@@ -242,7 +258,7 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 ### 验证快照
 
-核对范围：表格前后对照、Metadata落库、LangChain接入与历史单题问答、2026-10-23混合检索观察，以及2026-10-26可选精排接线、有限dev对照和自动测试。当前真实语料仍只有 `train_a.pdf`。
+核对范围：表格前后对照、Metadata落库、LangChain接入与历史单题问答、混合检索和可选精排的有限dev观察，以及2026-10-27结构化问答四场景验收和26项自动测试。当前真实语料仍只有 `train_a.pdf`。
 
 | 项目 | 已核验结果 |
 | --- | --- |
@@ -309,6 +325,19 @@ python -B evaluation.py eval_cases.json $sourceId $contentHash retrieval_report_
 
 CPU / float32 下，使用 `table_07` 同一10候选预热一次，再计时5轮，学习者实际运行的精排平均耗时为0.39秒；最长配对输入207 tokens，超过512的数量为0；模型参数体积1060.655 MiB。计时不含模型加载、召回和长度统计，不是端到端延迟、P95或稳定性能承诺；参数体积不是进程RSS或峰值内存。只说明本题无截断风险，不推广到全部资料或dev。完整质量、截断与资源对照仍待统一评测。
 
+### 结构化问答验收
+
+本地日志 `qa_contract_dev_v2_20261027_163724.txt` 记录三条既有dev和一条内存模拟冲突，使用 `cockpit-rag-json-v1`、DeepSeek官方接口，实际响应模型均为 `deepseek-flash`。前三题走默认混合检索，最后一题用临时 Document 替代检索输出，后续仍调用同一映射、Prompt、生成和校验链，不向正式数据库写入模拟数据。
+
+| 场景 | 已核验行为 |
+| --- | --- |
+| 无钥匙单门/全车 | `generated/answered`，正确区分当前车门和全车车门，引用 `E1` 对应物理第43页 |
+| USB PD版本缺失 | `generated/refused`，说明资料未提供协议版本，引用为空，不根据电压或接口外形猜测 |
+| 车型/年款未知 | `generated/refused`，不把通风操作说明推断为用户车辆一定配备，引用为空 |
+| 相同条件的模拟矛盾资料 | `generated/refused`，指出两种结果冲突，引用 `E1/E2`；适用范围措辞略宽泛，不能由此推断实际车型差异 |
+
+日志中文及JSON可正常读取，前三题的9条上下文身份、哈希、页码和正文均与Qdrant payload一致，返回的citations与本次映射对应。四次合计2850 tokens；这仅是小范围功能验收，不是全开发集准确率、稳定拒答保证或冻结test成绩。日志含手册正文，提交或公开前须核对资料权限和敏感信息。此前乱码日志仅保留为编码故障记录，不用于答案质量验收；本节结果不与旧供应商、旧Prompt的历史比例合并。
+
 ### 自动测试
 
 ```powershell
@@ -316,7 +345,7 @@ python -B -m pytest -q
 python -m pip check
 ```
 
-2026-10-26复跑13项测试通过：5项切块测试覆盖窗口与重叠、空文本、跨页metadata、非法参数和ID变化；1项临时数据库集成测试覆盖持久化、重复写入、来源/版本过滤、payload保留与空范围结果；2项Prompt测试检查新旧消息完全一致（含正文中的字面花括号）及空Document列表报错；1项RRF测试检查合并排序、总分、两路名次与原始分数、原输入未改写及空结果；4项精排契约测试检查排序与同分顺序、原记录和RRF分不变、原名次、空结果，以及分数数量、NaN和Inf异常。精排单元测试使用假模型，不下载权重或衡量模型效果；上次依赖检查无冲突。
+2026-10-27复跑26项测试通过：5项切块测试覆盖窗口与重叠、空文本、跨页metadata、非法参数和ID变化；1项临时数据库集成测试覆盖持久化、重复写入、来源/版本过滤、payload保留与空范围结果；2项旧文本Prompt测试检查新旧消息完全一致（含正文中的字面花括号）及空Document列表报错；1项RRF测试检查合并排序、总分、两路名次与原始分数、原输入未改写及空结果；4项精排契约测试检查排序与同分顺序、原记录和RRF分不变、原名次、空结果，以及分数数量、NaN和Inf异常；13项答案契约测试检查合法回答/拒答及非法JSON、字段、状态、类型、重复/未知ID和无引用回答。精排单元测试使用假模型，不下载权重或衡量模型效果；同日 `pip check` 无依赖冲突。
 
 这些测试不调用付费API，不运行冻结test的问答。人工构造的向量用于验证存储行为，不评估Embedding语义质量；Prompt一致性也不证明答案正确或引用支持结论。完整链的空检索分支、供应商异常、生成质量与引用语义尚未纳入持久化自动回归套件，metadata正确性仍需原文抽查。
 
@@ -325,12 +354,12 @@ python -m pip check
 - **资料质量：**只验证一份真实PDF，支持当前可检测的原生文本表格，不保证所有表格均被发现。表头识别存在启发式边界，相邻文字只作为归属待核验的上下文，未实现OCR、跨页表格拼接或完整版面理解；部分双栏正文仍有交错，字符切块也可能打断语义。
 - **适用范围：**品牌与章节字段已入库，具体车型/年款仍未知；固定页眉区域及单资料配置不直接推广到其他手册，尚无车型过滤、自动适用性判断或已核实的官方资料版本映射。
 - **检索质量：**已接入BM25、向量、RRF及仅检索入口的可选cross-encoder；LangChain问答仍默认混合，尚无完整dev四策略对照。精排存在把同页另一张表的干扰行提到首位的案例，不能用页命中、分数变高或模型接通代替质量判定。每路输入ID唯一是RRF前提，当前未保留同路重复容错；扩展召回源时须维持此约定。10条冻结test尚未终测，现有质量数字来自小开发集，不能作为独立测试成绩。
-- **答案与安全：**引用列表由模型生成，存在与正文不一致的已知案例；尚无自动引用支持核验、可靠的证据充分性判断或 Prompt 注入对抗验证。
+- **答案与安全：**结构化路径已检查字段和引用ID，并从可信映射组装来源；直接文本基线仍有正文与引用列表不一致的历史案例。两条路径均未实现自动引用语义支持核验或可靠的证据充分性判定；小范围拒答验收不等于覆盖所有冲突、错误拒答或Prompt注入对抗场景。
 - **索引生命周期：**尚无资料更新/删除后的旧索引清理、完整处理版本记录或跳过重复编码机制，不能声称增量维护已经完成。
 - **服务与可靠性：**尚无 FastAPI、流式输出、统一错误响应、请求追踪或生产重试；本地 Qdrant 未验证多进程并发、大规模检索或故障恢复。
 - **复现范围：**整套新环境安装与最终回归仍待验证。本地 BGE 是当前 Embedding 实现，不宣称已调用 Embedding API；密钥、数据库和原始资料不随代码提交。
 
-后续使用同一开发集完成向量、BM25、RRF、RRF加精排四种策略对照，再决定问答是否采用精排；完善引用契约与分层评测，完成服务化、索引生命周期、冻结test终测与干净环境复现。只记录可核验结果，不将框架接入等同于质量改善，也不将计划中的能力写成已实现功能。
+后续使用同一开发集完成向量、BM25、RRF、RRF加精排四种策略对照，再决定问答是否采用精排；扩展引用语义评测与持久化全链回归，完成服务化、索引生命周期、冻结test终测与干净环境复现。只记录可核验结果，不将框架接入等同于质量改善，也不将计划中的能力写成已实现功能。
 
 ## 技术参考
 
@@ -346,3 +375,4 @@ python -m pip check
 - [LangChain Runnable 顺序组合](https://reference.langchain.com/python/langchain-core/runnables/base/RunnableSequence)
 - [LangChain 聊天 Prompt 模板](https://reference.langchain.com/python/langchain-core/prompts/chat/ChatPromptTemplate)
 - [DeepSeek 官方 API](https://api-docs.deepseek.com/)
+- [DeepSeek JSON Output](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)

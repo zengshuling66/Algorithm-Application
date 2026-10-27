@@ -1,7 +1,8 @@
 import os
 from openai import OpenAI #OpenAI 是需要安装的 SDK 客户端类，SDK 帮我们封装请求和响应
 
-def generate_answer(messages):
+def generate_answer(messages, json_mode=False):
+    options = {"response_format": {"type": "json_object"}} if json_mode else {}
     api_key = os.environ["LLM_API_KEY"]
     base_url = os.environ["LLM_BASE_URL"]
     model_name = os.environ["LLM_MODEL"]
@@ -17,6 +18,7 @@ def generate_answer(messages):
             max_tokens=1024, #限制生成输出的 token 数，包括模型支持的思考输出和最终回答
             stream=False, #表示等待完整响应，而不是逐段接收
             extra_body={"thinking": {"type": "disabled"}}, #关闭深度思考，extra_body 是 SDK 传递服务商扩展请求字段的位置
+            **options, #如果 json_mode=True，就传入 response_format，要求模型输出 JSON 对象
         )
     choice = response.choices[0] #response.choices 是候选回复列表，[0] 取第一个候选
     if choice.finish_reason != "stop": #finish_reason 表示生成为什么结束
