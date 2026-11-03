@@ -1,0 +1,691 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "cases": [
+    {
+      "case_id": "table_10",
+      "retrieved_pages": [
+        351,
+        316,
+        314
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": null,
+      "annotated_page_rr": null,
+      "method": "vector",
+      "question": "我没有提供车型和年款，能仅凭这份手册的胎压表确定我这辆车应使用哪个胎压吗？",
+      "answerable": false,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t4:r1",
+          "kind": "table",
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+          "chunk_index": 1,
+          "char_count": 203,
+          "score": 0.5945002613414658
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 316,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "保养和维护\n警告！ 警告！\n■ 完成轮胎换位后，请检查并调整胎压。胎压不正确可能会对轮胎 ■ 轮胎胎纹变浅时，轮胎抓地力会变差，从而影响车辆的操纵性\n的使用寿命和车辆的操纵性能造成不利影响，导致车辆失控。 能。\n■ 车轮螺栓必须始终紧固至正确扭矩。\n注意！\n■ 请勿混用制造商、型号或胎面花纹不同的轮胎。同时，请勿混用\n胎面磨损标志\n外胎磨损程度明显不同的轮胎。\n胎面磨损标志是一条穿过轮胎胎面花纹纵向凹槽的狭长标高线。在轮 ■ 请勿混用夏季、全天候轮胎和雪地轮胎。\n胎的一侧有胎面磨损标志的图标。当胎面与胎面磨损标志的高度相同\n■ 请勿使用其他车辆用过的轮胎。请勿使用不熟悉其使用情况的轮\n时，请尽快更换新轮胎。\n胎。\n胎面磨损指示表明胎纹深度状态。\n清洁车辆\n定期清洁车辆有利于车辆保值。清洗车辆时，请注意以下要点：\n■ 由于附着在漆面上的污垢、灰尘、昆虫和柏油斑可能损坏漆面，\n车辆必须定期清洗。\n■ 请尽快清除漆面上的污染物，如鸟粪、树汁、金属颗粒或小虫。\n■ 请用湿海绵和大量的水洗掉污垢。请用专用车辆清洁剂彻底清洁\n车辆。\n■ 洗掉车辆下方的污垢。\n■ 请勿清洗表面发烫或被阳光直射、暴晒",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.5816706656793431
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 314,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "保养和维护\n胎压标签\n3按照与拆除相反的顺序安装新的雨刮片。\n注意！ 胎压标签\n请经常检查胎压，尤其是开始长距离行驶前。您可以查看胎压标签\n■ 拆除雨刮片前，使用软质毛巾贴放在雨刮片与挡风玻璃之间，防\n（位于驾驶员侧B柱上）的技术数据部分，找到推荐的胎压规格。\n止拆除雨刮片时误刮伤挡风玻璃。\n■ 请确保安装的雨刮片适用于您的车型，否则使用时可能造成车辆\n损伤。\n警告！\n■ 充气不足或充气过量可能会对轮胎的使用寿命和车辆的操纵性能\n造成不利影响，导致车辆失控。\n■ 为满足严格的车辆稳定性和操控性要求，建议安装Lynk&Co领克\n汽车推荐的车轮/轮胎。因安装不适用的车轮/轮胎而造成的损\n坏，不在您的车辆保修范围内。对于此类安装造成的死亡、伤害\n或损失，Lynk&Co领克不承担任何责任。\n314",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 349,
+          "score": 0.5717055661780008
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "不能仅凭这份手册的胎压表确定为您的车应使用哪个胎压。胎压表给出的是轮胎尺寸235/50R19在冷胎条件下、空载时前后均为230 kPa、满载时前后均为280 kPa的数值，但未明确该表适用哪些车型和年款；且资料指出应查看驾驶员侧B柱上的胎压标签获取该车推荐胎压规格。因此，在车型和年款未提供的情况下，无法依据该表确认您的车辆应使用的胎压，应以车辆B柱胎压标签为准。",
+      "evidence_ids": [
+        "E1",
+        "E3"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n"
+        },
+        {
+          "evidence_id": "E3",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 314,
+          "text": "保养和维护\n胎压标签\n3按照与拆除相反的顺序安装新的雨刮片。\n注意！ 胎压标签\n请经常检查胎压，尤其是开始长距离行驶前。您可以查看胎压标签\n■ 拆除雨刮片前，使用软质毛巾贴放在雨刮片与挡风玻璃之间，防\n（位于驾驶员侧B柱上）的技术数据部分，找到推荐的胎压规格。\n止拆除雨刮片时误刮伤挡风玻璃。\n■ 请确保安装的雨刮片适用于您的车型，否则使用时可能造成车辆\n损伤。\n警告！\n■ 充气不足或充气过量可能会对轮胎的使用寿命和车辆的操纵性能\n造成不利影响，导致车辆失控。\n■ 为满足严格的车辆稳定性和操控性要求，建议安装Lynk&Co领克\n汽车推荐的车轮/轮胎。因安装不适用的车轮/轮胎而造成的损\n坏，不在您的车辆保修范围内。对于此类安装造成的死亡、伤害\n或损失，Lynk&Co领克不承担任何责任。\n314"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 316,
+          "text": "保养和维护\n警告！ 警告！\n■ 完成轮胎换位后，请检查并调整胎压。胎压不正确可能会对轮胎 ■ 轮胎胎纹变浅时，轮胎抓地力会变差，从而影响车辆的操纵性\n的使用寿命和车辆的操纵性能造成不利影响，导致车辆失控。 能。\n■ 车轮螺栓必须始终紧固至正确扭矩。\n注意！\n■ 请勿混用制造商、型号或胎面花纹不同的轮胎。同时，请勿混用\n胎面磨损标志\n外胎磨损程度明显不同的轮胎。\n胎面磨损标志是一条穿过轮胎胎面花纹纵向凹槽的狭长标高线。在轮 ■ 请勿混用夏季、全天候轮胎和雪地轮胎。\n胎的一侧有胎面磨损标志的图标。当胎面与胎面磨损标志的高度相同\n■ 请勿使用其他车辆用过的轮胎。请勿使用不熟悉其使用情况的轮\n时，请尽快更换新轮胎。\n胎。\n胎面磨损指示表明胎纹深度状态。\n清洁车辆\n定期清洁车辆有利于车辆保值。清洗车辆时，请注意以下要点：\n■ 由于附着在漆面上的污垢、灰尘、昆虫和柏油斑可能损坏漆面，\n车辆必须定期清洗。\n■ 请尽快清除漆面上的污染物，如鸟粪、树汁、金属颗粒或小虫。\n■ 请用湿海绵和大量的水洗掉污垢。请用专用车辆清洁剂彻底清洁\n车辆。\n■ 洗掉车辆下方的污垢。\n■ 请勿清洗表面发烫或被阳光直射、暴晒"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 314,
+          "text": "保养和维护\n胎压标签\n3按照与拆除相反的顺序安装新的雨刮片。\n注意！ 胎压标签\n请经常检查胎压，尤其是开始长距离行驶前。您可以查看胎压标签\n■ 拆除雨刮片前，使用软质毛巾贴放在雨刮片与挡风玻璃之间，防\n（位于驾驶员侧B柱上）的技术数据部分，找到推荐的胎压规格。\n止拆除雨刮片时误刮伤挡风玻璃。\n■ 请确保安装的雨刮片适用于您的车型，否则使用时可能造成车辆\n损伤。\n警告！\n■ 充气不足或充气过量可能会对轮胎的使用寿命和车辆的操纵性能\n造成不利影响，导致车辆失控。\n■ 为满足严格的车辆稳定性和操控性要求，建议安装Lynk&Co领克\n汽车推荐的车轮/轮胎。因安装不适用的车轮/轮胎而造成的损\n坏，不在您的车辆保修范围内。对于此类安装造成的死亡、伤害\n或损失，Lynk&Co领克不承担任何责任。\n314"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 142,
+        "prompt_tokens": 1002,
+        "total_tokens": 1144,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"不能仅凭这份手册的胎压表确定为您的车应使用哪个胎压。胎压表给出的是轮胎尺寸235/50R19在冷胎条件下、空载时前后均为230 kPa、满载时前后均为280 kPa的数值，但未明确该表适用哪些车型和年款；且资料指出应查看驾驶员侧B柱上的胎压标签获取该车推荐胎压规格。因此，在车型和年款未提供的情况下，无法依据该表确认您的车辆应使用的胎压，应以车辆B柱胎压标签为准。\", \"evidence_ids\": [\"E1\", \"E3\"]}",
+      "qa_seconds": 2.2792686000466347,
+      "split": "dev",
+      "reference_answer": null,
+      "reference_evidence": null
+    },
+    {
+      "case_id": "table_10",
+      "retrieved_pages": [
+        95,
+        127,
+        94
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p95:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p127:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": null,
+      "annotated_page_rr": null,
+      "method": "bm25",
+      "question": "我没有提供车型和年款，能仅凭这份手册的胎压表确定我这辆车应使用哪个胎压吗？",
+      "answerable": false,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 95,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "仪表和灯光",
+          "block_id": "body",
+          "kind": "text",
+          "text": "仪表和灯光\n01点击开启/关闭伴我回家功能。\n02点击设置伴我回家功能持续照明时间。\n欢迎灯和欢送灯\n在车辆解锁或者锁车时，车外部分灯光将按照一定顺序点亮和熄灭。\n95",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p95:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 84,
+          "score": 15.087208587209004
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 127,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n01拖动进度条来调整语音助手音量。\n您可以通过在中央显示屏中点击 -我的AI助手-语音，进入语音设置\n界面。\n127",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p127:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 63,
+          "score": 14.724463896045263
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 94,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "仪表和灯光",
+          "block_id": "body",
+          "kind": "text",
+          "text": "仪表和灯光\n说明！\n□ 开启离车欢送功能，车辆熄火时，氛围灯变成呼吸渐变熄灭效\n果。\n□ 开启来电提醒功能，车辆连接蓝牙电话，有来电时，前排氛围灯\n变成蓝色闪烁效果。\n□ 开启低燃油提醒功能，若车辆可续航里程低于一定程度时，氛围\n灯变成橘色呼吸效果。\n□ 开启倒车雷达功能，若车辆倒车预警时，氛围灯变成红色闪烁效\n果。\n□ 开启上车欢迎功能，氛围灯变成呼吸渐变点亮效果。\n□ 选择自定义模式时，在效果中可以设置氛围灯为单色、渐变或呼\n吸。\n01点击开启/关闭接近照明灯。\n使用接近照明灯\n使用伴我回家灯\n接近照明功能开启后，环境光照较弱时，携带遥控钥匙接近车辆，近\n伴我回家功能开启后，环境光照较弱，车辆熄火时，近光灯和前、后\n光灯和前、后位置灯持续点亮30秒，为您接近车辆提供照明。\n位置灯可以持续点亮一段时间，为您照亮回家路况。\n在中央显示屏中点击 -车辆设置-外部照明，进入外部照明设置界\n在中央显示屏中点击 -车辆设置-外部照明，设置伴我回家功能。\n面。\n94",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 434,
+          "score": 14.484328774945944
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "refused",
+      "answer": "不能。所提供的资料中没有胎压表，也未涉及车型或年款信息，无法据此确定应使用的胎压。",
+      "evidence_ids": [],
+      "citations": [],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p95:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 95,
+          "text": "仪表和灯光\n01点击开启/关闭伴我回家功能。\n02点击设置伴我回家功能持续照明时间。\n欢迎灯和欢送灯\n在车辆解锁或者锁车时，车外部分灯光将按照一定顺序点亮和熄灭。\n95"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p127:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 127,
+          "text": "安全出行\n01拖动进度条来调整语音助手音量。\n您可以通过在中央显示屏中点击 -我的AI助手-语音，进入语音设置\n界面。\n127"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 94,
+          "text": "仪表和灯光\n说明！\n□ 开启离车欢送功能，车辆熄火时，氛围灯变成呼吸渐变熄灭效\n果。\n□ 开启来电提醒功能，车辆连接蓝牙电话，有来电时，前排氛围灯\n变成蓝色闪烁效果。\n□ 开启低燃油提醒功能，若车辆可续航里程低于一定程度时，氛围\n灯变成橘色呼吸效果。\n□ 开启倒车雷达功能，若车辆倒车预警时，氛围灯变成红色闪烁效\n果。\n□ 开启上车欢迎功能，氛围灯变成呼吸渐变点亮效果。\n□ 选择自定义模式时，在效果中可以设置氛围灯为单色、渐变或呼\n吸。\n01点击开启/关闭接近照明灯。\n使用接近照明灯\n使用伴我回家灯\n接近照明功能开启后，环境光照较弱时，携带遥控钥匙接近车辆，近\n伴我回家功能开启后，环境光照较弱，车辆熄火时，近光灯和前、后\n光灯和前、后位置灯持续点亮30秒，为您接近车辆提供照明。\n位置灯可以持续点亮一段时间，为您照亮回家路况。\n在中央显示屏中点击 -车辆设置-外部照明，进入外部照明设置界\n在中央显示屏中点击 -车辆设置-外部照明，设置伴我回家功能。\n面。\n94"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 648,
+        "total_tokens": 692,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"refused\", \"answer\": \"不能。所提供的资料中没有胎压表，也未涉及车型或年款信息，无法据此确定应使用的胎压。\", \"evidence_ids\": []}",
+      "qa_seconds": 1.0141368000768125,
+      "split": "dev",
+      "reference_answer": null,
+      "reference_evidence": null
+    },
+    {
+      "case_id": "table_10",
+      "retrieved_pages": [
+        316,
+        314,
+        62
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": null,
+      "annotated_page_rr": null,
+      "method": "hybrid",
+      "question": "我没有提供车型和年款，能仅凭这份手册的胎压表确定我这辆车应使用哪个胎压吗？",
+      "answerable": false,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 316,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "保养和维护\n警告！ 警告！\n■ 完成轮胎换位后，请检查并调整胎压。胎压不正确可能会对轮胎 ■ 轮胎胎纹变浅时，轮胎抓地力会变差，从而影响车辆的操纵性\n的使用寿命和车辆的操纵性能造成不利影响，导致车辆失控。 能。\n■ 车轮螺栓必须始终紧固至正确扭矩。\n注意！\n■ 请勿混用制造商、型号或胎面花纹不同的轮胎。同时，请勿混用\n胎面磨损标志\n外胎磨损程度明显不同的轮胎。\n胎面磨损标志是一条穿过轮胎胎面花纹纵向凹槽的狭长标高线。在轮 ■ 请勿混用夏季、全天候轮胎和雪地轮胎。\n胎的一侧有胎面磨损标志的图标。当胎面与胎面磨损标志的高度相同\n■ 请勿使用其他车辆用过的轮胎。请勿使用不熟悉其使用情况的轮\n时，请尽快更换新轮胎。\n胎。\n胎面磨损指示表明胎纹深度状态。\n清洁车辆\n定期清洁车辆有利于车辆保值。清洗车辆时，请注意以下要点：\n■ 由于附着在漆面上的污垢、灰尘、昆虫和柏油斑可能损坏漆面，\n车辆必须定期清洗。\n■ 请尽快清除漆面上的污染物，如鸟粪、树汁、金属颗粒或小虫。\n■ 请用湿海绵和大量的水洗掉污垢。请用专用车辆清洁剂彻底清洁\n车辆。\n■ 洗掉车辆下方的污垢。\n■ 请勿清洗表面发烫或被阳光直射、暴晒",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.0315136476426799,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.5816706656793431,
+            "bm25": 13.453341345215556
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 314,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "保养和维护\n胎压标签\n3按照与拆除相反的顺序安装新的雨刮片。\n注意！ 胎压标签\n请经常检查胎压，尤其是开始长距离行驶前。您可以查看胎压标签\n■ 拆除雨刮片前，使用软质毛巾贴放在雨刮片与挡风玻璃之间，防\n（位于驾驶员侧B柱上）的技术数据部分，找到推荐的胎压规格。\n止拆除雨刮片时误刮伤挡风玻璃。\n■ 请确保安装的雨刮片适用于您的车型，否则使用时可能造成车辆\n损伤。\n警告！\n■ 充气不足或充气过量可能会对轮胎的使用寿命和车辆的操纵性能\n造成不利影响，导致车辆失控。\n■ 为满足严格的车辆稳定性和操控性要求，建议安装Lynk&Co领克\n汽车推荐的车轮/轮胎。因安装不适用的车轮/轮胎而造成的损\n坏，不在您的车辆保修范围内。对于此类安装造成的死亡、伤害\n或损失，Lynk&Co领克不承担任何责任。\n314",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 349,
+          "score": 0.03057889822595705,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "vector": 0.5717055661780008,
+            "bm25": 12.303220475519943
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶前的准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "驾驶前的准备\n当轮胎温度高、轮胎漏气、传感器电量低报警激活时，对应报警轮胎 ■ 安装不兼容的轮胎或车轮改装。\n开始闪烁，并伴有声音报警，同时仪表显示屏弹出提示信息。 ■ 轮胎内存在液体或注入补胎液。\n■ 在安装了防滑链的情况下驾驶。\n胎压低报警 ■ 靠近电视台、加油站、机场等产生强大无线电波或者电噪干扰的\n当胎压低报警被激活时，对应报警轮胎开始闪烁，胎压监测系统状态\n设施。\n指示灯持续点亮直到报警消除，伴有声音报警，同时仪表显示屏弹出\n提示信息。在冷态充气至标准胎压值后，以30km/h以上的车速行驶 ■ 加装可能对汽车的无线电接收器或电气系统等造成干扰的附件。\n几分钟，胎压过低报警解除。\n注意！\n警告！\n■ 请更换Lynk&Co领克指定规格的车轮，否则可能会影响到D-\n■ 车辆行驶过程中，如果胎压监测系统故障警告灯在闪烁一段时间 TPMS正常运行。\n后常亮，应将车辆停放在安全位置，并尽快联系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.029211087420042643,
+          "retrieval_ranks": {
+            "vector": 7,
+            "bm25": 10
+          },
+          "retrieval_scores": {
+            "vector": 0.5312846102132174,
+            "bm25": 10.938116791361013
+          }
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "refused",
+      "answer": "不能。资料虽说明可在驾驶员侧B柱上的胎压标签查看推荐胎压规格，但未提供具体车型、年款或该车的胎压标签数值，无法据此确定您车辆应使用的胎压。",
+      "evidence_ids": [
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 314,
+          "text": "保养和维护\n胎压标签\n3按照与拆除相反的顺序安装新的雨刮片。\n注意！ 胎压标签\n请经常检查胎压，尤其是开始长距离行驶前。您可以查看胎压标签\n■ 拆除雨刮片前，使用软质毛巾贴放在雨刮片与挡风玻璃之间，防\n（位于驾驶员侧B柱上）的技术数据部分，找到推荐的胎压规格。\n止拆除雨刮片时误刮伤挡风玻璃。\n■ 请确保安装的雨刮片适用于您的车型，否则使用时可能造成车辆\n损伤。\n警告！\n■ 充气不足或充气过量可能会对轮胎的使用寿命和车辆的操纵性能\n造成不利影响，导致车辆失控。\n■ 为满足严格的车辆稳定性和操控性要求，建议安装Lynk&Co领克\n汽车推荐的车轮/轮胎。因安装不适用的车轮/轮胎而造成的损\n坏，不在您的车辆保修范围内。对于此类安装造成的死亡、伤害\n或损失，Lynk&Co领克不承担任何责任。\n314"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 316,
+          "text": "保养和维护\n警告！ 警告！\n■ 完成轮胎换位后，请检查并调整胎压。胎压不正确可能会对轮胎 ■ 轮胎胎纹变浅时，轮胎抓地力会变差，从而影响车辆的操纵性\n的使用寿命和车辆的操纵性能造成不利影响，导致车辆失控。 能。\n■ 车轮螺栓必须始终紧固至正确扭矩。\n注意！\n■ 请勿混用制造商、型号或胎面花纹不同的轮胎。同时，请勿混用\n胎面磨损标志\n外胎磨损程度明显不同的轮胎。\n胎面磨损标志是一条穿过轮胎胎面花纹纵向凹槽的狭长标高线。在轮 ■ 请勿混用夏季、全天候轮胎和雪地轮胎。\n胎的一侧有胎面磨损标志的图标。当胎面与胎面磨损标志的高度相同\n■ 请勿使用其他车辆用过的轮胎。请勿使用不熟悉其使用情况的轮\n时，请尽快更换新轮胎。\n胎。\n胎面磨损指示表明胎纹深度状态。\n清洁车辆\n定期清洁车辆有利于车辆保值。清洗车辆时，请注意以下要点：\n■ 由于附着在漆面上的污垢、灰尘、昆虫和柏油斑可能损坏漆面，\n车辆必须定期清洗。\n■ 请尽快清除漆面上的污染物，如鸟粪、树汁、金属颗粒或小虫。\n■ 请用湿海绵和大量的水洗掉污垢。请用专用车辆清洁剂彻底清洁\n车辆。\n■ 洗掉车辆下方的污垢。\n■ 请勿清洗表面发烫或被阳光直射、暴晒"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 314,
+          "text": "保养和维护\n胎压标签\n3按照与拆除相反的顺序安装新的雨刮片。\n注意！ 胎压标签\n请经常检查胎压，尤其是开始长距离行驶前。您可以查看胎压标签\n■ 拆除雨刮片前，使用软质毛巾贴放在雨刮片与挡风玻璃之间，防\n（位于驾驶员侧B柱上）的技术数据部分，找到推荐的胎压规格。\n止拆除雨刮片时误刮伤挡风玻璃。\n■ 请确保安装的雨刮片适用于您的车型，否则使用时可能造成车辆\n损伤。\n警告！\n■ 充气不足或充气过量可能会对轮胎的使用寿命和车辆的操纵性能\n造成不利影响，导致车辆失控。\n■ 为满足严格的车辆稳定性和操控性要求，建议安装Lynk&Co领克\n汽车推荐的车轮/轮胎。因安装不适用的车轮/轮胎而造成的损\n坏，不在您的车辆保修范围内。对于此类安装造成的死亡、伤害\n或损失，Lynk&Co领克不承担任何责任。\n314"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "text": "驾驶前的准备\n当轮胎温度高、轮胎漏气、传感器电量低报警激活时，对应报警轮胎 ■ 安装不兼容的轮胎或车轮改装。\n开始闪烁，并伴有声音报警，同时仪表显示屏弹出提示信息。 ■ 轮胎内存在液体或注入补胎液。\n■ 在安装了防滑链的情况下驾驶。\n胎压低报警 ■ 靠近电视台、加油站、机场等产生强大无线电波或者电噪干扰的\n当胎压低报警被激活时，对应报警轮胎开始闪烁，胎压监测系统状态\n设施。\n指示灯持续点亮直到报警消除，伴有声音报警，同时仪表显示屏弹出\n提示信息。在冷态充气至标准胎压值后，以30km/h以上的车速行驶 ■ 加装可能对汽车的无线电接收器或电气系统等造成干扰的附件。\n几分钟，胎压过低报警解除。\n注意！\n警告！\n■ 请更换Lynk&Co领克指定规格的车轮，否则可能会影响到D-\n■ 车辆行驶过程中，如果胎压监测系统故障警告灯在闪烁一段时间 TPMS正常运行。\n后常亮，应将车辆停放在安全位置，并尽快联系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 1186,
+        "total_tokens": 1254,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"refused\", \"answer\": \"不能。资料虽说明可在驾驶员侧B柱上的胎压标签查看推荐胎压规格，但未提供具体车型、年款或该车的胎压标签数值，无法据此确定您车辆应使用的胎压。\", \"evidence_ids\": [\"E2\"]}",
+      "qa_seconds": 1.134613799978979,
+      "split": "dev",
+      "reference_answer": null,
+      "reference_evidence": null
+    },
+    {
+      "case_id": "table_10",
+      "retrieved_pages": [
+        351,
+        62,
+        62
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c2:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": null,
+      "annotated_page_rr": null,
+      "method": "rerank",
+      "question": "我没有提供车型和年款，能仅凭这份手册的胎压表确定我这辆车应使用哪个胎压吗？",
+      "answerable": false,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t4:r1",
+          "kind": "table",
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+          "chunk_index": 1,
+          "char_count": 203,
+          "score": 0.01639344262295082,
+          "retrieval_ranks": {
+            "vector": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.5945002613414658
+          },
+          "rrf_rank": 5,
+          "rerank_score": 0.44361570477485657
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶前的准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎气压并确保在规定范围内（推荐胎压值可通过驾\n驶员侧B柱胎压标签查看）。\n□ D-TPMS无法提前指示由外部因素（例如爆裂）造成的急剧胎\n损，也无法识别所有轮胎长周期地自然、均匀压力损失。\n□ 当车辆启动时，仪表的胎压监测显示界面显示的信息为灰色状\n态，表示目前显示的是历史值，为正常现象。当车辆以30km/h\n以上的车速行驶几分钟后，系统会陆续更新轮胎压力和温度信\n息，数值变为高亮状态。\n多种因素可能导致D-TPMS工作异常：\n62",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c2:tables-v1:body",
+          "chunk_index": 2,
+          "char_count": 317,
+          "score": 0.028985507246376812,
+          "retrieval_ranks": {
+            "vector": 9,
+            "bm25": 9
+          },
+          "retrieval_scores": {
+            "vector": 0.5224597569949782,
+            "bm25": 11.361636600405603
+          },
+          "rrf_rank": 4,
+          "rerank_score": 0.40895822644233704
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶前的准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "驾驶前的准备\n当轮胎温度高、轮胎漏气、传感器电量低报警激活时，对应报警轮胎 ■ 安装不兼容的轮胎或车轮改装。\n开始闪烁，并伴有声音报警，同时仪表显示屏弹出提示信息。 ■ 轮胎内存在液体或注入补胎液。\n■ 在安装了防滑链的情况下驾驶。\n胎压低报警 ■ 靠近电视台、加油站、机场等产生强大无线电波或者电噪干扰的\n当胎压低报警被激活时，对应报警轮胎开始闪烁，胎压监测系统状态\n设施。\n指示灯持续点亮直到报警消除，伴有声音报警，同时仪表显示屏弹出\n提示信息。在冷态充气至标准胎压值后，以30km/h以上的车速行驶 ■ 加装可能对汽车的无线电接收器或电气系统等造成干扰的附件。\n几分钟，胎压过低报警解除。\n注意！\n警告！\n■ 请更换Lynk&Co领克指定规格的车轮，否则可能会影响到D-\n■ 车辆行驶过程中，如果胎压监测系统故障警告灯在闪烁一段时间 TPMS正常运行。\n后常亮，应将车辆停放在安全位置，并尽快联系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.029211087420042643,
+          "retrieval_ranks": {
+            "vector": 7,
+            "bm25": 10
+          },
+          "retrieval_scores": {
+            "vector": 0.5312846102132174,
+            "bm25": 10.938116791361013
+          },
+          "rrf_rank": 3,
+          "rerank_score": -0.6823872327804565
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "refused",
+      "answer": "不能。现有资料虽给出235/50R19轮胎在冷胎空载时前后均为230 kPa、满载时前后均为280 kPa，但未提供车型和年款，无法核验该胎压表是否适用于您的车辆；需确认该表对应的车型/年款或查看驾驶员侧B柱胎压标签。",
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n"
+        },
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c2:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "text": "系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎气压并确保在规定范围内（推荐胎压值可通过驾\n驶员侧B柱胎压标签查看）。\n□ D-TPMS无法提前指示由外部因素（例如爆裂）造成的急剧胎\n损，也无法识别所有轮胎长周期地自然、均匀压力损失。\n□ 当车辆启动时，仪表的胎压监测显示界面显示的信息为灰色状\n态，表示目前显示的是历史值，为正常现象。当车辆以30km/h\n以上的车速行驶几分钟后，系统会陆续更新轮胎压力和温度信\n息，数值变为高亮状态。\n多种因素可能导致D-TPMS工作异常：\n62"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-v1:p351:t4:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c2:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "text": "系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎气压并确保在规定范围内（推荐胎压值可通过驾\n驶员侧B柱胎压标签查看）。\n□ D-TPMS无法提前指示由外部因素（例如爆裂）造成的急剧胎\n损，也无法识别所有轮胎长周期地自然、均匀压力损失。\n□ 当车辆启动时，仪表的胎压监测显示界面显示的信息为灰色状\n态，表示目前显示的是历史值，为正常现象。当车辆以30km/h\n以上的车速行驶几分钟后，系统会陆续更新轮胎压力和温度信\n息，数值变为高亮状态。\n多种因素可能导致D-TPMS工作异常：\n62"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "text": "驾驶前的准备\n当轮胎温度高、轮胎漏气、传感器电量低报警激活时，对应报警轮胎 ■ 安装不兼容的轮胎或车轮改装。\n开始闪烁，并伴有声音报警，同时仪表显示屏弹出提示信息。 ■ 轮胎内存在液体或注入补胎液。\n■ 在安装了防滑链的情况下驾驶。\n胎压低报警 ■ 靠近电视台、加油站、机场等产生强大无线电波或者电噪干扰的\n当胎压低报警被激活时，对应报警轮胎开始闪烁，胎压监测系统状态\n设施。\n指示灯持续点亮直到报警消除，伴有声音报警，同时仪表显示屏弹出\n提示信息。在冷态充气至标准胎压值后，以30km/h以上的车速行驶 ■ 加装可能对汽车的无线电接收器或电气系统等造成干扰的附件。\n几分钟，胎压过低报警解除。\n注意！\n警告！\n■ 请更换Lynk&Co领克指定规格的车轮，否则可能会影响到D-\n■ 车辆行驶过程中，如果胎压监测系统故障警告灯在闪烁一段时间 TPMS正常运行。\n后常亮，应将车辆停放在安全位置，并尽快联系Lynk&Co领克中\n心。\n■ 如果轮胎压力过高，胎压监测显示界面将不显示对应轮胎的胎压\n前雨刮和洗涤器\n数值。此时请及时降低轮胎气压，以免造成车辆损坏或发生意外\n事故。\n说明！\n□ 请定期检查轮胎"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 95,
+        "prompt_tokens": 945,
+        "total_tokens": 1040,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"refused\", \"answer\": \"不能。现有资料虽给出235/50R19轮胎在冷胎空载时前后均为230 kPa、满载时前后均为280 kPa，但未提供车型和年款，无法核验该胎压表是否适用于您的车辆；需确认该表对应的车型/年款或查看驾驶员侧B柱胎压标签。\", \"evidence_ids\": [\"E1\", \"E2\"]}",
+      "qa_seconds": 1.1960723000811413,
+      "split": "dev",
+      "reference_answer": null,
+      "reference_evidence": null
+    }
+  ],
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config.json",
+  "run_at_utc": "2026-10-29T09:30:42.839536+00:00",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-v1",
+    "cases": {
+      "table_01": [
+        "p225:t1:r4",
+        "p225:t1:r2"
+      ],
+      "table_02": [
+        "p349:t3:r3"
+      ],
+      "table_03": [
+        "p349:t2:r1"
+      ],
+      "table_04": [
+        "p350:t2:r1"
+      ],
+      "table_05": [
+        "p351:t4:r1"
+      ],
+      "table_06": [
+        "p351:t4:r1"
+      ],
+      "table_07": [
+        "p125:t2:r5",
+        "p125:t2:r7"
+      ],
+      "table_08": [
+        "p321:t1:r1"
+      ]
+    }
+  },
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-10-30T12:05:52.751169+00:00",
+  "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+  "requested_model": "deepseek-v4.1-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\dev_retrieval_v3.json",
+  "expected_records": 4
+}

@@ -1,0 +1,701 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "cases": [
+    {
+      "case_id": "q_unlock_scope_001",
+      "retrieved_pages": [
+        43,
+        44,
+        41
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "vector",
+      "question": "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 171,
+          "score": 0.7762438800411396
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 261,
+          "score": 0.6833530910483827
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.6306173874170807
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器区域仅解锁当前车门；当设置为全车时，触摸前门外把手上的内部传感器区域解锁全车车门。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 62,
+        "prompt_tokens": 867,
+        "total_tokens": 929,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器区域仅解锁当前车门；当设置为全车时，触摸前门外把手上的内部传感器区域解锁全车车门。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 1.8909738000947982,
+      "split": "dev",
+      "reference_answer": "单门模式仅解锁当前车门；全车模式解锁全车车门。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 43,
+        "anchor": "无钥匙解锁设置为单门"
+      }
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "retrieved_pages": [
+        43,
+        44,
+        41
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "bm25",
+      "question": "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 171,
+          "score": 62.94159857662814
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 261,
+          "score": 26.908447974595035
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 20.61578805984582
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "无钥匙解锁设为单门时，触摸前门外把手上的内部传感器区域仅解锁当前车门；设为全车时，触摸前门外把手上的内部传感器区域解锁全车车门。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 867,
+        "total_tokens": 927,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 768
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"无钥匙解锁设为单门时，触摸前门外把手上的内部传感器区域仅解锁当前车门；设为全车时，触摸前门外把手上的内部传感器区域解锁全车车门。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 0.9880886999890208,
+      "split": "dev",
+      "reference_answer": "单门模式仅解锁当前车门；全车模式解锁全车车门。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 43,
+        "anchor": "无钥匙解锁设置为单门"
+      }
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "retrieved_pages": [
+        43,
+        44,
+        41
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "hybrid",
+      "question": "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 171,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.7762438800411396,
+            "bm25": 62.94159857662814
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 261,
+          "score": 0.03225806451612903,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.6833530910483827,
+            "bm25": 26.908447974595035
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.031746031746031744,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.6306173874170807,
+            "bm25": 20.61578805984582
+          }
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "单门设置下，触摸前门外把手内部传感器区域仅解锁当前车门；全车设置下，触摸同一区域解锁全车车门。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 51,
+        "prompt_tokens": 867,
+        "total_tokens": 918,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 768
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"单门设置下，触摸前门外把手内部传感器区域仅解锁当前车门；全车设置下，触摸同一区域解锁全车车门。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 0.8475524000823498,
+      "split": "dev",
+      "reference_answer": "单门模式仅解锁当前车门；全车模式解锁全车车门。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 43,
+        "anchor": "无钥匙解锁设置为单门"
+      }
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "retrieved_pages": [
+        43,
+        44,
+        41
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 171,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.7762438800411396,
+            "bm25": 62.94159857662814
+          },
+          "rrf_rank": 1,
+          "rerank_score": 7.6010422706604
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 261,
+          "score": 0.03225806451612903,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.6833530910483827,
+            "bm25": 26.908447974595035
+          },
+          "rrf_rank": 2,
+          "rerank_score": 1.7249433994293213
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.031746031746031744,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.6306173874170807,
+            "bm25": 20.61578805984582
+          },
+          "rrf_rank": 3,
+          "rerank_score": -0.7013590335845947
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器区域仅解锁当前车门；当设置为全车时，触摸同一区域解锁全车车门。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 43,
+          "text": "上车和下车\n使用无钥匙进入系统解锁和闭锁\n01设置无钥匙解锁（单门、全车）。\n解锁：车辆闭锁状态下，携带遥控钥匙/蓝牙钥匙，触摸前门外把手\n上的内部传感器区域，车辆解锁。\n单门：当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器\n区域仅解锁当前车门。\n全车：当无钥匙解锁设置为全车时，触摸前门外把手上的内部传感器\n区域解锁全车车门。\n43"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 44,
+          "text": "上车和下车\n闭锁：关闭所有车门，携带遥控钥匙/蓝牙钥匙，触摸前门外把手上 车内解锁和闭锁\n的外部感应区域，车辆闭锁。\n注意！\n■ 离车时，请确保带走遥控钥匙和蓝牙钥匙。\n说明！\n□ 按住车门把手外部传感器区域，关闭所有车窗和全景天窗。再次\n触摸外部传感器，所有车窗和全景天窗关闭动作即可停止。\n□ 遥控钥匙/蓝牙钥匙受到信号干扰时，无钥匙进入系统可能会功\n能异常。\n中控锁按键\n按下驾驶员侧车门上的锁止按键，锁止所有车门和尾门。车辆锁\n止时，按键上的指示灯会点亮。\n按下驾驶员侧车门上的解锁按键，解锁所有车门和尾门。\n44"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "text": "上车和下车\n说明！\n□ 使用远离上锁功能锁止车辆后，您携带遥控钥匙在车辆周围因打\n电话或聊天而停留几分钟时，为避免频繁解闭锁，靠近解锁功能\n将不可用。下次靠近车辆时无法自动解锁，您可以使用遥控钥匙\n解锁按键或无钥匙进入系统解锁车辆，下次离开即可正常使用该\n功能。\n□ 长期（约5天）没有使用车辆时，靠近解锁远离上锁系统可能会\n自动关闭，此时您仅需使用其他方式（如遥控钥匙按键、无钥匙\n进入系统或机械钥匙等）解锁车门并重新开关车门后，即可恢复\n系统功能。\n□ 携带遥控钥匙离开车辆之前，如果有车门未关闭或者未关紧，此\n时将无法触发远离上锁功能。\n□ 如驾驶员携带遥控钥匙离开后，但仍有其他乘客留在车内开门准\n备离开时，此时将无法触发远离上锁功能。\n□ 请勿甩门或速度过快（如投掷遥控钥匙、快速奔跑等）离开上锁 01点击开启/关闭两步解锁功能。\n感应区域，否则可能出现车门关闭时，钥匙已经在感应区域之\n外，导致车辆不会自动上锁。 两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n两步解锁功能 警告！\n在中央显示屏中点击 -车辆设置-门锁，进"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 867,
+        "total_tokens": 924,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 768
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"当无钥匙解锁设置为单门时，触摸前门外把手上的内部传感器区域仅解锁当前车门；当设置为全车时，触摸同一区域解锁全车车门。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 0.8827295999508351,
+      "split": "dev",
+      "reference_answer": "单门模式仅解锁当前车门；全车模式解锁全车车门。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 43,
+        "anchor": "无钥匙解锁设置为单门"
+      }
+    }
+  ],
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config.json",
+  "run_at_utc": "2026-10-29T09:30:42.839536+00:00",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-v1",
+    "cases": {
+      "table_01": [
+        "p225:t1:r4",
+        "p225:t1:r2"
+      ],
+      "table_02": [
+        "p349:t3:r3"
+      ],
+      "table_03": [
+        "p349:t2:r1"
+      ],
+      "table_04": [
+        "p350:t2:r1"
+      ],
+      "table_05": [
+        "p351:t4:r1"
+      ],
+      "table_06": [
+        "p351:t4:r1"
+      ],
+      "table_07": [
+        "p125:t2:r5",
+        "p125:t2:r7"
+      ],
+      "table_08": [
+        "p321:t1:r1"
+      ]
+    }
+  },
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-10-30T12:06:07.595582+00:00",
+  "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+  "requested_model": "deepseek-v4.1-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\dev_retrieval_v3.json",
+  "expected_records": 4
+}

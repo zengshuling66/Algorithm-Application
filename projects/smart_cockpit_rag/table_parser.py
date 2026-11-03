@@ -52,7 +52,7 @@ def render_table_rows(table, rows):
 
 
 #正文去重、表格记录及邻文候选
-def parse_page(page, context_margin=60):
+def parse_page(page, context_margin=60, use_text_flow=False):
     tables = sorted(page.find_tables(), key=lambda item: (item.bbox[1], item.bbox[0]))
     #page.find_tables() 返回表格对象列表，bbox 是 (左, 上, 右, 下)
     body_page = page
@@ -74,13 +74,29 @@ def parse_page(page, context_margin=60):
             "context_before": body_page.crop(above_box).extract_text() or "",
             "context_after": body_page.crop(below_box).extract_text() or "",
         })
-    return (body_page.extract_text() or "").strip(), records
+    return (body_page.extract_text(use_text_flow=use_text_flow) or "").strip(), records
     #第一项提取剩余文字；or "" 处理没有文字的情况，.strip() 去掉首尾空白；第二项就是四张表的字典列表。
 
 
+def compare_body_text(pdf_path, page_number):
+    with pdfplumber.open(pdf_path) as pdf:
+        if not 1 <= page_number <= len(pdf.pages):
+            raise ValueError("Page number out of range")
+        page = pdf.pages[page_number - 1]
+        old_body, old_tables = parse_page(page)
+        new_body, new_tables = parse_page(page, use_text_flow=True)
+        print("=== CURRENT ===\n", old_body)
+        print("=== TEXT FLOW ===\n", new_body)
+        print("table_records_equal:", old_tables == new_tables,
+              "tables:", len(new_tables))
+
+
 if __name__ == "__main__":
+    if len(sys.argv) == 3:
+        compare_body_text(sys.argv[1], int(sys.argv[2]))
+        raise SystemExit(0)
     if len(sys.argv) != 2:
-        raise SystemExit("Usage: python table_parser.py <pdf_path>")
+        raise SystemExit("Usage: python table_parser.py <pdf_path> [page_number]")
     with pdfplumber.open(sys.argv[1]) as pdf:
         for page in pdf.pages:
             body_text, table_records = parse_page(page) #body_text 接正文字符串，table_records 接表格列表

@@ -1,0 +1,705 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "cases": [
+    {
+      "case_id": "q_fan_panel_001",
+      "retrieved_pages": [
+        250,
+        251,
+        244
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p250:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p251:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 0.3333333333333333,
+      "method": "vector",
+      "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 250,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n前排右侧出风口 前排中部出风口\n将控制板调到最右端，可以关闭出风口，向左调节可打开出风口。 前排中部左风口：调到最右端，可以关闭出风口，向左调节可打开出\n风口。\n前排中部右风口：调到最左端，可以关闭出风口，向右调节可打开出\n风口。\n250",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p250:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 122,
+          "score": 0.6615733937623256
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 251,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n手动调节仪表板上的出风方向\n后排座椅前的出风口\n后排左出风口：调到最左端，可以关闭出风口，向右调节可打开风 仪表板上的出风口\n口。\n左右上下移动控制板，调节出风口出风方向。\n后排右出风口：调到最右端，可以关闭出风口，向左调节可打开风\n口。\n251",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p251:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 126,
+          "score": 0.6379711346121588
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 182,
+          "score": 0.6160114915885921
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "按压风速/副驾温度调节切换按钮，当图标亮起时，可以通过旋转风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。",
+      "evidence_ids": [
+        "E3"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E3",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p250:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 250,
+          "text": "空调\n前排右侧出风口 前排中部出风口\n将控制板调到最右端，可以关闭出风口，向左调节可打开出风口。 前排中部左风口：调到最右端，可以关闭出风口，向左调节可打开出\n风口。\n前排中部右风口：调到最左端，可以关闭出风口，向右调节可打开出\n风口。\n250"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p251:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 251,
+          "text": "空调\n手动调节仪表板上的出风方向\n后排座椅前的出风口\n后排左出风口：调到最左端，可以关闭出风口，向右调节可打开风 仪表板上的出风口\n口。\n左右上下移动控制板，调节出风口出风方向。\n后排右出风口：调到最右端，可以关闭出风口，向左调节可打开风\n口。\n251"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 59,
+        "prompt_tokens": 538,
+        "total_tokens": 597,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"按压风速/副驾温度调节切换按钮，当图标亮起时，可以通过旋转风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。\", \"evidence_ids\": [\"E3\"]}",
+      "qa_seconds": 2.0178999999770895,
+      "split": "dev",
+      "reference_answer": "按压风速/副驾温度调节切换按钮；对应图标亮起后，旋转风速/副驾温度调节旋钮，可以开启或关闭鼓风机，也可以调节鼓风机转速。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 244,
+        "anchor": "风速/副驾温度调节切换按钮"
+      }
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "retrieved_pages": [
+        243,
+        244,
+        5
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c5:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 0.5,
+      "method": "bm25",
+      "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 157,
+          "score": 25.223279644894543
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 182,
+          "score": 23.229600761386358
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 5,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "目录",
+          "block_id": "body",
+          "kind": "text",
+          "text": ".....................................241\n驾驶辅助系统传感器..................................................170 调节空调温度..........................................................241\n超速报警................................................................171 调节空调风量..........................................................243\n最高限速辅助系统....................................................172 空调模式...............................................................245\n自适应巡航系统..............................................",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c5:tables-v1:body",
+          "chunk_index": 5,
+          "char_count": 500,
+          "score": 16.11043310633481
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "通过空调系统面板调节空调风量：点击减小空调风量；点击增加空调风量。按压风速/副驾温度调节切换按钮，当图标亮起时，可以通过旋转风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。风速共有9个速度等级可设置。提高鼓风机转速后，风噪也会增大。",
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243"
+        },
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c5:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 5,
+          "text": ".....................................241\n驾驶辅助系统传感器..................................................170 调节空调温度..........................................................241\n超速报警................................................................171 调节空调风量..........................................................243\n最高限速辅助系统....................................................172 空调模式...............................................................245\n自适应巡航系统.............................................."
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 104,
+        "prompt_tokens": 518,
+        "total_tokens": 622,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"通过空调系统面板调节空调风量：点击减小空调风量；点击增加空调风量。按压风速/副驾温度调节切换按钮，当图标亮起时，可以通过旋转风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。风速共有9个速度等级可设置。提高鼓风机转速后，风噪也会增大。\", \"evidence_ids\": [\"E1\", \"E2\"]}",
+      "qa_seconds": 1.1840360999340191,
+      "split": "dev",
+      "reference_answer": "按压风速/副驾温度调节切换按钮；对应图标亮起后，旋转风速/副驾温度调节旋钮，可以开启或关闭鼓风机，也可以调节鼓风机转速。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 244,
+        "anchor": "风速/副驾温度调节切换按钮"
+      }
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "retrieved_pages": [
+        244,
+        249,
+        243
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p249:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "hybrid",
+      "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 182,
+          "score": 0.03200204813108039,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.6160114915885921,
+            "bm25": 23.229600761386358
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 249,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n调节空调出风方向 说明！\n□ 出风方向开启时，对应的图标高亮显示。\n调节前排空调出风方向\n□ 空调设置为空调自动模式（AUTO）时，系统自动控制空调出风\n您可以通过中央显示屏调节前排空调出风方向。 方向。当手动设置其他出风方向时，空调将退出自动控制该区域\n风向。\n□ 关闭空调风扇后，保持当前模式状态不变。\n开启/关闭出风口\n前排空调出风口控制界面\n01点击开启/关闭空调气流吹向前挡风玻璃，除霜除雾。\n02点击开启/关闭空调气流吹向上半身。\n03点击开启/关闭空调气流吹向脚部。\n前排左侧出风口\n将控制板调到最左端，可以关闭出风口，向右调节可打开出风口。\n249",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p249:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 285,
+          "score": 0.030090497737556562,
+          "retrieval_ranks": {
+            "vector": 5,
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "vector": 0.607979277592948,
+            "bm25": 12.60224049876767
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 157,
+          "score": 0.01639344262295082,
+          "retrieval_ranks": {
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "bm25": 25.223279644894543
+          }
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "先按压风速/副驾温度调节切换按钮，当图标亮起后，旋转风速/副驾温度调节旋钮开启或关闭鼓风机，并可调节鼓风机转速；也可点击按钮减小或增加空调风量。提高鼓风机转速后风噪会增大。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p249:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 249,
+          "text": "空调\n调节空调出风方向 说明！\n□ 出风方向开启时，对应的图标高亮显示。\n调节前排空调出风方向\n□ 空调设置为空调自动模式（AUTO）时，系统自动控制空调出风\n您可以通过中央显示屏调节前排空调出风方向。 方向。当手动设置其他出风方向时，空调将退出自动控制该区域\n风向。\n□ 关闭空调风扇后，保持当前模式状态不变。\n开启/关闭出风口\n前排空调出风口控制界面\n01点击开启/关闭空调气流吹向前挡风玻璃，除霜除雾。\n02点击开启/关闭空调气流吹向上半身。\n03点击开启/关闭空调气流吹向脚部。\n前排左侧出风口\n将控制板调到最左端，可以关闭出风口，向右调节可打开出风口。\n249"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 79,
+        "prompt_tokens": 659,
+        "total_tokens": 738,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"先按压风速/副驾温度调节切换按钮，当图标亮起后，旋转风速/副驾温度调节旋钮开启或关闭鼓风机，并可调节鼓风机转速；也可点击按钮减小或增加空调风量。提高鼓风机转速后风噪会增大。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 1.038256200030446,
+      "split": "dev",
+      "reference_answer": "按压风速/副驾温度调节切换按钮；对应图标亮起后，旋转风速/副驾温度调节旋钮，可以开启或关闭鼓风机，也可以调节鼓风机转速。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 244,
+        "anchor": "风速/副驾温度调节切换按钮"
+      }
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "retrieved_pages": [
+        244,
+        243,
+        248
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p248:c1:tables-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 182,
+          "score": 0.03200204813108039,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.6160114915885921,
+            "bm25": 23.229600761386358
+          },
+          "rrf_rank": 1,
+          "rerank_score": 2.602844715118408
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 157,
+          "score": 0.01639344262295082,
+          "retrieval_ranks": {
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "bm25": 25.223279644894543
+          },
+          "rrf_rank": 3,
+          "rerank_score": 0.8622139692306519
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 248,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n01点击选择开启/关闭舒适关窗模式。 01点击打开/关闭驻车空调功能。\n说明！\n驻车空调\n□ 动力电池电量较低时，驻车空调无法正常使用。\n车辆处于驻车且熄火状态下，点击中央显示屏驻车空调开关，开启驻\n□ 车辆未插入充电枪充电时，驻车空调单次能使用3分钟左右。\n车空调功能，空调将以默认模式自动运行，保持座舱温度舒适。\n□ 车辆插入充电枪充电时，驻车空调单次能使用40分钟左右。如\n果驻车空调工作期间，中央显示屏无任何操作，约15分钟后将会\n在中央显示屏中唤起空调控制界面，然后点击 -舒适。 熄灭，驻车空调同步退出。\n□ 驻车空调开启后默认按照22°自动模式运行，空调风量为自动3\n挡，空调手动调节将无法操作。\n248",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p248:c1:tables-v1:body",
+          "chunk_index": 1,
+          "char_count": 312,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "bm25": 16.02295922621174
+          },
+          "rrf_rank": 8,
+          "rerank_score": 0.6605889797210693
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": null,
+      "required_block_rr": null,
+      "all_required_blocks_hit": null,
+      "prompt_version": "cockpit-rag-json-v2",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "先按压风速/副驾温度调节切换按钮，待图标亮起后，旋转风速/副驾温度调节旋钮，即可开启或关闭鼓风机并调节鼓风机转速。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 244,
+          "text": "空调\n01点击减小空调风量。\n01风速/副驾温度调节切换按钮\n02空调风量显示。\n02风速/副驾温度调节旋钮\n03点击增加空调风量。\n按压风速/副驾温度调节切换按钮。当 图标亮起时，可以通过旋转\n风速/副驾温度调节旋钮开启/关闭鼓风机，也可以调节鼓风机转速。 说明！\n□ 提高鼓风机转速后，风噪也会增大。\n中央显示屏调节空调风量\n在中央显示屏空调控制界面。\n244"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 243,
+          "text": "空调\n空调温度调节可对驾驶员侧和副驾驶侧分别进行设置，同时也可以进\n行同步设置。\n01上下滑动，调节副驾驶员侧空调温度。\n调节空调风量\n01点击开启/关闭温度同步。\n02上下滑动，调节驾驶员侧空调温度或同步调节两侧空调温度。 空调风量调节\n风速共有9个速度等级可设置。您可以通过空调系统面板调节空调风\n量。\n243"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p248:c1:tables-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 248,
+          "text": "空调\n01点击选择开启/关闭舒适关窗模式。 01点击打开/关闭驻车空调功能。\n说明！\n驻车空调\n□ 动力电池电量较低时，驻车空调无法正常使用。\n车辆处于驻车且熄火状态下，点击中央显示屏驻车空调开关，开启驻\n□ 车辆未插入充电枪充电时，驻车空调单次能使用3分钟左右。\n车空调功能，空调将以默认模式自动运行，保持座舱温度舒适。\n□ 车辆插入充电枪充电时，驻车空调单次能使用40分钟左右。如\n果驻车空调工作期间，中央显示屏无任何操作，约15分钟后将会\n在中央显示屏中唤起空调控制界面，然后点击 -舒适。 熄灭，驻车空调同步退出。\n□ 驻车空调开启后默认按照22°自动模式运行，空调风量为自动3\n挡，空调手动调节将无法操作。\n248"
+        }
+      },
+      "model": "deepseek-v4-1-flash",
+      "usage": {
+        "completion_tokens": 60,
+        "prompt_tokens": 674,
+        "total_tokens": 734,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        }
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"先按压风速/副驾温度调节切换按钮，待图标亮起后，旋转风速/副驾温度调节旋钮，即可开启或关闭鼓风机并调节鼓风机转速。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 0.8786872000200674,
+      "split": "dev",
+      "reference_answer": "按压风速/副驾温度调节切换按钮；对应图标亮起后，旋转风速/副驾温度调节旋钮，可以开启或关闭鼓风机，也可以调节鼓风机转速。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 244,
+        "anchor": "风速/副驾温度调节切换按钮"
+      }
+    }
+  ],
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config.json",
+  "run_at_utc": "2026-10-29T09:30:42.839536+00:00",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-v1",
+    "cases": {
+      "table_01": [
+        "p225:t1:r4",
+        "p225:t1:r2"
+      ],
+      "table_02": [
+        "p349:t3:r3"
+      ],
+      "table_03": [
+        "p349:t2:r1"
+      ],
+      "table_04": [
+        "p350:t2:r1"
+      ],
+      "table_05": [
+        "p351:t4:r1"
+      ],
+      "table_06": [
+        "p351:t4:r1"
+      ],
+      "table_07": [
+        "p125:t2:r5",
+        "p125:t2:r7"
+      ],
+      "table_08": [
+        "p321:t1:r1"
+      ]
+    }
+  },
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-10-30T12:05:38.461314+00:00",
+  "base_url": "https://ark.cn-beijing.volces.com/api/coding/v3",
+  "requested_model": "deepseek-v4.1-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\dev_retrieval_v3.json",
+  "expected_records": 4
+}

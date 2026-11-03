@@ -1,0 +1,750 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "cases": [
+    {
+      "case_id": "table_07",
+      "retrieved_pages": [
+        125,
+        125,
+        125
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r9",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r8"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "vector",
+      "question": "ISOFIX儿童安全座椅表中，I组9至18kg、尺寸等级D与B的第二排外侧座椅分别标注什么？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r7",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "chunk_index": 1,
+          "char_count": 202,
+          "score": 0.7924731436733252
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r9",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: A\n固定装 置: ISO/F3\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r9",
+          "chunk_index": 1,
+          "char_count": 202,
+          "score": 0.7902256367416115
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r8",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B1\n固定装 置: ISO/F2X\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r8",
+          "chunk_index": 1,
+          "char_count": 204,
+          "score": 0.7868651504173129
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 0.5,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": false,
+      "prompt_version": "cockpit-rag-json-v1",
+      "status": "generated",
+      "answer_status": "refused",
+      "answer": "所给证据未包含尺寸等级D的相关标注，无法回答该部分；现有证据仅显示尺寸等级B时第二排外侧座椅标注为IL、IUF。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r9",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: A\n固定装 置: ISO/F3\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r8",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B1\n固定装 置: ISO/F2X\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 57,
+        "prompt_tokens": 612,
+        "total_tokens": 669,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 612
+      },
+      "raw_answer": "{\"answer_status\": \"refused\", \"answer\": \"所给证据未包含尺寸等级D的相关标注，无法回答该部分；现有证据仅显示尺寸等级B时第二排外侧座椅标注为IL、IUF。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 3.550459000049159,
+      "split": "dev",
+      "reference_answer": "I组9至18kg中，尺寸等级D的第二排外侧座椅标注IL；尺寸等级B的第二排外侧座椅标注IL、IUF。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 125,
+        "anchor": "ISOFIX儿童安全座椅表"
+      },
+      "review": {
+        "task_pass": false,
+        "faithful": true,
+        "citation_pass": true,
+        "refusal_appropriate": true,
+        "failure_types": ["retrieval"],
+        "notes": "最终Top3缺少D行，仅回答有证据支持的B行；整题未完整回答，但未编造D。retrieval表示最终上下文缺证据，不断言D在候选阶段完全未被召回。"
+      }
+    },
+    {
+      "case_id": "table_07",
+      "retrieved_pages": [
+        125,
+        125,
+        125
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r6"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "bm25",
+      "question": "ISOFIX儿童安全座椅表中，I组9至18kg、尺寸等级D与B的第二排外侧座椅分别标注什么？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r5",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "chunk_index": 1,
+          "char_count": 198,
+          "score": 59.74153859196246
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r7",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "chunk_index": 1,
+          "char_count": 202,
+          "score": 59.52389708165967
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r6",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: C\n固定装 置: ISO/R3\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r6",
+          "chunk_index": 1,
+          "char_count": 198,
+          "score": 55.25756953636911
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": true,
+      "prompt_version": "cockpit-rag-json-v1",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "尺寸等级D的第二排外侧座椅标注为IL；尺寸等级B的第二排外侧座椅标注为IL，IUF。",
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r6",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: C\n固定装 置: ISO/R3\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 604,
+        "total_tokens": 654,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 604
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"尺寸等级D的第二排外侧座椅标注为IL；尺寸等级B的第二排外侧座椅标注为IL，IUF。\", \"evidence_ids\": [\"E1\", \"E2\"]}",
+      "qa_seconds": 1.0762192000402138,
+      "split": "dev",
+      "reference_answer": "I组9至18kg中，尺寸等级D的第二排外侧座椅标注IL；尺寸等级B的第二排外侧座椅标注IL、IUF。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 125,
+        "anchor": "ISOFIX儿童安全座椅表"
+      },
+      "review": {
+        "task_pass": true,
+        "faithful": true,
+        "citation_pass": true,
+        "refusal_appropriate": null,
+        "failure_types": [],
+        "notes": "D为IL、B为IL/IUF，两项事实及引用核对通过；E1对应D行，E2对应B行。"
+      }
+    },
+    {
+      "case_id": "table_07",
+      "retrieved_pages": [
+        125,
+        125,
+        125
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r9"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "hybrid",
+      "question": "ISOFIX儿童安全座椅表中，I组9至18kg、尺寸等级D与B的第二排外侧座椅分别标注什么？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r7",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "chunk_index": 1,
+          "char_count": 202,
+          "score": 0.03252247488101534,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.7924731436733252,
+            "bm25": 59.52389708165967
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r5",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "chunk_index": 1,
+          "char_count": 198,
+          "score": 0.032018442622950824,
+          "retrieval_ranks": {
+            "vector": 4,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.786147818294013,
+            "bm25": 59.74153859196246
+          }
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r9",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: A\n固定装 置: ISO/F3\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r9",
+          "chunk_index": 1,
+          "char_count": 202,
+          "score": 0.0315136476426799,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.7902256367416115,
+            "bm25": 55.06057233191909
+          }
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": true,
+      "prompt_version": "cockpit-rag-json-v1",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "尺寸等级D的第二排外侧座椅标注为IL；尺寸等级B的第二排外侧座椅标注为IL，IUF。",
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r9",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: A\n固定装 置: ISO/F3\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 607,
+        "total_tokens": 657,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 479
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"尺寸等级D的第二排外侧座椅标注为IL；尺寸等级B的第二排外侧座椅标注为IL，IUF。\", \"evidence_ids\": [\"E1\", \"E2\"]}",
+      "qa_seconds": 0.8309044999768957,
+      "split": "dev",
+      "reference_answer": "I组9至18kg中，尺寸等级D的第二排外侧座椅标注IL；尺寸等级B的第二排外侧座椅标注IL、IUF。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 125,
+        "anchor": "ISOFIX儿童安全座椅表"
+      },
+      "review": {
+        "task_pass": true,
+        "faithful": true,
+        "citation_pass": true,
+        "refusal_appropriate": null,
+        "failure_types": [],
+        "notes": "D为IL、B为IL/IUF，两项事实及引用核对通过；E1对应B行，E2对应D行。"
+      }
+    },
+    {
+      "case_id": "table_07",
+      "retrieved_pages": [
+        125,
+        125,
+        125
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "ISOFIX儿童安全座椅表中，I组9至18kg、尺寸等级D与B的第二排外侧座椅分别标注什么？",
+      "answerable": true,
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t1:r3",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至18kg\n座位 / 前排乘客座 椅: X\n座位 / 第二排外侧 座椅: U/L\n座位 / 第二排中间 座椅: X\n相邻上文（归属待核验）：\n推荐的儿童安全座椅\n相邻下文（归属待核验）：\nU：此座椅适合该质量组所用的“通用”类别约束装置。\nUF：此座椅适合该质量组所用的正向“通用”类别约束装置。\nL：此座椅适合儿童约束系统列表中规定的特殊儿童约束系统。这类\n约束系统可能专为“特定车辆”、“受限”或“半通用”类别车辆使\n用。\nX：该质量组不允许使用儿童约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t1:r3",
+          "chunk_index": 1,
+          "char_count": 246,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "bm25": 44.305696986754704
+          },
+          "rrf_rank": 10,
+          "rerank_score": 5.684329509735107
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r5",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "chunk_index": 1,
+          "char_count": 198,
+          "score": 0.032018442622950824,
+          "retrieval_ranks": {
+            "vector": 4,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.786147818294013,
+            "bm25": 59.74153859196246
+          },
+          "rrf_rank": 2,
+          "rerank_score": 5.619161605834961
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "pipeline_version": "tables-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "p125:t2:r7",
+          "kind": "table",
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "chunk_index": 1,
+          "char_count": 202,
+          "score": 0.03252247488101534,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.7924731436733252,
+            "bm25": 59.52389708165967
+          },
+          "rrf_rank": 1,
+          "rerank_score": 5.395577907562256
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 0.5,
+      "all_required_blocks_hit": true,
+      "prompt_version": "cockpit-rag-json-v1",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "尺寸等级D的第二排外侧座椅标注为IL；尺寸等级B的第二排外侧座椅标注为IL，IUF。",
+      "evidence_ids": [
+        "E2",
+        "E3"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        {
+          "evidence_id": "E3",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t1:r3",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至18kg\n座位 / 前排乘客座 椅: X\n座位 / 第二排外侧 座椅: U/L\n座位 / 第二排中间 座椅: X\n相邻上文（归属待核验）：\n推荐的儿童安全座椅\n相邻下文（归属待核验）：\nU：此座椅适合该质量组所用的“通用”类别约束装置。\nUF：此座椅适合该质量组所用的正向“通用”类别约束装置。\nL：此座椅适合儿童约束系统列表中规定的特殊儿童约束系统。这类\n约束系统可能专为“特定车辆”、“受限”或“半通用”类别车辆使\n用。\nX：该质量组不允许使用儿童约束系统。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r5",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: D\n固定装 置: ISO/R2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-v1:p125:t2:r7",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 125,
+          "text": "表格数据：\n质量组: I组9至 18kg\n尺寸等 级: B\n固定装 置: ISO/F2\n座椅位置 / 前排乘 客: X\n座椅位置 / 第二排 外侧座 椅: IL，IUF\n座椅位置 / 第二排 中间座 椅: X\n相邻上文（归属待核验）：\n安全出\nISOFIX儿童安全座椅表\n相邻下文（归属待核验）：\nIL：适用于特定的ISOFIX儿童约束系统。这些儿童约束系统是特定车\n辆、受限制或半通用类别中的约束系统。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 50,
+        "prompt_tokens": 634,
+        "total_tokens": 684,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 634
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"尺寸等级D的第二排外侧座椅标注为IL；尺寸等级B的第二排外侧座椅标注为IL，IUF。\", \"evidence_ids\": [\"E2\", \"E3\"]}",
+      "qa_seconds": 1.0317793999565765,
+      "split": "dev",
+      "reference_answer": "I组9至18kg中，尺寸等级D的第二排外侧座椅标注IL；尺寸等级B的第二排外侧座椅标注IL、IUF。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 125,
+        "anchor": "ISOFIX儿童安全座椅表"
+      },
+      "review": {
+        "task_pass": true,
+        "faithful": true,
+        "citation_pass": true,
+        "refusal_appropriate": null,
+        "failure_types": [],
+        "notes": "普通表U/L干扰行排第一，但本次正确使用E2对应的D行和E3对应的B行，回答D为IL、B为IL/IUF，没有误用干扰行。"
+      }
+    }
+  ],
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config.json",
+  "run_at_utc": "2026-10-29T09:30:42.839536+00:00",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-v1",
+    "cases": {
+      "table_01": [
+        "p225:t1:r4",
+        "p225:t1:r2"
+      ],
+      "table_02": [
+        "p349:t3:r3"
+      ],
+      "table_03": [
+        "p349:t2:r1"
+      ],
+      "table_04": [
+        "p350:t2:r1"
+      ],
+      "table_05": [
+        "p351:t4:r1"
+      ],
+      "table_06": [
+        "p351:t4:r1"
+      ],
+      "table_07": [
+        "p125:t2:r5",
+        "p125:t2:r7"
+      ],
+      "table_08": [
+        "p321:t1:r1"
+      ]
+    }
+  },
+  "report_type": "qa_review",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-10-30T05:10:26.663976+00:00",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\dev_retrieval_v3.json",
+  "expected_records": 4,
+  "qa_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\qa_table07_v1.json"
+}

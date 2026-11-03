@@ -7,7 +7,8 @@ from pathlib import Path
 STORAGE_PATH = Path(__file__).resolve().parent / ".qdrant"
 #__file__ 是当前脚本路径，resolve() 转成绝对路径，parent 取项目目录，/ ".qdrant" 拼接存储目录。这让终端切换目录时仍使用同一个数据库。
 # COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5" #COLLECTION_NAME 是集合名称，包含当前模型标识
-COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_v1"
+# COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_v1"
+COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1"
 #save_points() 和 search_points() 都读取这个常量，所以以后会向新集合保存、从新集合查询。
 DEFAULT_TOP_K = 3
 

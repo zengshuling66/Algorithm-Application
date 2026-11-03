@@ -66,14 +66,14 @@ def load_pdf_pages(pdf_path: Path, source_id: str):
     with pdfplumber.open(pdf_path) as pdf:
         total_pages = len(pdf.pages)
         for page in pdf.pages:
-            body, tables = parse_page(page)
+            body, tables = parse_page(page, use_text_flow=True)
             header = page.crop((0, top, page.width, bottom)).extract_text() or "" #crop() 接收“左、上、右、下”，这里取整页宽度内的页眉带。
             #提取失败先用 ""；去掉首尾空白后仍为空，则保存 None，不猜章节。
             section = header.strip() or None #section来自每一页 PDF 的页眉文字
             base = {
                 "source": pdf_path.name, "source_id": source_id,
                 "content_hash": content_hash, "page": page.page_number,
-                "pipeline_version": "tables-v1",
+                "pipeline_version": "tables-textflow-v1",
                 "brand": metadata["brand"],
                 "vehicle_model": metadata["vehicle_model"],
                 "model_year": metadata["model_year"], "section": section,
@@ -84,6 +84,7 @@ def load_pdf_pages(pdf_path: Path, source_id: str):
                 records.append({**base, "block_id": "body", "kind": "text", "text": body}) #**base把共同来源字段展开到每条字典中
                 #block_id 区分同页不同内容，kind 区分正文和表格，
             for table in tables:
+                #遍历 row_texts，把每个数据行加上邻近文字，变成单独的入库记录，并生成 p125:t2:r5 这样的行ID
                 for number, row_text in enumerate(table["row_texts"], start=1):
                     text = (f"表格数据：\n{row_text}\n"
                             f"相邻上文（归属待核验）：\n{table['context_before']}\n"

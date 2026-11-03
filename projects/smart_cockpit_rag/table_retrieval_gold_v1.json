@@ -1,0 +1,34 @@
+{
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_v1",
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "pipeline_version": "tables-v1",
+  "cases": {
+    "table_01": [
+      "p225:t1:r4",
+      "p225:t1:r2"
+    ],
+    "table_02": [
+      "p349:t3:r3"
+    ],
+    "table_03": [
+      "p349:t2:r1"
+    ],
+    "table_04": [
+      "p350:t2:r1"
+    ],
+    "table_05": [
+      "p351:t4:r1"
+    ],
+    "table_06": [
+      "p351:t4:r1"
+    ],
+    "table_07": [
+      "p125:t2:r5",
+      "p125:t2:r7"
+    ],
+    "table_08": [
+      "p321:t1:r1"
+    ]
+  }
+}
