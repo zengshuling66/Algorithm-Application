@@ -14,13 +14,13 @@ def generate_json_answer(messages): #generate_json_answer只负责打开JSON开�
 #组装而不执行，输入检索链，返回顺序链；.invoke(question) 才是启动流程
 def build_qa_chain(retriever, generator=generate_json_answer):
     #根据本次最终Document建立映射；输入问题，执行检索，输出含问题、Document 列表、空消息列表和 Prompt 版本的字典。
-    #prepare 返回的字典就是 state，它负责把本次问题、命中记录和证据映射传给下一步。
+    #输入问题字符串，输出包含问题、Document列表、证据映射等字段的state字典
     def prepare(question):
         documents = retriever.invoke(question) #检索出的 documents
         return {"question": question, "documents": documents,
                 "evidence_map": build_evidence_map(documents), "messages": [], "prompt_version": STRUCTURED_PROMPT_VERSION}
                 #build_evidence_map(documents) → 建立 evidence_map
-    #answer先处理空证据，否则构建消息、生成、解析。
+    #answer先处理空证据，否则构建消息、生成、解析；读取上述字典，输出答案状态、答案、引用、模型及用量等字段
     def answer(state):
         if not state["documents"]:
             return {**state, "status": "no_evidence", "answer_status": "refused",

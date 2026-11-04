@@ -26,7 +26,7 @@
 | --- | --- |
 | Embedding | 本地 `BAAI/bge-small-zh-v1.5`，CPU，512维，归一化 |
 | 切块 | 正文500字符、重叠100字符；每条表格数据行整体保留 |
-| 向量库 | Qdrant本地模式，COSINE；目录 `.qdrant/` |
+| 向量库 | `qdrant-client 1.15.1` Python本地模式，COSINE；目录 `.qdrant/` |
 | BM25 | jieba分词、英文小写化，BM25Okapi：k1=1.5、b=0.75 |
 | 两路候选 | 各最多10条，`hybrid_retrieval.DEFAULT_CANDIDATE_K` |
 | RRF | 按chunk_id合并，累计各路 `1/(60+rank)`，同分按ID排序 |
@@ -39,6 +39,10 @@
 | Prompt | 结构化路径 `cockpit-rag-json-v2`；直接文本基线保留 `cockpit-rag-v1` |
 
 这些值是源码默认值，不是全部开放为CLI参数。混合的 `score` 是RRF总分；精排另保留 `rerank_score` 与 `rrf_rank`，不覆盖原分数。各路分数不是同一种量，原始精排logit也不是概率。
+
+两路各最多10条，按ID合并后最多20个不同候选；混合直接取RRF Top3，精排路径先取RRF Top10再重排为Top3。当前向量查询没有设置 `score_threshold`，不能对余弦、BM25、RRF和精排分数套用同一阈值。
+
+上述已核验版本的Python本地稠密检索通过NumPy计算距离并排序，不使用HNSW。服务端HNSW参数不是当前路径的调优开关；精确近邻排序也不等于答案证据完整。是否迁移后端应依据数据规模与性能实测，不因容器化而强制迁移。
 
 ## 快速开始
 
@@ -221,9 +225,11 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 所有报告示例使用新文件名。正式实验应保留原始输出与独立review；报告含手册正文，不默认随公开仓库分发。
 
+清理时保留正式检索基线、原始QA、独立review和性能报告；仅在核对内容覆盖及引用后删除冗余中间文件。`__pycache__/`、`.pytest_cache/`可重新生成，`.qdrant/`则是持久化数据库，不作为缓存删除。
+
 ## 已验证结果
 
-核验截至2026-11-03；以下均为单手册、小开发集结果，不是独立测试集或生产成绩。
+工程状态核验于2026-11-04；以下质量与性能数字沿用所列实验报告，不表示当日重新生成。均为单手册、小开发集结果，不是独立测试集或生产成绩。
 
 ### 数据与解析
 
@@ -280,7 +286,7 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-03实跑35项通过，pip check无依赖冲突。
+2026-11-04实跑35项通过，pip check无依赖冲突。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
@@ -308,6 +314,21 @@ python -m pip check
 | [prompt_builder.py](prompt_builder.py)、[query.py](query.py) | 直接文本基线 |
 | [evaluation.py](evaluation.py)、[test_evaluation.py](test_evaluation.py) | compare/score/qa/review/summary/benchmark及离线测试 |
 
+### 评测入口与函数关系
+
+`main()`按子命令选择分支并返回，不按函数定义顺序执行全部流程。
+
+| 子命令 | 主调度与职责 | 调用生成API |
+| --- | --- | --- |
+| `compare` | `run_retrieval_evaluation`组织四路检索、评分、汇总及保存 | 否 |
+| `score` | `main`复用 `add_block_scores`、`summarize_retrieval`、`write_report`，只给已有报告补分 | 否 |
+| `qa` | `run_saved_qa`逐行调用 `evaluate_qa_row`，后者回放Document并复用 `build_qa_chain` | 仅显式加 `--run` 后 |
+| `review` | `prepare_qa_review`创建带空review的新副本，需人工填写 | 否 |
+| `summary` | `summarize_retrieval`或 `summarize_qa_review`汇总已有分数，不自动判断答案 | 否 |
+| `benchmark` | `benchmark_retrieval`构建两检索器，预热后重复检索计时 | 否 |
+
+共用的 `load_evaluation_inputs`合并dev题集、读取Metadata/目标行标注并核对范围；`score_retrieval`和 `score_required_blocks`只比较已有结果；`write_report`只保存报告。旧位置参数入口仍由 `inspect_retrieval`执行单路检索，并保留 `"w"`覆盖写入，不具备新配置流程的dev限制和新文件防覆盖保护，不作为常规四策略评测入口。
+
 ## 限制与后续方向
 
 - 只有单份真实资料；原生表格检测与表头处理有启发式边界，未实现OCR、跨页表格拼接或完整版面理解。text-flow不能保证任意PDF阅读顺序。
@@ -326,4 +347,5 @@ python -m pip check
 - [BGE精排模型说明](https://huggingface.co/BAAI/bge-reranker-base)
 - [RRF公式与候选窗口](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion)
 - [Qdrant points与upsert](https://qdrant.tech/documentation/concepts/points/)
+- [Qdrant Python本地实现（v1.15.1）](https://github.com/qdrant/qdrant-client/blob/v1.15.1/qdrant_client/local/local_collection.py)
 - [LangChain RunnableSequence](https://reference.langchain.com/python/langchain-core/runnables/base/RunnableSequence)

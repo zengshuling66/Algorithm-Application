@@ -80,7 +80,7 @@ def load_cases(path: Path) -> list[dict]:
 
 
 #先执行向量检索，得到 results → 再拿 results 与人工标注进行比较 → 记录 True / False
-#检索只限定资料身份和文件哈希，再按相似度选取结果；它不知道人工期望页码。
+#检索只限定资料身份和文件哈希，再按相似度选取结果；它不知道人工期望页码
 def inspect_retrieval(case, model, source_id, content_hash, top_k=DEFAULT_TOP_K):
     results = search_stored_chunks(
         case["question"], model, source_id, content_hash, top_k=top_k,
@@ -141,13 +141,14 @@ def compare_retrieval(cases, model, source_id, content_hash):
         fused = rrf_fuse({"vector": vector, "bm25": bm25}, top_k=DEFAULT_CANDIDATE_K)
         #四种输出
         outputs = {
-            "vector": vector[:DEFAULT_TOP_K], "bm25": bm25[:DEFAULT_TOP_K],
+            "vector": vector[:DEFAULT_TOP_K],
+            "bm25": bm25[:DEFAULT_TOP_K],
             "hybrid": fused[:DEFAULT_TOP_K],
             "rerank": rerank_results(question, fused, reranker, top_k=DEFAULT_TOP_K),
         }
         for method, results in outputs.items(): #.items() 每次取策略名和结果列表
             #评分后，update 补入问题、策略、完整结果等字段，append 收集记录
-            record = score_retrieval(case, results)
+            record = score_retrieval(case, results) #计算标注页是否命中及首次命中的倒数排名
             record.update(method=method, question=question, answerable=case["answerable"],
                           results=results, generation_status="not_run")
             records.append(record)
@@ -209,7 +210,13 @@ def load_evaluation_inputs(config_path):
 
     return cases, manual, gold
 
-#组织完整流程，负责读取配置、加载模型、检索、评分，最后调用保存函数
+#四策略重新检索，组织完整流程，负责读取配置、加载模型、检索、评分，最后调用保存函数
+# run_retrieval_evaluation
+# ├─ load_evaluation_inputs → load_cases → validate_case_semantics
+# ├─ compare_retrieval → score_retrieval
+# ├─ add_block_scores → score_required_blocks
+# ├─ summarize_retrieval
+# └─ write_report
 def run_retrieval_evaluation(config_path, output_path):
     output_path = Path(output_path)
     if output_path.exists(): #exists() 提前发现重名，避免白跑模型
@@ -221,12 +228,13 @@ def run_retrieval_evaluation(config_path, output_path):
     )
     #compare_retrieval内部建立 BM25、加载精排，并调用原向量/BM25/RRF/精排函数。
     report = compare_retrieval(cases, model, manual["source_id"], manual["content_hash"])
+    #add_block_scores负责整份报告的范围核对和逐条补分；遇到有目标行标注的题，才调用score_required_blocks，计算行覆盖率、首次目标行RR及是否全部找齐
     report = add_block_scores(report, gold)
     #新增配置路径与 UTC 时间字符串，这里记录的是检索完成附近的时间，不是耗时。
     report["config_file"] = str(Path(config_path).resolve())
     report["run_at_utc"] = datetime.now(timezone.utc).isoformat()
 
-    report["summary"] = summarize_retrieval(report)
+    report["summary"] = summarize_retrieval(report) #把逐条评分按策略取平均
     write_report(output_path, report)
 
     print(f"Recorded {len(report['cases'])} rows: {output_path}")
@@ -299,6 +307,7 @@ def evaluate_qa_row(row, generator=generate_json_answer):
 
     started = perf_counter()
     try:
+        #复用build_qa_chain执行问答，返回答案、引用、状态、原始响应和耗时
         result = build_qa_chain(RunnableLambda(replay), generator=capture).invoke(row["question"])
         #keep 只选可保存的字段，不保存整套 Document 对象
         keep = ("prompt_version", "status", "answer_status", "answer",
@@ -354,7 +363,7 @@ def run_saved_qa(config_path, source_path, case_id, output_path, run=False, gene
     return report
 
 
-#它接收两个路径，返回补好字段的报告
+#它接收两个路径，读取完整问答报告，给每条记录加入空的review字段，再保存新副本；它准备评分表，评分仍需人工填写。
 def prepare_qa_review(source_path, output_path):
     report = json.loads(Path(source_path).read_text(encoding="utf-8")) #json.loads 创建内存对象
     if (report.get("report_type") != "qa"
@@ -379,6 +388,7 @@ def prepare_qa_review(source_path, output_path):
     return report
 
 
+#读取已填写的review，计算任务通过率、忠实度、引用与拒答指标，以及失败标签计数
 def summarize_qa_review(report):
     if report.get("report_type") != "qa_review":
         raise ValueError("Use a QA review report")
@@ -448,26 +458,26 @@ def benchmark_retrieval(config_path, output_path):
 
 
 def main():
-    if len(sys.argv) > 1 and sys.argv[1] == "benchmark":
+    if len(sys.argv) > 1 and sys.argv[1] == "benchmark": #本地检索计时，不生成答案、不评价答案正确性
         if len(sys.argv) != 4:
             raise SystemExit("Usage: python evaluation.py benchmark <config.json> <report.json>")
         benchmark_retrieval(sys.argv[2], sys.argv[3])
         return
 
-    if len(sys.argv) > 1 and sys.argv[1] == "review":
+    if len(sys.argv) > 1 and sys.argv[1] == "review": #创建待填写review的新副本，不自动判答案
         if len(sys.argv) != 4:
             raise SystemExit("Usage: python evaluation.py review <qa.json> <output.json>")
         prepare_qa_review(sys.argv[2], sys.argv[3])
         return
     
-    if len(sys.argv) > 1 and sys.argv[1] == "qa":
+    if len(sys.argv) > 1 and sys.argv[1] == "qa": #回放已有上下文；加--run才真实生成
         if len(sys.argv) not in (6, 7) or (len(sys.argv) == 7 and sys.argv[6] != "--run"):
             raise SystemExit("Usage: python evaluation.py qa <config> <retrieval> <case_id|all> <output> [--run]")
             #四个位置参数依次是配置、检索报告、题号、输出路径，只有最后显式添加 --run，才将 run 设为 True
         run_saved_qa(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], run=len(sys.argv) == 7)
         return
 
-    if len(sys.argv) > 1 and sys.argv[1] == "summary":
+    if len(sys.argv) > 1 and sys.argv[1] == "summary": #汇总已有评分，不重新检索或生成
         if len(sys.argv) != 3:
             raise SystemExit("Usage: python evaluation.py summary <report.json>")
         report = json.loads(Path(sys.argv[2]).read_text(encoding="utf-8"))
@@ -478,7 +488,7 @@ def main():
         print(json.dumps(summary, ensure_ascii=False, indent=2)) #json.dumps 转为便于打印的字符串
         return
 
-    if len(sys.argv) > 1 and sys.argv[1] == "score":
+    if len(sys.argv) > 1 and sys.argv[1] == "score": #给已有检索报告补目标行评分，不重新检索
         if len(sys.argv) != 5:
             raise SystemExit(
                 "Usage: python evaluation.py score <config.json> <input.json> <output.json>"
@@ -492,7 +502,7 @@ def main():
         print("Rows with block labels:", count)
         return
     
-    if len(sys.argv) > 1 and sys.argv[1] == "compare":
+    if len(sys.argv) > 1 and sys.argv[1] == "compare": #四策略重新检索、评分、保存报告
         if len(sys.argv) != 4:
             raise SystemExit(
                 "Usage: python evaluation.py compare <config.json> <report.json>"
@@ -502,7 +512,7 @@ def main():
     
     if len(sys.argv) not in (2, 5): #只传题集路径时长度为 2，仍然只校验题集；再传来源、哈希和报告路径时长度为 5，才进入批量检索。
         raise SystemExit("Usage: python evaluation.py <cases.json> [<source_id> <content_hash> <report.json>]")
-    cases = load_cases(Path(sys.argv[1]))
+    cases = load_cases(Path(sys.argv[1])) #校验单个题集，或执行旧单路检索
 
     if len(sys.argv) == 2:
         print(f"样本数: {len(cases)}")
