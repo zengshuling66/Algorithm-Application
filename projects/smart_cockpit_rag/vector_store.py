@@ -6,6 +6,7 @@ from pathlib import Path
 
 STORAGE_PATH = Path(__file__).resolve().parent / ".qdrant"
 #__file__ 是当前脚本路径，resolve() 转成绝对路径，parent 取项目目录，/ ".qdrant" 拼接存储目录。这让终端切换目录时仍使用同一个数据库。
+#解析版本目前通过不同集合隔离
 # COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5" #COLLECTION_NAME 是集合名称，包含当前模型标识
 # COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_v1"
 COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1"
@@ -149,3 +150,54 @@ def load_stored_chunks(source_id, content_hash):
                 return chunks
     finally:
         client.close()
+
+
+#删除当前集合中指定资料的一个文件版本
+def delete_stored_version(source_id, content_hash):
+    if not isinstance(source_id, str) or not source_id.strip():
+        raise ValueError("source_id must be a nonempty string")
+    if not isinstance(content_hash, str) or not content_hash.strip():
+        raise ValueError("content_hash must be a nonempty string")
+    scope = models.Filter(must=[
+        models.FieldCondition(key="source_id", match=models.MatchValue(value=source_id)),
+        models.FieldCondition(key="content_hash", match=models.MatchValue(value=content_hash)),
+    ])
+    client = QdrantClient(path=str(STORAGE_PATH))
+    try:
+        if not client.collection_exists(COLLECTION_NAME):
+            return 0, 0 #集合不存在返回 (0,0)
+        before = client.count(COLLECTION_NAME, count_filter=scope, exact=True).count
+        #count_filter=scope只统计目标范围，exact=True要求精确计数，末尾 .count取出整数
+        if before: #表示有匹配记录才执行
+            client.delete(COLLECTION_NAME, models.FilterSelector(filter=scope), wait=True)
+            #FilterSelector把过滤条件交给删除接口，wait=True要求等待操作完成后再统计
+        after = client.count(COLLECTION_NAME, count_filter=scope, exact=True).count
+        return before, after
+    finally:
+        client.close()
+
+
+#只清理当前集合中同资料、同哈希的多余块；使用时要注意：先写入，再清理，写入时同id会更新，不同的id均保留
+def prune_stored_chunks(source_id, content_hash, keep_chunk_ids):
+    if any(not isinstance(v, str) or not v.strip() for v in (source_id, content_hash)):
+        raise ValueError("Explicit source_id and content_hash are required")
+    keep = set(keep_chunk_ids) #set()将保留ID转成集合
+    if not keep or any(not isinstance(key, str) or not key.strip() for key in keep):
+        raise ValueError("Use nonempty chunk IDs; use delete_stored_version for full removal")
+    stored = load_stored_chunks(source_id, content_hash)
+    existing = {row["chunk_id"] for row in stored} #读取的是本轮写入之后的数据库，不是写入之前的旧数据
+    if not keep <= existing: #keep <= existing表示所有预期ID都已存在，缺一个就停止
+        raise ValueError("Expected chunks are missing; skip cleanup")
+    stale = existing - keep #existing - keep只得到多余块
+    if stale:
+        client = QdrantClient(path=str(STORAGE_PATH))
+        try:
+            #使用 uuid5 为每个过期块生成唯一的 ID作为数据库实际ID
+            ids = [str(uuid5(NAMESPACE_URL, key)) for key in sorted(stale)]
+            client.delete(COLLECTION_NAME, models.PointIdsList(points=ids), wait=True) #PointIdsList按具体ID删除
+        finally:
+            client.close()
+    remaining = {row["chunk_id"] for row in load_stored_chunks(source_id, content_hash)}
+    if remaining != keep: #删除后重新读取，要求剩余ID恰好等于keep；不一致就报错
+        raise RuntimeError("Stored chunk IDs do not match the expected set")
+    return len(stale) #成功返回删除数量，重复清理返回0

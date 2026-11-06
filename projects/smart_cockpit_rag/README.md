@@ -91,7 +91,7 @@ python -X utf8 -B chunking.py $pdf $manual.source_id
 python -X utf8 -B retrieval.py $pdf $manual.source_id
 ~~~
 
-第一条Python命令只解析、切块；第二条才执行BGE编码、`build_points`、`save_points`及检索自检，实际写入当前集合。现有资料日常问答不需要再次入库。
+第一条Python命令只解析、切块；第二条执行BGE编码、`build_points`、`save_points`、同范围多余块清理和检索自检，实际修改当前集合。必须使用该资料版本的完整解析产出：写入成功后，`prune_stored_chunks`会移除同资料/哈希范围内不在本轮完整ID集中的记录。现有资料日常问答不需要再次入库。
 
 仅比较某一物理页的两种正文提取方式：
 ~~~powershell
@@ -147,9 +147,27 @@ Remove-Variable secureKey -ErrorAction SilentlyContinue
 
 - `source_id` 是资料身份，`content_hash` 是原始PDF字节的SHA-256；二者同时过滤，不是车型年款或厂家版本证明，也不会按哈希自动找回PDF路径。
 - `pipeline_version` 标识派生解析方案。PDF未变但正文提取顺序变化时，哈希不变，解析版本与集合另行区分，重新切块和编码；当前入口尚未实现只复用未变表格向量的增量优化。
-- `chunk_id` 包含来源、哈希、切块参数、页码、块序号、解析版本与块身份。稳定UUID用于幂等upsert；相同ID覆盖不等于自动删除已消失的旧块，因此重解析使用独立集合。
+- `chunk_id` 包含来源、哈希、切块参数、页码、块序号、解析版本与块身份。稳定UUID用于幂等upsert；相同ID覆盖不等于自动删除已消失的旧块。同范围清理由显式函数处理，解析方案对照继续使用独立集合。
 - 原始文件版本变化时，先同步Metadata配置，再入库并使用新文件哈希查询。只改JSON或内存记录不会刷新数据库。
 - 表格相邻文字只是归属待核验的上下文。当前目标行标注已结合原表核对，不保证任意表格邻文都属于该行。
+
+### 资料更新与清理
+
+[vector_store.py](vector_store.py) 已提供以下函数，并用临时数据库验证；它们不自动决定历史版本何时退役，也不删除本地PDF。
+
+| 函数 | 作用与返回值 |
+| --- | --- |
+| `save_points(points, dimension)` | 按稳定ID新增或覆盖，返回整个集合写入前后的数量；不会自动删除本轮未提交的旧ID |
+| `delete_stored_version(source_id, content_hash)` | 在当前集合内按资料身份与文件哈希的AND条件删除，返回该范围删除前后的数量；重复删除返回`(0,0)` |
+| `prune_stored_chunks(source_id, content_hash, keep_chunk_ids)` | 同范围已有ID减去完整保留ID，只删除多余块，返回删除数量；重复清理返回0 |
+
+同范围更新顺序是：完整产出与编码 -> `build_points` -> `save_points`成功 -> 传入本轮完整ID集执行`prune_stored_chunks` -> 核验剩余ID -> 重新构建BM25/混合检索器。不能只传新增批次的ID；空保留列表或预期ID尚未写齐时，清理函数拒绝执行。集合中的解析版本目前由集合隔离，而非单独的payload过滤条件。
+
+`retrieval.main()`已在首次完整`save_points`成功后接入`prune_stored_chunks`，再执行重复写入和检索自检；输出`counts (before/upsert/repeat)`与`pruned`，前者是整个集合的数量，后者是本次范围内的删除数量。写入异常会停止，不继续清理。新文件哈希的清理不会自动删除旧哈希；确需退役旧版本时再明确调用版本删除函数。保留的历史集合用于对照/回滚，不视作活动库中的脏数据。日常混合检索CLI新进程会从数据库重新构建BM25，已存在的检索器实例则需显式重建，不是入库函数自动刷新所有实例。
+
+`delete`删除选中的记录，`delete_collection`才删除集合；若集合中全部记录都匹配指定身份/哈希，版本删除会清空记录但留下集合。因此只在明确退役后操作，不用正式资料演示删除。当前能力限单进程离线作业，写入与清理不是原子事务；写入失败不得继续清理，部分写入不保证自动回滚。已构建的BM25持有内存语料，不会因Qdrant删除而自动刷新。
+
+### 结构化答案与引用
 
 结构化链只把本次最终Document映射为 `E1/E2/E3`，这些编号不是页码，也不跨请求稳定。模型只返回 `answer_status`、`answer`、`evidence_ids`；程序从可信映射回取来源、哈希、块ID、页码与正文，不信任模型另写的来源字段。
 
@@ -229,11 +247,13 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 ## 已验证结果
 
-工程状态核验于2026-11-04；以下质量与性能数字沿用所列实验报告，不表示当日重新生成。均为单手册、小开发集结果，不是独立测试集或生产成绩。
+工程状态核验于2026-11-05；以下质量与性能数字沿用所列实验报告，不表示当日重新生成。均为单手册、小开发集结果，不是独立测试集或生产成绩。
 
 ### 数据与解析
 
 354个物理页，334页有提取文本，20页经历史渲染核验仅见空白/裁切标记。切块604条，其中142条表格行；检测到27个表格区域，不等于所有视觉表格均被识别。
+
+活动库按现有流程重新解析、切块后只读核对：实际ID与预期ID均为604，两个方向差集为0；此前完整payload对齐也无差异，当前没有需清理的多余记录。该核对没有调用正式清理函数，也不证明所有页面语义解析正确。
 
 新旧解析全书对照中，每页非空白字符及出现次数一致，表格记录含邻文保持一致，305页正文输出改变。197/244页部分段落归属更连贯，但页码/标题位置也改变，不能由字符未丢或块数相同推出全书阅读逻辑正确。
 
@@ -286,19 +306,21 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-04实跑35项通过，pip check无依赖冲突。
+2026-11-05实跑38项通过，pip check无依赖冲突。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
 | 切块边界、重叠、Metadata、ID与非法参数 | 5 |
-| 临时Qdrant持久化、幂等、范围隔离与payload | 1 |
+| 临时Qdrant持久化、upsert边界、精确删除、缩块清理、范围隔离与BM25重建 | 4 |
 | 旧文本Prompt一致性与空输入 | 2 |
 | RRF排序、两路信息与输入不变 | 1 |
 | 假精排排序、同分及非法分数 | 4 |
 | 结构化JSON/字段/状态/引用身份契约 | 13 |
 | 问答空证据、生成桩、异常、防覆盖与人工复核汇总 | 9 |
 
-测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。四项汇总新增用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；测试通过不等于35道真实问题正确。
+测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；测试通过不等于38道真实问题正确。
+
+另用假解析结果、2维单位向量和临时数据库运行当前`retrieval.main()`，保留真实切块、Qdrant写入/清理、FAISS自检及向量查询，验证首次清理1条、重复导入清理0条、其他资料/哈希保留，以及写入失败时不清理。该临时入口检查不计入上述38项持久化pytest，也不等于真实PDF/BGE全量入库、并发更新或故障恢复验收；没有重新写入或删除正式604条记录。
 
 ## 代码导航
 
@@ -306,7 +328,7 @@ python -m pip check
 | --- | --- |
 | [table_parser.py](table_parser.py)、[ingestion.py](ingestion.py) | 正文/表格解析、可选页对照、哈希与Metadata |
 | [chunking.py](chunking.py)、[retrieval.py](retrieval.py) | 切块、编码、入库及FAISS原理基线 |
-| [vector_store.py](vector_store.py) | Qdrant写入、来源/版本过滤、分批读取payload |
+| [vector_store.py](vector_store.py) | Qdrant写入、来源/版本过滤、分批读取payload、精确版本删除与多余块清理 |
 | [bm25_retrieval.py](bm25_retrieval.py)、[hybrid_retrieval.py](hybrid_retrieval.py) | 同范围关键词召回与RRF |
 | [reranking.py](reranking.py)、[langchain_retrieval.py](langchain_retrieval.py) | 精排及三种检索器适配 |
 | [answer_contract.py](answer_contract.py)、[langchain_prompt.py](langchain_prompt.py) | 本次证据映射、结构化消息、JSON/引用身份校验 |
@@ -336,7 +358,7 @@ python -m pip check
 - 只有dev方案比较，冻结10题尚未终测；精排和目录干扰仍有风险，不能凭本轮30/30承诺泛化。
 - JSON/可信ID校验不等于自动引用语义评测；正文格式、证据充分性和拒答仍需回归，旧error行可能缺Prompt版本等元信息。
 - 保存QA逐条落盘但非原子检查点，无断点续跑、生产重试或请求追踪；API错误保留，不自动改写为正常拒答。
-- 资料更新/删除、旧索引清理、仅更新payload及跳过重复编码尚未形成完整生命周期；保留旧集合不等于已实现自动版本切换。
+- 入库CLI已接入同范围旧块清理，仅按单进程离线作业验证；尚无自动版本切换、写入/清理原子事务、并发更新或失败回滚，也未实现仅更新payload、跳过重复编码。保留旧集合不等于自动版本管理。
 - 尚无FastAPI、SSE、Docker和CI；本地Qdrant多进程、故障恢复、并发容量及新环境完整复现仍待验证。
 - 密钥、原始PDF和数据库不随代码提交；生成报告含原文，公开或提交前须确认资料授权及敏感信息。
 
@@ -347,5 +369,6 @@ python -m pip check
 - [BGE精排模型说明](https://huggingface.co/BAAI/bge-reranker-base)
 - [RRF公式与候选窗口](https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion)
 - [Qdrant points与upsert](https://qdrant.tech/documentation/concepts/points/)
+- [Qdrant删除记录与按ID/过滤器选择（v1.15）](https://api.qdrant.tech/v-1-15-x/api-reference/points/delete-points)
 - [Qdrant Python本地实现（v1.15.1）](https://github.com/qdrant/qdrant-client/blob/v1.15.1/qdrant_client/local/local_collection.py)
 - [LangChain RunnableSequence](https://reference.langchain.com/python/langchain-core/runnables/base/RunnableSequence)

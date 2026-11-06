@@ -5,7 +5,7 @@ from pathlib import Path
 from sentence_transformers import SentenceTransformer
 from ingestion import load_pdf_pages
 from chunking import build_chunks
-from vector_store import DEFAULT_TOP_K, build_points, save_points, search_points
+from vector_store import DEFAULT_TOP_K, build_points, save_points, search_points, prune_stored_chunks
 
 MODEL_NAME = "BAAI/bge-small-zh-v1.5"
 QUERY_INSTRUCTION = "为这个句子生成表示以用于检索相关文章："
@@ -95,12 +95,14 @@ def main():
     print("page:", points[0].payload["page"])
     repeated = build_points(chunks[:1], vectors[:1])
     print("stable ID:", points[0].id == repeated[0].id)
-    before, after = save_points(points, dimension=vectors.shape[1])
+    before, after = save_points(points, dimension=vectors.shape[1]) #先写入
+    keep_chunk_ids = [chunk["chunk_id"] for chunk in chunks] #收集完整ID
+    pruned = prune_stored_chunks(source_id, chunks[0]["content_hash"], keep_chunk_ids) #再清理同范围差集
     _, after_repeat = save_points(points, dimension=vectors.shape[1]) #_ 表示不用第二次的写入前数量，只保留重复写入后的数量
-    print("counts:", before, after, after_repeat)
+    print("counts (before/upsert/repeat):", before, after, after_repeat)
+    print("pruned:", pruned)
 
     index = build_faiss_index(vectors)
-
     self_scores, self_indices = index.search( #第一个参数是查询向量矩阵，第二个参数 1 表示每个查询只取最相似的一条。我们暂时拿已有的第一条向量查询自身，因此使用 vectors[:1]。
         vectors[:1],
         1,
