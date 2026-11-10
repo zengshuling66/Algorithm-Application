@@ -72,7 +72,8 @@ def save_points(points, dimension: int): #输入是记录列表和向量维度�
             raise ValueError("Collection vector configuration does not match")
         #before 在写入前取得，after 必须在写入后取得
         before = client.count(collection_name=COLLECTION_NAME, exact=True).count #count()返回计数结果对象，最后的 .count 才取出整数；exact=True 要求精确计数。
-        #upsert()接收集合名称和整批记录，wait=True表示等待修改完成后再继续统计。已有 ID 会被覆盖，而不是另添一条；当前 469 条可以整批处理，资料明显增多后再分批。
+        #upsert()接收集合名称和整批记录，wait=True表示等待修改完成后再继续统计。
+        #已有 ID 会被覆盖，而不是另添一条；当前数据量较小，可以整批写入；资料明显增多后再考虑分批。
         client.upsert(collection_name=COLLECTION_NAME, points=points, wait=True)
         after = client.count(collection_name=COLLECTION_NAME, exact=True).count
         return before, after

@@ -2,22 +2,23 @@
 
 基于车主手册的检索增强问答原型：解析 PDF 正文与原生文本表格，使用本地 BGE、Qdrant 和 BM25 检索证据，通过兼容 Chat Completions 的接口生成结构化答案，并由程序组装可信来源引用。
 
-当前提供命令行问答、四策略开发集评测、人工复核和本地检索基准。仅验证一份真实手册；尚无 FastAPI、真实流式输出、Docker 或完整生产验收。
+当前提供命令行问答、FastAPI 本地问答、四策略开发集评测、人工复核和本地检索基准。仅验证一份真实手册；尚无真实流式输出、Docker 或完整生产验收。
 
 ## 架构与当前状态
 
 ~~~text
 入库：PDF + source_id + Metadata → 正文/表格行 → chunks → BGE 编码 → Qdrant
-问答：问题 → 同范围向量/BM25 → RRF → Top3 Document → 证据映射
+问答：CLI / POST /qa → 同范围向量/BM25 → RRF → CLI直接取Top3 / API精排后取Top3
+      → Document → 证据映射
       → JSON Prompt → LLM → JSON/字段/ID校验 → 答案与可信引用
-精排：两路候选 → RRF Top10 → cross-encoder → Top3（可选检索与评测路径）
+精排：两路候选 → RRF Top10 → cross-encoder → Top3（API默认，检索与评测可选）
 评测：配置/题集 → 四路检索快照 → 保存结果回放生成 → 人工review → 汇总
 ~~~
 
 - 正文使用 pdfplumber 的 text-flow 候选方案改善部分双栏顺序；检测表格按几何单元格展开合并格，再渲染为带列标签的数据行。
 - 正文按页内字符窗口切块；表格数据行保留表头、条件和相邻文字，不再按字符窗口拆分。
 - LangChain 的 Document、Runnable、ChatPromptTemplate 负责适配和编排；实际检索、融合、生成、契约校验仍由独立模块实现，未使用 LangGraph。
-- 日常 `langchain_query.py` 仍默认不精排的混合检索；混合加精排已在检索及保存结果的问答评测中验证，作为质量优先候选，尚未切换日常入口。
+- `langchain_query.py` 仍默认不精排的混合检索，保留为对照；FastAPI 复用现有问答链，采用混合召回加精排，最终传入最多3条证据。
 - 自动检查只保证 JSON 结构及引用身份合法，不保证答案事实、引用支持关系或证据充分性。正文编号等输出规范仍可能由人工复核发现。
 
 ### 核心配置
@@ -134,6 +135,26 @@ python -X utf8 -B langchain_retrieval.py $manual.source_id $manual.content_hash 
 ~~~
 
 仅检索入口省略模式时默认vector；日常问答入口默认hybrid，尚不接受rerank模式参数。BM25另有 `bm25_retrieval.py` 入口。模型在检索器构建时加载，同一进程内复用；重启命令仍重新构建。
+
+### 5. 启动本地 HTTP 服务
+
+在项目目录、已配置第3节环境变量的同一个 `cockpit-rag` 终端中启动：
+
+~~~powershell
+$env:HF_HUB_OFFLINE = "1"
+python -B -m uvicorn api:app --host 127.0.0.1 --port 8001 --workers 1
+~~~
+
+启动需要本地 BGE、精排权重缓存和当前资料的 Qdrant 集合。离线设置仅作用于 Hugging Face，避免缓存加载期间的远端元数据请求，不阻止问答调用生成 API。新终端需重新设置会话环境变量。
+
+| 接口 | 用途 |
+| --- | --- |
+| `GET /health` | 检查初始化状态及当前资料身份/哈希；不调用生成 API |
+| `POST /qa` | 接收 JSON 对象 `{"question": "问题文本"}`，返回状态、答案、引用、模型和用量；不返回内部 Prompt 或完整检索上下文 |
+
+可在本机的 [接口文档](http://127.0.0.1:8001/docs) 中执行请求。非法输入返回 HTTP 422；正常回答或业务拒答可以返回 HTTP 200，应同时查看 `status` 和 `answer_status`。有证据的真实问答会调用生成 API，可能产生费用。用完在启动服务的终端按 `Ctrl+C` 正常停机。
+
+2026-11-10 已验收一题真实开发集请求：单门仅解锁当前车门，全车解锁全车车门，引用指向 `train_a.pdf` 的物理第43页。该结果不代表冻结测试集或并发验收。
 
 用完后可清除密钥：
 ~~~powershell
@@ -306,7 +327,7 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-05实跑38项通过，pip check无依赖冲突。
+2026-11-10实跑54项通过，pip check无依赖冲突。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
@@ -317,10 +338,13 @@ python -m pip check
 | 假精排排序、同分及非法分数 | 4 |
 | 结构化JSON/字段/状态/引用身份契约 | 13 |
 | 问答空证据、生成桩、异常、防覆盖与人工复核汇总 | 9 |
+| API 请求模型：去空白、类型、长度与额外字段校验 | 7 |
+| 生成客户端复用、关闭与响应边界 | 6 |
+| 离线 HTTP：引用输出、内部字段过滤、非法输入与无证据拒答 | 3 |
 
-测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；测试通过不等于38道真实问题正确。
+测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；离线 HTTP 测试使用检索和生成替身，不代替真实问答或并发测试。
 
-另用假解析结果、2维单位向量和临时数据库运行当前`retrieval.main()`，保留真实切块、Qdrant写入/清理、FAISS自检及向量查询，验证首次清理1条、重复导入清理0条、其他资料/哈希保留，以及写入失败时不清理。该临时入口检查不计入上述38项持久化pytest，也不等于真实PDF/BGE全量入库、并发更新或故障恢复验收；没有重新写入或删除正式604条记录。
+另用假解析结果、2维单位向量和临时数据库运行当前`retrieval.main()`，保留真实切块、Qdrant写入/清理、FAISS自检及向量查询，验证首次清理1条、重复导入清理0条、其他资料/哈希保留，以及写入失败时不清理。该临时入口检查不计入上述54项pytest，也不等于真实PDF/BGE全量入库、并发更新或故障恢复验收；没有重新写入或删除正式604条记录。
 
 ## 代码导航
 
@@ -333,6 +357,7 @@ python -m pip check
 | [reranking.py](reranking.py)、[langchain_retrieval.py](langchain_retrieval.py) | 精排及三种检索器适配 |
 | [answer_contract.py](answer_contract.py)、[langchain_prompt.py](langchain_prompt.py) | 本次证据映射、结构化消息、JSON/引用身份校验 |
 | [generation.py](generation.py)、[langchain_query.py](langchain_query.py) | 供应商调用与结构化问答链 |
+| [api.py](api.py)、[api_schemas.py](api_schemas.py)、[test_api.py](test_api.py) | 本地服务入口、请求与响应模型、离线接口测试 |
 | [prompt_builder.py](prompt_builder.py)、[query.py](query.py) | 直接文本基线 |
 | [evaluation.py](evaluation.py)、[test_evaluation.py](test_evaluation.py) | compare/score/qa/review/summary/benchmark及离线测试 |
 
@@ -359,7 +384,7 @@ python -m pip check
 - JSON/可信ID校验不等于自动引用语义评测；正文格式、证据充分性和拒答仍需回归，旧error行可能缺Prompt版本等元信息。
 - 保存QA逐条落盘但非原子检查点，无断点续跑、生产重试或请求追踪；API错误保留，不自动改写为正常拒答。
 - 入库CLI已接入同范围旧块清理，仅按单进程离线作业验证；尚无自动版本切换、写入/清理原子事务、并发更新或失败回滚，也未实现仅更新payload、跳过重复编码。保留旧集合不等于自动版本管理。
-- 尚无FastAPI、SSE、Docker和CI；本地Qdrant多进程、故障恢复、并发容量及新环境完整复现仍待验证。
+- FastAPI 仅按本机单 worker 验证；进程内共享锁串行执行问答链。服务运行期间不要另起进程对同一 Qdrant 目录入库或清理。本地多进程、并发容量、故障恢复及新环境完整复现未验收；尚无 SSE、Docker 和 CI。
 - 密钥、原始PDF和数据库不随代码提交；生成报告含原文，公开或提交前须确认资料授权及敏感信息。
 
 ## 技术参考

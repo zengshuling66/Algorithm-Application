@@ -11,12 +11,12 @@ MODEL_NAME = "BAAI/bge-small-zh-v1.5"
 QUERY_INSTRUCTION = "为这个句子生成表示以用于检索相关文章："
 
 def build_faiss_index(vectors: np.ndarray): #标明参数预期是 NumPy 数组；类型标注便于阅读，实际检查由下一行执行
-    if vectors.ndim != 2 or vectors.shape[0] == 0: #vectors.ndim是数组的维度数量；vectors.shape[0] 是行数，这里为 3；条件拒绝一维数组或没有任何向量的空矩阵。
+    if vectors.ndim != 2 or vectors.shape[0] == 0: #vectors.ndim是数组的维度数量；vectors.shape[0] 是行数；条件拒绝一维数组或没有任何向量的空矩阵。
         raise ValueError("vectors must be a nonempty 2D matrix")
 
     dimension = vectors.shape[1] #取列数，得到 512。索引必须知道每条向量有多少个数字；从数组中读取，比把 512 写死更容易适配其他模型。
     index = faiss.IndexFlatIP(dimension) #创建一个空索引。Flat 表示逐条比较保存的向量，得到精确搜索结果；IP 是 Inner Product，即内积，它会优先返回内积较大的向量。
-    index.add(vectors) #这时才真正写入三行向量。只创建索引、没调用 add() 时，里面没有任何候选数据。
+    index.add(vectors) #这时才真正写入本次传入的全部向量。只创建索引、没调用 add() 时，里面没有任何候选数据。
     return index
 
 #负责“问题编码 + FAISS 查询”，后面由Qdrant代替
