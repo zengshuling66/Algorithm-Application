@@ -31,6 +31,35 @@ def generate_with_client(messages, client, model_name, json_mode=False):
         #用量通常包含输入、输出和总 token，输入包含 Prompt 与资料，不只是用户问题。
     }
 
+#流式生成函数
+def stream_with_client(messages, client, model_name, json_mode=False):
+    options = {"response_format": {"type": "json_object"}} if json_mode else {}
+    parts = []
+    actual_model = usage = finish_reason = None
+    with client.chat.completions.create(
+        model=model_name, messages=messages, max_tokens=1024, stream=True,
+        extra_body={"thinking": {"type": "disabled"}}, **options,
+    ) as chunks: #`with ... as chunks` 管的是这一次响应流，退出时关闭流，不关闭借来的 SDK 客户端
+        for chunk in chunks: #`chunk` 是 SDK 解码后的响应块
+            actual_model = chunk.model or actual_model
+            if chunk.usage is not None:
+                usage = chunk.usage.model_dump()
+            if not chunk.choices:
+                continue
+            choice = chunk.choices[0]
+            if choice.finish_reason is not None:
+                finish_reason = choice.finish_reason
+            text = choice.delta.content if choice.delta is not None else None #`choice.delta.content` 是本次新增的正文，不是截至目前的全文
+            if text:
+                parts.append(text) #保留片段，供最后拼接
+                yield {"type": "delta", "text": text}
+    if finish_reason != "stop":
+        raise ValueError(f"Incomplete generation: {finish_reason}")
+    answer = "".join(parts).strip() #不要对每个片段单独 .strip()，否则可能删掉两个片段之间原本需要的空格
+    if not answer:
+        raise ValueError("Model returned an empty answer")
+    yield {"type": "generation_done", "answer": answer, "model": actual_model, "usage": usage} #yield把当前片段交给调用者，并暂停在这里
+
 #负责创建、调用和关闭客户端
 #未来服务启动 → 创建客户端 → 多次调用generate_with_client → 服务停机关闭
 def generate_answer(messages, json_mode=False):

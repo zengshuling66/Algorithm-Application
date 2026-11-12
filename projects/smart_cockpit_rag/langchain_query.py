@@ -6,6 +6,7 @@ from langchain_prompt import build_structured_messages, STRUCTURED_PROMPT_VERSIO
 from generation import generate_answer
 from retrieval import MODEL_NAME
 from answer_contract import build_evidence_map, parse_answer
+from contextlib import closing
 
 def generate_json_answer(messages): #generate_json_answer只负责打开JSON开关，仍允许测试时注入假生成器。
     return generate_answer(messages, json_mode=True)
@@ -33,6 +34,39 @@ def build_qa_chain(retriever, generator=generate_json_answer):
         return {**state, "messages": messages, **generated, **parsed, "status": "generated"}
         #**generated 因此保留原函数返回的答案、实际响应模型和完整 usage，不只留下答案字符串。
     return RunnableLambda(prepare) | RunnableLambda(answer)
+
+
+#输入是问题、已构建的检索器、返回流式事件生成器的函数
+#这里的 generator 不能直接传旧的 generate_answer，因为旧函数返回字典，不是事件流；接服务时会绑定到 stream_with_client
+#混合检索＋精排 → 证据映射 → 流式生成 → 契约校验
+def stream_qa(question, retriever, generator):
+    documents = retriever.invoke(question)
+    evidence_map = build_evidence_map(documents)
+    base = {"prompt_version": STRUCTURED_PROMPT_VERSION}
+    if not documents: #没有证据就交出一次拒答 final，随后 return，不浪费一次模型调用
+        yield {"type": "final", "data": {
+            **base, "status": "no_evidence", "answer_status": "refused",
+            "answer": "根据现有资料无法确定。", "evidence_ids": [], "citations": [],
+            "model": None, "usage": None,
+        }}
+        return
+    messages = build_structured_messages(question, evidence_map)
+    completed = None
+    with closing(generator(messages)) as events:
+        for event in events:
+            if event["type"] == "delta": #delta可能只是半截JSON，所以增加provisional=True，明确标为临时内容
+                yield {"type": "delta", "text": event["text"], "provisional": True}
+            elif event["type"] == "generation_done":
+            #generation_done只证明生成层正常结束，还要通过 parse_answer 的引用契约检查后才变为 final
+                completed = event
+    if completed is None:
+        raise ValueError("Missing generation_done event")
+    parsed = parse_answer(completed["answer"], evidence_map) #读取结束后，必须有完成事件，再调用原来的 parse_answer
+    yield {"type": "final", "data": { #final.data 才是客户端最终使用的结构化结果，它通过了程序契约检查
+        **base, **parsed, "status": "generated",
+        "model": completed["model"], "usage": completed["usage"],
+    }}
+
 
 def main():
     if len(sys.argv) != 4:

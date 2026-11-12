@@ -2,15 +2,16 @@
 
 基于车主手册的检索增强问答原型：解析 PDF 正文与原生文本表格，使用本地 BGE、Qdrant 和 BM25 检索证据，通过兼容 Chat Completions 的接口生成结构化答案，并由程序组装可信来源引用。
 
-当前提供命令行问答、FastAPI 本地问答、四策略开发集评测、人工复核和本地检索基准。仅验证一份真实手册；尚无真实流式输出、Docker 或完整生产验收。
+当前提供命令行问答、FastAPI 普通/真实 SSE 问答、四策略开发集评测、人工复核和本地检索基准。仅验证一份真实手册；流式链路已完成本机单题与断开恢复检查，尚无 Docker 或完整生产验收。
 
 ## 架构与当前状态
 
 ~~~text
 入库：PDF + source_id + Metadata → 正文/表格行 → chunks → BGE 编码 → Qdrant
-问答：CLI / POST /qa → 同范围向量/BM25 → RRF → CLI直接取Top3 / API精排后取Top3
+问答：CLI / POST /qa / POST /qa/stream → 同范围向量/BM25 → RRF → CLI直接取Top3 / API精排后取Top3
       → Document → 证据映射
       → JSON Prompt → LLM → JSON/字段/ID校验 → 答案与可信引用
+流式：SDK delta → stream_qa临时事件 → SSE delta；正常生成结束且契约校验通过 → SSE final
 精排：两路候选 → RRF Top10 → cross-encoder → Top3（API默认，检索与评测可选）
 评测：配置/题集 → 四路检索快照 → 保存结果回放生成 → 人工review → 汇总
 ~~~
@@ -19,6 +20,7 @@
 - 正文按页内字符窗口切块；表格数据行保留表头、条件和相邻文字，不再按字符窗口拆分。
 - LangChain 的 Document、Runnable、ChatPromptTemplate 负责适配和编排；实际检索、融合、生成、契约校验仍由独立模块实现，未使用 LangGraph。
 - `langchain_query.py` 仍默认不精排的混合检索，保留为对照；FastAPI 复用现有问答链，采用混合召回加精排，最终传入最多3条证据。
+- 普通与流式接口复用启动时构建的检索器、模型和 SDK 客户端；流式路径复用证据映射、Prompt 和引用解析，不把临时 JSON 片段作为最终答案。
 - 自动检查只保证 JSON 结构及引用身份合法，不保证答案事实、引用支持关系或证据充分性。正文编号等输出规范仍可能由人工复核发现。
 
 ### 核心配置
@@ -116,7 +118,7 @@ $env:LLM_API_KEY = [System.Net.NetworkCredential]::new("", $secureKey).Password
 
 该实验实际响应模型为 `deepseek-v4-1-flash`。历史DeepSeek官方实验单独保存，不与方舟结果混合计算。切换生成供应商不需要重建同一份资料的向量，但不能把供应商变化归因于检索收益。
 
-请求当前使用 `max_tokens=1024`、非流式、60秒超时、零自动重试、`thinking.type=disabled`；结构化路径开启 `response_format=json_object`。更换供应商前应核对扩展字段兼容性。密钥转换后是进程环境中的普通字符串，不应打印或截图。
+请求当前使用 `max_tokens=1024`、60秒 SDK 超时、零自动重试、`thinking.type=disabled`；普通路径 `stream=False`，流式路径 `stream=True`，结构化路径开启 `response_format=json_object`。更换供应商前应核对扩展字段兼容性。密钥转换后是进程环境中的普通字符串，不应打印或截图。
 
 ### 4. 问答与仅检索
 
@@ -151,10 +153,43 @@ python -B -m uvicorn api:app --host 127.0.0.1 --port 8001 --workers 1
 | --- | --- |
 | `GET /health` | 检查初始化状态及当前资料身份/哈希；不调用生成 API |
 | `POST /qa` | 接收 JSON 对象 `{"question": "问题文本"}`，返回状态、答案、引用、模型和用量；不返回内部 Prompt 或完整检索上下文 |
+| `POST /qa/stream` | 接收相同请求体，以 `text/event-stream` 发送临时片段、最终结果或错误事件 |
 
 可在本机的 [接口文档](http://127.0.0.1:8001/docs) 中执行请求。非法输入返回 HTTP 422；正常回答或业务拒答可以返回 HTTP 200，应同时查看 `status` 和 `answer_status`。有证据的真实问答会调用生成 API，可能产生费用。用完在启动服务的终端按 `Ctrl+C` 正常停机。
 
-2026-11-10 已验收一题真实开发集请求：单门仅解锁当前车门，全车解锁全车车门，引用指向 `train_a.pdf` 的物理第43页。该结果不代表冻结测试集或并发验收。
+普通接口已验收一题真实开发集请求：单门仅解锁当前车门，全车解锁全车车门，引用指向 `train_a.pdf` 的物理第43页。该结果不代表冻结测试集或并发验收。
+
+### 6. 验证真实流式与断开恢复
+
+直接验证供应商 JSON 流，不经过检索或本地 HTTP 服务：
+~~~powershell
+python -X utf8 -B stream_probe.py
+~~~
+
+这会真实调用生成 API；预期完整 JSON 为 `{"answer":"API_OK"}`、状态为 `completed`，并打印正文片段数量、实际模型与用量。生成层仅接受 `finish_reason=stop` 和非空正文；usage 可以来自完成块或无 choices 的用量块，缺失时保留 `None`，不自行估算。
+
+验证完整 RAG 经 HTTP 逐段返回时，保持第5节服务运行，在项目目录的另一个 `cockpit-rag` 终端依次执行：
+~~~powershell
+python -X utf8 -B http_stream_probe.py
+python -X utf8 -B http_stream_probe.py --disconnect
+python -X utf8 -B http_stream_probe.py
+~~~
+
+探针复用 `load_cases`，读取 `eval_cases.json` 的开发题 `q_unlock_scope_001`；只发送问题，不发送金标或参考答案。它访问固定本地地址 `127.0.0.1:8001/qa/stream`，客户端无需配置生成密钥；供应商配置仍由服务进程持有。三次请求都可能产生费用。
+
+| SSE 事件 | 数据与使用边界 |
+| --- | --- |
+| `delta` | `type/text/provisional=true`；正文可能是半截 JSON，尚未通过完整引用契约 |
+| `final` | `type=final`，`data` 为通过答案契约及 `QuestionResponse` 校验的结果；不等于语义质量自动通过 |
+| `error` | `type=error/code=stream_failed`；生成或校验异常后结束，不返回异常原文，不伪装为正常 final 或业务拒答 |
+
+外层 SSE 的 `event` 名与 JSON 内的 `type` 对应。无证据时只发一次拒答 `final`，不调用模型；正常有证据时先发临时片段，完整生成结束后再校验并发 `final`。HTTP 200 只说明响应已开始，客户端还须收到 final；连接断开或仅有 delta 不能记为问答完成。探针仅处理当前框架的单行 JSON 数据格式，不是通用 SSE 解析器。
+
+`lifespan` 管理服务级资源，`Depends(..., scope="request")` 管理单次流的迭代器与锁。普通 `/qa` 等待共享锁；`/qa/stream` 非阻塞取锁，忙碌时在响应开始前返回 HTTP 503，非法输入仍为422。流式开始后的异常通过 error 事件报告，不能改写已经发出的状态码。
+
+断开清理等待当前同步读取退出，再关闭上游迭代器并释放锁；AnyIO 取消保护用于完成退出清理，不会强杀线程或保证供应商立即停止生成/计费。SDK 客户端继续供其他请求复用，仅在正常停机时关闭。提前断开后若暂时503，应等待清理，不能自动重试计费请求。
+
+本机单题验收中，两次正常请求均返回17个 delta，首个片段/最终结果分别约3.62/4.01秒和1.76/2.15秒；答案均正确区分单门与全车，引用物理第43页，响应模型为 `deepseek-v4-1-flash`，用量分别916和917 tokens。中间请求收到首个 delta 后主动关闭，随后正常请求成功。片段数不是 token 数；后一次响应报告命中768个缓存 token，不能把单题耗时变化归因于某项优化，也不视为并发或稳定性能基准。提前关闭没有最终用量，不能补算其成本。
 
 用完后可清除密钥：
 ~~~powershell
@@ -268,7 +303,7 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 ## 已验证结果
 
-工程状态核验于2026-11-05；以下质量与性能数字沿用所列实验报告，不表示当日重新生成。均为单手册、小开发集结果，不是独立测试集或生产成绩。
+工程状态核验于2026-11-12；以下批量质量与检索性能数字沿用所列实验报告，不表示当日重新生成。均为单手册、小开发集结果，不是独立测试集或生产成绩。
 
 ### 数据与解析
 
@@ -318,7 +353,7 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 来源为 `retrieval_benchmark_textflow_v1.json`。两路各30题的三轮有序块ID全部一致，也与保存的检索快照一致；平均差约0.668秒。P95在各90条排序后取第86条。构建和预热另计，不是进程冷启动、HTTP端到端延迟、并发容量或线上SLA。
 
-当前以新解析加精排作为后续质量优先候选；日常问答源码仍默认混合，最终配置固定后的冻结终测尚未执行。
+API已采用新解析加混合召回/精排，CLI保留不精排的混合基线；最终配置固定后的冻结终测尚未执行。
 
 ## 自动测试
 
@@ -327,7 +362,7 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-10实跑54项通过，pip check无依赖冲突。
+2026-11-12实跑70项通过，pip check无依赖冲突。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
@@ -340,11 +375,13 @@ python -m pip check
 | 问答空证据、生成桩、异常、防覆盖与人工复核汇总 | 9 |
 | API 请求模型：去空白、类型、长度与额外字段校验 | 7 |
 | 生成客户端复用、关闭与响应边界 | 6 |
-| 离线 HTTP：引用输出、内部字段过滤、非法输入与无证据拒答 | 3 |
+| 供应商流式：片段拼接、两类usage位置、截断/空输出拒收及响应流关闭 | 6 |
+| 流式问答编排：空证据、完成事件、合法/未知引用及关闭向上传递 | 5 |
+| 离线 HTTP：普通/流式引用、输入与错误事件、忙碌503及ASGI断开后清理/恢复 | 8 |
 
-测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；离线 HTTP 测试使用检索和生成替身，不代替真实问答或并发测试。
+测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；离线 HTTP 使用检索和生成替身，ASGI模拟首个delta后断开并检查上游关闭、锁释放和下一次问答。TestClient缓冲不能证明真实事件到达时间，模拟断开也不代替真实网络或并发测试。
 
-另用假解析结果、2维单位向量和临时数据库运行当前`retrieval.main()`，保留真实切块、Qdrant写入/清理、FAISS自检及向量查询，验证首次清理1条、重复导入清理0条、其他资料/哈希保留，以及写入失败时不清理。该临时入口检查不计入上述54项pytest，也不等于真实PDF/BGE全量入库、并发更新或故障恢复验收；没有重新写入或删除正式604条记录。
+另用假解析结果、2维单位向量和临时数据库运行当前`retrieval.main()`，保留真实切块、Qdrant写入/清理、FAISS自检及向量查询，验证首次清理1条、重复导入清理0条、其他资料/哈希保留，以及写入失败时不清理。该临时入口检查不计入上述70项pytest，也不等于真实PDF/BGE全量入库、并发更新或故障恢复验收；没有重新写入或删除正式604条记录。
 
 ## 代码导航
 
@@ -356,8 +393,10 @@ python -m pip check
 | [bm25_retrieval.py](bm25_retrieval.py)、[hybrid_retrieval.py](hybrid_retrieval.py) | 同范围关键词召回与RRF |
 | [reranking.py](reranking.py)、[langchain_retrieval.py](langchain_retrieval.py) | 精排及三种检索器适配 |
 | [answer_contract.py](answer_contract.py)、[langchain_prompt.py](langchain_prompt.py) | 本次证据映射、结构化消息、JSON/引用身份校验 |
-| [generation.py](generation.py)、[langchain_query.py](langchain_query.py) | 供应商调用与结构化问答链 |
+| [generation.py](generation.py)、[langchain_query.py](langchain_query.py) | 普通/流式供应商调用、结构化问答链与临时/最终事件编排 |
 | [api.py](api.py)、[api_schemas.py](api_schemas.py)、[test_api.py](test_api.py) | 本地服务入口、请求与响应模型、离线接口测试 |
+| [stream_probe.py](stream_probe.py)、[http_stream_probe.py](http_stream_probe.py) | 供应商JSON流探针、HTTP流式及主动断开恢复验收 |
+| [test_stream_generation.py](test_stream_generation.py)、[test_stream_qa.py](test_stream_qa.py) | 生成层与问答编排层的离线流式回归 |
 | [prompt_builder.py](prompt_builder.py)、[query.py](query.py) | 直接文本基线 |
 | [evaluation.py](evaluation.py)、[test_evaluation.py](test_evaluation.py) | compare/score/qa/review/summary/benchmark及离线测试 |
 
@@ -384,7 +423,8 @@ python -m pip check
 - JSON/可信ID校验不等于自动引用语义评测；正文格式、证据充分性和拒答仍需回归，旧error行可能缺Prompt版本等元信息。
 - 保存QA逐条落盘但非原子检查点，无断点续跑、生产重试或请求追踪；API错误保留，不自动改写为正常拒答。
 - 入库CLI已接入同范围旧块清理，仅按单进程离线作业验证；尚无自动版本切换、写入/清理原子事务、并发更新或失败回滚，也未实现仅更新payload、跳过重复编码。保留旧集合不等于自动版本管理。
-- FastAPI 仅按本机单 worker 验证；进程内共享锁串行执行问答链。服务运行期间不要另起进程对同一 Qdrant 目录入库或清理。本地多进程、并发容量、故障恢复及新环境完整复现未验收；尚无 SSE、Docker 和 CI。
+- FastAPI 仅按本机单 worker 验证；进程内共享锁串行保护普通与流式问答，流式忙碌直接503。服务运行期间不要另起进程对同一 Qdrant 目录入库或清理。本地多进程、并发容量、故障恢复及新环境完整复现未验收；尚无 Docker 和 CI。
+- SSE已验证本机单题与主动断开后恢复，未实现断点续传、自动重连、前端流式界面或完整链路追踪。流式降低等待完整输出前的可见延迟，不保证总耗时更短；取消不保证供应商即时停止或完整用量回传。
 - 密钥、原始PDF和数据库不随代码提交；生成报告含原文，公开或提交前须确认资料授权及敏感信息。
 
 ## 技术参考
@@ -397,3 +437,6 @@ python -m pip check
 - [Qdrant删除记录与按ID/过滤器选择（v1.15）](https://api.qdrant.tech/v-1-15-x/api-reference/points/delete-points)
 - [Qdrant Python本地实现（v1.15.1）](https://github.com/qdrant/qdrant-client/blob/v1.15.1/qdrant_client/local/local_collection.py)
 - [LangChain RunnableSequence](https://reference.langchain.com/python/langchain-core/runnables/base/RunnableSequence)
+- [FastAPI原生SSE](https://fastapi.tiangolo.com/tutorial/server-sent-events/)
+- [FastAPI请求级yield依赖](https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/)
+- [AnyIO取消与清理保护](https://anyio.readthedocs.io/en/stable/cancellation.html)
