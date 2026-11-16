@@ -18,6 +18,7 @@ def main():
     started, final, delta_count = perf_counter(), None, 0
     with urlopen(request, timeout=90) as response: #`urlopen` 实际发送
         print("HTTP:", response.status, flush=True)
+        print("request_id:", response.headers["x-request-id"], flush=True)
         if response.headers.get_content_type() != "text/event-stream":
             raise ValueError("Expected text/event-stream")
         for raw in response: #逐行读取 SSE

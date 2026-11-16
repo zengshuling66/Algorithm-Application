@@ -13,6 +13,8 @@ from threading import Lock
 from api_schemas import QuestionRequest, QuestionResponse
 from fastapi.sse import EventSourceResponse, ServerSentEvent
 from starlette.concurrency import run_in_threadpool
+from request_logging import RequestLoggingMiddleware, logger
+from generation import LLM_TIMEOUT_SECONDS, LLM_MAX_RETRIES, LLM_MAX_TOKENS
 
 #lifespan 管整个服务的共享资源，open_qa_stream 管单次流式请求；先安全关闭这次请求的流，再释放锁
 @asynccontextmanager #装饰器 @asynccontextmanager 将 lifespan 转成异步上下文管理器，让框架能够进入和退出这个资源范围。
@@ -35,10 +37,16 @@ async def lifespan(app: FastAPI): #应用启动和关闭时，lifespan 负责启
         app.state.source_id = metadata["source_id"]
         app.state.content_hash = metadata["content_hash"]
         app.state.qa_lock = Lock() #锁必须在启动时创建并共享，不能在每次请求里各建一把，这样先控制本地模型并发和Qdrant重复打开冲突
+        logger.info(json.dumps({ #启动时记录一次“本进程准备使用什么配置”
+            "event": "service_config", "requested_model": model_name,
+            "sdk_timeout_seconds": LLM_TIMEOUT_SECONDS, #SDK的60秒用于网络操作等待，不是整次HTTP请求的60秒硬截止；流持续返回数据时，总时长可能超过60秒
+            "max_retries": LLM_MAX_RETRIES, "max_tokens": LLM_MAX_TOKENS,
+        }, ensure_ascii=False))
         yield #yield 是暂停，不是结束。启动代码执行到这里，服务开始处理请求；停机后恢复执行并退出外面的 with，关闭 SDK 客户端
 
 app = FastAPI(title="Smart Cockpit RAG", lifespan=lifespan)
 #lifespan=lifespan 把它交给 FastAPI；定义应用时不会立刻加载模型，服务器启动应用时才执行启动部分
+app.add_middleware(RequestLoggingMiddleware) #注册中间件
 
 @app.get("/health") #注册健康检查路径
 def health(request: Request):
@@ -50,16 +58,21 @@ def health(request: Request):
 @app.post("/qa", response_model=QuestionResponse)
 def ask(payload: QuestionRequest, request: Request): #QuestionRequest进行输入校验，通过后再调用 ask()
     with request.app.state.qa_lock: #Lock 让同一时间只有一个线程执行 with 内的问答链，其他请求等待；离开或发生异常都会释放。
-        result = request.app.state.qa_chain.invoke(payload.question)
-        #.invoke(payload.question) 执行原来的混合召回、精排、生成和引用检查
+        result = request.app.state.qa_chain.invoke( #.invoke(payload.question) 执行原来的混合召回、精排、生成和引用检查
+            payload.question,
+            config={"metadata": {"request_id": request.state.request_id}}, #新增的 config= 只携带本次运行信息
+        )
     return result #return result 后，FastAPI 根据 response_model 校验、过滤并序列化结果，只返回声明字段
 
-async def open_qa_stream(payload: QuestionRequest, request: Request):
+async def open_qa_stream(payload: QuestionRequest, request: Request): #QuestionRequest输入校验
     state = request.app.state
-    if not state.qa_lock.acquire(blocking=False):
+    if not state.qa_lock.acquire(blocking=False): #获取锁
     #acquire(blocking=False)：立即尝试获取锁；忙碌则返回 HTTP 503，不排队等待，这是新流式接口的策略，旧 /qa 不变
         raise HTTPException(status_code=503, detail="QA service is busy")
-    events = stream_qa(payload.question, state.retriever, state.stream_generator)
+    events = stream_qa(
+        payload.question, state.retriever, state.stream_generator,
+        request_id=request.state.request_id,
+    )
     try:
         yield events #把迭代器交给接口使用，自己暂停；等响应结束后，再回来执行清理
     finally: #同步迭代由框架在线程池运行；关闭操作也放入线程池。

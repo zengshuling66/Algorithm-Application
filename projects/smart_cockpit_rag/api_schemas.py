@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict, Field
 #BaseModel 是 Pydantic 的数据模型基类；继承它后，QuestionRequest 就能执行字段校验；ConfigDict定义模型配置
 from typing import Any, Literal
 
-#QuestionRequest 描述问题请求：问题文本
+#QuestionRequest 描述问题请求：输入校验
 class QuestionRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid", strict=True, str_strip_whitespace=True,

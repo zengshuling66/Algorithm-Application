@@ -6,6 +6,7 @@ from langchain_core.runnables import RunnableLambda
 import api
 import json
 import asyncio
+import logging
 
 @pytest.fixture
 def offline_api(monkeypatch):
@@ -131,3 +132,87 @@ def test_stream_busy_and_disconnect_cleanup(offline_stream):
     closed.assert_called_once()
     assert not api.app.state.qa_lock.locked()
     assert client.post("/qa", json={"question": "test"}).status_code == 200
+
+@pytest.mark.parametrize("method, path, body, expected", [
+    ("GET", "/health", None, 200),
+    ("POST", "/qa", {"question": " "}, 422),
+])
+def test_request_id_matches_finished_log(
+    offline_api, caplog, method, path, body, expected
+):
+    client, _ = offline_api
+    caplog.clear()
+    with caplog.at_level(logging.INFO, logger="uvicorn.error"):
+        responses = [client.request(method, path, json=body) for _ in range(2)]
+    ids = [response.headers["x-request-id"] for response in responses]
+    assert ids[0] != ids[1] and all(len(value) == 32 for value in ids)
+    assert all(response.status_code == expected for response in responses)
+    rows = [json.loads(record.getMessage()) for record in caplog.records
+            if record.name == "uvicorn.error"]
+    assert len(rows) == 2
+    for request_id, row in zip(ids, rows):
+        assert row["event"] == "request_finished"
+        assert row["request_id"] == request_id
+        assert row["method"] == method and row["path"] == path
+        assert row["http_status"] == expected
+        assert row["total_seconds"] >= 0
+
+@pytest.mark.parametrize("fail", [False, True])
+def test_stream_log_waits_for_upstream_cleanup(offline_stream, caplog, fail):
+    client, stream = offline_stream
+    original = stream.side_effect
+    closed = Mock()
+    def finished_rows():
+        rows = [json.loads(record.getMessage()) for record in caplog.records
+                if record.name == "uvicorn.error"]
+        return [row for row in rows if row.get("event") == "request_finished"]
+    def generate(*args, **kwargs):
+        try:
+            for event in original(*args, **kwargs):
+                if fail and event["type"] == "generation_done":
+                    raise ValueError("offline failure")
+                if event["type"] == "delta":
+                    for char in event["text"]:
+                        yield {**event, "text": char}
+                else:
+                    yield event
+        finally:
+            assert not finished_rows()
+            closed()
+    stream.side_effect = generate
+    caplog.clear()
+    with caplog.at_level(logging.INFO, logger="uvicorn.error"):
+        response = client.post("/qa/stream", json={"question": "test"})
+    closed.assert_called_once()
+    assert response.status_code == 200
+    assert "event: delta" in response.text
+    assert ("event: error" if fail else "event: final") in response.text
+    if fail:
+        assert "event: final" not in response.text
+    rows = finished_rows()
+    assert len(rows) == 1
+    assert rows[0]["request_id"] == response.headers["x-request-id"]
+    assert rows[0]["http_status"] == 200
+    assert rows[0]["total_seconds"] >= 0
+
+@pytest.mark.parametrize("path", ["/qa", "/qa/stream"])
+@pytest.mark.parametrize("question", ["test", "none"])
+def test_qa_stage_and_usage_logs(offline_stream, caplog, path, question):
+    client, _ = offline_stream
+    caplog.clear()
+    with caplog.at_level(logging.INFO, logger="uvicorn.error"):
+        response = client.post(path, json={"question": question})
+    assert response.status_code == 200
+    rows = [json.loads(record.getMessage()) for record in caplog.records
+            if record.name == "uvicorn.error"]
+    assert all(row["request_id"] == response.headers["x-request-id"] for row in rows)
+    stages = [row for row in rows if row["event"] == "stage_finished"]
+    expected = ["retrieval"] if question == "none" else [
+        "retrieval", "generation", "answer_contract"]
+    assert [row["stage"] for row in stages] == expected
+    assert all(row["outcome"] == "completed" and row["seconds"] >= 0 for row in stages)
+    usages = [row for row in rows if row["event"] == "generation_usage"]
+    assert len(usages) == (0 if question == "none" else 1)
+    if usages:
+        assert usages[0]["usage"] is None and usages[0]["model"] == "offline-model"
+    assert rows[-1]["event"] == "request_finished"

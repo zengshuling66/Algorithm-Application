@@ -1,11 +1,15 @@
 import os
 from openai import OpenAI #OpenAI 是需要安装的 SDK 客户端类，SDK 帮我们封装请求和响应
 
+LLM_TIMEOUT_SECONDS = 60.0 #SDK的60秒用于网络操作等待，不是整次HTTP请求的60秒硬截止；流持续返回数据时，总时长可能超过60秒
+LLM_MAX_RETRIES = 0 #本项目保留零自动重试：凭证错误重试无益；流已输出后重试可能重复答案或计费。
+LLM_MAX_TOKENS = 1024
+
 #创建客户端
 def build_client(): #读取服务端密钥和地址，返回客户端
     return OpenAI(
         api_key=os.environ["LLM_API_KEY"], base_url=os.environ["LLM_BASE_URL"],
-        timeout=60.0, max_retries=0, #设置网络操作超时，暂时关闭 SDK 自动重试，让第一次接入的错误直接暴露
+        timeout=LLM_TIMEOUT_SECONDS, max_retries=LLM_MAX_RETRIES #设置网络操作超时，暂时关闭 SDK 自动重试，让第一次接入的错误直接暴露
     )
 
 #使用传入的客户端完成一次生成
@@ -14,7 +18,7 @@ def generate_with_client(messages, client, model_name, json_mode=False):
     options = {"response_format": {"type": "json_object"}} if json_mode else {}
     response = client.chat.completions.create( #发起聊天生成请求
         model=model_name, messages=messages,
-        max_tokens=1024, stream=False, #限制生成输出的 token 数，包括模型支持的思考输出和最终回答；stream=False表示等待完整响应，而不是逐段接收
+        max_tokens=LLM_MAX_TOKENS, stream=False, #限制生成输出的 token 数，包括模型支持的思考输出和最终回答；stream=False表示等待完整响应，而不是逐段接收
         extra_body={"thinking": {"type": "disabled"}}, #关闭深度思考，extra_body 是 SDK 传递服务商扩展请求字段的位置
         **options, #如果 json_mode=True，就传入 response_format，要求模型输出 JSON 对象
     )
@@ -37,7 +41,7 @@ def stream_with_client(messages, client, model_name, json_mode=False):
     parts = []
     actual_model = usage = finish_reason = None
     with client.chat.completions.create(
-        model=model_name, messages=messages, max_tokens=1024, stream=True,
+        model=model_name, messages=messages, max_tokens=LLM_MAX_TOKENS, stream=True,
         extra_body={"thinking": {"type": "disabled"}}, **options,
     ) as chunks: #`with ... as chunks` 管的是这一次响应流，退出时关闭流，不关闭借来的 SDK 客户端
         for chunk in chunks: #`chunk` 是 SDK 解码后的响应块
