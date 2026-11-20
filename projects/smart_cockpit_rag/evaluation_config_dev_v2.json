@@ -1,0 +1,6 @@
+{
+  "case_files": ["eval_cases.json", "table_eval_cases_v1.json"],
+  "manual_metadata": "manual_metadata.json",
+  "required_block_gold": "dev_retrieval_gold_v2.json",
+  "top_k": 3
+}

@@ -22,3 +22,10 @@ def test_reject_invalid_answer(bad):
     raw = bad if isinstance(bad, str) else json.dumps({**BASE, **bad})
     with pytest.raises(ValueError):
         parse_answer(raw, EVIDENCE)
+
+def test_contract_does_not_validate_semantic_support():
+    raw = json.dumps({**BASE, "answer": "All doors unlock."})
+    result = parse_answer(raw, EVIDENCE)
+    assert result["answer"] == "All doors unlock."
+    assert result["evidence_ids"] == ["E1"]
+    assert result["citations"][0]["text"] == "Single: current door."

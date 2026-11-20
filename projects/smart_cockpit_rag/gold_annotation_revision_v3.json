@@ -1,0 +1,907 @@
+{
+  "revision": "gold-question-scope-v3",
+  "reviewed_at": "2026-11-19",
+  "status": "reviewed_not_frozen",
+  "authorization_scope": "仅新建JSON标注数据与配套配置，不修改运行代码、测试代码、旧题集、旧金标、旧QA/复核报告、README或学习计划；不操作Git、不重新检索、不调用模型或付费API、不访问数据库。",
+  "review_basis": {
+    "policy": {
+      "version": "question_required_facts_v1",
+      "required_facts": "reference_facts仅列题目所问的必要事实，以及使该判断或所问操作成立所不可缺少的原因、条件与步骤；不把参考答案每一句都自动设为必答项。",
+      "supplemental_facts": "未询问且不影响当前问题完整性的背景、其他功能、扩展示例、操作反馈和补充建议不作为缺失扣分项；reference_answer仍可保留这些正确补充。",
+      "safety_boundary": "问题明确涉及的安全禁令、温度/电压/车速等必要条件，以及完成所问操作不可缺少的安全前提必须保留。未复述额外提醒不等于允许相反行为；主动提出违反原文安全限制的建议，仍判不忠实或任务失败。",
+      "semantic_equivalence": "按语义核对对象、关系、数值、单位、条件和先后顺序，不要求逐字复述；题干已给定的条件可以承接，不因没有机械重复题干就扣分。位置名、图标或术语的等价表达可接受。",
+      "alternatives": "事实中的或表示合法替代路径，回答任一完整有效路径即可，不要求同时执行所有替代路径；明确问有哪些或分别怎样时，仍须覆盖所问各项。",
+      "task_pass": "可回答题须直接正确完成所问任务，覆盖必要事实且无误导性或不受证据支持的陈述；参考答案比必要事实更丰富并不提高必答门槛。拒答题的判断与安全限制不因本轮审校放宽。",
+      "review_protocol": "使用相同政策审校开发集与测试集，测试集标注不依赖模型输出；旧生成与旧review保持原样，新口径须另建复核报告，不将标注修订带来的分数变化归为模型优化。"
+    },
+    "source_pdf": "阶段12：智能座舱汽车知识大脑/丁师兄综合项目实战项目/综合项目实战项目一/data/train_a.pdf",
+    "source_pdf_sha256": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pdf_physical_pages_rechecked": [
+      21,
+      34,
+      45,
+      46,
+      47,
+      60,
+      85,
+      107,
+      108,
+      109,
+      135,
+      136,
+      164,
+      214,
+      244,
+      256,
+      268,
+      276,
+      289,
+      290,
+      303,
+      304,
+      314,
+      336
+    ],
+    "scope": "逐题审查30道开发题和100道测试题的问法与既有标注，核对本轮变更及安全边界涉及的原PDF文本；原有参数、表格数值及单位未修改。本轮不声称重新进行了全书视觉解析验收。",
+    "model_output_boundary": "开发集已有历史输出，本轮审校不据其分数挑选要删除的事实；100道测试题按题干及资料审查，不读取或生成测试题模型回答。旧分数不是新标准下的成绩。",
+    "reference_answer_policy": "保留全部既有参考答案，允许它们比合格回答更丰富；reference_facts只定义必要覆盖项。被移出必要项的信息仍应遵守真实性与安全性约束，不能据此给出相反或危险建议。"
+  },
+  "counts": {
+    "dev": {
+      "cases": 30,
+      "answerable": 24,
+      "unanswerable": 6,
+      "changed_answerable_cases": 3,
+      "unchanged_answerable_cases": 21,
+      "required_facts_before": 54,
+      "required_facts_after": 52
+    },
+    "test": {
+      "cases": 100,
+      "answerable": 80,
+      "unanswerable": 20,
+      "changed_answerable_cases": 14,
+      "unchanged_answerable_cases": 66,
+      "required_facts_before": 201,
+      "required_facts_after": 197
+    }
+  },
+  "dev_changes": [
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "question": "尾门关闭时碰到障碍物，车辆运动与静止时的动作有何不同？",
+      "pdf_physical_pages": [
+        34
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆运动时，尾门在关闭过程中触碰障碍物，会停止关闭并保持在当前位置。"
+        },
+        {
+          "id": "F2",
+          "text": "车辆静止时，尾门在关闭过程中触碰障碍物，会停止关闭并打开至设置的开启位置。"
+        },
+        {
+          "id": "F3",
+          "text": "上述车辆运动和静止两种尾门防夹情况都会伴有长鸣音。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆运动时，尾门在关闭过程中触碰障碍物，会停止关闭并保持在当前位置。"
+        },
+        {
+          "id": "F2",
+          "text": "车辆静止时，尾门在关闭过程中触碰障碍物，会停止关闭并打开至设置的开启位置。"
+        }
+      ],
+      "removed_required_fact_ids": [
+        "F3"
+      ],
+      "rewritten_required_fact_ids": [],
+      "review_reason": "题目比较运动/静止时尾门动作差异；两种情况共有的长鸣音是补充反馈，不作为完整性硬条件。"
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "question": "车辆追尾后，前排座椅外观看起来没坏，还需要检查吗？",
+      "pdf_physical_pages": [
+        107
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆发生追尾事故后，即便座椅外观未受损，也必须由Lynk & Co领克中心检查前排靠背。"
+        },
+        {
+          "id": "F2",
+          "text": "追尾事故后，颈椎保护系统内部的某些部件可能需要更换。"
+        },
+        {
+          "id": "F3",
+          "text": "不得自行维修颈椎保护系统中的部件。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆发生追尾事故后，即便座椅外观未受损，也必须由Lynk & Co领克中心检查前排靠背。"
+        },
+        {
+          "id": "F2",
+          "text": "追尾事故后，颈椎保护系统内部的某些部件可能需要更换。"
+        }
+      ],
+      "removed_required_fact_ids": [
+        "F3"
+      ],
+      "rewritten_required_fact_ids": [],
+      "review_reason": "保留仍须由中心检查及内部部件可能需更换的判断与原因；题目未问自行维修，未主动附带禁修提醒不单独判整题失败，主动建议自行维修仍不通过。"
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+      "pdf_physical_pages": [
+        244
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "通过空调面板调节风量时，先按压风速/副驾温度调节切换按钮。"
+        },
+        {
+          "id": "F2",
+          "text": "对应风速图标亮起后，旋转风速/副驾温度调节旋钮进行操作。"
+        },
+        {
+          "id": "F3",
+          "text": "上述面板旋钮可开启或关闭鼓风机，并调节鼓风机转速。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "通过空调面板调节风量时，先按压风速/副驾温度调节切换按钮。"
+        },
+        {
+          "id": "F2",
+          "text": "对应风速图标亮起后，旋转风速/副驾温度调节旋钮进行操作。"
+        },
+        {
+          "id": "F3",
+          "text": "旋转上述面板旋钮可调节鼓风机转速（空调风量）。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F3"
+      ],
+      "review_reason": "题目只问面板调节风量；保留切换到风速功能及旋转旋钮，不强制同时复述鼓风机开关这一额外能力。"
+    }
+  ],
+  "test_changes": [
+    {
+      "case_id": "test_08",
+      "question": "整车断电或电子锁机械故障导致充电枪无法拔出时，可以通过什么装置手动解锁？该装置位于哪里？",
+      "pdf_physical_pages": [
+        336
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "可通过应急解锁拉线手动解锁充电枪。"
+        },
+        {
+          "id": "F2",
+          "text": "应急解锁拉线位于发动机舱左侧。"
+        },
+        {
+          "id": "F3",
+          "text": "拆除发动机舱左侧装饰罩后可以看到拉线。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "可通过应急解锁拉线手动解锁充电枪。"
+        },
+        {
+          "id": "F2",
+          "text": "应急解锁拉线位于发动机舱左侧。"
+        }
+      ],
+      "removed_required_fact_ids": [
+        "F3"
+      ],
+      "rewritten_required_fact_ids": [],
+      "review_reason": "题目只问应急装置名称和所在位置；拆除装饰罩的到达步骤属于额外操作说明，不作为该定位题必答项。"
+    },
+    {
+      "case_id": "test_12",
+      "question": "按本手册，车顶行李架的最大载荷是多少千克？较重物品应放在载荷的上部还是底部？",
+      "pdf_physical_pages": [
+        21
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "车顶行李架最大载荷为70 kg。"
+        },
+        {
+          "id": "F2",
+          "text": "载荷应均匀分布，最重的物品应放在底部。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "车顶行李架最大载荷为70 kg。"
+        },
+        {
+          "id": "F2",
+          "text": "较重的物品应放在载荷底部。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "题目只问最大载荷及重物上下位置；平均分布载荷属于额外装载建议，不与底部位置捆绑判分。"
+    },
+    {
+      "case_id": "test_23",
+      "question": "手册明确支持的行车记录仪内存卡容量和文件系统格式分别是什么？内存卡安装在哪里？",
+      "pdf_physical_pages": [
+        276
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "行车记录仪支持FAT32格式的64 G内存卡。"
+        },
+        {
+          "id": "F2",
+          "text": "内存卡位于手套箱内，打开手套箱并向外翻开内存卡盖板即可看到。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "行车记录仪支持FAT32格式的64 G内存卡。"
+        },
+        {
+          "id": "F2",
+          "text": "行车记录仪内存卡安装位置位于手套箱内。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "题目要求安装位置，并未询问打开手套箱及翻开盖板的查找步骤。"
+    },
+    {
+      "case_id": "test_24",
+      "question": "推荐胎压的标签位于车身什么位置？长距离行驶前是否应特别检查胎压？",
+      "pdf_physical_pages": [
+        314
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "胎压标签位于驾驶员侧B柱上。"
+        },
+        {
+          "id": "F2",
+          "text": "应经常检查胎压，尤其是在开始长距离行驶前。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "胎压标签位于驾驶员侧B柱上。"
+        },
+        {
+          "id": "F2",
+          "text": "开始长距离行驶前应特别检查胎压。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "只考核题目明确询问的长途出发前检查要求；日常经常检查的泛化建议保留为参考补充。"
+    },
+    {
+      "case_id": "test_31",
+      "question": "通过驾驶员侧车门按钮调节左侧外后视镜角度，选择、调节和结束分别怎么操作？",
+      "pdf_physical_pages": [
+        60
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "先按下L按钮选择左侧外后视镜，按钮指示灯点亮。"
+        },
+        {
+          "id": "F2",
+          "text": "用中间的控制杆调节外后视镜角度。"
+        },
+        {
+          "id": "F3",
+          "text": "再次按下L按钮结束选择，指示灯熄灭。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "按下L按钮选择左侧外后视镜。"
+        },
+        {
+          "id": "F2",
+          "text": "用中间的控制杆调节外后视镜角度。"
+        },
+        {
+          "id": "F3",
+          "text": "再次按下L按钮结束选择。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F1",
+        "F3"
+      ],
+      "review_reason": "题目询问选择、调节、结束的操作；按钮指示灯亮灭是操作反馈，不是额外必答步骤。"
+    },
+    {
+      "case_id": "test_38",
+      "question": "通过空调面板开启前挡风玻璃最大除霜时应操作什么按钮？A/C、内循环和AUTO风量会怎样联动？",
+      "pdf_physical_pages": [
+        256
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "按下前除霜/除雾按钮启用最大除霜，按钮指示灯点亮。"
+        },
+        {
+          "id": "F2",
+          "text": "A/C自动激活，空调内循环自动关闭。"
+        },
+        {
+          "id": "F3",
+          "text": "启用前除霜/除雾时，AUTO开启最大风量。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "按下空调面板的前除霜/除雾按钮，启用最大除霜。"
+        },
+        {
+          "id": "F2",
+          "text": "A/C自动激活，空调内循环自动关闭。"
+        },
+        {
+          "id": "F3",
+          "text": "启用前除霜/除雾时，AUTO开启最大风量。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F1"
+      ],
+      "review_reason": "保留题目要求的按钮和A/C、内循环、AUTO联动；按钮指示灯点亮只是附加反馈。"
+    },
+    {
+      "case_id": "test_39",
+      "question": "想让其他智能设备连接车载热点，应先满足什么网络条件，再进入哪个设置界面开启？",
+      "pdf_physical_pages": [
+        268
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆接入网络后才能创建车载热点。"
+        },
+        {
+          "id": "F2",
+          "text": "在中央显示屏进入设置-连接-车载热点，开启车载热点功能。"
+        },
+        {
+          "id": "F3",
+          "text": "可以在该界面设置热点名称及热点配置。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆接入网络后才能创建车载热点。"
+        },
+        {
+          "id": "F2",
+          "text": "在中央显示屏进入设置-连接-车载热点，开启车载热点功能。"
+        }
+      ],
+      "removed_required_fact_ids": [
+        "F3"
+      ],
+      "rewritten_required_fact_ids": [],
+      "review_reason": "题目只问网络前提、设置入口及开启；热点名称和热点配置不属于该题所问内容。"
+    },
+    {
+      "case_id": "test_43",
+      "question": "更换遥控钥匙电池时，应先拆什么？新电池哪一极朝上，装回前后怎样检查？",
+      "pdf_physical_pages": [
+        303
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "先拆下机械钥匙，再按住钥匙盖边缘向外移动取下钥匙盖，并拆除电池上端盖。"
+        },
+        {
+          "id": "F2",
+          "text": "安装新电池时，正极加号端朝上。"
+        },
+        {
+          "id": "F3",
+          "text": "更换电池后按任意按键，检查钥匙工作指示灯是否点亮。"
+        },
+        {
+          "id": "F4",
+          "text": "按相反步骤装回，再操作钥匙按键确认功能正常。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "更换遥控钥匙电池时，先拆下机械钥匙。"
+        },
+        {
+          "id": "F2",
+          "text": "安装新电池时，正极加号端朝上。"
+        },
+        {
+          "id": "F3",
+          "text": "更换电池后按任意按键，检查钥匙工作指示灯是否点亮。"
+        },
+        {
+          "id": "F4",
+          "text": "装回后操作遥控钥匙按键，检查并确认功能正常。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F1",
+        "F4"
+      ],
+      "review_reason": "题目明确问首先拆什么、极性及装回前后检查；额外拆盖细节和按反序装配不并入这些必要事实。"
+    },
+    {
+      "case_id": "test_53",
+      "question": "手册允许涉水水位高于车身下边缘吗？通过积水时可以停车或倒车吗？",
+      "pdf_physical_pages": [
+        164
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "涉水水位最高不得超过车身下边缘。"
+        },
+        {
+          "id": "F2",
+          "text": "应低速通过积水路段，不得在水中停车或倒车。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "涉水水位最高不得超过车身下边缘。"
+        },
+        {
+          "id": "F2",
+          "text": "通过积水时不得在水中停车或倒车。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "保留题目直接询问的水位上限及停车/倒车禁令；低速通过是额外安全建议，遗漏不当作该问法的事实缺失，反向鼓励高速涉水仍属错误建议。"
+    },
+    {
+      "case_id": "test_55",
+      "question": "锁车后没有收到生命体检测报警，是否就能确认后排没有遗留乘员？网络和遮挡物会带来什么限制？",
+      "pdf_physical_pages": [
+        214
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "不能仅因未收到报警就确认后排无人，驾驶员仍有责任确认车内情况后再离开。"
+        },
+        {
+          "id": "F2",
+          "text": "网络受限可能导致报警信息无法发送或延迟发送。"
+        },
+        {
+          "id": "F3",
+          "text": "遮挡物或运动物体会干扰传感器，影响检测准确性，体积过小的生命体也可能无法检测。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "不能仅因未收到报警就确认后排无人，驾驶员仍有责任确认车内情况后再离开。"
+        },
+        {
+          "id": "F2",
+          "text": "网络受限可能导致报警信息无法发送或延迟发送。"
+        },
+        {
+          "id": "F3",
+          "text": "遮挡物会干扰传感器正常工作，影响生命体检测的准确性。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F3"
+      ],
+      "review_reason": "题目点名网络和遮挡物；运动物体及体积过小生命体是其他局限性，不和遮挡物这一必答项捆绑。"
+    },
+    {
+      "case_id": "test_57",
+      "question": "没有高压维修资质的车主可以自行拆解动力电池或移动高压线缆吗？",
+      "pdf_physical_pages": [
+        304
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "非专业人士不得触碰、移动或拆解动力电池及相应高压线缆。"
+        },
+        {
+          "id": "F2",
+          "text": "非专业人士同样不得触碰、移动或拆解其他带有高压警示标识的部件。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "非专业人士不得触碰、移动或拆解动力电池及相应高压线缆。"
+        }
+      ],
+      "removed_required_fact_ids": [
+        "F2"
+      ],
+      "rewritten_required_fact_ids": [],
+      "review_reason": "保留非专业人士不得触碰、移动、拆解题目所指动力电池及高压线缆；对其他未问高压部件的扩展提醒不另列必答项，不能由此允许操作任何其他高压部件。"
+    },
+    {
+      "case_id": "test_74",
+      "question": "开门预警DOW在什么本车车速条件下检测风险？熄火后还能工作多久，怎样提醒开门碰撞风险？",
+      "pdf_physical_pages": [
+        46,
+        47
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆静止或本车车速低于5 km/h时，DOW检测相邻两侧后方交通。"
+        },
+        {
+          "id": "F2",
+          "text": "DOW仅在点火开关打开或车辆熄火后3分钟内工作。"
+        },
+        {
+          "id": "F3",
+          "text": "发现开门碰撞风险时，外后视镜指示灯和车内氛围灯闪烁并发出声音警告，仪表可显示警告画面。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "车辆静止或本车车速低于5 km/h时，DOW检测相邻两侧后方交通。"
+        },
+        {
+          "id": "F2",
+          "text": "车辆熄火后，DOW仅在3分钟内可继续工作。"
+        },
+        {
+          "id": "F3",
+          "text": "发现开门碰撞风险时，外后视镜指示灯和车内氛围灯闪烁并发出声音警告，仪表可显示警告画面。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "题目要求熄火后的时限；点火开启时的工作条件是另一种情形，不强制额外复述，车速条件及全部告警方式保持不变。"
+    },
+    {
+      "case_id": "test_76",
+      "question": "使用无线充电板时，一次可以同时给几部手机充电？能否把金属钥匙或硬币和手机一起放在充电区？",
+      "pdf_physical_pages": [
+        135,
+        136
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "无线充电板每次只能对1部手机充电。"
+        },
+        {
+          "id": "F2",
+          "text": "不能把硬币、金属钥匙、金属环或其他含金属成分的物品与手机一起放在无线充电区域。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "无线充电板每次只能对1部手机充电。"
+        },
+        {
+          "id": "F2",
+          "text": "不能把金属钥匙或硬币与手机一起放在无线充电区域。"
+        }
+      ],
+      "removed_required_fact_ids": [],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "保留题目明确询问的金属钥匙和硬币禁令；金属环等扩展举例不强制枚举，但不得声称其他金属物品可安全混放。"
+    },
+    {
+      "case_id": "test_79",
+      "question": "后门儿童锁和后门车窗锁止是否是同一项限制？启用后分别影响什么操作？",
+      "pdf_physical_pages": [
+        45,
+        108
+      ],
+      "previous_required_facts": [
+        {
+          "id": "F1",
+          "text": "后门儿童锁启用后不能从车内打开后门，需要用相应车门外把手打开。"
+        },
+        {
+          "id": "F2",
+          "text": "后门车窗锁止用于防止儿童意外打开后门车窗。"
+        },
+        {
+          "id": "F3",
+          "text": "后门车窗锁止按钮指示灯点亮，表示已停用后门车窗；不能把车门儿童锁与车窗锁止混为同一功能。"
+        }
+      ],
+      "revised_required_facts": [
+        {
+          "id": "F1",
+          "text": "后门儿童锁启用后不能从车内打开后门，需要用相应车门外把手打开。"
+        },
+        {
+          "id": "F2",
+          "text": "后门车窗锁止限制后门车窗的开启操作，用于防止儿童意外打开后门车窗。"
+        }
+      ],
+      "removed_required_fact_ids": [
+        "F3"
+      ],
+      "rewritten_required_fact_ids": [
+        "F2"
+      ],
+      "review_reason": "两条事实已经分别给出车内开门与后门车窗的不同限制对象；不再额外要求指示灯反馈，也不把同一功能区别重复计作第三条事实。"
+    }
+  ],
+  "unchanged_reviewed_cases": {
+    "dev": [
+      "q_screen_auto_001",
+      "q_outside_001",
+      "q_unlock_scope_001",
+      "q_heat_level_001",
+      "q_heat_warning_001",
+      "q_autohold_epb_001",
+      "q_fcta_alert_001",
+      "q_key_interference_001",
+      "q_fan_levels_001",
+      "q_acc_limits_001",
+      "q_usb_uses_001",
+      "q_unlock_scope_para_001",
+      "q_fan_levels_para_001",
+      "q_ventilation_levels_001",
+      "q_usb_pd_unknown_001",
+      "q_vehicle_scope_unknown_001",
+      "q_live_health_unknown_001",
+      "table_01",
+      "table_02",
+      "table_03",
+      "table_04",
+      "table_05",
+      "table_06",
+      "table_07",
+      "table_08",
+      "table_09",
+      "table_10"
+    ],
+    "test": [
+      "test_01",
+      "test_02",
+      "test_03",
+      "test_04",
+      "test_05",
+      "test_06",
+      "test_07",
+      "test_09",
+      "test_10",
+      "test_11",
+      "test_13",
+      "test_14",
+      "test_15",
+      "test_16",
+      "test_17",
+      "test_18",
+      "test_19",
+      "test_20",
+      "test_21",
+      "test_22",
+      "test_25",
+      "test_26",
+      "test_27",
+      "test_28",
+      "test_29",
+      "test_30",
+      "test_32",
+      "test_33",
+      "test_34",
+      "test_35",
+      "test_36",
+      "test_37",
+      "test_40",
+      "test_41",
+      "test_42",
+      "test_44",
+      "test_45",
+      "test_46",
+      "test_47",
+      "test_48",
+      "test_49",
+      "test_50",
+      "test_51",
+      "test_52",
+      "test_54",
+      "test_56",
+      "test_58",
+      "test_59",
+      "test_60",
+      "test_61",
+      "test_62",
+      "test_63",
+      "test_64",
+      "test_65",
+      "test_66",
+      "test_67",
+      "test_68",
+      "test_69",
+      "test_70",
+      "test_71",
+      "test_72",
+      "test_73",
+      "test_75",
+      "test_77",
+      "test_78",
+      "test_80",
+      "test_81",
+      "test_82",
+      "test_83",
+      "test_84",
+      "test_85",
+      "test_86",
+      "test_87",
+      "test_88",
+      "test_89",
+      "test_90",
+      "test_91",
+      "test_92",
+      "test_93",
+      "test_94",
+      "test_95",
+      "test_96",
+      "test_97",
+      "test_98",
+      "test_99",
+      "test_100"
+    ]
+  },
+  "boundary_decisions": [
+    {
+      "case_id": "q_neck_collision_001",
+      "decision": "保留F2作为解释外观未损坏仍需检查的原因；只移出独立的自行维修禁令这一额外行为提醒。"
+    },
+    {
+      "case_id": "test_03",
+      "decision": "保留智能远近光启用挡位、环境和车速前提及雾雨不能完全依赖的限制；图示挡位接受语义等价表述，不要求按不可见图标逐字作答。"
+    },
+    {
+      "case_id": "test_29",
+      "decision": "原文的两种调出密码界面方式为或关系，任一适用路径均可，不要求同时复述两条路径；密码解锁后保护关闭仍属必答。"
+    },
+    {
+      "case_id": "test_32",
+      "decision": "每个车门按钮分别初始化每扇车窗是完成所问初始化的必要要求，F3和对应第109页第2块均保留。"
+    },
+    {
+      "case_id": "test_48",
+      "decision": "不得重启、不得驾驶或普通拖动、离车求助及平板拖车等均直接属于问题所问处理方式，全部保留。"
+    },
+    {
+      "case_id": "test_57",
+      "decision": "对题目明确所指动力电池和高压线缆的非专业操作禁令保持完整；只移出对未问其他高压部件的扩展列举，未改变任何高压安全许可。"
+    },
+    {
+      "case_id": "test_58",
+      "decision": "高温不得开盖及必须等待发动机完全冷却均直接影响所问操作安全，全部保留。"
+    },
+    {
+      "case_id": "test_65",
+      "decision": "正负号、公差和角度单位均为题目明确要求，不能当作可省略细节。"
+    },
+    {
+      "case_id": "test_67",
+      "decision": "前后轮英寸规格、标准厚度和最小安全厚度均保留，不因数值较多缩减。"
+    },
+    {
+      "case_id": "test_72",
+      "decision": "四个单位及四个独立必要行块全部保留；不为适配Top3而删题干或删金标。"
+    },
+    {
+      "case_id": "test_74",
+      "decision": "外后视镜/氛围灯及声音等告警方式是题目明确询问的输出，不按本轮其他操作题的指示灯反馈处理为可省略。"
+    },
+    {
+      "case_id": "test_80",
+      "decision": "连接/断开顺序、车辆熄火与解锁、接地三孔插座、禁止延伸电缆或移动插座是所问充电操作的必要步骤和安全边界，全部保留。"
+    }
+  ],
+  "retrieval_evidence": {
+    "dev_main_and_alternative_sets_changed": false,
+    "test_main_and_alternative_sets_changed": false,
+    "reason": "所有收窄后的必要事实仍由原来相同块支持；未移除任何只为压低TopK覆盖难度的块。版本、集合、资料身份和文件内容哈希不变。",
+    "database_reingestion_required": false
+  },
+  "input_files_sha256": {
+    "dev_retrieval_gold_v2.json": "bfe4522fad05ae0516635859b0c634eace5365295cbf147e0eb9d8046c67af64",
+    "eval_test_v2.json": "fb7412cd243406572a5de9a82c0e6c909476b15e988f035fef3cf7df8c88e20b",
+    "test_retrieval_gold_v2.json": "2759e3e62ac7b0938e64379e8983d6cf056188af1fc6d61b660387b72dc700b9",
+    "evaluation_config_dev_v2.json": "a63622c3e3bff6006e3802cf8e259270890d221078141e03a3ab35d51f979577",
+    "evaluation_config_test_v2.json": "9e57068fb80ac64e50bd3cfe9aaee241127a93d53e5ee479cebe5796a91776bd",
+    "eval_cases.json": "834153208dfc29effcf3fa0968fa34a2086eb3e815cd68e8bacff545d6516975",
+    "table_eval_cases_v1.json": "a9635143945a72a71ea3ed466ffd0fa2f32b092ab8ae8113fce0e66b4201b6b8",
+    "eval_test_v1.json": "4b2e8373a12a7f66b7f3d2563bbeef2a619d96c977b6f0b57c5a41cac3e1c226"
+  },
+  "output_files_sha256": {
+    "dev_retrieval_gold_v3.json": "eb2e26630920d8e54a506dc6c2535b99dfa6f1dcc4cdc80d7a95e7cc1d807f41",
+    "eval_test_v3.json": "1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e",
+    "test_retrieval_gold_v3.json": "348ee2b9c3b40546c03d352d36bf423585f0ba35d6f194d7e943e4d9b8415319",
+    "evaluation_config_dev_v3.json": "721d52ece179e779f326690678afd408ca9a9c54668b35bb23aeab54e4ea9965",
+    "evaluation_config_test_v3.json": "bc6e620551d4532b9448c23d7a20228bd125a006b4c12a4f5a62a97efba26d7b"
+  },
+  "verification": {
+    "json_structure_and_unique_fact_ids": "passed",
+    "case_ids_questions_reference_answers_evidence_and_splits_unchanged": "passed",
+    "negative_cases_unchanged": "passed",
+    "retrieval_main_and_alternative_sets_unchanged": "passed",
+    "test_case_fingerprint_and_dev_source_fingerprints": "passed",
+    "existing_load_evaluation_inputs_for_both_v3_configs": "passed_without_retrieval_or_generation",
+    "existing_evaluation_unit_tests": {
+      "command": "python -B -m pytest -q -p no:cacheprovider test_evaluation.py",
+      "passed": 42,
+      "failed": 0
+    },
+    "preexisting_project_files_sha256_unchanged": 77,
+    "only_new_json_files": true,
+    "existing_qa_rescored": false,
+    "final_test_run": false,
+    "note": "这里只验证数据与原有入口兼容；最终配置尚未冻结，测试集未运行，也未以新标注更新旧成绩。"
+  },
+  "next_step": "使用v3金标为已保存的开发集Top3/Top5答案建立新的独立复核报告并统一复核，不重新生成答案；确认评测口径与运行配置后，再冻结并运行100题测试。"
+}

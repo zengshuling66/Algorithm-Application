@@ -216,3 +216,20 @@ def test_qa_stage_and_usage_logs(offline_stream, caplog, path, question):
     if usages:
         assert usages[0]["usage"] is None and usages[0]["model"] == "offline-model"
     assert rows[-1]["event"] == "request_finished"
+
+def test_qa_logs_exclude_sensitive_bodies(offline_api, monkeypatch, caplog):
+    client, generate = offline_api
+    marker = "FAKE_SECRET_MARKER"
+    monkeypatch.setenv("LLM_API_KEY", marker)
+    generate.return_value["answer"] = json.dumps({
+        "answer_status": "answered", "answer": marker, "evidence_ids": ["E1"],
+    })
+    caplog.clear()
+    with caplog.at_level(logging.INFO, logger="uvicorn.error"):
+        response = client.post("/qa", json={"question": marker})
+    assert response.status_code == 200 and response.json()["answer"] == marker
+    rows = [json.loads(r.getMessage()) for r in caplog.records
+            if r.name == "uvicorn.error"]
+    assert {"stage_finished", "generation_usage", "request_finished"} <= {
+        row["event"] for row in rows}
+    assert marker not in caplog.text

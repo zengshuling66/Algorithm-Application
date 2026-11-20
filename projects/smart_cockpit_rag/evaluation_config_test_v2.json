@@ -1,0 +1,7 @@
+{
+  "case_files": ["eval_test_v2.json"],
+  "manual_metadata": "manual_metadata.json",
+  "required_block_gold": "test_retrieval_gold_v2.json",
+  "split": "test",
+  "top_k": 3
+}

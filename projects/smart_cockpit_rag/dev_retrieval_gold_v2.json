@@ -1,0 +1,403 @@
+{
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-textflow-v1",
+    "id_field": "chunk_id",
+    "case_files": [
+        "eval_cases.json",
+        "table_eval_cases_v1.json"
+    ],
+    "case_files_sha256": {
+        "eval_cases.json": "834153208dfc29effcf3fa0968fa34a2086eb3e815cd68e8bacff545d6516975",
+        "table_eval_cases_v1.json": "a9635143945a72a71ea3ed466ffd0fa2f32b092ab8ae8113fce0e66b4201b6b8"
+    },
+    "annotation_status": "draft",
+    "annotation_notes": {
+        "scope": "覆盖现有30道开发题中的全部24道可回答题，每题列出一个已核验的主证据集合；6道不可回答题不设置必需块。金标只用于评测对照，不作为检索条件或模型输入。",
+        "identity": "cases 与新版测试金标采用相同的完整 chunk_id 标注和评分字段。开发题来自两份文件，因此用 case_files 与 case_files_sha256 逐文件记录来源和指纹；未改原题集。",
+        "interpretation": "主集合不是全部相关块的穷举。alternative_evidence_sets 的每个内层列表是一套已确认能独立支持完整参考答案的替代方案；同一套内的块须全部满足，不同完整方案之间为或关系，不把所有方案合并成一个必需块列表。",
+        "implementation_status": "add_block_scores 已接入 alternative_evidence_sets，并通过相关离线测试；主方案与完整替代方案按覆盖率优先、首次命中RR次之、同分时方案顺序优先的规则选择，报告记录 best_set_recall_rr_v1 及 selected_evidence_set。本文件仍为draft，须由配置显式引用并完成输入校验后，才用于TopK开发集对照；正式终测前另行冻结题集、金标与最终配置。",
+        "page_metrics": "部分替代证据位于原 evidence.page 以外的物理页。旧 annotated_page_hit 仍只检查题集原标注页，不代表全部有效证据页；它与替代集合的块命中口径不同，不应把旧页未命中直接解释为无证据。",
+        "table_context": "表格数据、列头、合并单元格和题目涉及的脚注已与原PDF页面核对；不把仅相邻、但归属不明的文字当作表格事实。",
+        "q_screen_auto_001": "主证据为物理第263页；第264页同样明确说明日出到日落、自定时段和自动日夜切换，另列为完整替代方案。",
+        "q_usb_uses_001": "主证据为物理第131页正文第1块。该块已完整包含中央扶手箱Type A的数据传输和充电、Type C为智能设备充电两项事实，末尾电流句截断不影响本题。第131页第2块为同段重叠内容；第132、133、136页均明确重复中央扶手箱内接口的相同用途，分别作为独立替代方案。不得与后排接口的快充、功率等说明混用。",
+        "q_ventilation_levels_001": "主证据为物理第116页的驾驶员/副驾驶员侧通风三级及关-低-中-高循环。第117页前排驾驶员侧通风也明确给出相同档位和循环，可支持本题所问的强度与切换；不据此推断未知车辆一定配备通风或副驾驶侧配置。",
+        "q_fan_panel_001": "物理第244页左栏完整说明空调面板切换按钮与旋钮的操作；右栏属于中央显示屏控制。主块虽包含两栏，但本题只能采用左栏的操作说明，不得把右栏的点击增减操作归给实体面板。",
+        "table_02": "第349页宽度行1860带脚注(b)，其明确说明不包括外后视镜；同块中的脚注(a)说明高度包含天线，与本题无关。宽度行及其正确脚注已经包含在同一块。",
+        "table_04": "第350页座椅前后位置行及其脚注(a)支持测量座垫深时前移210毫米、后移50毫米，后排不可调节；无需额外把正文块列为必需块。",
+        "table_05_and_table_06": "空载和满载胎压同在第351页同一表格行块，前后轮分别均为230kPa、280kPa；两题共享chunk_id是正常现象，不是重复标注错误。",
+        "table_07": "只接受ISOFIX表中I组9至18kg的D行与B行作为主集合，两行缺一不可。左侧普通儿童座椅表的U/L、C行或B1行不能替代这两个指定尺寸等级的证据。",
+        "table_08": "第321页机油和滤芯行块既包含15000公里/12个月，也包含经核对归属的(a)恶劣条件时间与里程减半脚注，故主集合只需该行块，不额外要求正文块。",
+        "question_families": "q_unlock_scope_001与q_unlock_scope_para_001、q_fan_levels_001与q_fan_levels_para_001是已有同问题族改写，共享证据。保留原30题，不将其宣称为30个独立问题族。",
+        "history": "旧金标和历史报告保留。旧必需块指标仅覆盖8道可回答表格题，新文件覆盖24道可回答开发题，两种分母的数值不能直接当作系统优化收益。"
+    },
+    "reference_facts": {
+        "q_screen_auto_001": [
+            {
+                "id": "F1",
+                "text": "中央显示屏自动模式可选择日出到日落方式：白天显示日间模式，晚上显示夜间模式。"
+            },
+            {
+                "id": "F2",
+                "text": "中央显示屏自动模式可选择自定时段方式，依据设置的时间段切换日间和夜间显示模式。"
+            }
+        ],
+        "q_unlock_scope_001": [
+            {
+                "id": "F1",
+                "text": "无钥匙解锁设为单门时，触摸前门外把手内部传感器区域仅解锁当前车门。"
+            },
+            {
+                "id": "F2",
+                "text": "无钥匙解锁设为全车时，触摸同一区域解锁全车车门。"
+            }
+        ],
+        "q_heat_level_001": [
+            {
+                "id": "F1",
+                "text": "手册中的前排座椅加热有低、中、高三级强度。"
+            },
+            {
+                "id": "F2",
+                "text": "点击前排座椅加热控制开关后，在关、低、中、高之间循环。"
+            }
+        ],
+        "q_heat_warning_001": [
+            {
+                "id": "F1",
+                "text": "如果乘员身体无法感知座椅温度，不应使用前排座椅加热功能。"
+            }
+        ],
+        "q_autohold_epb_001": [
+            {
+                "id": "F1",
+                "text": "Auto Hold处于激活状态时，松开驾驶员安全带会使Auto Hold自动停用并启用EPB。"
+            },
+            {
+                "id": "F2",
+                "text": "Auto Hold处于激活状态时，打开驾驶员侧车门会使Auto Hold自动停用并启用EPB。"
+            },
+            {
+                "id": "F3",
+                "text": "Auto Hold处于激活状态时，超出Auto Hold工作时间会使Auto Hold自动停用并启用EPB。"
+            },
+            {
+                "id": "F4",
+                "text": "Auto Hold处于激活状态时，挂入驻车挡P会使Auto Hold自动停用并启用EPB。"
+            }
+        ],
+        "q_fcta_alert_001": [
+            {
+                "id": "F1",
+                "text": "题述FCTA预警场景的车速条件为4至15 km/h。"
+            },
+            {
+                "id": "F2",
+                "text": "题述场景为车辆驶出停车位或经过交叉路口，且FCTA监测到前方侧向碰撞风险。"
+            },
+            {
+                "id": "F3",
+                "text": "FCTA在上述预警条件满足时，通过仪表提示信息和蜂鸣声提醒驾驶员。"
+            }
+        ],
+        "q_tailgate_obstacle_001": [
+            {
+                "id": "F1",
+                "text": "车辆运动时，尾门在关闭过程中触碰障碍物，会停止关闭并保持在当前位置。"
+            },
+            {
+                "id": "F2",
+                "text": "车辆静止时，尾门在关闭过程中触碰障碍物，会停止关闭并打开至设置的开启位置。"
+            },
+            {
+                "id": "F3",
+                "text": "上述车辆运动和静止两种尾门防夹情况都会伴有长鸣音。"
+            }
+        ],
+        "q_key_interference_001": [
+            {
+                "id": "F1",
+                "text": "车辆处于充电桩、大型停车场、变电站等存在信号干扰的场所时，智能钥匙可能受到干扰并偶发功能异常。"
+            },
+            {
+                "id": "F2",
+                "text": "智能钥匙与干扰设备放在一起时，可能受到干扰并偶发功能异常。"
+            }
+        ],
+        "q_neck_collision_001": [
+            {
+                "id": "F1",
+                "text": "车辆发生追尾事故后，即便座椅外观未受损，也必须由Lynk & Co领克中心检查前排靠背。"
+            },
+            {
+                "id": "F2",
+                "text": "追尾事故后，颈椎保护系统内部的某些部件可能需要更换。"
+            },
+            {
+                "id": "F3",
+                "text": "不得自行维修颈椎保护系统中的部件。"
+            }
+        ],
+        "q_fan_panel_001": [
+            {
+                "id": "F1",
+                "text": "通过空调面板调节风量时，先按压风速/副驾温度调节切换按钮。"
+            },
+            {
+                "id": "F2",
+                "text": "对应风速图标亮起后，旋转风速/副驾温度调节旋钮进行操作。"
+            },
+            {
+                "id": "F3",
+                "text": "上述面板旋钮可开启或关闭鼓风机，并调节鼓风机转速。"
+            }
+        ],
+        "q_fan_levels_001": [
+            {
+                "id": "F1",
+                "text": "空调风速共有9个可设置的等级。"
+            }
+        ],
+        "q_acc_limits_001": [
+            {
+                "id": "F1",
+                "text": "ACC只是驾驶辅助功能，不能代替驾驶员驾驶，驾驶员仍须负责安全驾驶。"
+            },
+            {
+                "id": "F2",
+                "text": "严重雨雪、能见度低等较差驾驶条件下，不应使用ACC。"
+            }
+        ],
+        "q_usb_uses_001": [
+            {
+                "id": "F1",
+                "text": "中央扶手箱内的Type A接口支持数据传输和充电。"
+            },
+            {
+                "id": "F2",
+                "text": "中央扶手箱内的Type C接口可为手机、平板等智能设备充电。"
+            }
+        ],
+        "q_unlock_scope_para_001": [
+            {
+                "id": "F1",
+                "text": "无钥匙解锁设为单门时，触摸前门外把手内部传感器区域仅解锁当前车门。"
+            },
+            {
+                "id": "F2",
+                "text": "无钥匙解锁设为全车时，触摸同一区域解锁全车车门。"
+            }
+        ],
+        "q_fan_levels_para_001": [
+            {
+                "id": "F1",
+                "text": "空调风速共有9个可设置的等级。"
+            }
+        ],
+        "q_ventilation_levels_001": [
+            {
+                "id": "F1",
+                "text": "手册所述前排座椅通风有低、中、高三级强度。"
+            },
+            {
+                "id": "F2",
+                "text": "点击前排座椅通风控制开关后，在关、低、中、高之间循环。"
+            }
+        ],
+        "table_01": [
+            {
+                "id": "F1",
+                "text": "泊车辅助系统检测范围表中，前部中央的检测范围为0.9米。"
+            },
+            {
+                "id": "F2",
+                "text": "泊车辅助系统检测范围表中，后部中央的检测范围为1.5米。"
+            }
+        ],
+        "table_02": [
+            {
+                "id": "F1",
+                "text": "车辆尺寸参数表中的车宽为1860毫米。"
+            },
+            {
+                "id": "F2",
+                "text": "该表的车宽不包括外后视镜。"
+            }
+        ],
+        "table_03": [
+            {
+                "id": "F1",
+                "text": "发动机DHE15-ESZ的最大净功率为108 kW。"
+            },
+            {
+                "id": "F2",
+                "text": "发动机DHE15-ESZ最大净功率对应的转速为5500 rpm。"
+            },
+            {
+                "id": "F3",
+                "text": "发动机DHE15-ESZ的额定功率为110 kW。"
+            },
+            {
+                "id": "F4",
+                "text": "发动机DHE15-ESZ额定功率对应的转速为5500 rpm。"
+            }
+        ],
+        "table_04": [
+            {
+                "id": "F1",
+                "text": "测量座垫深时，前排座椅设定的前后位置中，向前滑动量为210毫米。"
+            },
+            {
+                "id": "F2",
+                "text": "测量座垫深时，前排座椅设定的前后位置中，向后滑动量为50毫米。"
+            },
+            {
+                "id": "F3",
+                "text": "测量座垫深时，后排座椅对应的前后位置不可调节。"
+            }
+        ],
+        "table_05": [
+            {
+                "id": "F1",
+                "text": "235/50 R19轮胎在冷胎、空载条件下，前轮推荐胎压为230 kPa。"
+            },
+            {
+                "id": "F2",
+                "text": "235/50 R19轮胎在冷胎、空载条件下，后轮推荐胎压为230 kPa。"
+            }
+        ],
+        "table_06": [
+            {
+                "id": "F1",
+                "text": "235/50 R19轮胎在冷胎、满载条件下，前轮推荐胎压为280 kPa。"
+            },
+            {
+                "id": "F2",
+                "text": "235/50 R19轮胎在冷胎、满载条件下，后轮推荐胎压为280 kPa。"
+            }
+        ],
+        "table_07": [
+            {
+                "id": "F1",
+                "text": "ISOFIX儿童安全座椅表中，I组9至18 kg、尺寸等级D的第二排外侧座椅标注为IL。"
+            },
+            {
+                "id": "F2",
+                "text": "ISOFIX儿童安全座椅表中，I组9至18 kg、尺寸等级B的第二排外侧座椅标注为IL、IUF。"
+            }
+        ],
+        "table_08": [
+            {
+                "id": "F1",
+                "text": "常规保养表中，更换发动机机油和机油滤芯的常规间隔为15000公里/12个月。"
+            },
+            {
+                "id": "F2",
+                "text": "恶劣驾驶条件下，带(a)标记项目的推荐时间和里程间隔均为常规驾驶条件下的一半。"
+            }
+        ]
+    },
+    "alternative_evidence_sets": {
+        "q_screen_auto_001": [
+            [
+                "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body"
+            ]
+        ],
+        "q_usb_uses_001": [
+            [
+                "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c2:tables-textflow-v1:body"
+            ],
+            [
+                "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body"
+            ],
+            [
+                "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+            ],
+            [
+                "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body"
+            ]
+        ],
+        "q_ventilation_levels_001": [
+            [
+                "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body"
+            ]
+        ]
+    },
+    "cases": {
+        "q_screen_auto_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body"
+        ],
+        "q_unlock_scope_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body"
+        ],
+        "q_heat_level_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+        ],
+        "q_heat_warning_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+        ],
+        "q_autohold_epb_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body"
+        ],
+        "q_fcta_alert_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p197:c1:tables-textflow-v1:body"
+        ],
+        "q_tailgate_obstacle_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+        ],
+        "q_key_interference_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body"
+        ],
+        "q_neck_collision_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body"
+        ],
+        "q_fan_panel_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body"
+        ],
+        "q_fan_levels_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body"
+        ],
+        "q_acc_limits_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body"
+        ],
+        "q_usb_uses_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body"
+        ],
+        "q_unlock_scope_para_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body"
+        ],
+        "q_fan_levels_para_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body"
+        ],
+        "q_ventilation_levels_001": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body"
+        ],
+        "table_01": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2"
+        ],
+        "table_02": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3"
+        ],
+        "table_03": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1"
+        ],
+        "table_04": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1"
+        ],
+        "table_05": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1"
+        ],
+        "table_06": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1"
+        ],
+        "table_07": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7"
+        ],
+        "table_08": [
+            "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1"
+        ]
+    }
+}

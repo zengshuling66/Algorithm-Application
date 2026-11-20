@@ -2,7 +2,7 @@
 
 基于车主手册的检索增强问答原型：解析 PDF 正文与原生文本表格，使用本地 BGE、Qdrant 和 BM25 检索证据，通过兼容 Chat Completions 的接口生成结构化答案，并由程序组装可信来源引用。
 
-当前提供命令行问答、FastAPI 普通/真实 SSE 问答、请求关联与阶段日志、四策略开发集评测、人工复核和本地检索基准。仅验证一份真实手册；流式链路已完成本机单题与断开恢复检查，尚无 Docker 或完整生产验收。
+当前提供命令行问答、FastAPI 普通/真实 SSE 问答、请求关联与阶段日志、四策略开发集对照、冻结终测、独立复核和Markdown报告导出。100题终测采用混合召回加精排、Top3，本轮任务通过92/100；结果仅代表这一份手册、题集、模型运行和既定复核口径，不是生产准确率。Docker与干净环境复现仍待验收。
 
 ## 架构与当前状态
 
@@ -13,7 +13,7 @@
       → JSON Prompt → LLM → JSON/字段/ID校验 → 答案与可信引用
 流式：SDK delta → stream_qa临时事件 → SSE delta；正常生成结束且契约校验通过 → SSE final
 精排：两路候选 → RRF Top10 → cross-encoder → Top3（API默认，检索与评测可选）
-评测：配置/题集 → 四路检索快照 → 保存结果回放生成 → 人工review → 汇总
+评测：题集/金标/配置冻结 → 四路检索快照 → 按qa_methods回放生成 → 独立review → 汇总/Markdown
 ~~~
 
 - 正文使用 pdfplumber 的 text-flow 候选方案改善部分双栏顺序；检测表格按几何单元格展开合并格，再渲染为带列标签的数据行。
@@ -33,7 +33,8 @@
 | BM25 | jieba分词、英文小写化，BM25Okapi：k1=1.5、b=0.75 |
 | 两路候选 | 各最多10条，`hybrid_retrieval.DEFAULT_CANDIDATE_K` |
 | RRF | 按chunk_id合并，累计各路 `1/(60+rank)`，同分按ID排序 |
-| 最终数量 | `vector_store.DEFAULT_TOP_K=3` |
+| 最终数量 | 默认 `vector_store.DEFAULT_TOP_K=3`；批量评测优先读取配置的 `top_k`，终测固定为3 |
+| 生成评测策略 | 配置 `qa_methods`；缺省为四路，当前终测为 `["rerank"]` |
 | 精排 | `BAAI/bge-reranker-base`，revision `2cfc18c9415c912f9d8155881c133215df768a70` |
 | 精排输入/输出 | CPU/float32，配对长度上限512 tokens，batch_size=4，Identity保留原始logit |
 | 当前解析版本 | `tables-textflow-v1` |
@@ -41,7 +42,7 @@
 | 保留基线 | `cockpit_manual_bge_small_zh_v1_5_tables_v1`：604条；更早无表格规范化集合：469条 |
 | Prompt | 结构化路径 `cockpit-rag-json-v2`；直接文本基线保留 `cockpit-rag-v1` |
 
-这些值是源码默认值，不是全部开放为CLI参数。混合的 `score` 是RRF总分；精排另保留 `rerank_score` 与 `rrf_rank`，不覆盖原分数。各路分数不是同一种量，原始精排logit也不是概率。
+除评测配置中的 `top_k`、`qa_methods` 外，这些值不是全部开放为CLI参数。混合的 `score` 是RRF总分；精排另保留 `rerank_score` 与 `rrf_rank`，不覆盖原分数。各路分数不是同一种量，原始精排logit也不是概率。
 
 两路各最多10条，按ID合并后最多20个不同候选；混合直接取RRF Top3，精排路径先取RRF Top10再重排为Top3。当前向量查询没有设置 `score_threshold`，不能对余弦、BM25、RRF和精排分数套用同一阈值。
 
@@ -273,55 +274,85 @@ curl.exe -i http://127.0.0.1:8001/health
 ### 配置与数据划分
 
 - `eval_cases.json`：20道dev；`table_eval_cases_v1.json`：10道dev，合计24道可回答、6道不可回答。
-- `eval_test_v1.json`：冻结的10题，尚未运行检索或生成；最终配置固定后终测，不用于调参。
-- `evaluation_config_textflow_v1.json` 指向原有dev题集、Metadata和新版表格目标行标注；旧配置与旧标注均保留。
+- `eval_test_v3.json`：100道test，80道可回答、20道拒答或澄清题，197条参考事实；从历史10题扩展，不将各版本数量相加。`eval_test_v1.json`及v2保留为历史版本，不再作为当前终测入口。
+- `evaluation_config_dev_v3.json`、`dev_retrieval_gold_v3.json`：当前开发集配置及完整chunk_id/替代证据、参考事实金标。`evaluation_config_test_v3.json`、`test_retrieval_gold_v3.json`：当前测试配置和80道可回答题的精确块金标。测试事实来自v3题集，复核入口优先使用独立金标的事实映射，未提供时保留题集事实。
 - 配置文件不直接选择数据库，实际集合由 `vector_store.COLLECTION_NAME` 指定；入口核对标注与报告的来源、哈希、集合和解析版本，避免混评。
-- 冻结题集字节SHA-256为 `4b2e8373a12a7f66b7f3d2563bbeef2a619d96c977b6f0b57c5a41cac3e1c226`，不是PDF的content_hash。格式化也会改变该指纹。
+- `load_evaluation_inputs`默认要求dev；`compare-test`、`qa-test`和`check-test`显式要求test，防止误混。参考答案与事实清单只用于评测，不进入被测Prompt。
+- 测试题集v3的SHA-256为 `1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e`，不是PDF的content_hash；格式化也会改变指纹。冻结清单见 [test_freeze_v3.json](test_freeze_v3.json)。
 
 ### 1. 检索、评分与保存
 
 ~~~powershell
-python -X utf8 -B evaluation.py compare evaluation_config_textflow_v1.json dev_retrieval_textflow_run.json
-python -X utf8 -B evaluation.py summary dev_retrieval_textflow_run.json
+python -X utf8 -B evaluation.py compare evaluation_config_dev_v3.json dev_retrieval_run.json
+python -X utf8 -B evaluation.py summary dev_retrieval_run.json
 ~~~
 
-`compare` 复用四路检索、目标行评分和写报告函数，生成30题×4策略共120条最终Top3，全部 `generation_status=not_run`。同时保存完整上下文、模型配置及汇总；不调用生成API。输出文件存在时拒绝覆盖。
+`compare`生成30题×4策略共120条检索记录；`compare-test`使用相同链路读取test，100题生成400条检索记录。每路保存候选Top10至 `candidate_results`，再以 `results = candidates[:top_k]`得到最终上下文，同时保存来源、模型和配置快照。均不调用生成API；输出已存在时拒绝覆盖。
 
 | 指标 | 本项目定义与适用范围 |
 | --- | --- |
-| 标注页命中率 | 命中标注来源及页码的题目比例；24道可回答题 |
-| 标注页MRR | 首次命中标注页的倒数排名均值，未命中为0；24题 |
-| 目标行Recall | 每题命中必需block_id的比例，再作题目平均；8道有行标注的表格题 |
-| 目标行MRR | 首次命中任一必需行的倒数排名均值；8题，不证明全部证据齐全 |
-| 目标行全齐率 | 每题是否找到全部必需行，再计算比例；8题，是覆盖率等于1的派生判断 |
+| 标注页Hit/MRR | 任一结果命中标注资料与页码的题目比例/首次命中倒数排名均值；Hit@1另查首条结果 |
+| 必要块Recall@K | 每题命中必要证据块的比例，再按题平均；旧block_id标注仍兼容，当前完整金标使用chunk_id |
+| 必要块MRR/全齐率 | 首次命中任一必要块的RR均值/整题找齐全部必要块的题目比例；首个命中不等于全部找齐 |
+| 候选必要块Recall@10 | 对最终截取之前的候选计算必要块覆盖，区分候选漏召回与最后截断损失 |
+| Precision@K | 人工标注相关返回块数除以配置K，再按可回答题平均；返回不足K时缺位不算相关 |
+| 关键事实覆盖率 | 答案正确覆盖的必要事实数除以该题事实数，再按可回答题平均，不是检索文本包含事实的比例 |
+| 任务/忠实度/引用/拒答 | 分别检查是否完成题目、陈述是否受上下文支持、引用是否支持相应陈述，以及是否应拒答；均为本项目逐题复核通过率，不等同Ragas模型裁判分数 |
 
-替代页也可能有有效证据，单一标注页不是完整相关集合。不可回答或无行标注时相应指标为null；False与0是有效失败，不能从分母排除。
+检索及相关性/事实指标只在适用的可回答题上统计，当前dev为24题、test为80题。替代证据按已核验的候选集合评分，先比较覆盖率，再比较首次命中RR，最后按方案顺序破同分；不临时按模型答案改金标。单一标注页不穷尽有效证据。False与0是有效失败，不得从分母排除；未评和不适用不自动算0分或通过。
 
 ### 2. 用保存上下文生成
 
 先预检，命令没有 `--run` 时不调用API、也不创建QA文件：
 ~~~powershell
-python -X utf8 -B evaluation.py qa evaluation_config_textflow_v1.json dev_retrieval_textflow_run.json all qa_dev_textflow_run.json
+python -X utf8 -B evaluation.py qa evaluation_config_dev_v3.json dev_retrieval_run.json all dev_qa_run.json
 ~~~
 
-确认供应商配置及费用后，在同一命令末尾加 `--run` 才真实生成。参数 `all` 可换为一个dev题号，选单题时运行四策略；全量最多120次调用。
+确认供应商配置及费用后，在同一命令末尾加 `--run` 才真实生成。`all`可换为单个题号。`qa_methods`缺省为四路，dev全量最多120次；当前test配置为 `["rerank"]`，只生成100条精排记录。该字段不改变四路检索快照。
 
-该入口将已保存结果适配为Document，复用原问答链，不重新检索。参考答案在生成后附入报告，不进入Prompt。逐条保存原始响应、状态、引用、模型与用量；`run_status=complete` 只表示循环结束，不代表全对。失败也保留，当前无断点续跑、原子检查点或自动重试。
+该入口将已保存的 `results`适配为Document，不重新检索或按当前配置重新截取K。更改TopK须在dev中重新检索或对已保存候选重新截取/评分，不能只改配置后回放旧上下文。逐条保存原始输出、状态、可信引用、模型、用量和 `qa_seconds`；`run_status=complete`只表示循环结束，不代表全对。失败保留，当前无断点续跑、原子检查点或自动重试。
 
 ### 3. 人工复核与汇总
 
 ~~~powershell
-python -X utf8 -B evaluation.py review qa_dev_textflow_run.json qa_dev_textflow_review.json
+python -X utf8 -B evaluation.py review dev_qa_run.json dev_qa_review_run.json dev_retrieval_gold_v3.json
 ~~~
 
-在新副本填写每条review后，才汇总答案质量：
+在独立副本填写 `review`后汇总；可在未完成时查看已评数与待评数，但不能冒称全量成绩：
 ~~~powershell
-python -X utf8 -B evaluation.py summary qa_dev_textflow_review.json
+python -X utf8 -B evaluation.py summary dev_qa_review_run.json
+python -X utf8 -B evaluation.py export dev_qa_review_run.json dev_rerank_summary_run.md
 ~~~
 
-review包含整题通过、忠实度、引用支持、拒答合理性、失败类型及说明。只有task_pass必须全为布尔；其余不适用项可为null。单条多标签允许重叠，不能把标签计数直接相加当作失败题数。原始生成报告不改写，也不静默修复模型失败响应。
+`qa-review-v2`在原有通过/忠实度/引用/拒答标签、失败类型及说明之外，增加 `chunk_relevance`逐块相关性与 `fact_checks`逐事实覆盖。未填为null，完成后适用项使用布尔值；正例逐块/逐事实检查不全时，相应分数显示待评。负例这两项不适用。单条多标签可重叠，标签数不等于失败题数。
 
-### 4. 本地检索基准
+`export <review.json> <output.md> [method]`默认选择rerank，也可显式选择vector/bm25/hybrid。标题、题数、K、配置、金标及review指纹从输入读取；复用已有汇总函数，输出指标定义和分母、回答/拒答分层、耗时/Token及任务失败详情，不重新调用模型。纯拒答且无正向事实时引用可不适用，不能把null填成True凑通过率。
+
+QA耗时包含保存上下文适配、Prompt、SDK生成和契约校验，不含此前检索、HTTP传输或并发排队；P50/P95使用NumPy默认线性分位数。缺失用量单列，不按0计算，Token数不直接代表费用。失败详情目前只列工程error或task_pass=False；例如test_91的拒答任务通过、附加建议证据不足，详细标记保留在review，阅读时仍须同时看忠实度与引用指标。
+
+### 4. 冻结与正式终测
+
+以下为新运行示例，使用未存在的输出名；已完成的v3终测不要覆盖或为提高分数反复重跑。
+
+~~~powershell
+python -X utf8 -B evaluation.py check-test evaluation_config_test_v3.json
+python -X utf8 -B evaluation.py freeze evaluation_config_test_v3.json test_freeze_run.json
+python -X utf8 -B evaluation.py check-freeze evaluation_config_test_v3.json test_freeze_run.json
+python -X utf8 -B evaluation.py compare-test evaluation_config_test_v3.json test_retrieval_run.json
+python -X utf8 -B evaluation.py qa-test evaluation_config_test_v3.json test_retrieval_run.json all test_qa_rerank_run.json
+~~~
+
+最后一条只是100条精排记录的计费预检；真正生成前再次执行 `check-freeze`，并仅在该 `qa-test`命令末尾加 `--run`。完成后：
+
+~~~powershell
+python -X utf8 -B evaluation.py review test_qa_rerank_run.json test_qa_rerank_review_run.json test_retrieval_gold_v3.json
+# 逐题填写新副本的review后再导出
+python -X utf8 -B evaluation.py export test_qa_rerank_review_run.json test_rerank_summary_run.md
+~~~
+
+冻结清单记录题集、金标、Metadata、配置、requirements及项目顶层Python文件的指纹，以及模型地址/名称、Prompt与检索常量；不记录密钥。校验是主动短命令，尚未自动挂入检索/生成入口，不锁数据库或远端模型，也不把文件设为只读。改注释/格式也可能触发漂移。后续修复另建版本；分析过的test可用于回归，但不能再冒充未见过的独立终测。
+
+### 5. 本地检索基准
 
 ~~~powershell
 python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json retrieval_benchmark_textflow_run.json
@@ -335,7 +366,7 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 ## 已验证结果
 
-工程状态核验于2026-11-16；以下批量质量与检索性能数字沿用所列实验报告，不表示当日重新生成。均为单手册、小开发集结果，不是独立测试集或生产成绩。
+工程状态及当前终测报告核验于2026-11-20。各表按所列题集、金标和运行分别统计；历史开发集对照不与当前终测混算，单手册结果不代表生产流量或跨文档泛化。
 
 ### 数据与解析
 
@@ -345,9 +376,9 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 新旧解析全书对照中，每页非空白字符及出现次数一致，表格记录含邻文保持一致，305页正文输出改变。197/244页部分段落归属更连贯，但页码/标题位置也改变，不能由字符未丢或块数相同推出全书阅读逻辑正确。
 
-### 完整问答对照
+### 历史解析与Prompt对照
 
-每个单元格为同30道dev问题的整题完整输出通过数，包含回答状态和输出规范；不把不同Prompt或供应商混成一轮。
+下表保留历史原评审口径，每格为同30道dev的整题完整输出通过数。后续事实金标修订后的TopK比较单列，不直接按两张表的差值归因于模型改善。
 
 | 解析方案 | Prompt | 向量 | BM25 | 混合 | 混合加精排 |
 | --- | --- | --- | --- | --- | --- |
@@ -365,7 +396,50 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 - FCTA的197页是BM25第1，但未进入向量前10，融合后为第5而被最终Top3截掉；精排可将它提回第1。
 - 精排仍把目录4页排在加热题第1，把普通座椅U/L行排在ISOFIX第1；本轮正确引用后续证据，不代表干扰消失。
 
-### 当前检索指标
+### 开发集TopK选择
+
+同30道dev、相同生成配置下比较精排Top3/Top5；使用v3事实金标与v4复核副本：
+
+| 精排配置 | 任务通过 | 可回答题关键事实覆盖率 | Precision@K |
+| --- | --- | --- | --- |
+| Top3 | 30/30 | 100%（24题平均） | 56.94% |
+| Top5 | 30/30 | 100%（24题平均） | 45.00% |
+
+来源为 `dev_qa_top3_review_v4.json`、`dev_qa_top5_review_v4.json`；参考事实按问题必需范围修订，沿用原始 `dev_qa_top3_v2.json`、`dev_qa_top5_v2.json`答案，未因重评再次生成。复核口径修订不是模型提升。开发集未观察到Top5任务质量收益，因此选择Top3后冻结，不按test成绩反选K。
+
+### 100题冻结终测
+
+四路检索保存400条记录；仅rerank回放生成100条，80道可回答、20道不可回答或应澄清。模型响应均为 `deepseek-v4-1-flash`、Prompt均为 `cockpit-rag-json-v2`，100条generated且无工程error。generated只证明生成和程序契约通过，不证明事实正确。
+
+| 指标 | 本轮结果 | 分母/口径 |
+| --- | --- | --- |
+| 任务通过 | 92/100，92.00% | 全100题复核 |
+| 可回答题通过 | 72/80，90.00% | 可回答题；其中5题拒答 |
+| 不可回答题正确拒答 | 20/20，100% | 不可回答/应澄清题 |
+| 必要块Recall@3 | 97.60% | 80题的单题覆盖率均值 |
+| 必要块全齐率 | 75/80，93.75% | 找齐全部必要证据的题数 |
+| 候选必要块Recall@10 | 98.85% | 80题的候选覆盖率均值 |
+| 必要块MRR | 0.9688 | 80题首次命中RR均值 |
+| Precision@3 | 59.58% | 80题逐块相关性评分；143/240个返回块相关 |
+| 关键事实覆盖率 | 95.21% | 80题的单题事实覆盖率均值；共197条事实，不能把197当题数 |
+| 忠实度 | 98/100，98.00% | 实际陈述是否受最终上下文支持 |
+| 引用通过 | 93/95，97.89% | 适用95题；5条纯拒答不适用，不记为通过 |
+
+原始检索为 [test_retrieval_v3.json](test_retrieval_v3.json)，原始QA为 [test_qa_rerank_v3.json](test_qa_rerank_v3.json)，独立复核为 [test_qa_rerank_review_v3.json](test_qa_rerank_review_v3.json)，完整定义、配置指纹和案例见 [test_rerank_summary_v3.md](test_rerank_summary_v3.md)。复核填写100条任务标签、240个上下文相关性标签和197条事实检查；仅修改review，原始响应和金标保持不变。这是助手逐题复核的单轮结果，不宣称独立多人评审一致性。
+
+本轮8道任务失败及边界：
+
+- `test_07`：候选Top10已含两项必要证据，最终Top3只保留一项，属于最终排序/截断损失；模型合理拒答，系统任务仍失败。
+- `test_70/71/72`：必要术语在候选Top10中也未齐，不能只靠把最终K从3改为5解决。test_72还要求4个独立行块，Top3存在容量限制；test_70另把未召回条目说成全表不存在，属于不受证据支持的断言。
+- `test_32/78/80`：必要证据已齐，但遗漏逐窗初始化、鼓风机前提或充电安全条件；属于生成完整性问题，不是检索失败。
+- `test_62`：原PDF车型单元格存在 `MR6453DCH-`换行`EV02`写法，模型未确认与题干无连字符写法同一归属；按既定金标未通过，保留原始输入歧义，不简单认定编造。
+- `test_91`：拒绝虚构实时胎压的任务通过，但额外的刷新后查看建议仅引用到截断前提，忠实度/引用另扣分；它不在当前导出器的任务失败列表中。
+
+QA耗时P50为1.431秒、P95为1.946秒；已报告输入84,797、输出6,268、合计91,065 Tokens，100条用量均有记录。该耗时不含检索或HTTP，不与历史检索P95相加冒充端到端P95，也不作为生产SLA。
+
+后续dev修复方向为候选覆盖、证据组合/截断、已知安全条件完整性，以及有来源核验的车型文本规范化。这里仅记录方向，不修改冻结题集、金标或本轮分数；修复后的同题测试属于回归，不再声称独立未见终测。
+
+### 历史检索基线
 
 | 策略 | 标注页命中（24题） | 标注页MRR | 目标行Recall（8题） | 目标行MRR | 目标行全齐 |
 | --- | --- | --- | --- | --- | --- |
@@ -385,7 +459,7 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 
 来源为 `retrieval_benchmark_textflow_v1.json`。两路各30题的三轮有序块ID全部一致，也与保存的检索快照一致；平均差约0.668秒。P95在各90条排序后取第86条。构建和预热另计，不是进程冷启动、HTTP端到端延迟、并发容量或线上SLA。
 
-API已采用新解析加混合召回/精排，CLI保留不精排的混合基线；最终配置固定后的冻结终测尚未执行。
+API已采用新解析加混合召回/精排，CLI保留不精排的混合基线；冻结终测采用的也是混合加精排，但运行方式为保存上下文回放，不是100次HTTP端到端测试。
 
 ## 自动测试
 
@@ -394,27 +468,27 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-16实跑81项通过，pip check无依赖冲突。
+2026-11-20实跑122项通过，pip check无依赖冲突。本轮仅使用已有依赖，无需因评测和导出新增requirements条目；这不等于干净机器已能完整复现。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
 | 切块边界、重叠、Metadata、ID与非法参数 | 5 |
 | 临时Qdrant持久化、upsert边界、精确删除、缩块清理、范围隔离与BM25重建 | 4 |
-| 旧文本Prompt一致性与空输入 | 2 |
+| 文本/结构化Prompt、空输入与不可信资料边界 | 4 |
 | RRF排序、两路信息与输入不变 | 1 |
 | 假精排排序、同分及非法分数 | 4 |
-| 结构化JSON/字段/状态/引用身份契约 | 13 |
-| 问答空证据、生成桩、异常、防覆盖与人工复核汇总 | 9 |
+| 结构化JSON/字段/状态/引用身份契约及语义校验边界 | 14 |
+| 题集语义、split保护、ID/替代证据、候选截断、问答回放、复核指标及报告渲染 | 46 |
 | API 请求模型：去空白、类型、长度与额外字段校验 | 7 |
 | 生成客户端复用、关闭与响应边界 | 6 |
 | 供应商流式：片段拼接、两类usage位置、截断/空输出拒收及响应流关闭 | 6 |
 | 流式问答编排：空证据、完成事件、合法/未知引用及关闭向上传递 | 5 |
-| 离线 HTTP：普通/流式引用、输入与错误事件、忙碌503、断开清理/恢复、请求ID及阶段/用量日志 | 16 |
+| 离线 HTTP：普通/流式引用、输入与错误事件、忙碌503、断开清理/恢复、请求ID及阶段/用量日志 | 17 |
 | 阶段计时工具：正常/异常记录、异常向外传递、上游状态及不记录异常原文 | 3 |
 
 测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；离线 HTTP 使用检索和生成替身，ASGI模拟首个delta后断开并检查上游关闭、锁释放和下一次问答。TestClient缓冲不能证明真实事件到达时间，模拟断开也不代替真实网络或并发测试。
 
-另用假解析结果、2维单位向量和临时数据库运行当前`retrieval.main()`，保留真实切块、Qdrant写入/清理、FAISS自检及向量查询，验证首次清理1条、重复导入清理0条、其他资料/哈希保留，以及写入失败时不清理。该临时入口检查不计入上述81项pytest，也不等于真实PDF/BGE全量入库、并发更新或故障恢复验收；没有重新写入或删除正式604条记录。
+冻结创建、校验、防覆盖、文件/模型漂移和缺失环境变量另经临时目录检查，不计入122项pytest；正式v3清单已校验通过。历史另用假解析结果、2维单位向量和临时库验证`retrieval.main()`写入/清理接线，亦不计入122项；两者不等于真实PDF全量重新入库、并发更新或故障恢复验收，没有改写或删除正式604条记录。
 
 ## 代码导航
 
@@ -432,7 +506,7 @@ python -m pip check
 | [stream_probe.py](stream_probe.py)、[http_stream_probe.py](http_stream_probe.py) | 供应商JSON流探针、HTTP流式及主动断开恢复验收 |
 | [test_stream_generation.py](test_stream_generation.py)、[test_stream_qa.py](test_stream_qa.py) | 生成层与问答编排层的离线流式回归 |
 | [prompt_builder.py](prompt_builder.py)、[query.py](query.py) | 直接文本基线 |
-| [evaluation.py](evaluation.py)、[test_evaluation.py](test_evaluation.py) | compare/score/qa/review/summary/benchmark及离线测试 |
+| [evaluation.py](evaluation.py)、[test_evaluation.py](test_evaluation.py) | dev/test输入、检索/生成、替代证据与事实评分、冻结/漂移检查、复核/Markdown导出及离线测试 |
 
 ### 评测入口与函数关系
 
@@ -440,20 +514,23 @@ python -m pip check
 
 | 子命令 | 主调度与职责 | 调用生成API |
 | --- | --- | --- |
-| `compare` | `run_retrieval_evaluation`组织四路检索、评分、汇总及保存 | 否 |
+| `compare` / `compare-test` | `run_retrieval_evaluation`组织对应split的四路检索、评分、汇总及保存 | 否 |
 | `score` | `main`复用 `add_block_scores`、`summarize_retrieval`、`write_report`，只给已有报告补分 | 否 |
-| `qa` | `run_saved_qa`逐行调用 `evaluate_qa_row`，后者回放Document并复用 `build_qa_chain` | 仅显式加 `--run` 后 |
-| `review` | `prepare_qa_review`创建带空review的新副本，需人工填写 | 否 |
+| `qa` / `qa-test` | `run_saved_qa`按qa_methods筛行并校验完整组合，`evaluate_qa_row`回放Document及原问答链 | 仅显式加 `--run` 后 |
+| `review` | `prepare_qa_review`绑定事实金标/指纹并创建空review副本，需逐题填写 | 否 |
 | `summary` | `summarize_retrieval`或 `summarize_qa_review`汇总已有分数，不自动判断答案 | 否 |
+| `export` | `export_final_report`复用两类汇总与渲染函数，将选中策略输出为新Markdown | 否 |
+| `check-test` | `load_evaluation_inputs(..., expected_split="test")`校验题集/范围/指纹及金标覆盖 | 否 |
+| `freeze` / `check-freeze` | `freeze_evaluation`创建或比较配置/文件/模型状态快照，复用write_report防覆盖 | 否 |
 | `benchmark` | `benchmark_retrieval`构建两检索器，预热后重复检索计时 | 否 |
 
-共用的 `load_evaluation_inputs`合并dev题集、读取Metadata/目标行标注并核对范围；`score_retrieval`和 `score_required_blocks`只比较已有结果；`write_report`只保存报告。旧位置参数入口仍由 `inspect_retrieval`执行单路检索，并保留 `"w"`覆盖写入，不具备新配置流程的dev限制和新文件防覆盖保护，不作为常规四策略评测入口。
+共用的 `load_evaluation_inputs`默认只读dev，test需显式指定；读取题集、Metadata与金标并核对身份、split及指纹。`score_retrieval`和 `score_required_blocks`只比较已有结果，`add_block_scores`负责范围核对与主/替代证据选择，`write_report`只保存报告。旧位置参数入口仍由 `inspect_retrieval`执行单路检索，保留 `"w"`覆盖，不作为常规批量评测入口。
 
 ## 限制与后续方向
 
 - 只有单份真实资料；原生表格检测与表头处理有启发式边界，未实现OCR、跨页表格拼接或完整版面理解。text-flow不能保证任意PDF阅读顺序。
 - 车型/年款未知，页眉坐标和Metadata配置针对当前手册；尚无可靠的车型过滤或自动适用性判断。
-- 只有dev方案比较，冻结10题尚未终测；精排和目录干扰仍有风险，不能凭本轮30/30承诺泛化。
+- 已完成30题dev对照和100题固定配置终测，但只有一份手册、单轮供应商运行及助手逐题复核；数据代表性、标注一致性和统计不确定性尚未充分量化。终测已被分析，未来同题结果应标作回归，精排与目录干扰也未消失。
 - JSON/可信ID校验不等于自动引用语义评测；正文格式、证据充分性和拒答仍需回归，旧error行可能缺Prompt版本等元信息。
 - 保存QA逐条落盘但非原子检查点，无断点续跑或自动重试；批量评测报告尚未关联HTTP请求日志，API错误保留，不自动改写为正常拒答。
 - 入库CLI已接入同范围旧块清理，仅按单进程离线作业验证；尚无自动版本切换、写入/清理原子事务、并发更新或失败回滚，也未实现仅更新payload、跳过重复编码。保留旧集合不等于自动版本管理。
