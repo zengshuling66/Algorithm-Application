@@ -1,0 +1,1099 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 5,
+  "candidate_k": 20,
+  "cases": [
+    {
+      "case_id": "test_78",
+      "retrieved_pages": [
+        253,
+        254,
+        255,
+        5,
+        252
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p255:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p252:c1:tables-textflow-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "长时间停车后的主动式座舱清洁何时启动、何时停止？AQS发现车外污染物较多时实际切到什么循环，界面显示会同步改变吗？",
+      "answerable": true,
+      "candidate_results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 253,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n253\n主动式座舱清洁系统\n主动式座舱清洁系统的作用是在上车前，车辆主动打开空调外循环模\n式，将车外空气吹入车内，使车内空气保持新鲜，在高温天气时可以\n起到降低车内温度的作用。\n长时间停车（如锁车3小时以上），在解锁车门时，主动式座舱清洁\n系统会自动启用，打开车门后，主动式座舱清洁系统停止工作。如果\n车门一直未打开，主动式座舱清洁系统将工作一段时间后自动停止。\n说明！\n□ 主动式座舱清洁系统功能启用后，您可能会听到空调鼓风机高速\n运转的声音，这属于正常现象。\n□ 该功能运行风量会随车辆使用时间的增加而逐渐减少，直至该功\n能停用。\n香氛系统\n香氛系统可以覆盖车内轻微不适气体，营造一个愉悦的车内空气氛\n围。\n通过中央显示屏设置香氛系统\n在中央显示屏上唤起空调控制界面。\n01点击调节香氛浓度。\n说明！\n□ 首次使用香氛系统时，需按要求滴入香精后才能正常使用。\n□ 香氛系统浓度分三个级别，点击控制开关后在“低-中-高”之间\n循环。\n□ 当车内香氛余量不足或车内未装载香氛时。您可以联系Lynk&Co\n领克中心进行更换或加装。\n□ 香氛胶囊香精不可乱用，只能使用经过Lynk&Co领克认证的香",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.03252247488101534,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.5864705254070088,
+            "bm25": 37.46402000067107
+          },
+          "rrf_rank": 1,
+          "rerank_score": 4.263636112213135
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 254,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n254\n添加香氛精油\n香氛精油添加在香氛胶囊中，香氛胶囊位于手套箱内。\n1 打开手套箱。\n2向下取下香氛胶囊。\n01香氛胶囊。\n3将香氛精油均匀地涂抹在香芯棒上（三面都要涂抹），静置一分\n钟。\n4将香氛胶囊安装回位即可。\n空气质量管理系统\n空气质量管理系统（AQS）\nAQS由一个多重过滤器和一个空气质量传感器组成。过滤器可以过滤\n掉进气中的烟雾和固体颗粒，使车内保持健康清新的环境。\n空气质量传感器可以监测车外空气中的污染物含量。您可以通过中央\n显示屏状态栏上的 图标，查看AQS工作状态。\n当空调鼓风机开启后，AQS传感器将工作，空调显示为外循环，监测\n到车外空气中污染物（汽车尾气为主）含量达到一定程度，空调风门\n将自动关闭外循环，切换到内循环，但空调界面依然会显示为外循\n环，以避免污染空气进入车内。\n智能除味功能\n当车内出现异味时，可以通过智能除味功能消除车内异味。\n在中央显示屏上唤起空调控制界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 408,
+          "score": 0.016129032258064516,
+          "retrieval_ranks": {
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "bm25": 27.89066377958154
+          },
+          "rrf_rank": 3,
+          "rerank_score": 1.992799162864685
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 255,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n255\n01点击开启/关闭智能除味功能。\n01智能除味弹窗提示。\n智能除味功能进行时，有180秒倒计时，期间空调界面全屏显示除味\n动画，您可通过屏幕下方按钮和旋钮操控空调。\n您可通过点击屏幕上的“立即停止”按键，强制退出智能除味功能。\n01智能除味倒计时。\n02强制中断智能除味。\n说明！\n□ 如果AQS监测到车外空气污染物含量较高之前已经手动关闭空调\n风门（开启内循环），空调风门将不再自动切换。\n□ 强制中断智能除味功能后，再次开启又会重新从180秒计时。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p255:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 233,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "bm25": 20.490800448585016
+          },
+          "rrf_rank": 4,
+          "rerank_score": 1.7971757650375366
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 5,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "目录",
+          "block_id": "body",
+          "kind": "text",
+          "text": "....................241\n调节空调风量..........................................................243\n空调模式...............................................................245\n调节空调出风方向....................................................249\n主动式座舱清洁系统..................................................253\n香氛系统...............................................................253\n空气质量管理系统....................................................254\n空调除霜/除雾........................................................256\n中央显示屏\n中央",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+          "chunk_index": 8,
+          "char_count": 500,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "bm25": 15.836306647550762
+          },
+          "rrf_rank": 9,
+          "rerank_score": -1.7344874143600464
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 252,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n252\n后排座椅前的出风口\n控制板的左右两部分可以分别移动至左右两侧。\n上下或左右移动控制板，调节出风口出风方向。\n说明！\n□ 后排座椅左侧和右侧的乘员可以分别调节出风方向。\n开启/关闭车内空气内循环/外循环\n您可以通过中央显示屏开启/关闭车内空气内循环/外循环。\n前排空调控制界面\n01点击开启/关闭车内空气内循环/外循环。\n当显示屏上显示 图标，车内空气采用内循环模式。\n当显示屏上显示 图标，车内空气采用外循环模式。\n以下情况下请打开内循环功能：\n■ 在多尘路面上行驶时。\n■ 需要防止交通尾气进入乘客舱时。\n■ 使用空调系统需要达到最佳降温效果时。\n警告！\n■ 请勿长时间开启内循环功能，这可能导致车内空气不新鲜且车窗\n上还可能起雾。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p252:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 324,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "bm25": 19.30379911308073
+          },
+          "rrf_rank": 6,
+          "rerank_score": -2.4262795448303223
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 317,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "近软材料，如橡胶软管或密封件。\n警告！\n■ 在清洗车辆后若要立即驾车，请数次踩下制动踏板，以去除制动\n摩擦片上的水汽。水汽可能影响制动效率。\n■ 洗车前，检查并确认车辆的外部开闭件已正确关闭。\n■ 在清洗车辆时，禁止将水枪对准车辆底部接插件进行冲洗。\n■ 避免用高压清洗机或蒸汽清洗机对传感器进行清洁，以免损坏传\n感器。清洗车辆时应使用较小的水流短时间冲洗传感器表面，且\n至少保持10cm以上的距离。\n■ 务必严格按高压清洗器使用说明清洁车辆，特别注意工作压力和\n喷洗距离。如果使用压力清洗器，则喷嘴与车身的表面至少须保\n持30cm的距离。保持喷嘴移动，不要朝某个部位一直喷水，高\n压水流浸入车辆零部件内可能导致损坏。\n■ 请勿使喷嘴直接或间接对发动机舱内进行冲洗。高压水流会造成\n发动机舱内的电气元件受损或造成一些部件不能正常使用。\n雨刮片\n首先将雨刮片置于维修位置，然后用Lynk&Co领克推荐的干净抹布和\n清洁剂清洁雨刮片。\n轮辋\n请使用软刷清洁轮辋并用水枪冲洗。建议使用Lynk&Co领克推荐的轮\n辋清洁剂。\n外部塑料饰件\n■ 请勿使用干布、粗布或者硬布清洁外部塑料饰件，并避免刮擦，\n否则会",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p317:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 500,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "vector": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.5732101135148491
+          },
+          "rrf_rank": 8,
+          "rerank_score": -2.4627766609191895
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 316,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "由于附着在漆面上的污垢、灰尘、昆虫和柏油斑可能损坏漆面，\n车辆必须定期清洗。\n■ 请尽快清除漆面上的污染物，如鸟粪、树汁、金属颗粒或小虫。\n■ 请用湿海绵和大量的水洗掉污垢。请用专用车辆清洁剂彻底清洁\n车辆。\n■ 洗掉车辆下方的污垢。\n■ 请勿清洗表面发烫或被阳光直射、暴晒下的车辆，需等待车身外\n表冷却后再进行清洗。\n警告！\n■ 请勿用水冲洗发动机舱内部。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 179,
+          "score": 0.03131881575727918,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 7
+          },
+          "retrieval_scores": {
+            "vector": 0.6104818256758038,
+            "bm25": 14.952271780529998
+          },
+          "rrf_rank": 2,
+          "rerank_score": -2.7506580352783203
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 147,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "出现损伤，若您长时间仅使用电机驱动车辆，系统\n将强制启动发动机，行驶一段时间后，您才能切换为纯电模式。\n通过驾驶模式拨杆选择驾驶模式\n可以通过拨动副仪表台上的驾驶模式拨杆，在不同的驾驶模式之间切\n换。\n通过中央显示屏选择驾驶模式\n在中央显示屏中点击 -车辆设置-快捷设置，进入快捷设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p147:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 145,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "bm25": 15.035542292276283
+          },
+          "rrf_rank": 10,
+          "rerank_score": -3.474802255630493
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 65,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶前的准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "驾驶前的准备\n65\n后雨刮和洗涤器\n将拨杆沿远离方向盘的方向推动，启动后挡风玻璃雨刮和洗涤器。\n按压拨杆末端上方区域，启动后挡风玻璃间歇性刮刷模\n式。\n按压拨杆末端下方区域，启动后挡风玻璃连续刮刷模式。\n注意！\n■ 冬季使用雨刮前，请先清除挡风玻璃上的冰和积雪并确认雨刮片\n没有冻结在挡风玻璃上。\n■ 当挡风玻璃上有尘沙、鸟粪、昆虫、树浆等异物时，请先清洁挡\n风玻璃，否则会损坏雨刮片/影响雨刮片清洁效果。\n■ 避免在挡风玻璃干燥的情况下开启雨刮，否则可能导致雨刮片和\n挡风玻璃损坏。\n■ 定期清洁和检查雨刮片，否则雨刮片使用寿命可能会缩短。\n■ 应使用合格的洗涤液，不合格的洗涤液可能导致洗涤器损坏。\n■ 如果发现雨刮片橡胶硬化或有裂纹、雨刮片在挡风玻璃上留下划\n痕或不能刮洗某个区域，则需要更换雨刮片。\n倒车时后挡风玻璃自动刮刷\n前雨刮启用且换挡杆拨至倒挡（R）后，后雨刮会自动开启。\n在中央显示屏中点击 -车辆设置-雨刮，进入雨刮设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p65:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 423,
+          "score": 0.014285714285714285,
+          "retrieval_ranks": {
+            "bm25": 10
+          },
+          "retrieval_scores": {
+            "bm25": 14.067650767612603
+          },
+          "rrf_rank": 18,
+          "rerank_score": -4.183072090148926
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 317,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "保养和维护\n317\n注意！\n■ 在清洗车辆外部前，请记得关闭所有车窗和天窗。\n■ 请勿使用含酸清洁剂清洗车辆。酸液可能损坏车辆表面，影响车\n辆外观。\n■ 请勿用强碱性肥皂、强化学性清洗剂、汽油或溶剂清洗车辆，否\n则可能影响车辆外观。\n■ 在冬季道路撒盐的地区，应定期清洁车底，以防止盐累积，导致\n车底和悬架加速腐蚀。\n■ 在清洗完车辆后，请将车辆表面擦拭干净，否则残留的清洁剂会\n腐蚀车辆外观。\n自动清洗\n自动洗车设备方便快捷，但难以彻底洗净车辆。为了达到最佳清洗效\n果，建议您手洗车辆。\n注意！\n■ 由于第一个月油漆尚未充分硬化，在此期间请勿在自动洗车设备\n内清洗您的车辆。\n■ 确保将外后视镜折叠。\n■ 确保遥控钥匙和蓝牙钥匙不在有效控制范围内。\n■ 请根据自动洗车设备上的指示信息操作车辆。\n高压冲洗\n使用高压水枪清洗车辆时，请务必遵照设备操作说明。特别是工作压\n力和喷水距离。请勿使喷头过于靠近软材料，如橡胶软管或密封件。\n警告！\n■ 在清洗车辆后若要立即驾车，请数次踩下制动踏板，以去除制动\n摩擦片上的水汽。水汽可能影响制动效率。\n■ 洗车前，检查并确认车辆的外部开闭件已正确关闭。\n■ 在",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p317:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "vector": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.5762472145008871
+          },
+          "rrf_rank": 5,
+          "rerank_score": -4.774999141693115
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 321,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "p321:t1:r11",
+          "kind": "table",
+          "text": "表格数据：\n车辆系统: 空调\n保养项目: 空调滤芯(a)\n常规保养: 12个月\n相邻上文（归属待核验）：\n下表列举了您的爱车所需的常规保养项目。此外，您的维修技师可能\n会根据车辆的检查情况推荐额外的必要保养项目。\n相邻下文（归属待核验）：\n(a)：如果驾驶条件恶劣，推荐的保养间隔是常规驾驶条件下规定的时\n间和里程间隔的一半。例如，如果在山区或潮湿地区驾驶车辆，应每\n年更换一次制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r11",
+          "chunk_index": 1,
+          "char_count": 193,
+          "score": 0.014285714285714285,
+          "retrieval_ranks": {
+            "vector": 10
+          },
+          "retrieval_scores": {
+            "vector": 0.5531726375423909
+          },
+          "rrf_rank": 17,
+          "rerank_score": -4.906681537628174
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 321,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "p321:t1:r7",
+          "kind": "table",
+          "text": "表格数据：\n车辆系统: 发动机\n保养项目: 更换冷却液\n常规保养: 48个月\n相邻上文（归属待核验）：\n下表列举了您的爱车所需的常规保养项目。此外，您的维修技师可能\n会根据车辆的检查情况推荐额外的必要保养项目。\n相邻下文（归属待核验）：\n(a)：如果驾驶条件恶劣，推荐的保养间隔是常规驾驶条件下规定的时\n间和里程间隔的一半。例如，如果在山区或潮湿地区驾驶车辆，应每\n年更换一次制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r7",
+          "chunk_index": 1,
+          "char_count": 192,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "vector": 8
+          },
+          "retrieval_scores": {
+            "vector": 0.5615977692500913
+          },
+          "rrf_rank": 14,
+          "rerank_score": -5.1756367683410645
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 321,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "p321:t1:r2",
+          "kind": "table",
+          "text": "表格数据：\n车辆系统: 发动机\n保养项目: 更换空气滤芯(a)\n常规保养: 20,000公里\n相邻上文（归属待核验）：\n下表列举了您的爱车所需的常规保养项目。此外，您的维修技师可能\n会根据车辆的检查情况推荐额外的必要保养项目。\n相邻下文（归属待核验）：\n(a)：如果驾驶条件恶劣，推荐的保养间隔是常规驾驶条件下规定的时\n间和里程间隔的一半。例如，如果在山区或潮湿地区驾驶车辆，应每\n年更换一次制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+          "chunk_index": 1,
+          "char_count": 200,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "vector": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5741199760647708
+          },
+          "rrf_rank": 7,
+          "rerank_score": -5.331359386444092
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 166,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "启动和驾驶\n166\n说明！\n□ 本车未配备防滑链，需自行购买使用。\n斜坡驻车\n在没有路缘石的坡道驻车时，请使用障碍物抵住车轮，以防溜车。\n在有路缘石的坡道驻车时，可以通过以下方式，使路缘石抵住车轮；\n也可以使用障碍物抵住车轮。\n■ 在上坡路段可以转动方向盘让车辆向后移动，直至靠路缘石一侧\n的前轮轻轻触碰路缘石。\n■ 在下坡路段可以转动方向盘让车辆向前移动，直至靠路缘石一侧\n的前轮轻轻触碰路缘石。\n警告！\n■ 在坡道上停车时，必须将变速器挂入驻车挡（P），同时启用EPB\n功能。\n注意！\n■ 请勿长时间在坡道上停车，否则会损坏车辆。\n■ 当在坡道上禁止仅使用驻车挡（P）驻车，否则溜车时会损坏变\n速器。\n制动防抱死系统\n车辆配有制动防抱死系统，可在您施加最大制动力时，防止车轮抱\n死。在大多数路况下，可改善紧急制动情况下车辆的转向控制性能。\n说明！\n□ 在制动过程中，您会感觉到机舱传来连续“咯咯”的声音，同时\n感受到制动踏板传来的振动。这是防抱死制动系统工作时引起的\n正常现象，而不是故障。\n□ 当防抱死制动系统停止工作时，制动踏板的感觉会恢复到非防抱\n死制动的状态。\n功能状态说明\n防抱死制动系",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p166:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "bm25": 14.778958276642776
+          },
+          "rrf_rank": 13,
+          "rerank_score": -5.331533908843994
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 321,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "p321:t1:r9",
+          "kind": "table",
+          "text": "表格数据：\n车辆系统: 动力传动系 统\n保养项目: 自动变速器滤清器\n常规保养: 80,000公里/48 个月\n相邻上文（归属待核验）：\n下表列举了您的爱车所需的常规保养项目。此外，您的维修技师可能\n会根据车辆的检查情况推荐额外的必要保养项目。\n相邻下文（归属待核验）：\n(a)：如果驾驶条件恶劣，推荐的保养间隔是常规驾驶条件下规定的时\n间和里程间隔的一半。例如，如果在山区或潮湿地区驾驶车辆，应每\n年更换一次制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r9",
+          "chunk_index": 1,
+          "char_count": 209,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "vector": 6
+          },
+          "retrieval_scores": {
+            "vector": 0.5654560842436531
+          },
+          "rrf_rank": 11,
+          "rerank_score": -5.68958044052124
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 60,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶前的准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "驾驶前的准备\n60\n警告！\n■ 如果在转向柱未牢固锁止的情况下驾车，可能使方向盘意外偏\n移，使您失去对车辆的控制。\n■ 为了避免危险驾驶和事故发生，只有在车辆停止时才能调节方向\n盘。\n调节外后视镜\n您可以使用驾驶员侧车门饰板上的后视镜控制按钮，调节外后视镜。\n1 按下L按钮，调节左侧外后视镜；按下R按钮，调节右侧外后视\n镜。按钮上的指示灯会点亮。\n2使用中间的控制杆，调节外后视镜角度。\n3再次按下L或R按钮。按钮上的指示灯会熄灭。\n警告！\n■ 驾驶过程中，请勿调节外后视镜。\n说明！\n□ 外后视镜中显示的物体比其实际距离远。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p60:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 264,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "bm25": 9
+          },
+          "retrieval_scores": {
+            "bm25": 14.331768382268427
+          },
+          "rrf_rank": 16,
+          "rerank_score": -5.885199069976807
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 320,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "body",
+          "kind": "text",
+          "text": "保养和维护\n320\n显示器/屏幕\n手指上的尘土、污渍和油脂会影响中央显示屏的性能和清晰度。请经\n常用超细纤维布清洁屏幕。\n注意！\n■ 使显示器远离液体和水汽，否则可能影响或损坏显示屏或电气部\n件。\n■ 清洁过程中，切勿用力按压，切勿使用研磨材料，否则可能造成\n损坏。\n保养项目\n保养时间\n按照时间和里程确定保养周期。正常情况下，车辆的行驶里程决定了\n执行保养的周期。但是，时间也是一个决定因素。例如，如果您的爱\n车每年只行驶较短里程，仍应接受保养。在这种情况下，时间就是决\n定因素。\n未进行保养或保养不当将导致保修失效。这也可能会导致车辆损坏或\n故障，需要支付高额费用进行维修。当达到保养周期后，仪表显示屏\n将弹出相关消息，提示您需要保养车辆。提示消息出现后，请联系\nLynk&Co领克中心预约保养时间。\n如果常规保养周期已过，车辆还未保养，仪表显示屏将再次弹出提示\n消息，提示您需要尽快保养车辆。\n智能的保养提醒\nLynk&Co领克的智能驾驶分析系统会结合车辆行驶状况和个体驾驶习\n惯给出最合适的保养里程提醒。因此，为了保持良好的车辆状况，\nLynk&Co领克推荐您按照智能保养系统提醒日期到店保养",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p320:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "vector": 9
+          },
+          "retrieval_scores": {
+            "vector": 0.5539928917079848
+          },
+          "rrf_rank": 15,
+          "rerank_score": -6.043056964874268
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 338,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "紧急情况下",
+          "block_id": "body",
+          "kind": "text",
+          "text": "辆时，禁止乘客留在车内。\n注意！\n■ Lynk&Co领克建议采用平板拖车牵引车辆。牵引时，四轮必须离\n地。\n■ 运输期间，确保车轮无法转动。\n说明！\n□ 挂入空挡（N）并解除EPB仅用于车辆牵引至平板拖车过程。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p338:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 105,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "vector": 7
+          },
+          "retrieval_scores": {
+            "vector": 0.5616201762775814
+          },
+          "rrf_rank": 12,
+          "rerank_score": -9.747851371765137
+        }
+      ],
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 253,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n253\n主动式座舱清洁系统\n主动式座舱清洁系统的作用是在上车前，车辆主动打开空调外循环模\n式，将车外空气吹入车内，使车内空气保持新鲜，在高温天气时可以\n起到降低车内温度的作用。\n长时间停车（如锁车3小时以上），在解锁车门时，主动式座舱清洁\n系统会自动启用，打开车门后，主动式座舱清洁系统停止工作。如果\n车门一直未打开，主动式座舱清洁系统将工作一段时间后自动停止。\n说明！\n□ 主动式座舱清洁系统功能启用后，您可能会听到空调鼓风机高速\n运转的声音，这属于正常现象。\n□ 该功能运行风量会随车辆使用时间的增加而逐渐减少，直至该功\n能停用。\n香氛系统\n香氛系统可以覆盖车内轻微不适气体，营造一个愉悦的车内空气氛\n围。\n通过中央显示屏设置香氛系统\n在中央显示屏上唤起空调控制界面。\n01点击调节香氛浓度。\n说明！\n□ 首次使用香氛系统时，需按要求滴入香精后才能正常使用。\n□ 香氛系统浓度分三个级别，点击控制开关后在“低-中-高”之间\n循环。\n□ 当车内香氛余量不足或车内未装载香氛时。您可以联系Lynk&Co\n领克中心进行更换或加装。\n□ 香氛胶囊香精不可乱用，只能使用经过Lynk&Co领克认证的香",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 500,
+          "score": 0.03252247488101534,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.5864705254070088,
+            "bm25": 37.46402000067107
+          },
+          "rrf_rank": 1,
+          "rerank_score": 4.263636112213135
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 254,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n254\n添加香氛精油\n香氛精油添加在香氛胶囊中，香氛胶囊位于手套箱内。\n1 打开手套箱。\n2向下取下香氛胶囊。\n01香氛胶囊。\n3将香氛精油均匀地涂抹在香芯棒上（三面都要涂抹），静置一分\n钟。\n4将香氛胶囊安装回位即可。\n空气质量管理系统\n空气质量管理系统（AQS）\nAQS由一个多重过滤器和一个空气质量传感器组成。过滤器可以过滤\n掉进气中的烟雾和固体颗粒，使车内保持健康清新的环境。\n空气质量传感器可以监测车外空气中的污染物含量。您可以通过中央\n显示屏状态栏上的 图标，查看AQS工作状态。\n当空调鼓风机开启后，AQS传感器将工作，空调显示为外循环，监测\n到车外空气中污染物（汽车尾气为主）含量达到一定程度，空调风门\n将自动关闭外循环，切换到内循环，但空调界面依然会显示为外循\n环，以避免污染空气进入车内。\n智能除味功能\n当车内出现异味时，可以通过智能除味功能消除车内异味。\n在中央显示屏上唤起空调控制界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 408,
+          "score": 0.016129032258064516,
+          "retrieval_ranks": {
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "bm25": 27.89066377958154
+          },
+          "rrf_rank": 3,
+          "rerank_score": 1.992799162864685
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 255,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n255\n01点击开启/关闭智能除味功能。\n01智能除味弹窗提示。\n智能除味功能进行时，有180秒倒计时，期间空调界面全屏显示除味\n动画，您可通过屏幕下方按钮和旋钮操控空调。\n您可通过点击屏幕上的“立即停止”按键，强制退出智能除味功能。\n01智能除味倒计时。\n02强制中断智能除味。\n说明！\n□ 如果AQS监测到车外空气污染物含量较高之前已经手动关闭空调\n风门（开启内循环），空调风门将不再自动切换。\n□ 强制中断智能除味功能后，再次开启又会重新从180秒计时。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p255:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 233,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "bm25": 20.490800448585016
+          },
+          "rrf_rank": 4,
+          "rerank_score": 1.7971757650375366
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 5,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "目录",
+          "block_id": "body",
+          "kind": "text",
+          "text": "....................241\n调节空调风量..........................................................243\n空调模式...............................................................245\n调节空调出风方向....................................................249\n主动式座舱清洁系统..................................................253\n香氛系统...............................................................253\n空气质量管理系统....................................................254\n空调除霜/除雾........................................................256\n中央显示屏\n中央",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+          "chunk_index": 8,
+          "char_count": 500,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "bm25": 15.836306647550762
+          },
+          "rrf_rank": 9,
+          "rerank_score": -1.7344874143600464
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 252,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "空调",
+          "block_id": "body",
+          "kind": "text",
+          "text": "空调\n252\n后排座椅前的出风口\n控制板的左右两部分可以分别移动至左右两侧。\n上下或左右移动控制板，调节出风口出风方向。\n说明！\n□ 后排座椅左侧和右侧的乘员可以分别调节出风方向。\n开启/关闭车内空气内循环/外循环\n您可以通过中央显示屏开启/关闭车内空气内循环/外循环。\n前排空调控制界面\n01点击开启/关闭车内空气内循环/外循环。\n当显示屏上显示 图标，车内空气采用内循环模式。\n当显示屏上显示 图标，车内空气采用外循环模式。\n以下情况下请打开内循环功能：\n■ 在多尘路面上行驶时。\n■ 需要防止交通尾气进入乘客舱时。\n■ 使用空调系统需要达到最佳降温效果时。\n警告！\n■ 请勿长时间开启内循环功能，这可能导致车内空气不新鲜且车窗\n上还可能起雾。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p252:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 324,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "bm25": 19.30379911308073
+          },
+          "rrf_rank": 6,
+          "rerank_score": -2.4262795448303223
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": true,
+      "selected_evidence_set": 0,
+      "prompt_version": "cockpit-rag-json-v2.5",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "长时间停车（如锁车3小时以上）后，在解锁车门时主动式座舱清洁系统会自动启用；打开车门后该系统停止工作，若车门一直未打开，则系统工作一段时间后自动停止。AQS监测到车外空气中污染物（以汽车尾气为主）含量达到一定程度时，空调风门将自动关闭外循环，实际切换到内循环；但空调界面依然显示为外循环，不会同步改变。",
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 253,
+          "text": "空调\n253\n主动式座舱清洁系统\n主动式座舱清洁系统的作用是在上车前，车辆主动打开空调外循环模\n式，将车外空气吹入车内，使车内空气保持新鲜，在高温天气时可以\n起到降低车内温度的作用。\n长时间停车（如锁车3小时以上），在解锁车门时，主动式座舱清洁\n系统会自动启用，打开车门后，主动式座舱清洁系统停止工作。如果\n车门一直未打开，主动式座舱清洁系统将工作一段时间后自动停止。\n说明！\n□ 主动式座舱清洁系统功能启用后，您可能会听到空调鼓风机高速\n运转的声音，这属于正常现象。\n□ 该功能运行风量会随车辆使用时间的增加而逐渐减少，直至该功\n能停用。\n香氛系统\n香氛系统可以覆盖车内轻微不适气体，营造一个愉悦的车内空气氛\n围。\n通过中央显示屏设置香氛系统\n在中央显示屏上唤起空调控制界面。\n01点击调节香氛浓度。\n说明！\n□ 首次使用香氛系统时，需按要求滴入香精后才能正常使用。\n□ 香氛系统浓度分三个级别，点击控制开关后在“低-中-高”之间\n循环。\n□ 当车内香氛余量不足或车内未装载香氛时。您可以联系Lynk&Co\n领克中心进行更换或加装。\n□ 香氛胶囊香精不可乱用，只能使用经过Lynk&Co领克认证的香"
+        },
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 254,
+          "text": "空调\n254\n添加香氛精油\n香氛精油添加在香氛胶囊中，香氛胶囊位于手套箱内。\n1 打开手套箱。\n2向下取下香氛胶囊。\n01香氛胶囊。\n3将香氛精油均匀地涂抹在香芯棒上（三面都要涂抹），静置一分\n钟。\n4将香氛胶囊安装回位即可。\n空气质量管理系统\n空气质量管理系统（AQS）\nAQS由一个多重过滤器和一个空气质量传感器组成。过滤器可以过滤\n掉进气中的烟雾和固体颗粒，使车内保持健康清新的环境。\n空气质量传感器可以监测车外空气中的污染物含量。您可以通过中央\n显示屏状态栏上的 图标，查看AQS工作状态。\n当空调鼓风机开启后，AQS传感器将工作，空调显示为外循环，监测\n到车外空气中污染物（汽车尾气为主）含量达到一定程度，空调风门\n将自动关闭外循环，切换到内循环，但空调界面依然会显示为外循\n环，以避免污染空气进入车内。\n智能除味功能\n当车内出现异味时，可以通过智能除味功能消除车内异味。\n在中央显示屏上唤起空调控制界面。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 253,
+          "text": "空调\n253\n主动式座舱清洁系统\n主动式座舱清洁系统的作用是在上车前，车辆主动打开空调外循环模\n式，将车外空气吹入车内，使车内空气保持新鲜，在高温天气时可以\n起到降低车内温度的作用。\n长时间停车（如锁车3小时以上），在解锁车门时，主动式座舱清洁\n系统会自动启用，打开车门后，主动式座舱清洁系统停止工作。如果\n车门一直未打开，主动式座舱清洁系统将工作一段时间后自动停止。\n说明！\n□ 主动式座舱清洁系统功能启用后，您可能会听到空调鼓风机高速\n运转的声音，这属于正常现象。\n□ 该功能运行风量会随车辆使用时间的增加而逐渐减少，直至该功\n能停用。\n香氛系统\n香氛系统可以覆盖车内轻微不适气体，营造一个愉悦的车内空气氛\n围。\n通过中央显示屏设置香氛系统\n在中央显示屏上唤起空调控制界面。\n01点击调节香氛浓度。\n说明！\n□ 首次使用香氛系统时，需按要求滴入香精后才能正常使用。\n□ 香氛系统浓度分三个级别，点击控制开关后在“低-中-高”之间\n循环。\n□ 当车内香氛余量不足或车内未装载香氛时。您可以联系Lynk&Co\n领克中心进行更换或加装。\n□ 香氛胶囊香精不可乱用，只能使用经过Lynk&Co领克认证的香"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 254,
+          "text": "空调\n254\n添加香氛精油\n香氛精油添加在香氛胶囊中，香氛胶囊位于手套箱内。\n1 打开手套箱。\n2向下取下香氛胶囊。\n01香氛胶囊。\n3将香氛精油均匀地涂抹在香芯棒上（三面都要涂抹），静置一分\n钟。\n4将香氛胶囊安装回位即可。\n空气质量管理系统\n空气质量管理系统（AQS）\nAQS由一个多重过滤器和一个空气质量传感器组成。过滤器可以过滤\n掉进气中的烟雾和固体颗粒，使车内保持健康清新的环境。\n空气质量传感器可以监测车外空气中的污染物含量。您可以通过中央\n显示屏状态栏上的 图标，查看AQS工作状态。\n当空调鼓风机开启后，AQS传感器将工作，空调显示为外循环，监测\n到车外空气中污染物（汽车尾气为主）含量达到一定程度，空调风门\n将自动关闭外循环，切换到内循环，但空调界面依然会显示为外循\n环，以避免污染空气进入车内。\n智能除味功能\n当车内出现异味时，可以通过智能除味功能消除车内异味。\n在中央显示屏上唤起空调控制界面。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p255:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 255,
+          "text": "空调\n255\n01点击开启/关闭智能除味功能。\n01智能除味弹窗提示。\n智能除味功能进行时，有180秒倒计时，期间空调界面全屏显示除味\n动画，您可通过屏幕下方按钮和旋钮操控空调。\n您可通过点击屏幕上的“立即停止”按键，强制退出智能除味功能。\n01智能除味倒计时。\n02强制中断智能除味。\n说明！\n□ 如果AQS监测到车外空气污染物含量较高之前已经手动关闭空调\n风门（开启内循环），空调风门将不再自动切换。\n□ 强制中断智能除味功能后，再次开启又会重新从180秒计时。"
+        },
+        "E4": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 5,
+          "text": "....................241\n调节空调风量..........................................................243\n空调模式...............................................................245\n调节空调出风方向....................................................249\n主动式座舱清洁系统..................................................253\n香氛系统...............................................................253\n空气质量管理系统....................................................254\n空调除霜/除雾........................................................256\n中央显示屏\n中央"
+        },
+        "E5": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p252:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 252,
+          "text": "空调\n252\n后排座椅前的出风口\n控制板的左右两部分可以分别移动至左右两侧。\n上下或左右移动控制板，调节出风口出风方向。\n说明！\n□ 后排座椅左侧和右侧的乘员可以分别调节出风方向。\n开启/关闭车内空气内循环/外循环\n您可以通过中央显示屏开启/关闭车内空气内循环/外循环。\n前排空调控制界面\n01点击开启/关闭车内空气内循环/外循环。\n当显示屏上显示 图标，车内空气采用内循环模式。\n当显示屏上显示 图标，车内空气采用外循环模式。\n以下情况下请打开内循环功能：\n■ 在多尘路面上行驶时。\n■ 需要防止交通尾气进入乘客舱时。\n■ 使用空调系统需要达到最佳降温效果时。\n警告！\n■ 请勿长时间开启内循环功能，这可能导致车内空气不新鲜且车窗\n上还可能起雾。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 1442,
+        "total_tokens": 1560,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1314
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"长时间停车（如锁车3小时以上）后，在解锁车门时主动式座舱清洁系统会自动启用；打开车门后该系统停止工作，若车门一直未打开，则系统工作一段时间后自动停止。AQS监测到车外空气中污染物（以汽车尾气为主）含量达到一定程度时，空调风门将自动关闭外循环，实际切换到内循环；但空调界面依然显示为外循环，不会同步改变。\", \"evidence_ids\": [\"E1\", \"E2\"]}",
+      "qa_seconds": 2.1555424998514354,
+      "split": "test",
+      "reference_answer": "长时间停车如锁车3小时以上，解锁车门时主动式座舱清洁自动启用。打开车门后主动式座舱清洁停止；一直不打开车门时，工作一段时间后自动停止。鼓风机开启且AQS监测到车外污染物含量达到一定程度时，风门自动关闭外循环并切换到内循环。AQS切换时，空调界面依然显示外循环。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 253,
+        "anchor": "主动式座舱清洁系统"
+      },
+      "reference_facts": [
+        {
+          "id": "F1",
+          "text": "长时间停车如锁车3小时以上，解锁车门时主动式座舱清洁自动启用。"
+        },
+        {
+          "id": "F2",
+          "text": "打开车门后主动式座舱清洁停止；一直不打开车门时，工作一段时间后自动停止。"
+        },
+        {
+          "id": "F3",
+          "text": "鼓风机开启且AQS监测到车外污染物含量达到一定程度时，风门自动关闭外循环并切换到内循环。"
+        },
+        {
+          "id": "F4",
+          "text": "AQS切换时，空调界面依然显示外循环。"
+        }
+      ]
+    }
+  ],
+  "split": "test",
+  "evidence_scoring_policy": "best_set_recall_rr_v1",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-textflow-v1",
+    "id_field": "chunk_id",
+    "case_file": "eval_test_v3.json",
+    "case_file_sha256": "1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e",
+    "annotation_status": "reviewed_not_frozen",
+    "annotation_policy": {
+      "version": "question_required_facts_v1",
+      "required_facts": "reference_facts仅列题目所问的必要事实，以及使该判断或所问操作成立所不可缺少的原因、条件与步骤；不把参考答案每一句都自动设为必答项。",
+      "supplemental_facts": "未询问且不影响当前问题完整性的背景、其他功能、扩展示例、操作反馈和补充建议不作为缺失扣分项；reference_answer仍可保留这些正确补充。",
+      "safety_boundary": "问题明确涉及的安全禁令、温度/电压/车速等必要条件，以及完成所问操作不可缺少的安全前提必须保留。未复述额外提醒不等于允许相反行为；主动提出违反原文安全限制的建议，仍判不忠实或任务失败。",
+      "semantic_equivalence": "按语义核对对象、关系、数值、单位、条件和先后顺序，不要求逐字复述；题干已给定的条件可以承接，不因没有机械重复题干就扣分。位置名、图标或术语的等价表达可接受。",
+      "alternatives": "事实中的或表示合法替代路径，回答任一完整有效路径即可，不要求同时执行所有替代路径；明确问有哪些或分别怎样时，仍须覆盖所问各项。",
+      "task_pass": "可回答题须直接正确完成所问任务，覆盖必要事实且无误导性或不受证据支持的陈述；参考答案比必要事实更丰富并不提高必答门槛。拒答题的判断与安全限制不因本轮审校放宽。",
+      "review_protocol": "使用相同政策审校开发集与测试集，测试集标注不依赖模型输出；旧生成与旧review保持原样，新口径须另建复核报告，不将标注修订带来的分数变化归为模型优化。"
+    },
+    "annotation_revision": {
+      "version": "v3",
+      "reviewed_at": "2026-11-19",
+      "base_file": "test_retrieval_gold_v2.json",
+      "base_sha256": "2759e3e62ac7b0938e64379e8983d6cf056188af1fc6d61b660387b72dc700b9",
+      "base_case_file": "eval_test_v2.json",
+      "base_case_file_sha256": "fb7412cd243406572a5de9a82c0e6c909476b15e988f035fef3cf7df8c88e20b",
+      "audit_file": "gold_annotation_revision_v3.json",
+      "final_test_run": false
+    },
+    "annotation_notes": {
+      "scope": "cases 只标注80道可回答题，每题列出一个已核验的主证据集合；20道不可回答题不设置必需块。块ID用于评测对照，不作为检索条件或模型输入。",
+      "interpretation": "主证据集合不是全部相关块的穷举。严格块ID未命中不等于没有语义等价证据；如发现替代证据，应结合实际块内容复核。",
+      "alternatives": "alternative_evidence_sets 已接入 add_block_scores，沿用 best_set_recall_rr_v1 和 selected_evidence_set，不拼接不同完整方案。本轮80题主证据集合和替代证据集合均未改动；题意范围已审校，正式运行前仍须完成输入校验与配置冻结。",
+      "table_context": "表格块中的相邻文字不能一律视为该表的说明；本次涉及脚注和说明的标注已核对题集所依据的原页归属。",
+      "test_14": "主证据为第48页正文第1块；第2块因正文重叠也完整包含锁止10秒后戒备、解锁后自动关闭两项事实，另列为替代集合，不与主集合合并为两个必需块。",
+      "test_32": "第109页正文第1块支持初始化步骤及约5秒，第2块支持每个车门上的车窗按钮分别初始化每扇车窗，两块共同覆盖参考事实。",
+      "test_72": "Ah、V、Nm、rpm分别位于4个独立表格行块，主证据集合含4块。最终Top3最多命中其中3块，严格必需块召回率上限为0.75且不能全齐；这是当前分块与上下文数量约束，不是本次已运行评测所得结果。",
+      "fact_review": "按 question_required_facts_v1 审查全部100题：80题必要事实从201条调整为197条，20道不可回答题及拒答依据未变。14题收窄必要事实范围，所有剩余事实仍由原有块支持，因此不改主集合或替代集合；详见 gold_annotation_revision_v3.json。"
+    },
+    "alternative_evidence_sets": {
+      "test_14": [
+        [
+          "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+        ]
+      ]
+    },
+    "cases": {
+      "test_01": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p64:c1:tables-textflow-v1:body"
+      ],
+      "test_02": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p110:c1:tables-textflow-v1:body"
+      ],
+      "test_03": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p85:c1:tables-textflow-v1:body"
+      ],
+      "test_04": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p297:c1:tables-textflow-v1:body"
+      ],
+      "test_05": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p325:c1:tables-textflow-v1:body"
+      ],
+      "test_06": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p339:c1:tables-textflow-v1:body"
+      ],
+      "test_07": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2"
+      ],
+      "test_08": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p336:c1:tables-textflow-v1:body"
+      ],
+      "test_11": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p12:c3:tables-textflow-v1:body"
+      ],
+      "test_12": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p21:c2:tables-textflow-v1:body"
+      ],
+      "test_13": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body"
+      ],
+      "test_14": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c1:tables-textflow-v1:body"
+      ],
+      "test_15": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p53:c1:tables-textflow-v1:body"
+      ],
+      "test_16": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p65:c1:tables-textflow-v1:body"
+      ],
+      "test_17": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-textflow-v1:body"
+      ],
+      "test_18": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:body"
+      ],
+      "test_19": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_20": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body"
+      ],
+      "test_21": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body"
+      ],
+      "test_22": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p330:c2:tables-textflow-v1:body"
+      ],
+      "test_23": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_24": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body"
+      ],
+      "test_25": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p292:c1:tables-textflow-v1:body"
+      ],
+      "test_26": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p307:c1:tables-textflow-v1:body"
+      ],
+      "test_27": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "test_28": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body"
+      ],
+      "test_29": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_30": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p59:c1:tables-textflow-v1:body"
+      ],
+      "test_31": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p60:c1:tables-textflow-v1:body"
+      ],
+      "test_32": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c2:tables-textflow-v1:body"
+      ],
+      "test_33": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p122:c1:tables-textflow-v1:body"
+      ],
+      "test_34": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_35": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p142:c1:tables-textflow-v1:body"
+      ],
+      "test_36": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p162:c2:tables-textflow-v1:body"
+      ],
+      "test_37": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p237:c1:tables-textflow-v1:body"
+      ],
+      "test_38": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p256:c1:tables-textflow-v1:body"
+      ],
+      "test_39": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body"
+      ],
+      "test_40": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p274:c1:tables-textflow-v1:body"
+      ],
+      "test_41": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_42": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p282:c1:tables-textflow-v1:body"
+      ],
+      "test_43": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p303:c1:tables-textflow-v1:body"
+      ],
+      "test_44": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p312:c1:tables-textflow-v1:body"
+      ],
+      "test_45": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p340:c1:tables-textflow-v1:body"
+      ],
+      "test_46": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+      ],
+      "test_47": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p61:c1:tables-textflow-v1:body"
+      ],
+      "test_48": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p99:c1:tables-textflow-v1:body"
+      ],
+      "test_49": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body"
+      ],
+      "test_50": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p129:c1:tables-textflow-v1:body"
+      ],
+      "test_51": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p143:c1:tables-textflow-v1:body"
+      ],
+      "test_52": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p161:c1:tables-textflow-v1:body"
+      ],
+      "test_53": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "test_54": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p170:c1:tables-textflow-v1:body"
+      ],
+      "test_55": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p214:c2:tables-textflow-v1:body"
+      ],
+      "test_56": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p298:c1:tables-textflow-v1:body"
+      ],
+      "test_57": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body"
+      ],
+      "test_58": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_59": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1"
+      ],
+      "test_60": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "test_61": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "test_62": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1"
+      ],
+      "test_63": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t3:r1"
+      ],
+      "test_64": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t5:r1"
+      ],
+      "test_65": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r2"
+      ],
+      "test_66": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1"
+      ],
+      "test_67": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r2"
+      ],
+      "test_68": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4"
+      ],
+      "test_69": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r4"
+      ],
+      "test_70": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r10",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5"
+      ],
+      "test_71": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r16",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r13"
+      ],
+      "test_72": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r13"
+      ],
+      "test_73": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_74": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p46:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p47:c1:tables-textflow-v1:body"
+      ],
+      "test_75": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p88:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p89:c1:tables-textflow-v1:body"
+      ],
+      "test_76": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body"
+      ],
+      "test_77": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body"
+      ],
+      "test_78": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body"
+      ],
+      "test_79": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p108:c1:tables-textflow-v1:body"
+      ],
+      "test_80": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p289:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p290:c1:tables-textflow-v1:body"
+      ],
+      "test_81": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p309:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_82": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p343:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p344:c1:tables-textflow-v1:body"
+      ]
+    }
+  },
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config_test_rrf20_top5.json",
+  "config_snapshot": {
+    "case_files": [
+      "eval_test_v3.json"
+    ],
+    "manual_metadata": "manual_metadata.json",
+    "required_block_gold": "test_retrieval_gold_v3.json",
+    "split": "test",
+    "top_k": 5,
+    "fusion_k": 20,
+    "qa_methods": [
+      "rerank"
+    ]
+  },
+  "run_at_utc": "2026-11-24T03:39:43.353048+00:00",
+  "per_route_k": 10,
+  "source_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_v3.json",
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-11-24T08:10:26.273924+00:00",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_rrf20_top5.json",
+  "expected_records": 1,
+  "qa_methods": [
+    "rerank"
+  ]
+}

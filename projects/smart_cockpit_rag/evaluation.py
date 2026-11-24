@@ -853,7 +853,55 @@ def freeze_evaluation(config_path, output_path, check=False):
         print("Saved freeze:", Path(output_path).resolve())
 
 
+def replay_rerank(config_path, source_path, output_path, *, expected_split):
+    output = Path(output_path)
+    if output.exists():
+        raise FileExistsError(output)
+    config = json.loads(Path(config_path).read_bytes())
+    cases, _, gold = load_evaluation_inputs(config_path, expected_split=expected_split)
+    saved = json.loads(Path(source_path).read_bytes())
+    route_k, fusion_k, top_k = saved["candidate_k"], config["fusion_k"], config["top_k"]
+    if any(type(k) is not int for k in (fusion_k, top_k)) or not 0 < top_k <= fusion_k <= 2 * route_k:
+        raise ValueError("Use 0 < top_k <= fusion_k <= 2 * route_k")
+    if (saved.get("split", "dev"), saved["reranker_model"], saved["reranker_revision"]) != (
+        expected_split, RERANK_MODEL_NAME, RERANK_MODEL_REVISION
+    ):
+        raise ValueError("Saved split or reranker differs")
+
+    baseline = select_retrieval_top_k(saved, cases, saved["top_k"])
+    lanes = {(r["case_id"], r["method"]): r["candidate_results"] for r in baseline["cases"]}
+    model = build_reranker()
+    rows = []
+    for case in cases:
+        qid, question = case["id"], case["question"]
+        pair = {m: lanes[qid, m] for m in ("vector", "bm25")}
+        fused = rrf_fuse(pair, top_k=fusion_k)
+        ranked = rerank_results(question, fused, model, top_k=fusion_k)
+        results = ranked[:top_k]
+        rows.append({**score_retrieval(case, results), "method": "rerank",
+                     "question": question, "answerable": case["answerable"],
+                     "candidate_results": ranked, "results": results,
+                     "generation_status": "not_run"})
+
+    report = {**saved, "split": expected_split, "cases": rows, "top_k": top_k, "candidate_k": fusion_k,
+              "per_route_k": route_k, "source_report": str(Path(source_path).resolve()),
+              "config_file": str(Path(config_path).resolve()), "config_snapshot": config,
+              "run_at_utc": datetime.now(timezone.utc).isoformat()}
+    report = add_block_scores(report, gold)
+    report["summary"] = summarize_retrieval(report)
+    write_report(output, report)
+    print("Rows:", len(rows), "full evidence:", sum(r["all_required_blocks_hit"] is True for r in rows))
+    return report
+
+
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] in ("replay-rerank-dev", "replay-rerank-test"):
+        if len(sys.argv) != 5:
+            raise SystemExit("Usage: python evaluation.py <replay-rerank-dev|replay-rerank-test> <config> <source> <output>")
+        split = "dev" if sys.argv[1] == "replay-rerank-dev" else "test"
+        replay_rerank(*sys.argv[2:], expected_split=split)
+        return
+
     if len(sys.argv) > 1 and sys.argv[1] in ("freeze", "check-freeze"):
         if len(sys.argv) != 4:
             raise SystemExit("Usage: python evaluation.py <freeze|check-freeze> <config.json> <freeze.json>")

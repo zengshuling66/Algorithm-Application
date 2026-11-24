@@ -1,0 +1,1061 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 5,
+  "candidate_k": 20,
+  "cases": [
+    {
+      "case_id": "test_60",
+      "retrieved_pages": [
+        349,
+        349,
+        349,
+        351,
+        351
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "满载状态的汽车轴荷表中，MR6453DCHEV02前轴和后轴的最大轴荷各是多少？",
+      "answerable": true,
+      "candidate_results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t1:r1",
+          "kind": "table",
+          "text": "表格数据：\n车型: MR6453DCHEV02\n前轴最大轴荷 （kg）: 1214\n后轴最大轴荷 （kg）: 1116\n相邻上文（归属待核验）：\n技术资\n汽车轴荷（满载状态）\n相邻下文（归属待核验）：\n发动机规格",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+          "chunk_index": 1,
+          "char_count": 106,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.7939916538573424,
+            "bm25": 55.52426488136139
+          },
+          "rrf_rank": 1,
+          "rerank_score": 10.224910736083984
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t5:r1",
+          "kind": "table",
+          "text": "表格数据：\n车型: MR6453DCHEV02\n整备质量（kg）: 1890\n最大允许总重量 （kg）: 2330\n相邻上文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1",
+          "chunk_index": 1,
+          "char_count": 127,
+          "score": 0.03200204813108039,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.6106982227779285,
+            "bm25": 19.059349281433768
+          },
+          "rrf_rank": 2,
+          "rerank_score": 3.03452730178833
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "body",
+          "kind": "text",
+          "text": "技术资料\n349\n说明！\n□ 请保持挡风玻璃洁净、干燥；请不要在安装汽车电子标识处贴膜\n或粘贴金属材料，确保汽车电子标识的规范安装和数据的有效读\n取。\n车辆参数\n车辆尺寸参数（整备质量）\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n汽车轴荷（满载状态）\n发动机规格\n电机规格\n动力电池规格",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 165,
+          "score": 0.016129032258064516,
+          "retrieval_ranks": {
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "bm25": 26.496895658479264
+          },
+          "rrf_rank": 4,
+          "rerank_score": -0.6284523010253906
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t4:r1",
+          "kind": "table",
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+          "chunk_index": 1,
+          "char_count": 203,
+          "score": 0.03055037313432836,
+          "retrieval_ranks": {
+            "vector": 7,
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5521259648396349,
+            "bm25": 14.495758285107206
+          },
+          "rrf_rank": 3,
+          "rerank_score": -1.4839047193527222
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t2:r1",
+          "kind": "table",
+          "text": "表格数据：\n轮胎尺寸/类型: 235/50R19\n轮胎动平衡: ≤10g\n相邻上文（归属待核验）：\n■ 所有车轮定位值均在车辆出厂载荷状态下（标准设备、所有必要\n的油液、少于10升的燃油）测得单侧轮胎参数值。\n轮胎规格\n相邻下文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+          "chunk_index": 1,
+          "char_count": 161,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "vector": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5693302395198973
+          },
+          "rrf_rank": 6,
+          "rerank_score": -1.6949100494384766
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 21,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "装载货物",
+          "block_id": "body",
+          "kind": "text",
+          "text": "装卸过程中车辆发生位移。\n行李架载荷\n车顶上的载荷提高了车辆的重心，会对车辆操纵和转向响应产生重要\n影响。\n当在车顶上运输货物时，记住下列指示：\n■ 只能使用适用于本车的车顶行李架。\n■ 车顶行李架最大载荷70kg，请勿在车顶上超载，或者超出经批\n准的满载质量。\n■ 将载荷平均分布，并将最重的物品放在底部。\n■ 牢牢紧固货物。\n■ 平稳驾驶。避免突然加速/制动和急速转弯。\n注意！\n■ 将物品放置在车顶行李架上或者从行李架上卸下时，小心操作。\n如果无法轻松将货物从地面提升至车顶行李架上，请使用合适的\n工具。\n■ 确保装载到车顶行李架上的物品不会干涉全景天窗的操作。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p21:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 284,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "bm25": 13.913746103243994
+          },
+          "rrf_rank": 7,
+          "rerank_score": -3.31261944770813
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 350,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p350:t4:r6",
+          "kind": "table",
+          "text": "表格数据：\n车轮定位: 后车轮前束\n数据: 0.10°±0.05°\n相邻上文（归属待核验）：\n（a）：测量座垫深时。\n车轮定位参数\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r6",
+          "chunk_index": 1,
+          "char_count": 79,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "vector": 8
+          },
+          "retrieval_scores": {
+            "vector": 0.5509293974683598
+          },
+          "rrf_rank": 13,
+          "rerank_score": -4.4902849197387695
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 350,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p350:t4:r5",
+          "kind": "table",
+          "text": "表格数据：\n车轮定位: 前车轮前束\n数据: 0.11°±0.05°\n相邻上文（归属待核验）：\n（a）：测量座垫深时。\n车轮定位参数\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r5",
+          "chunk_index": 1,
+          "char_count": 79,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "vector": 9
+          },
+          "retrieval_scores": {
+            "vector": 0.5508042135234058
+          },
+          "rrf_rank": 15,
+          "rerank_score": -4.76907205581665
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 350,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p350:t4:r1",
+          "kind": "table",
+          "text": "表格数据：\n车轮定位: 前轮外倾角\n数据: -0.74°±0.65°\n相邻上文（归属待核验）：\n（a）：测量座垫深时。\n车轮定位参数\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r1",
+          "chunk_index": 1,
+          "char_count": 80,
+          "score": 0.014285714285714285,
+          "retrieval_ranks": {
+            "vector": 10
+          },
+          "retrieval_scores": {
+            "vector": 0.5454468688498306
+          },
+          "rrf_rank": 17,
+          "rerank_score": -5.147857189178467
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 12,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "前言",
+          "block_id": "body",
+          "kind": "text",
+          "text": "该系统用于记\n录车辆发生碰撞事故的相关信息，如车辆的行驶速度（表示事件发生\n时刻车辆速度），制动状态（表示事件发生时刻车辆是否制动）。具\n体记录数据项的含义及用途，见GB39732-2020《汽车事件数据记录\n系统》标准中，表2A级数据元素的17个数据元素和说明。\n当车辆发生碰撞事件时，当前事件数据可按事故数据存储的时间先后\n顺序覆盖之前非锁定事件数据。\n事件数据信息能够帮助相关人员了解事件发生时车辆的状态，便于\nLynk&Co领克依照相关法律要求和其他规定行事。另外，在符合适用\n法律法规的前提下，这些信息还可用于工程研究，有助于Lynk&Co领\n克持续提升产品质量和安全性。\n根据国家立法和法规要求，Lynk&Co领克可能需要向某些权力机构\n（比如公安机关或其他有权访问事件数据记录系统的机构）披露相关\n的记录数据。读取事件数据记录系统中的数据需要用到Lynk&Co领克\n汽车专用数据读取设备，通过专用设备连接车辆OBD接口或单独连接\nEDR控制器提取，仅与Lynk&Co领克订立协议的获批Lynk&Co领克中\n心可以使用。数据读取设备的获取途径：如果有必要，您可以联系\nLynk&Co领克授",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p12:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 500,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "bm25": 9
+          },
+          "retrieval_scores": {
+            "bm25": 12.163659626281266
+          },
+          "rrf_rank": 14,
+          "rerank_score": -5.779013156890869
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 62,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶前的准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "，也无法识别所有轮胎长周期地自然、均匀压力损失。\n□ 当车辆启动时，仪表的胎压监测显示界面显示的信息为灰色状\n态，表示目前显示的是历史值，为正常现象。当车辆以30km/h\n以上的车速行驶几分钟后，系统会陆续更新轮胎压力和温度信\n息，数值变为高亮状态。\n多种因素可能导致D-TPMS工作异常：\n■ 安装不兼容的轮胎或车轮改装。\n■ 轮胎内存在液体或注入补胎液。\n■ 在安装了防滑链的情况下驾驶。\n■ 靠近电视台、加油站、机场等产生强大无线电波或者电噪干扰的\n设施。\n■ 加装可能对汽车的无线电接收器或电气系统等造成干扰的附件。\n注意！\n■ 请更换Lynk&Co领克指定规格的车轮，否则可能会影响到D-\nTPMS正常运行。\n前雨刮和洗涤器",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 317,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "bm25": 7
+          },
+          "retrieval_scores": {
+            "bm25": 12.81763263610883
+          },
+          "rrf_rank": 11,
+          "rerank_score": -5.864190578460693
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t3:r2",
+          "kind": "table",
+          "text": "表格数据：\n尺寸: 高度\n单位（mm）: 1689（a）\n相邻上文（归属待核验）：\n车辆参数\n车辆尺寸参数（整备质量）\n相邻下文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2",
+          "chunk_index": 1,
+          "char_count": 115,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "vector": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.5679724815262268
+          },
+          "rrf_rank": 8,
+          "rerank_score": -6.236949920654297
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 153,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "启动和驾驶\n153\n01能量回收图标：该图标变亮时表示正在进行能量回收，动力电\n池正在充电。\n02能量回收等级：该图标表示当前选择的能量回收等级。\n说明！\n□ 能量回收的多少取决于当前动力电池状态、设置的能量回收等级\n及车速等因素。\n□ 车身稳定控制系统（ESP）和防抱死制动系统（ABS）触发时制动\n能量回收系统不工作。\n通过换挡杆设置能量回收等级\n可以通过向右或向左移动换挡杆，设置能量回收等级（自动、低、\n中、高）。\n通过中央显示屏设置能量回收等级\n在中央显示屏中点击 -充电供电-能量控制，进入能量控制设置界\n面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p153:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 261,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "bm25": 13.290288865591311
+          },
+          "rrf_rank": 9,
+          "rerank_score": -6.504059314727783
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t3:r1",
+          "kind": "table",
+          "text": "表格数据：\n尺寸: 长度\n单位（mm）: 4549\n相邻上文（归属待核验）：\n车辆参数\n车辆尺寸参数（整备质量）\n相邻下文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+          "chunk_index": 1,
+          "char_count": 112,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "vector": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.5716100691759143
+          },
+          "rrf_rank": 5,
+          "rerank_score": -6.527493000030518
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 211,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶辅助",
+          "block_id": "body",
+          "kind": "text",
+          "text": "驾驶员未系安全带。\n■ 达到AEB最大工作时长。\n■ 当车辆处于倒车状态。\n前向碰撞减缓系统（CMSF）检测对象\nCMSF检测对象包括在您的车辆前方移动的行人、骑自行车者和各类\n车辆（客车、卡车、乘用车等）等。\nCMSF检测行人/骑行者时需要获取以下确切信息：行人头部、双臂双\n肩、双腿、身体上部和下部以及行人的正常运动形态。\nCMSF对行人/骑行者的检测是一种驾驶辅助功能，它不能检测到：\n■ 行人/骑行者被部分遮挡、行人所穿的衣服不适合对其身体轮廓\n形成清晰的图像。\n■ 行人/骑行者与背景之间的对比不强烈。系统的警告或制动会延\n迟或系统根本不会发出警告或采取制动。\n■ 行人/骑行者携带有大件物体。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p211:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 302,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "bm25": 12.395934164362215
+          },
+          "rrf_rank": 12,
+          "rerank_score": -6.640481472015381
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t3:r3",
+          "kind": "table",
+          "text": "表格数据：\n尺寸: 宽度\n单位（mm）: 1860（b）\n相邻上文（归属待核验）：\n车辆参数\n车辆尺寸参数（整备质量）\n相邻下文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+          "chunk_index": 1,
+          "char_count": 115,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "vector": 6
+          },
+          "retrieval_scores": {
+            "vector": 0.5642804117808413
+          },
+          "rrf_rank": 10,
+          "rerank_score": -7.104348659515381
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 1,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": null,
+          "block_id": "body",
+          "kind": "text",
+          "text": "欢迎\n感谢您选择了具有优良安全性、舒适性、动力性和经济性的Lynk&Co领克汽车。\n首次使用前请仔细、完整地阅读本手册内容，将有助于您更好地了解和使用车辆。\n本手册中的所有资料均为出版时的最新资料，但本公司将对产品进行不断的改进和优化，您所购的车辆可能与本手册中的描述有所不同，请以实际\n接收的车辆为准。\n如您有任何问题，或需要预约服务，请拨打电话4006-010101联系我们。您也可以开车前往Lynk&Co领克中心。\n在抵达之前，请您注意驾车安全。\n©领克汽车销售有限公司",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p1:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 238,
+          "score": 0.014285714285714285,
+          "retrieval_ranks": {
+            "bm25": 10
+          },
+          "retrieval_scores": {
+            "bm25": 12.010498752415035
+          },
+          "rrf_rank": 16,
+          "rerank_score": -7.637536525726318
+        }
+      ],
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t1:r1",
+          "kind": "table",
+          "text": "表格数据：\n车型: MR6453DCHEV02\n前轴最大轴荷 （kg）: 1214\n后轴最大轴荷 （kg）: 1116\n相邻上文（归属待核验）：\n技术资\n汽车轴荷（满载状态）\n相邻下文（归属待核验）：\n发动机规格",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+          "chunk_index": 1,
+          "char_count": 106,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.7939916538573424,
+            "bm25": 55.52426488136139
+          },
+          "rrf_rank": 1,
+          "rerank_score": 10.224910736083984
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p349:t5:r1",
+          "kind": "table",
+          "text": "表格数据：\n车型: MR6453DCHEV02\n整备质量（kg）: 1890\n最大允许总重量 （kg）: 2330\n相邻上文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1",
+          "chunk_index": 1,
+          "char_count": 127,
+          "score": 0.03200204813108039,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.6106982227779285,
+            "bm25": 19.059349281433768
+          },
+          "rrf_rank": 2,
+          "rerank_score": 3.03452730178833
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "body",
+          "kind": "text",
+          "text": "技术资料\n349\n说明！\n□ 请保持挡风玻璃洁净、干燥；请不要在安装汽车电子标识处贴膜\n或粘贴金属材料，确保汽车电子标识的规范安装和数据的有效读\n取。\n车辆参数\n车辆尺寸参数（整备质量）\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n汽车轴荷（满载状态）\n发动机规格\n电机规格\n动力电池规格",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 165,
+          "score": 0.016129032258064516,
+          "retrieval_ranks": {
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "bm25": 26.496895658479264
+          },
+          "rrf_rank": 4,
+          "rerank_score": -0.6284523010253906
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t4:r1",
+          "kind": "table",
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+          "chunk_index": 1,
+          "char_count": 203,
+          "score": 0.03055037313432836,
+          "retrieval_ranks": {
+            "vector": 7,
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5521259648396349,
+            "bm25": 14.495758285107206
+          },
+          "rrf_rank": 3,
+          "rerank_score": -1.4839047193527222
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t2:r1",
+          "kind": "table",
+          "text": "表格数据：\n轮胎尺寸/类型: 235/50R19\n轮胎动平衡: ≤10g\n相邻上文（归属待核验）：\n■ 所有车轮定位值均在车辆出厂载荷状态下（标准设备、所有必要\n的油液、少于10升的燃油）测得单侧轮胎参数值。\n轮胎规格\n相邻下文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+          "chunk_index": 1,
+          "char_count": 161,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "vector": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5693302395198973
+          },
+          "rrf_rank": 6,
+          "rerank_score": -1.6949100494384766
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": true,
+      "selected_evidence_set": 0,
+      "prompt_version": "cockpit-rag-json-v2.6",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "MR6453DCHEV02前轴最大轴荷为1214 kg，后轴最大轴荷为1116 kg。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "text": "表格数据：\n车型: MR6453DCHEV02\n前轴最大轴荷 （kg）: 1214\n后轴最大轴荷 （kg）: 1116\n相邻上文（归属待核验）：\n技术资\n汽车轴荷（满载状态）\n相邻下文（归属待核验）：\n发动机规格"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "text": "表格数据：\n车型: MR6453DCHEV02\n前轴最大轴荷 （kg）: 1214\n后轴最大轴荷 （kg）: 1116\n相邻上文（归属待核验）：\n技术资\n汽车轴荷（满载状态）\n相邻下文（归属待核验）：\n发动机规格"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "text": "表格数据：\n车型: MR6453DCHEV02\n整备质量（kg）: 1890\n最大允许总重量 （kg）: 2330\n相邻上文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n相邻下文（归属待核验）：\n"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 349,
+          "text": "技术资料\n349\n说明！\n□ 请保持挡风玻璃洁净、干燥；请不要在安装汽车电子标识处贴膜\n或粘贴金属材料，确保汽车电子标识的规范安装和数据的有效读\n取。\n车辆参数\n车辆尺寸参数（整备质量）\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n汽车轴荷（满载状态）\n发动机规格\n电机规格\n动力电池规格"
+        },
+        "E4": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n轮胎尺寸/类 型: 235/50R19\n推荐胎压（冷胎） / 空载（kPa） / 前: 230\n推荐胎压（冷胎） / 空载（kPa） / 后: 230\n推荐胎压（冷胎） / 满载（kPa） / 前: 280\n推荐胎压（冷胎） / 满载（kPa） / 后: 280\n相邻上文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n相邻下文（归属待核验）：\n"
+        },
+        "E5": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n轮胎尺寸/类型: 235/50R19\n轮胎动平衡: ≤10g\n相邻上文（归属待核验）：\n■ 所有车轮定位值均在车辆出厂载荷状态下（标准设备、所有必要\n的油液、少于10升的燃油）测得单侧轮胎参数值。\n轮胎规格\n相邻下文（归属待核验）：\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 48,
+        "prompt_tokens": 932,
+        "total_tokens": 980,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 804
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"MR6453DCHEV02前轴最大轴荷为1214 kg，后轴最大轴荷为1116 kg。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 1.4738402001094073,
+      "split": "test",
+      "reference_answer": "满载状态下，前轴最大轴荷为1214 kg。满载状态下，后轴最大轴荷为1116 kg。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 349,
+        "anchor": "汽车轴荷"
+      },
+      "reference_facts": [
+        {
+          "id": "F1",
+          "text": "满载状态下，前轴最大轴荷为1214 kg。"
+        },
+        {
+          "id": "F2",
+          "text": "满载状态下，后轴最大轴荷为1116 kg。"
+        }
+      ]
+    }
+  ],
+  "split": "test",
+  "evidence_scoring_policy": "best_set_recall_rr_v1",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-textflow-v1",
+    "id_field": "chunk_id",
+    "case_file": "eval_test_v3.json",
+    "case_file_sha256": "1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e",
+    "annotation_status": "reviewed_not_frozen",
+    "annotation_policy": {
+      "version": "question_required_facts_v1",
+      "required_facts": "reference_facts仅列题目所问的必要事实，以及使该判断或所问操作成立所不可缺少的原因、条件与步骤；不把参考答案每一句都自动设为必答项。",
+      "supplemental_facts": "未询问且不影响当前问题完整性的背景、其他功能、扩展示例、操作反馈和补充建议不作为缺失扣分项；reference_answer仍可保留这些正确补充。",
+      "safety_boundary": "问题明确涉及的安全禁令、温度/电压/车速等必要条件，以及完成所问操作不可缺少的安全前提必须保留。未复述额外提醒不等于允许相反行为；主动提出违反原文安全限制的建议，仍判不忠实或任务失败。",
+      "semantic_equivalence": "按语义核对对象、关系、数值、单位、条件和先后顺序，不要求逐字复述；题干已给定的条件可以承接，不因没有机械重复题干就扣分。位置名、图标或术语的等价表达可接受。",
+      "alternatives": "事实中的或表示合法替代路径，回答任一完整有效路径即可，不要求同时执行所有替代路径；明确问有哪些或分别怎样时，仍须覆盖所问各项。",
+      "task_pass": "可回答题须直接正确完成所问任务，覆盖必要事实且无误导性或不受证据支持的陈述；参考答案比必要事实更丰富并不提高必答门槛。拒答题的判断与安全限制不因本轮审校放宽。",
+      "review_protocol": "使用相同政策审校开发集与测试集，测试集标注不依赖模型输出；旧生成与旧review保持原样，新口径须另建复核报告，不将标注修订带来的分数变化归为模型优化。"
+    },
+    "annotation_revision": {
+      "version": "v3",
+      "reviewed_at": "2026-11-19",
+      "base_file": "test_retrieval_gold_v2.json",
+      "base_sha256": "2759e3e62ac7b0938e64379e8983d6cf056188af1fc6d61b660387b72dc700b9",
+      "base_case_file": "eval_test_v2.json",
+      "base_case_file_sha256": "fb7412cd243406572a5de9a82c0e6c909476b15e988f035fef3cf7df8c88e20b",
+      "audit_file": "gold_annotation_revision_v3.json",
+      "final_test_run": false
+    },
+    "annotation_notes": {
+      "scope": "cases 只标注80道可回答题，每题列出一个已核验的主证据集合；20道不可回答题不设置必需块。块ID用于评测对照，不作为检索条件或模型输入。",
+      "interpretation": "主证据集合不是全部相关块的穷举。严格块ID未命中不等于没有语义等价证据；如发现替代证据，应结合实际块内容复核。",
+      "alternatives": "alternative_evidence_sets 已接入 add_block_scores，沿用 best_set_recall_rr_v1 和 selected_evidence_set，不拼接不同完整方案。本轮80题主证据集合和替代证据集合均未改动；题意范围已审校，正式运行前仍须完成输入校验与配置冻结。",
+      "table_context": "表格块中的相邻文字不能一律视为该表的说明；本次涉及脚注和说明的标注已核对题集所依据的原页归属。",
+      "test_14": "主证据为第48页正文第1块；第2块因正文重叠也完整包含锁止10秒后戒备、解锁后自动关闭两项事实，另列为替代集合，不与主集合合并为两个必需块。",
+      "test_32": "第109页正文第1块支持初始化步骤及约5秒，第2块支持每个车门上的车窗按钮分别初始化每扇车窗，两块共同覆盖参考事实。",
+      "test_72": "Ah、V、Nm、rpm分别位于4个独立表格行块，主证据集合含4块。最终Top3最多命中其中3块，严格必需块召回率上限为0.75且不能全齐；这是当前分块与上下文数量约束，不是本次已运行评测所得结果。",
+      "fact_review": "按 question_required_facts_v1 审查全部100题：80题必要事实从201条调整为197条，20道不可回答题及拒答依据未变。14题收窄必要事实范围，所有剩余事实仍由原有块支持，因此不改主集合或替代集合；详见 gold_annotation_revision_v3.json。"
+    },
+    "alternative_evidence_sets": {
+      "test_14": [
+        [
+          "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+        ]
+      ]
+    },
+    "cases": {
+      "test_01": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p64:c1:tables-textflow-v1:body"
+      ],
+      "test_02": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p110:c1:tables-textflow-v1:body"
+      ],
+      "test_03": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p85:c1:tables-textflow-v1:body"
+      ],
+      "test_04": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p297:c1:tables-textflow-v1:body"
+      ],
+      "test_05": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p325:c1:tables-textflow-v1:body"
+      ],
+      "test_06": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p339:c1:tables-textflow-v1:body"
+      ],
+      "test_07": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2"
+      ],
+      "test_08": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p336:c1:tables-textflow-v1:body"
+      ],
+      "test_11": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p12:c3:tables-textflow-v1:body"
+      ],
+      "test_12": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p21:c2:tables-textflow-v1:body"
+      ],
+      "test_13": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body"
+      ],
+      "test_14": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c1:tables-textflow-v1:body"
+      ],
+      "test_15": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p53:c1:tables-textflow-v1:body"
+      ],
+      "test_16": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p65:c1:tables-textflow-v1:body"
+      ],
+      "test_17": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-textflow-v1:body"
+      ],
+      "test_18": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:body"
+      ],
+      "test_19": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_20": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body"
+      ],
+      "test_21": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body"
+      ],
+      "test_22": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p330:c2:tables-textflow-v1:body"
+      ],
+      "test_23": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_24": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body"
+      ],
+      "test_25": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p292:c1:tables-textflow-v1:body"
+      ],
+      "test_26": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p307:c1:tables-textflow-v1:body"
+      ],
+      "test_27": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "test_28": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body"
+      ],
+      "test_29": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_30": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p59:c1:tables-textflow-v1:body"
+      ],
+      "test_31": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p60:c1:tables-textflow-v1:body"
+      ],
+      "test_32": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c2:tables-textflow-v1:body"
+      ],
+      "test_33": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p122:c1:tables-textflow-v1:body"
+      ],
+      "test_34": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_35": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p142:c1:tables-textflow-v1:body"
+      ],
+      "test_36": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p162:c2:tables-textflow-v1:body"
+      ],
+      "test_37": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p237:c1:tables-textflow-v1:body"
+      ],
+      "test_38": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p256:c1:tables-textflow-v1:body"
+      ],
+      "test_39": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body"
+      ],
+      "test_40": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p274:c1:tables-textflow-v1:body"
+      ],
+      "test_41": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_42": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p282:c1:tables-textflow-v1:body"
+      ],
+      "test_43": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p303:c1:tables-textflow-v1:body"
+      ],
+      "test_44": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p312:c1:tables-textflow-v1:body"
+      ],
+      "test_45": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p340:c1:tables-textflow-v1:body"
+      ],
+      "test_46": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+      ],
+      "test_47": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p61:c1:tables-textflow-v1:body"
+      ],
+      "test_48": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p99:c1:tables-textflow-v1:body"
+      ],
+      "test_49": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body"
+      ],
+      "test_50": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p129:c1:tables-textflow-v1:body"
+      ],
+      "test_51": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p143:c1:tables-textflow-v1:body"
+      ],
+      "test_52": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p161:c1:tables-textflow-v1:body"
+      ],
+      "test_53": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "test_54": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p170:c1:tables-textflow-v1:body"
+      ],
+      "test_55": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p214:c2:tables-textflow-v1:body"
+      ],
+      "test_56": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p298:c1:tables-textflow-v1:body"
+      ],
+      "test_57": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body"
+      ],
+      "test_58": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_59": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1"
+      ],
+      "test_60": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "test_61": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "test_62": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1"
+      ],
+      "test_63": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t3:r1"
+      ],
+      "test_64": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t5:r1"
+      ],
+      "test_65": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r2"
+      ],
+      "test_66": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1"
+      ],
+      "test_67": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r2"
+      ],
+      "test_68": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4"
+      ],
+      "test_69": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r4"
+      ],
+      "test_70": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r10",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5"
+      ],
+      "test_71": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r16",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r13"
+      ],
+      "test_72": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r13"
+      ],
+      "test_73": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_74": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p46:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p47:c1:tables-textflow-v1:body"
+      ],
+      "test_75": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p88:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p89:c1:tables-textflow-v1:body"
+      ],
+      "test_76": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body"
+      ],
+      "test_77": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body"
+      ],
+      "test_78": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body"
+      ],
+      "test_79": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p108:c1:tables-textflow-v1:body"
+      ],
+      "test_80": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p289:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p290:c1:tables-textflow-v1:body"
+      ],
+      "test_81": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p309:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_82": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p343:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p344:c1:tables-textflow-v1:body"
+      ]
+    }
+  },
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config_test_rrf20_top5.json",
+  "config_snapshot": {
+    "case_files": [
+      "eval_test_v3.json"
+    ],
+    "manual_metadata": "manual_metadata.json",
+    "required_block_gold": "test_retrieval_gold_v3.json",
+    "split": "test",
+    "top_k": 5,
+    "fusion_k": 20,
+    "qa_methods": [
+      "rerank"
+    ]
+  },
+  "run_at_utc": "2026-11-24T03:39:43.353048+00:00",
+  "per_route_k": 10,
+  "source_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_v3.json",
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-11-24T08:28:45.054795+00:00",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_rrf20_top5.json",
+  "expected_records": 1,
+  "qa_methods": [
+    "rerank"
+  ]
+}

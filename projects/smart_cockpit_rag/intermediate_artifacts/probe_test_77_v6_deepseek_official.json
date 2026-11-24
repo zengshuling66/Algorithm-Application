@@ -1,0 +1,828 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "cases": [
+    {
+      "case_id": "test_77",
+      "retrieved_pages": [
+        232,
+        236,
+        176
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "RPA支持哪三种车位？可以坐在车内操作，或在有坡度、积雪、积水、凹坑的道路上使用吗？",
+      "answerable": true,
+      "candidate_results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 232,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "含以下功能：\n■ 直线遥控功能。\n■ 遥控泊入功能。\n■ 遥控泊出功能。\n说明！\n□ 通过Lynk&CoApp使用RPA功能前需要阅读并同意免责声明，因\n此请认真阅读免责声明，确保在已知晓并接受相关条件或条款的\n情况下开启并使RPA功能。\n□ 遥控泊车辅助在泊车入位过程中会代替驾驶员执行转向和制动的\n操作，但驾驶员仍需注意观察周围环境，必要时结束泊车过程，\n以避免某些障碍物因系统无法识别而影响行车安全。\n□ 作为驾驶员，您应遵守相关法律要求，并对安全停车承担全部责\n任。\nRPA可支持三种车位：水平车位、垂直车位、斜列车位。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 264,
+          "score": 0.03252247488101534,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.7159723695550111,
+            "bm25": 29.70160950644971
+          },
+          "rrf_rank": 1,
+          "rerank_score": 6.39622163772583
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 236,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "泊车\n236\n警告！\n■ 使用RPA功能前，确保车辆附近没有人员或障碍物，并时刻观察\n车辆附近环境，必要时暂停RPA功能。\n■ 使用RPA功能前，请确保方向盘已回正。\n■ 请勿在车内使用RPA功能。\n■ 请勿在有坡度、积雪、积水、凹坑等道路使用RPA功能。\n■ RPA功能激活后，用户从Lynk&CoApp上松开前进或后退按键，\n由于存在时延，车辆仍会运动一段距离，意识到有碰撞风险请提\n前松开按键。\n■ 泊车辅助传感器仅在探测到障碍物时发出警告，因此可能不会发\n出警告信息或延迟发出警告信息，也可能发出不必要的警告信\n息。您始终有责任安全审慎地遥控车辆，完全依赖泊车辅助传感\n器对潜在碰撞进行警告可能会造成严重人身伤害和财产损失（包\n括车辆损坏）。\n■ 请确保所有泊车辅助摄像头和泊车辅助传感器表面无覆盖物或无\n脏污，否则会影响RPA功能的性能，可能会导致与周围障碍物发\n生刮蹭。\n■ 在雨雪天气下受到强光直射，可能会影响泊车辅助摄像头和泊车\n辅助传感器等传感器的工作性能，导致RPA功能性能下降，可能\n会导致与周围障碍物发生挂蹭。\n■ RPA功能仅限用户在车辆周围环境可预测的停车场或车库使用。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 499,
+          "score": 0.032266458495966696,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.6422428052913262,
+            "bm25": 30.528658891600635
+          },
+          "rrf_rank": 2,
+          "rerank_score": 5.792992115020752
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 176,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶辅助",
+          "block_id": "body",
+          "kind": "text",
+          "text": "通严重拥堵的环\n境中、道路上有大量积水或淤泥、严重雨雪天气、能见度低、大\n风天气、坡道上行驶时，请勿使用ACC。\n■ ACC对横跨行车道的车辆或物体不会做出反应。\n■ 后备厢装载过多物品时可能会导致车辆姿态发生变化，使ACC目\n标识别性能下降或失效。\n■ 其他车辆变道至本车前方时，ACC可能来不及反应，需要驾驶员\n及时制动。\n■ 在陡峭的下坡道路上行驶时，ACC可能很难与前面的车辆保持合\n适的距离。在这些情况下，要特别小心，并随时准备制动。\n■ 当驶入和驶出弯道时，目标的选择有可能延迟或受到干扰。ACC\n可能会出现无法预期的制动或制动过晚的情况。\n■ 在急转弯道路上，例如蛇形道路上，由于风挡摄像头及前雷达受\n到限制，ACC无法正常探测到前车，这可能导致车辆加速，驾驶\n员需要根据实际情况适当接管车辆。\n■ 当前方相邻车道的车辆切入到自车的行驶轨迹内，在某些环境中\n探测有可能受到影响或者发生延迟，如目标的反射强度过小（行\n人、二轮车、三轮车），电磁干扰等影响，导致ACC无法识别到\n目标或无法准确计算与前车距离。这种情况下会出现ACC无反应\n或制动延迟，驾驶员需要主动控制车辆。\n注意！\n■",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 499,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "bm25": 16.1612761138129
+          },
+          "rrf_rank": 10,
+          "rerank_score": -0.5806084871292114
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 236,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "受到强光直射，可能会影响泊车辅助摄像头和泊车\n辅助传感器等传感器的工作性能，导致RPA功能性能下降，可能\n会导致与周围障碍物发生挂蹭。\n■ RPA功能仅限用户在车辆周围环境可预测的停车场或车库使用。\n■ RPA功能的性能取决于泊车辅助传感器探测到的障碍物、车辆、\n人或其他物体与车辆的距离接近程度。\n说明！\n□ 使用RPA功能前，请确保车门、尾门、前舱盖均已关闭且车辆闭\n锁。\n□ RPA功能激活至车辆运动时间较长，请耐心等待。\n□ 蓝牙信号不稳定时，RPA功能可能会退出。\n外后视镜倒车自动调节\n行车过程中，当您将挡位切换至倒挡（R）时，外后视镜会自动向下\n调节角度，让您拥有良好的倒车视野。将挡位从倒挡（R）切换至其\n他挡位时，外后视镜会自动返回其原始位置。\n设置外后视镜倒车自动调节\n在中央显示屏中点击 -车辆设置-后视镜，进入后视镜设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 375,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "vector": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.6185022523733377
+          },
+          "rrf_rank": 7,
+          "rerank_score": -0.9672738313674927
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 230,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "泊车\n230\n全自动泊车\n全自动泊车（APA）通过环视摄像头和超声波传感器检测地面划线车\n位或两车间隔的车位，辅助驾驶员泊入或泊出停车位。\n警告！\n■ 作为驾驶员，您应遵守相关法律要求，并对安全停车承担全部责\n任。\n■ 即使APA功能处于启用状态，您始终有责任在必要时主动介入，\n握住方向盘或踩下制动踏板。\n说明！\n□ 当使用APA将车辆停放在紧靠路边沿的停车位时，功能设定的运\n行轨迹可能会超出路边沿，因此您需要根据实际情况切换挡位，\n以防止凸起的路肩损坏轮胎或车轮。\n□ 使用非原厂轮胎或不正确的充气压力可能会影响APA的泊车辅助\n性能。\n□ 使用APA功能时，请注意观察周围环境，准备根据中央显示屏上\n的提示进行制动/停车。\nAPA可支持三种车位：水平车位、垂直车位、斜列车位。\n启用/关闭全自动泊车（APA）\n您可以通过以下方式启用APA：\n■ 在中央显示屏中点击 -自动泊车。\n■ 在360°全景界面点击 图标。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p230:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 411,
+          "score": 0.031024531024531024,
+          "retrieval_ranks": {
+            "vector": 6,
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.5778717477374862,
+            "bm25": 23.317594226984195
+          },
+          "rrf_rank": 3,
+          "rerank_score": -0.9720345735549927
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 235,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "泊车\n235\n01点击选择垂直泊出方向。\n02点击选择水平泊出方向。\n4控制车辆：点击“开始泊车”按键，RPA控制车辆泊出停车位。\n5泊车完成：Lynk&CoApp上会提示泊车完成，此时驾驶员可以接\n管车辆。\nRPA的局限性\nRPA使用泊车辅助传感器和泊车辅助摄像头检测外界障碍物。RPA传\n感器可能对高度较低的障碍物、车身上方或侧面障碍物、较狭窄物体\n等类型的障碍物检测受限，您需要始终关注周边环境，否则可能导致\n财产损失或人身伤害，包括但不限于：\n■ 行人、儿童、动物。\n■ 开启的地锁，低矮石墩、圆柱体、细杆、尖锐物体，地面的坑洞\n等。\n■ 限高门，杆或悬空的结构物。\n■ 车身侧方可能导致碰撞和刮擦的障碍物。\n■ 自行车，墙角，停车场方柱边角等。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p235:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 327,
+          "score": 0.016129032258064516,
+          "retrieval_ranks": {
+            "vector": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.6574635277485421
+          },
+          "rrf_rank": 6,
+          "rerank_score": -1.0446854829788208
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 233,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "泊车\n233\n说明\n□ RPA工作时车辆会自动执行转向和制动操作。\n直线遥控功能\n启用RPA功能后，可以按照以下步骤控制车辆直线行驶：\n1 启用RPA：在Lynk&CoApp主界面中点击 功能按键，开启RPA\n功能。\n2控制车辆：在RPA控制界面，控制车辆向前或向后移动。松开按\n键车辆静止。\n01长按 控制车辆向前直线行驶。\n02长按 控制车辆向前直线行驶。\n3泊车完成：点击“结束”按键，退出直线遥控功能。\n说明！\n□ 每次直线前进或后退的移动距离有限制。\n遥控泊入功能\n1 启用自动泊车：在中央显示屏中点击 -自动泊车。\n2车位搜索：以小于25km/h的速度缓慢向前行驶，直到中央显示\n屏显示搜索到停车位。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p233:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 306,
+          "score": 0.03055037313432836,
+          "retrieval_ranks": {
+            "vector": 7,
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5759834931756658,
+            "bm25": 19.842189934801144
+          },
+          "rrf_rank": 4,
+          "rerank_score": -1.2186130285263062
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 234,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "泊车\n234\n3选择停车位：在中央显示屏上选择需要泊入的停车位，选中后该\n停车位高亮显示。\n4选择泊车方式：点击“遥控泊车”按键，选择使用RPA功能。依\n据中央显示屏提示信息，携带手机和遥控钥匙下车。\n5启用RPA功能：在Lynk&CoApp主界面中点击 功能按键，开\n启RPA功能。\n6控制车辆：点击“开始泊车”按键，RPA控制车辆泊入停车位。\n7 泊车完成：车辆成功泊入车位后，RPA控制车辆上锁并启用防盗\n系统。\n遥控泊出功能\n1 启用RPA：在Lynk&CoApp主界面中点击 功能按键，开启RPA\n功能。\n2选择遥控方式：在RPA控制界面中，点击“泊出”按键，选择使\n用遥控泊出功能。\n3选择泊出方式：在泊出选择界面中选择遥控泊出方式和泊出方\n向。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p234:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 329,
+          "score": 0.030536130536130537,
+          "retrieval_ranks": {
+            "vector": 5,
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "vector": 0.5910030232546739,
+            "bm25": 17.592923432248558
+          },
+          "rrf_rank": 5,
+          "rerank_score": -1.4986299276351929
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 165,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "再适合冬季驾驶。\n说明！\n□ 而当环境温度低于-15℃时，可能会造成轮胎永久性损伤，请务\n必更换为冬季轮胎。\n□ 并不是所有M+S等级的轮胎（全天侯轮胎）都提供特殊的冬季性\n能。确保您使用的轮胎侧面上标示有M+S和山峰/雪花 。这些\n轮胎满足特定的雪地牵引性能标注，并且是专为在雪地驾驶设计\n的。\n防滑链\n车辆需要在积雪或结冰路面上行驶时，可以使用防滑链增大轮胎摩檫\n力。使用防滑链时，应当遵循以下注意事项。如果使用错误的防滑\n链，可能会对车辆造成严重损坏，甚至导致事故的发生。\n■ 防滑链只能安装在驱动轮上。\n■ 使用防滑链时，请遵守当地法规要求。\n■ 应按照防滑链制造商的安装说明进行操作。\n■ 驾驶使用防滑链的车辆，应避免急转弯和紧急制动。\n■ 请使用质量合格且符合本车型、轮胎与轮辋尺寸设计要求的防滑\n链。\n■ 应只在覆盖有积雪或结冰的道路上使用防滑链，且车速不得超过\n40km/h或制造商限制的车速（以较低者为准）。\n注意！\n■ 当进入无积雪或无结冰路段时，应立即拆除防滑链。\n■ 并非所有尺寸的车轮都可以安装防滑链，相关信息请咨询Lynk&\nCo领克中心。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p165:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 484,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "bm25": 17.939015247168463
+          },
+          "rrf_rank": 8,
+          "rerank_score": -3.235769271850586
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 123,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n123\n警告！\n■ 行程中儿童的安全需要由同乘大人负责。\n■ 切勿让儿童站在或跪坐在座椅上，也不得让儿童待在后备厢区\n域。\n■ 切勿将儿童单独留在车内无人照看，切勿让儿童携带钥匙。\n■ 行车前，请启用儿童锁，以防儿童打开车门或意外操作电动车\n窗。\n■ 请将儿童放置在安全座椅上，不允许将儿童抱在怀中。\n■ 禁止将儿童安全座椅安装到前排乘客座椅上。\n■ 身高低于140cm的乘客不得坐在前排乘客座椅上。\n安装ISOFIX儿童安全座椅\n安装儿童安全座椅或婴儿座椅时，请务必遵守当地法规，并查阅制造\n商说明书。请将儿童安全座椅安装说明书放入手套箱内，以便随时查\n阅。\nISOFIX固定装置\n1 打开固定装置罩盖。\n2按照儿童安全座椅安装说明书，将儿童安全座椅安装在ISOFIX固\n定装置中。\n3向外拉动并左右摇晃儿童安全座椅，以确保其已固定到位。\n使用顶部系带固定装置\n车辆配备有儿童安全座椅顶部系带固定装置，位于靠背的后侧。\n请按照儿童安全座椅安装说明书，固定儿童安全座椅。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p123:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 440,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "bm25": 7
+          },
+          "retrieval_scores": {
+            "bm25": 16.218970572820172
+          },
+          "rrf_rank": 9,
+          "rerank_score": -7.43535852432251
+        }
+      ],
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 232,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "含以下功能：\n■ 直线遥控功能。\n■ 遥控泊入功能。\n■ 遥控泊出功能。\n说明！\n□ 通过Lynk&CoApp使用RPA功能前需要阅读并同意免责声明，因\n此请认真阅读免责声明，确保在已知晓并接受相关条件或条款的\n情况下开启并使RPA功能。\n□ 遥控泊车辅助在泊车入位过程中会代替驾驶员执行转向和制动的\n操作，但驾驶员仍需注意观察周围环境，必要时结束泊车过程，\n以避免某些障碍物因系统无法识别而影响行车安全。\n□ 作为驾驶员，您应遵守相关法律要求，并对安全停车承担全部责\n任。\nRPA可支持三种车位：水平车位、垂直车位、斜列车位。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 264,
+          "score": 0.03252247488101534,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.7159723695550111,
+            "bm25": 29.70160950644971
+          },
+          "rrf_rank": 1,
+          "rerank_score": 6.39622163772583
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 236,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "泊车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "泊车\n236\n警告！\n■ 使用RPA功能前，确保车辆附近没有人员或障碍物，并时刻观察\n车辆附近环境，必要时暂停RPA功能。\n■ 使用RPA功能前，请确保方向盘已回正。\n■ 请勿在车内使用RPA功能。\n■ 请勿在有坡度、积雪、积水、凹坑等道路使用RPA功能。\n■ RPA功能激活后，用户从Lynk&CoApp上松开前进或后退按键，\n由于存在时延，车辆仍会运动一段距离，意识到有碰撞风险请提\n前松开按键。\n■ 泊车辅助传感器仅在探测到障碍物时发出警告，因此可能不会发\n出警告信息或延迟发出警告信息，也可能发出不必要的警告信\n息。您始终有责任安全审慎地遥控车辆，完全依赖泊车辅助传感\n器对潜在碰撞进行警告可能会造成严重人身伤害和财产损失（包\n括车辆损坏）。\n■ 请确保所有泊车辅助摄像头和泊车辅助传感器表面无覆盖物或无\n脏污，否则会影响RPA功能的性能，可能会导致与周围障碍物发\n生刮蹭。\n■ 在雨雪天气下受到强光直射，可能会影响泊车辅助摄像头和泊车\n辅助传感器等传感器的工作性能，导致RPA功能性能下降，可能\n会导致与周围障碍物发生挂蹭。\n■ RPA功能仅限用户在车辆周围环境可预测的停车场或车库使用。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 499,
+          "score": 0.032266458495966696,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.6422428052913262,
+            "bm25": 30.528658891600635
+          },
+          "rrf_rank": 2,
+          "rerank_score": 5.792992115020752
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 176,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "驾驶辅助",
+          "block_id": "body",
+          "kind": "text",
+          "text": "通严重拥堵的环\n境中、道路上有大量积水或淤泥、严重雨雪天气、能见度低、大\n风天气、坡道上行驶时，请勿使用ACC。\n■ ACC对横跨行车道的车辆或物体不会做出反应。\n■ 后备厢装载过多物品时可能会导致车辆姿态发生变化，使ACC目\n标识别性能下降或失效。\n■ 其他车辆变道至本车前方时，ACC可能来不及反应，需要驾驶员\n及时制动。\n■ 在陡峭的下坡道路上行驶时，ACC可能很难与前面的车辆保持合\n适的距离。在这些情况下，要特别小心，并随时准备制动。\n■ 当驶入和驶出弯道时，目标的选择有可能延迟或受到干扰。ACC\n可能会出现无法预期的制动或制动过晚的情况。\n■ 在急转弯道路上，例如蛇形道路上，由于风挡摄像头及前雷达受\n到限制，ACC无法正常探测到前车，这可能导致车辆加速，驾驶\n员需要根据实际情况适当接管车辆。\n■ 当前方相邻车道的车辆切入到自车的行驶轨迹内，在某些环境中\n探测有可能受到影响或者发生延迟，如目标的反射强度过小（行\n人、二轮车、三轮车），电磁干扰等影响，导致ACC无法识别到\n目标或无法准确计算与前车距离。这种情况下会出现ACC无反应\n或制动延迟，驾驶员需要主动控制车辆。\n注意！\n■",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 499,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "bm25": 16.1612761138129
+          },
+          "rrf_rank": 10,
+          "rerank_score": -0.5806084871292114
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": true,
+      "selected_evidence_set": 0,
+      "prompt_version": "cockpit-rag-json-v2.1",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "RPA可支持三种车位：水平车位、垂直车位、斜列车位。关于车内操作和特殊道路条件：资料明确要求请勿在车内使用RPA功能；请勿在有坡度、积雪、积水、凹坑等道路使用RPA功能。因此不可以坐在车内操作，也不可以在有坡度、积雪、积水、凹坑的道路上使用。",
+      "evidence_ids": [
+        "E1",
+        "E2"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 232,
+          "text": "含以下功能：\n■ 直线遥控功能。\n■ 遥控泊入功能。\n■ 遥控泊出功能。\n说明！\n□ 通过Lynk&CoApp使用RPA功能前需要阅读并同意免责声明，因\n此请认真阅读免责声明，确保在已知晓并接受相关条件或条款的\n情况下开启并使RPA功能。\n□ 遥控泊车辅助在泊车入位过程中会代替驾驶员执行转向和制动的\n操作，但驾驶员仍需注意观察周围环境，必要时结束泊车过程，\n以避免某些障碍物因系统无法识别而影响行车安全。\n□ 作为驾驶员，您应遵守相关法律要求，并对安全停车承担全部责\n任。\nRPA可支持三种车位：水平车位、垂直车位、斜列车位。"
+        },
+        {
+          "evidence_id": "E2",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 236,
+          "text": "泊车\n236\n警告！\n■ 使用RPA功能前，确保车辆附近没有人员或障碍物，并时刻观察\n车辆附近环境，必要时暂停RPA功能。\n■ 使用RPA功能前，请确保方向盘已回正。\n■ 请勿在车内使用RPA功能。\n■ 请勿在有坡度、积雪、积水、凹坑等道路使用RPA功能。\n■ RPA功能激活后，用户从Lynk&CoApp上松开前进或后退按键，\n由于存在时延，车辆仍会运动一段距离，意识到有碰撞风险请提\n前松开按键。\n■ 泊车辅助传感器仅在探测到障碍物时发出警告，因此可能不会发\n出警告信息或延迟发出警告信息，也可能发出不必要的警告信\n息。您始终有责任安全审慎地遥控车辆，完全依赖泊车辅助传感\n器对潜在碰撞进行警告可能会造成严重人身伤害和财产损失（包\n括车辆损坏）。\n■ 请确保所有泊车辅助摄像头和泊车辅助传感器表面无覆盖物或无\n脏污，否则会影响RPA功能的性能，可能会导致与周围障碍物发\n生刮蹭。\n■ 在雨雪天气下受到强光直射，可能会影响泊车辅助摄像头和泊车\n辅助传感器等传感器的工作性能，导致RPA功能性能下降，可能\n会导致与周围障碍物发生挂蹭。\n■ RPA功能仅限用户在车辆周围环境可预测的停车场或车库使用。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 232,
+          "text": "含以下功能：\n■ 直线遥控功能。\n■ 遥控泊入功能。\n■ 遥控泊出功能。\n说明！\n□ 通过Lynk&CoApp使用RPA功能前需要阅读并同意免责声明，因\n此请认真阅读免责声明，确保在已知晓并接受相关条件或条款的\n情况下开启并使RPA功能。\n□ 遥控泊车辅助在泊车入位过程中会代替驾驶员执行转向和制动的\n操作，但驾驶员仍需注意观察周围环境，必要时结束泊车过程，\n以避免某些障碍物因系统无法识别而影响行车安全。\n□ 作为驾驶员，您应遵守相关法律要求，并对安全停车承担全部责\n任。\nRPA可支持三种车位：水平车位、垂直车位、斜列车位。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 236,
+          "text": "泊车\n236\n警告！\n■ 使用RPA功能前，确保车辆附近没有人员或障碍物，并时刻观察\n车辆附近环境，必要时暂停RPA功能。\n■ 使用RPA功能前，请确保方向盘已回正。\n■ 请勿在车内使用RPA功能。\n■ 请勿在有坡度、积雪、积水、凹坑等道路使用RPA功能。\n■ RPA功能激活后，用户从Lynk&CoApp上松开前进或后退按键，\n由于存在时延，车辆仍会运动一段距离，意识到有碰撞风险请提\n前松开按键。\n■ 泊车辅助传感器仅在探测到障碍物时发出警告，因此可能不会发\n出警告信息或延迟发出警告信息，也可能发出不必要的警告信\n息。您始终有责任安全审慎地遥控车辆，完全依赖泊车辅助传感\n器对潜在碰撞进行警告可能会造成严重人身伤害和财产损失（包\n括车辆损坏）。\n■ 请确保所有泊车辅助摄像头和泊车辅助传感器表面无覆盖物或无\n脏污，否则会影响RPA功能的性能，可能会导致与周围障碍物发\n生刮蹭。\n■ 在雨雪天气下受到强光直射，可能会影响泊车辅助摄像头和泊车\n辅助传感器等传感器的工作性能，导致RPA功能性能下降，可能\n会导致与周围障碍物发生挂蹭。\n■ RPA功能仅限用户在车辆周围环境可预测的停车场或车库使用。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 176,
+          "text": "通严重拥堵的环\n境中、道路上有大量积水或淤泥、严重雨雪天气、能见度低、大\n风天气、坡道上行驶时，请勿使用ACC。\n■ ACC对横跨行车道的车辆或物体不会做出反应。\n■ 后备厢装载过多物品时可能会导致车辆姿态发生变化，使ACC目\n标识别性能下降或失效。\n■ 其他车辆变道至本车前方时，ACC可能来不及反应，需要驾驶员\n及时制动。\n■ 在陡峭的下坡道路上行驶时，ACC可能很难与前面的车辆保持合\n适的距离。在这些情况下，要特别小心，并随时准备制动。\n■ 当驶入和驶出弯道时，目标的选择有可能延迟或受到干扰。ACC\n可能会出现无法预期的制动或制动过晚的情况。\n■ 在急转弯道路上，例如蛇形道路上，由于风挡摄像头及前雷达受\n到限制，ACC无法正常探测到前车，这可能导致车辆加速，驾驶\n员需要根据实际情况适当接管车辆。\n■ 当前方相邻车道的车辆切入到自车的行驶轨迹内，在某些环境中\n探测有可能受到影响或者发生延迟，如目标的反射强度过小（行\n人、二轮车、三轮车），电磁干扰等影响，导致ACC无法识别到\n目标或无法准确计算与前车距离。这种情况下会出现ACC无反应\n或制动延迟，驾驶员需要主动控制车辆。\n注意！\n■"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 101,
+        "prompt_tokens": 1133,
+        "total_tokens": 1234,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 1133
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"RPA可支持三种车位：水平车位、垂直车位、斜列车位。关于车内操作和特殊道路条件：资料明确要求请勿在车内使用RPA功能；请勿在有坡度、积雪、积水、凹坑等道路使用RPA功能。因此不可以坐在车内操作，也不可以在有坡度、积雪、积水、凹坑的道路上使用。\", \"evidence_ids\": [\"E1\", \"E2\"]}",
+      "qa_seconds": 1.5271763000637293,
+      "split": "test",
+      "reference_answer": "RPA支持水平车位。RPA支持垂直车位。RPA支持斜列车位。不能在车内使用RPA。不能在有坡度、积雪、积水、凹坑等道路使用RPA。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 232,
+        "anchor": "RPA可支持三种车位"
+      },
+      "reference_facts": [
+        {
+          "id": "F1",
+          "text": "RPA支持水平车位。"
+        },
+        {
+          "id": "F2",
+          "text": "RPA支持垂直车位。"
+        },
+        {
+          "id": "F3",
+          "text": "RPA支持斜列车位。"
+        },
+        {
+          "id": "F4",
+          "text": "不能在车内使用RPA。"
+        },
+        {
+          "id": "F5",
+          "text": "不能在有坡度、积雪、积水、凹坑等道路使用RPA。"
+        }
+      ]
+    }
+  ],
+  "split": "test",
+  "evidence_scoring_policy": "best_set_recall_rr_v1",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-textflow-v1",
+    "id_field": "chunk_id",
+    "case_file": "eval_test_v3.json",
+    "case_file_sha256": "1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e",
+    "annotation_status": "reviewed_not_frozen",
+    "annotation_policy": {
+      "version": "question_required_facts_v1",
+      "required_facts": "reference_facts仅列题目所问的必要事实，以及使该判断或所问操作成立所不可缺少的原因、条件与步骤；不把参考答案每一句都自动设为必答项。",
+      "supplemental_facts": "未询问且不影响当前问题完整性的背景、其他功能、扩展示例、操作反馈和补充建议不作为缺失扣分项；reference_answer仍可保留这些正确补充。",
+      "safety_boundary": "问题明确涉及的安全禁令、温度/电压/车速等必要条件，以及完成所问操作不可缺少的安全前提必须保留。未复述额外提醒不等于允许相反行为；主动提出违反原文安全限制的建议，仍判不忠实或任务失败。",
+      "semantic_equivalence": "按语义核对对象、关系、数值、单位、条件和先后顺序，不要求逐字复述；题干已给定的条件可以承接，不因没有机械重复题干就扣分。位置名、图标或术语的等价表达可接受。",
+      "alternatives": "事实中的或表示合法替代路径，回答任一完整有效路径即可，不要求同时执行所有替代路径；明确问有哪些或分别怎样时，仍须覆盖所问各项。",
+      "task_pass": "可回答题须直接正确完成所问任务，覆盖必要事实且无误导性或不受证据支持的陈述；参考答案比必要事实更丰富并不提高必答门槛。拒答题的判断与安全限制不因本轮审校放宽。",
+      "review_protocol": "使用相同政策审校开发集与测试集，测试集标注不依赖模型输出；旧生成与旧review保持原样，新口径须另建复核报告，不将标注修订带来的分数变化归为模型优化。"
+    },
+    "annotation_revision": {
+      "version": "v3",
+      "reviewed_at": "2026-11-19",
+      "base_file": "test_retrieval_gold_v2.json",
+      "base_sha256": "2759e3e62ac7b0938e64379e8983d6cf056188af1fc6d61b660387b72dc700b9",
+      "base_case_file": "eval_test_v2.json",
+      "base_case_file_sha256": "fb7412cd243406572a5de9a82c0e6c909476b15e988f035fef3cf7df8c88e20b",
+      "audit_file": "gold_annotation_revision_v3.json",
+      "final_test_run": false
+    },
+    "annotation_notes": {
+      "scope": "cases 只标注80道可回答题，每题列出一个已核验的主证据集合；20道不可回答题不设置必需块。块ID用于评测对照，不作为检索条件或模型输入。",
+      "interpretation": "主证据集合不是全部相关块的穷举。严格块ID未命中不等于没有语义等价证据；如发现替代证据，应结合实际块内容复核。",
+      "alternatives": "alternative_evidence_sets 已接入 add_block_scores，沿用 best_set_recall_rr_v1 和 selected_evidence_set，不拼接不同完整方案。本轮80题主证据集合和替代证据集合均未改动；题意范围已审校，正式运行前仍须完成输入校验与配置冻结。",
+      "table_context": "表格块中的相邻文字不能一律视为该表的说明；本次涉及脚注和说明的标注已核对题集所依据的原页归属。",
+      "test_14": "主证据为第48页正文第1块；第2块因正文重叠也完整包含锁止10秒后戒备、解锁后自动关闭两项事实，另列为替代集合，不与主集合合并为两个必需块。",
+      "test_32": "第109页正文第1块支持初始化步骤及约5秒，第2块支持每个车门上的车窗按钮分别初始化每扇车窗，两块共同覆盖参考事实。",
+      "test_72": "Ah、V、Nm、rpm分别位于4个独立表格行块，主证据集合含4块。最终Top3最多命中其中3块，严格必需块召回率上限为0.75且不能全齐；这是当前分块与上下文数量约束，不是本次已运行评测所得结果。",
+      "fact_review": "按 question_required_facts_v1 审查全部100题：80题必要事实从201条调整为197条，20道不可回答题及拒答依据未变。14题收窄必要事实范围，所有剩余事实仍由原有块支持，因此不改主集合或替代集合；详见 gold_annotation_revision_v3.json。"
+    },
+    "alternative_evidence_sets": {
+      "test_14": [
+        [
+          "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+        ]
+      ]
+    },
+    "cases": {
+      "test_01": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p64:c1:tables-textflow-v1:body"
+      ],
+      "test_02": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p110:c1:tables-textflow-v1:body"
+      ],
+      "test_03": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p85:c1:tables-textflow-v1:body"
+      ],
+      "test_04": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p297:c1:tables-textflow-v1:body"
+      ],
+      "test_05": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p325:c1:tables-textflow-v1:body"
+      ],
+      "test_06": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p339:c1:tables-textflow-v1:body"
+      ],
+      "test_07": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2"
+      ],
+      "test_08": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p336:c1:tables-textflow-v1:body"
+      ],
+      "test_11": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p12:c3:tables-textflow-v1:body"
+      ],
+      "test_12": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p21:c2:tables-textflow-v1:body"
+      ],
+      "test_13": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body"
+      ],
+      "test_14": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c1:tables-textflow-v1:body"
+      ],
+      "test_15": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p53:c1:tables-textflow-v1:body"
+      ],
+      "test_16": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p65:c1:tables-textflow-v1:body"
+      ],
+      "test_17": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-textflow-v1:body"
+      ],
+      "test_18": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:body"
+      ],
+      "test_19": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_20": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body"
+      ],
+      "test_21": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body"
+      ],
+      "test_22": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p330:c2:tables-textflow-v1:body"
+      ],
+      "test_23": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_24": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body"
+      ],
+      "test_25": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p292:c1:tables-textflow-v1:body"
+      ],
+      "test_26": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p307:c1:tables-textflow-v1:body"
+      ],
+      "test_27": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "test_28": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body"
+      ],
+      "test_29": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_30": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p59:c1:tables-textflow-v1:body"
+      ],
+      "test_31": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p60:c1:tables-textflow-v1:body"
+      ],
+      "test_32": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c2:tables-textflow-v1:body"
+      ],
+      "test_33": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p122:c1:tables-textflow-v1:body"
+      ],
+      "test_34": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_35": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p142:c1:tables-textflow-v1:body"
+      ],
+      "test_36": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p162:c2:tables-textflow-v1:body"
+      ],
+      "test_37": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p237:c1:tables-textflow-v1:body"
+      ],
+      "test_38": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p256:c1:tables-textflow-v1:body"
+      ],
+      "test_39": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body"
+      ],
+      "test_40": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p274:c1:tables-textflow-v1:body"
+      ],
+      "test_41": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_42": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p282:c1:tables-textflow-v1:body"
+      ],
+      "test_43": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p303:c1:tables-textflow-v1:body"
+      ],
+      "test_44": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p312:c1:tables-textflow-v1:body"
+      ],
+      "test_45": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p340:c1:tables-textflow-v1:body"
+      ],
+      "test_46": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+      ],
+      "test_47": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p61:c1:tables-textflow-v1:body"
+      ],
+      "test_48": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p99:c1:tables-textflow-v1:body"
+      ],
+      "test_49": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body"
+      ],
+      "test_50": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p129:c1:tables-textflow-v1:body"
+      ],
+      "test_51": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p143:c1:tables-textflow-v1:body"
+      ],
+      "test_52": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p161:c1:tables-textflow-v1:body"
+      ],
+      "test_53": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "test_54": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p170:c1:tables-textflow-v1:body"
+      ],
+      "test_55": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p214:c2:tables-textflow-v1:body"
+      ],
+      "test_56": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p298:c1:tables-textflow-v1:body"
+      ],
+      "test_57": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body"
+      ],
+      "test_58": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_59": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1"
+      ],
+      "test_60": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "test_61": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "test_62": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1"
+      ],
+      "test_63": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t3:r1"
+      ],
+      "test_64": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t5:r1"
+      ],
+      "test_65": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r2"
+      ],
+      "test_66": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1"
+      ],
+      "test_67": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r2"
+      ],
+      "test_68": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4"
+      ],
+      "test_69": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r4"
+      ],
+      "test_70": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r10",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5"
+      ],
+      "test_71": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r16",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r13"
+      ],
+      "test_72": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r13"
+      ],
+      "test_73": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_74": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p46:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p47:c1:tables-textflow-v1:body"
+      ],
+      "test_75": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p88:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p89:c1:tables-textflow-v1:body"
+      ],
+      "test_76": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body"
+      ],
+      "test_77": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body"
+      ],
+      "test_78": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body"
+      ],
+      "test_79": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p108:c1:tables-textflow-v1:body"
+      ],
+      "test_80": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p289:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p290:c1:tables-textflow-v1:body"
+      ],
+      "test_81": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p309:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_82": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p343:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p344:c1:tables-textflow-v1:body"
+      ]
+    }
+  },
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config_test_v3.json",
+  "config_snapshot": {
+    "case_files": [
+      "eval_test_v3.json"
+    ],
+    "manual_metadata": "manual_metadata.json",
+    "required_block_gold": "test_retrieval_gold_v3.json",
+    "split": "test",
+    "top_k": 3,
+    "qa_methods": [
+      "rerank"
+    ]
+  },
+  "run_at_utc": "2026-11-20T06:47:05.442430+00:00",
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-11-23T12:08:42.650121+00:00",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_v3.json",
+  "expected_records": 1,
+  "qa_methods": [
+    "rerank"
+  ]
+}

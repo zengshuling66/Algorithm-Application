@@ -2,7 +2,7 @@
 
 基于车主手册的检索增强问答原型：解析 PDF 正文与原生文本表格，使用本地 BGE、Qdrant 和 BM25 检索证据，通过兼容 Chat Completions 的接口生成结构化答案，并由程序组装可信来源引用。
 
-当前提供命令行问答、FastAPI 普通/真实 SSE 问答、请求关联与阶段日志、四策略开发集对照、冻结终测、独立复核和Markdown报告导出。100题终测采用混合召回加精排、Top3，本轮任务通过92/100；结果仅代表这一份手册、题集、模型运行和既定复核口径，不是生产准确率。Docker与干净环境复现仍待验收。
+当前提供命令行问答、FastAPI 普通和 SSE 问答、请求追踪，以及从检索快照到逐题复核和报告导出的评测流程。历史冻结终测为 Top3、92/100；最新离线回归采用融合候选上限20、精排 Top5 和结构化 Prompt v2.6，三轮分别通过95、96、96题。API 默认仍是融合10、精排 Top3，离线结果不代表线上准确率。Docker和干净环境复现尚未验收。
 
 ## 架构与当前状态
 
@@ -33,18 +33,18 @@
 | BM25 | jieba分词、英文小写化，BM25Okapi：k1=1.5、b=0.75 |
 | 两路候选 | 各最多10条，`hybrid_retrieval.DEFAULT_CANDIDATE_K` |
 | RRF | 按chunk_id合并，累计各路 `1/(60+rank)`，同分按ID排序 |
-| 最终数量 | 默认 `vector_store.DEFAULT_TOP_K=3`；批量评测优先读取配置的 `top_k`，终测固定为3 |
-| 生成评测策略 | 配置 `qa_methods`；缺省为四路，当前终测为 `["rerank"]` |
+| 融合上限与最终数量 | API：融合10 / Top3；冻结基线：融合10 / Top3；最新离线回归：配置的 `fusion_k=20` / `top_k=5` |
+| 生成评测策略 | 配置 `qa_methods`；缺省为四路，冻结基线和最新回归均只生成 `rerank` |
 | 精排 | `BAAI/bge-reranker-base`，revision `2cfc18c9415c912f9d8155881c133215df768a70` |
 | 精排输入/输出 | CPU/float32，配对长度上限512 tokens，batch_size=4，Identity保留原始logit |
 | 当前解析版本 | `tables-textflow-v1` |
 | 当前集合 | `cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1`，604条 |
 | 保留基线 | `cockpit_manual_bge_small_zh_v1_5_tables_v1`：604条；更早无表格规范化集合：469条 |
-| Prompt | 结构化路径 `cockpit-rag-json-v2`；直接文本基线保留 `cockpit-rag-v1` |
+| Prompt | 当前结构化路径 `cockpit-rag-json-v2.6`；直接文本基线保留 `cockpit-rag-v1` |
 
-除评测配置中的 `top_k`、`qa_methods` 外，这些值不是全部开放为CLI参数。混合的 `score` 是RRF总分；精排另保留 `rerank_score` 与 `rrf_rank`，不覆盖原分数。各路分数不是同一种量，原始精排logit也不是概率。
+离线候选重放读取 `fusion_k`、`top_k`，问答回放再按 `qa_methods` 选择已保存的策略。混合的 `score` 是RRF总分；精排另保留 `rerank_score` 与 `rrf_rank`，不覆盖原分数。各路分数不是同一种量，原始精排logit也不是概率。
 
-两路各最多10条，按ID合并后最多20个不同候选；混合直接取RRF Top3，精排路径先取RRF Top10再重排为Top3。当前向量查询没有设置 `score_threshold`，不能对余弦、BM25、RRF和精排分数套用同一阈值。
+两路各最多10条，按ID去重后最多20条；最新离线回归把去重后的候选全部交给精排，API 仍只交给精排融合后的前10条。当前向量查询没有设置 `score_threshold`，不能对余弦、BM25、RRF和精排分数套用同一阈值。
 
 上述已核验版本的Python本地稠密检索通过NumPy计算距离并排序，不使用HNSW。服务端HNSW参数不是当前路径的调优开关；精确近邻排序也不等于答案证据完整。是否迁移后端应依据数据规模与性能实测，不因容器化而强制迁移。
 
@@ -108,16 +108,16 @@ python -X utf8 -B table_parser.py $pdf 244
 
 [generation.py](generation.py) 只读取当前进程环境变量，不自动加载 `.env`。密钥不写入代码、报告或Git。
 
-以下地址和请求模型对应本地已保存实验；更换接口须同时核对地址、模型与该供应商密钥。连通记录不构成套餐权限或业务授权确认，实际使用应遵循供应商授权范围。
+以下地址和模型对应最新已验证的 DeepSeek 官方离线回归。更换接口须同时核对地址、模型和该供应商的密钥。
 
 ~~~powershell
-$env:LLM_BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3"
-$env:LLM_MODEL = "deepseek-v4.1-flash"
-$secureKey = Read-Host "输入对应供应商密钥" -AsSecureString
+$env:LLM_BASE_URL = "https://api.deepseek.com"
+$env:LLM_MODEL = "deepseek-flash"
+$secureKey = Read-Host "输入 DeepSeek 官方密钥" -AsSecureString
 $env:LLM_API_KEY = [System.Net.NetworkCredential]::new("", $secureKey).Password
 ~~~
 
-该实验实际响应模型为 `deepseek-v4-1-flash`。历史DeepSeek官方实验单独保存，不与方舟结果混合计算。切换生成供应商不需要重建同一份资料的向量，但不能把供应商变化归因于检索收益。
+实际响应模型为 `deepseek-flash`。历史方舟冻结终测的响应模型为 `deepseek-v4-1-flash`；两组结果分别统计。切换生成供应商不需要重建资料向量，也不能把模型差异归因于检索。
 
 生成参数集中在 `generation.py` 的 `LLM_MAX_TOKENS=1024`、`LLM_TIMEOUT_SECONDS=60.0`、`LLM_MAX_RETRIES=0`，普通与流式路径共用。SDK超时是网络操作等待限制，不是整次HTTP请求的硬截止，也不限制本地检索或排队时长；流持续返回数据时总时长可能超过60秒。保持零自动重试，先定位问题再由调用者决定是否重发，避免流式重复输出或重复计费。
 
@@ -274,16 +274,18 @@ curl.exe -i http://127.0.0.1:8001/health
 ### 配置与数据划分
 
 - `eval_cases.json`：20道dev；`table_eval_cases_v1.json`：10道dev，合计24道可回答、6道不可回答。
-- `eval_test_v3.json`：100道test，80道可回答、20道拒答或澄清题，197条参考事实；从历史10题扩展，不将各版本数量相加。`eval_test_v1.json`及v2保留为历史版本，不再作为当前终测入口。
-- `evaluation_config_dev_v3.json`、`dev_retrieval_gold_v3.json`：当前开发集配置及完整chunk_id/替代证据、参考事实金标。`evaluation_config_test_v3.json`、`test_retrieval_gold_v3.json`：当前测试配置和80道可回答题的精确块金标。测试事实来自v3题集，复核入口优先使用独立金标的事实映射，未提供时保留题集事实。
+- `eval_test_v3.json`：100道test，80道可回答、20道拒答或澄清题，197条参考事实；历史v1/v2题集已归档，不将各版本数量相加。
+- `evaluation_config_dev_v2.json` 与 `dev_retrieval_gold_v2.json` 是保留的开发集 Top3 快照所用配置和检索金标；该轮最新复核使用 `dev_retrieval_gold_v3.json`。
+- `evaluation_config_dev_rrf20_top5.json`：最新30题开发集回归配置，共用两份开发集题集，检索和复核均使用 `dev_retrieval_gold_v3.json`。
+- `evaluation_config_test_rrf20_top5.json`：保留的100题第2轮配置。使用 `test_retrieval_gold_v3.json` 的事实复核修订 `v3-review-r2`；未覆盖的事实沿用题集标注。历史 Top3 冻结配置已归档。
 - 配置文件不直接选择数据库，实际集合由 `vector_store.COLLECTION_NAME` 指定；入口核对标注与报告的来源、哈希、集合和解析版本，避免混评。
 - `load_evaluation_inputs`默认要求dev；`compare-test`、`qa-test`和`check-test`显式要求test，防止误混。参考答案与事实清单只用于评测，不进入被测Prompt。
-- 测试题集v3的SHA-256为 `1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e`，不是PDF的content_hash；格式化也会改变指纹。冻结清单见 [test_freeze_v3.json](test_freeze_v3.json)。
+- 测试题集v3的SHA-256为 `1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e`，不是PDF的content_hash；格式化也会改变指纹。[历史冻结清单](intermediate_artifacts/test_freeze_v3.json) 保留当时的代码、金标和模型指纹；不能拿已经改动的工作区冒充原冻结配置。
 
 ### 1. 检索、评分与保存
 
 ~~~powershell
-python -X utf8 -B evaluation.py compare evaluation_config_dev_v3.json dev_retrieval_run.json
+python -X utf8 -B evaluation.py compare evaluation_config_dev_v2.json dev_retrieval_run.json
 python -X utf8 -B evaluation.py summary dev_retrieval_run.json
 ~~~
 
@@ -294,7 +296,7 @@ python -X utf8 -B evaluation.py summary dev_retrieval_run.json
 | 标注页Hit/MRR | 任一结果命中标注资料与页码的题目比例/首次命中倒数排名均值；Hit@1另查首条结果 |
 | 必要块Recall@K | 每题命中必要证据块的比例，再按题平均；旧block_id标注仍兼容，当前完整金标使用chunk_id |
 | 必要块MRR/全齐率 | 首次命中任一必要块的RR均值/整题找齐全部必要块的题目比例；首个命中不等于全部找齐 |
-| 候选必要块Recall@10 | 对最终截取之前的候选计算必要块覆盖，区分候选漏召回与最后截断损失 |
+| 候选必要块Recall | 对最终截取之前的候选计算必要块覆盖，区分候选漏召回与最后截断损失；历史上限10，本轮回归上限20 |
 | Precision@K | 人工标注相关返回块数除以配置K，再按可回答题平均；返回不足K时缺位不算相关 |
 | 关键事实覆盖率 | 答案正确覆盖的必要事实数除以该题事实数，再按可回答题平均，不是检索文本包含事实的比例 |
 | 任务/忠实度/引用/拒答 | 分别检查是否完成题目、陈述是否受上下文支持、引用是否支持相应陈述，以及是否应拒答；均为本项目逐题复核通过率，不等同Ragas模型裁判分数 |
@@ -305,7 +307,7 @@ python -X utf8 -B evaluation.py summary dev_retrieval_run.json
 
 先预检，命令没有 `--run` 时不调用API、也不创建QA文件：
 ~~~powershell
-python -X utf8 -B evaluation.py qa evaluation_config_dev_v3.json dev_retrieval_run.json all dev_qa_run.json
+python -X utf8 -B evaluation.py qa evaluation_config_dev_v2.json dev_retrieval_run.json all dev_qa_run.json
 ~~~
 
 确认供应商配置及费用后，在同一命令末尾加 `--run` 才真实生成。`all`可换为单个题号。`qa_methods`缺省为四路，dev全量最多120次；当前test配置为 `["rerank"]`，只生成100条精排记录。该字段不改变四路检索快照。
@@ -330,16 +332,15 @@ python -X utf8 -B evaluation.py export dev_qa_review_run.json dev_rerank_summary
 
 QA耗时包含保存上下文适配、Prompt、SDK生成和契约校验，不含此前检索、HTTP传输或并发排队；P50/P95使用NumPy默认线性分位数。缺失用量单列，不按0计算，Token数不直接代表费用。失败详情目前只列工程error或task_pass=False；例如test_91的拒答任务通过、附加建议证据不足，详细标记保留在review，阅读时仍须同时看忠实度与引用指标。
 
-### 4. 冻结与正式终测
+### 4. 冻结与测试回放
 
-以下为新运行示例，使用未存在的输出名；已完成的v3终测不要覆盖或为提高分数反复重跑。
+以下以保留的 Top5 快照为输入，展示如何为新一轮建立冻结记录和预检。输出名须未使用过；历史冻结终测和已保存的回归不覆盖。
 
 ~~~powershell
-python -X utf8 -B evaluation.py check-test evaluation_config_test_v3.json
-python -X utf8 -B evaluation.py freeze evaluation_config_test_v3.json test_freeze_run.json
-python -X utf8 -B evaluation.py check-freeze evaluation_config_test_v3.json test_freeze_run.json
-python -X utf8 -B evaluation.py compare-test evaluation_config_test_v3.json test_retrieval_run.json
-python -X utf8 -B evaluation.py qa-test evaluation_config_test_v3.json test_retrieval_run.json all test_qa_rerank_run.json
+python -X utf8 -B evaluation.py check-test evaluation_config_test_rrf20_top5.json
+python -X utf8 -B evaluation.py freeze evaluation_config_test_rrf20_top5.json test_freeze_run.json
+python -X utf8 -B evaluation.py check-freeze evaluation_config_test_rrf20_top5.json test_freeze_run.json
+python -X utf8 -B evaluation.py qa-test evaluation_config_test_rrf20_top5.json test_retrieval_rrf20_top5.json all test_qa_rerank_run.json
 ~~~
 
 最后一条只是100条精排记录的计费预检；真正生成前再次执行 `check-freeze`，并仅在该 `qa-test`命令末尾加 `--run`。完成后：
@@ -352,21 +353,36 @@ python -X utf8 -B evaluation.py export test_qa_rerank_review_run.json test_reran
 
 冻结清单记录题集、金标、Metadata、配置、requirements及项目顶层Python文件的指纹，以及模型地址/名称、Prompt与检索常量；不记录密钥。校验是主动短命令，尚未自动挂入检索/生成入口，不锁数据库或远端模型，也不把文件设为只读。改注释/格式也可能触发漂移。后续修复另建版本；分析过的test可用于回归，但不能再冒充未见过的独立终测。
 
-### 5. 本地检索基准
+### 5. 离线候选重放与 Top5 回归
+
+从历史四路快照读取向量和 BM25 各前10条，按配置重新融合、精排并截取 Top5。不重新向量化或入库，不调用生成 API。正式回归使用这一步已保存的 `test_retrieval_rrf20_top5.json`，保留各轮原始输出及独立复核，不仅保留展示轮。
 
 ~~~powershell
-python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json retrieval_benchmark_textflow_run.json
+python -X utf8 -B evaluation.py replay-rerank-test evaluation_config_test_rrf20_top5.json intermediate_artifacts/test_retrieval_v3.json test_retrieval_replay_run.json
+python -X utf8 -B evaluation.py qa-test evaluation_config_test_rrf20_top5.json test_retrieval_replay_run.json all test_qa_replay_run.json
+~~~
+
+第二条只做生成预检；有意运行时才加 `--run`。已有第2轮复核可直接用 `export` 导出，不必重跑模型。题目已参与错误分析和配置选择，这些结果属于回归，不是新的未见题终测。
+
+开发集也可用 `replay-rerank-dev`，传入 `evaluation_config_dev_rrf20_top5.json` 和归档候选 `intermediate_artifacts/dev_candidates_v2.json`。已保存的开发集 Top5 快照为 `dev_retrieval_rrf20_top5.json`。
+
+### 6. 本地检索基准
+
+~~~powershell
+python -X utf8 -B evaluation.py benchmark evaluation_config_dev_v2.json retrieval_benchmark_textflow_run.json
 ~~~
 
 模型/检索器构建单独记录，各路径预热一次；30题×两策略×3轮保存180条耗时、有序块ID和页码。仅衡量CPU热检索，不含生成或HTTP，不证明LLM回答稳定。该报告类型当前不接原 `summary` 的质量汇总分支，不应用它计算答案通过率。
 
 所有报告示例使用新文件名。正式实验应保留原始输出与独立review；报告含手册正文，不默认随公开仓库分发。
 
-清理时保留正式检索基线、原始QA、独立review和性能报告；仅在核对内容覆盖及引用后删除冗余中间文件。`__pycache__/`、`.pytest_cache/`可重新生成，`.qdrant/`则是持久化数据库，不作为缓存删除。
+根目录的评测文件只保留三组：100题第2轮、30题开发集最终 Top3、最新30题开发集 Top5。每组保留配置、题集、金标、检索快照、QA、复核和已有 Markdown。开发集 Top3 保留 `dev_rerank_summary_v2.md`，旧版重复总结已归档；最新 Top5 尚未单独导出 Markdown。README、运行代码、测试、依赖和资料元数据不参与归档。
+
+`intermediate_artifacts/` 保存其他轮次、重复总结、上游候选快照、旧配置/金标/题集、探针和性能快照。移动不改文件内容，旧报告内嵌的绝对路径仍是原记录；重放旧候选时显式传归档路径。已跟踪的旧文件提交时应配对暂存原路径和归档路径，不批量提交未跟踪的日志与原始报告。`__pycache__/`、`.pytest_cache/`可重建，`.qdrant/`是持久化数据库。
 
 ## 已验证结果
 
-工程状态及当前终测报告核验于2026-11-20。各表按所列题集、金标和运行分别统计；历史开发集对照不与当前终测混算，单手册结果不代表生产流量或跨文档泛化。
+工程基线核验于2026-11-20，最新离线回归报告核验于2026-11-24。各表按所列配置、金标和运行分别统计，单手册结果不代表生产流量或跨文档泛化。
 
 ### 数据与解析
 
@@ -386,7 +402,7 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 | tables-v1 | json-v2 | 27/30 | 29/30 | 28/30 | 29/30 |
 | tables-textflow-v1 | json-v2 | 26/30 | 29/30 | 29/30 | 30/30 |
 
-对应原始报告为 `qa_dev_ark_v41_v1.json`、`qa_dev_ark_v41_prompt_v2_full.json`、`qa_dev_ark_v41_prompt_v2_textflow_v1.json`，各有独立review。三轮均请求同一方舟模型别名；别名、未固定采样及运行时间不能保证后端或随机性完全相同，不宣称严格因果或统计显著性。
+对应原始报告及其独立复核均在 `intermediate_artifacts/`，原始文件为 `qa_dev_ark_v41_v1.json`、`qa_dev_ark_v41_prompt_v2_full.json`、`qa_dev_ark_v41_prompt_v2_textflow_v1.json`。三轮均请求同一方舟模型别名；别名、未固定采样及运行时间不能保证后端或随机性完全相同，不宣称严格因果或统计显著性。
 
 新解析的完整v2共120条，全部generated，使用100109 tokens；旧解析v2为119条generated加1条契约error，使用101175 tokens，错误保留在通过率分母。新旧同v2有5处改善、4处退化，合计113/120→114/120，不能称为全面提升。
 
@@ -405,9 +421,11 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 | Top3 | 30/30 | 100%（24题平均） | 56.94% |
 | Top5 | 30/30 | 100%（24题平均） | 45.00% |
 
-来源为 `dev_qa_top3_review_v4.json`、`dev_qa_top5_review_v4.json`；参考事实按问题必需范围修订，沿用原始 `dev_qa_top3_v2.json`、`dev_qa_top5_v2.json`答案，未因重评再次生成。复核口径修订不是模型提升。开发集未观察到Top5任务质量收益，因此选择Top3后冻结，不按test成绩反选K。
+来源为 [Top3 复核](dev_qa_top3_review_v4.json) 和[历史 Top5 复核](intermediate_artifacts/dev_qa_top5_review_v4.json)；参考事实按问题必需范围修订，沿用原始答案，未因重评再次生成。历史开发集未观察到 Top5 任务质量收益，当时选择 Top3 后冻结。
 
-### 100题冻结终测
+最新开发集融合20 / Top5 的本机复核为 `dev_qa_v2.6_rrf20_top5_review.json`。DeepSeek 官方 `deepseek-flash` 和 Prompt v2.6：30/30，事实覆盖100%，引用28/29，Precision@5 为44.17%，必需块全齐24/24。旧 Top5 同为30/30，引用29/29、Precision@5 为45.00%。整题表现持平，不能把差值单独归因于融合窗口。
+
+### 100题冻结终测（历史 Top3 基线）
 
 四路检索保存400条记录；仅rerank回放生成100条，80道可回答、20道不可回答或应澄清。模型响应均为 `deepseek-v4-1-flash`、Prompt均为 `cockpit-rag-json-v2`，100条generated且无工程error。generated只证明生成和程序契约通过，不证明事实正确。
 
@@ -425,7 +443,7 @@ python -X utf8 -B evaluation.py benchmark evaluation_config_textflow_v1.json ret
 | 忠实度 | 98/100，98.00% | 实际陈述是否受最终上下文支持 |
 | 引用通过 | 93/95，97.89% | 适用95题；5条纯拒答不适用，不记为通过 |
 
-原始检索为 [test_retrieval_v3.json](test_retrieval_v3.json)，原始QA为 [test_qa_rerank_v3.json](test_qa_rerank_v3.json)，独立复核为 [test_qa_rerank_review_v3.json](test_qa_rerank_review_v3.json)，完整定义、配置指纹和案例见 [test_rerank_summary_v3.md](test_rerank_summary_v3.md)。复核填写100条任务标签、240个上下文相关性标签和197条事实检查；仅修改review，原始响应和金标保持不变。这是助手逐题复核的单轮结果，不宣称独立多人评审一致性。
+原始检索与候选源为归档 [test_retrieval_v3.json](intermediate_artifacts/test_retrieval_v3.json)。历史 [原始QA](intermediate_artifacts/test_qa_rerank_v3.json)、[独立复核](intermediate_artifacts/test_qa_rerank_review_v3.json) 和 [Markdown 报告](intermediate_artifacts/test_rerank_summary_v3.md) 一并归档。复核填写100条任务标签、240个上下文相关性标签和197条事实检查；原始响应保留。这是助手逐题复核的单轮结果，不宣称独立多人评审一致性。
 
 本轮8道任务失败及边界：
 
@@ -439,6 +457,22 @@ QA耗时P50为1.431秒、P95为1.946秒；已报告输入84,797、输出6,268、
 
 后续dev修复方向为候选覆盖、证据组合/截断、已知安全条件完整性，以及有来源核验的车型文本规范化。这里仅记录方向，不修改冻结题集、金标或本轮分数；修复后的同题测试属于回归，不再声称独立未见终测。
 
+### 100题离线回归（融合20 / Top5）
+
+五轮使用 DeepSeek 官方 `deepseek-flash`、结构化 Prompt `cockpit-rag-json-v2.6`、相同的最终证据和金标。每轮100题均生成完毕，无工程错误。本机展示报告为 `final_eval_v2.6_rrf20_top5.md`，来源是 `final_qa_rerank_v2.6_rrf20_top5_review_r2.json`。
+
+| 轮次 | 整题通过 | 可回答 / 不可回答通过 | 忠实性 | 引用通过 | 事实覆盖 |
+| --- | --- | --- | --- | --- | --- |
+| 历史同配置1 | 94/100 | 74/80 / 20/20 | 97/100 | 92/95 | 96.98% |
+| 历史同配置2 | 94/100 | 74/80 / 20/20 | 97/100 | 93/96 | 96.67% |
+| 本次1 | 95/100 | 75/80 / 20/20 | 98/100 | 92/95 | 97.40% |
+| 本次2（展示轮） | 96/100 | 76/80 / 20/20 | 99/100 | 93/94 | 97.81% |
+| 本次3 | 96/100 | 76/80 / 20/20 | 98/100 | 92/94 | 97.92% |
+
+展示轮按整题通过数优先、并列看忠实性选出；96/100 是三轮最佳，三轮均值为95.67%，不是独立终测或当前 API 的默认配置成绩。历史冻结 Top3 与本轮同时存在检索、模型、Prompt 和金标口径差异，不能把92到96的差值归因于TopK。
+
+五轮检索快照相同：必需块全命中80/80，Precision@5 为40.00%。展示轮仍漏写逐窗初始化（`test_32`）、AQS鼓风机前提（`test_78`）和充电安全条件（`test_80`），并扩大了DOW仪表弹窗的触发范围（`test_74`）。四题的必要证据均已检索到，失败发生在回答阶段。
+
 ### 历史检索基线
 
 | 策略 | 标注页命中（24题） | 标注页MRR | 目标行Recall（8题） | 目标行MRR | 目标行全齐 |
@@ -448,7 +482,7 @@ QA耗时P50为1.431秒、P95为1.946秒；已报告输入84,797、输出6,268、
 | 混合 | 22/24 | 0.854167 | 1 | 1 | 8/8 |
 | 混合加精排 | 24/24 | 0.979167 | 1 | 0.8125 | 8/8 |
 
-来源为 `dev_retrieval_textflow_v1.json`；旧基线 `dev_retrieval_v3.json` 保留。命中页、完整证据、生成质量分别检查，不把上述数字称作五个彼此独立的通用能力。
+来源为[新解析检索快照](intermediate_artifacts/dev_retrieval_textflow_v1.json)和[旧基线](intermediate_artifacts/dev_retrieval_v3.json)。命中页、完整证据、生成质量分别检查，不把上述数字称作五个彼此独立的通用能力。
 
 ### CPU热检索基准
 
@@ -457,7 +491,7 @@ QA耗时P50为1.431秒、P95为1.946秒；已报告输入84,797、输出6,268、
 | 混合 | 90 | 0.153秒 | 0.155秒 | 0.171秒 |
 | 混合加精排 | 90 | 0.821秒 | 0.826秒 | 1.050秒 |
 
-来源为 `retrieval_benchmark_textflow_v1.json`。两路各30题的三轮有序块ID全部一致，也与保存的检索快照一致；平均差约0.668秒。P95在各90条排序后取第86条。构建和预热另计，不是进程冷启动、HTTP端到端延迟、并发容量或线上SLA。
+来源为[历史性能快照](intermediate_artifacts/retrieval_benchmark_textflow_v1.json)。两路各30题的三轮有序块ID全部一致，也与保存的检索快照一致；平均差约0.668秒。P95在各90条排序后取第86条。构建和预热另计，不是进程冷启动、HTTP端到端延迟、并发容量或线上SLA。
 
 API已采用新解析加混合召回/精排，CLI保留不精排的混合基线；冻结终测采用的也是混合加精排，但运行方式为保存上下文回放，不是100次HTTP端到端测试。
 
@@ -468,7 +502,7 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-20实跑122项通过，pip check无依赖冲突。本轮仅使用已有依赖，无需因评测和导出新增requirements条目；这不等于干净机器已能完整复现。
+2026-11-24整理后离线重跑122项通过，Top5问答预检仍读取100题且不调用生成 API。2026-11-20的 `pip check` 无依赖冲突。本轮未增加依赖；这些检查不等于干净机器已能完整复现。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
@@ -488,7 +522,7 @@ python -m pip check
 
 测试不调用付费API，不运行Embedding/精排推理或冻结test问答。临时库与人工向量只测工程行为，不评估语义质量。存储测试覆盖重复写入不增量但遗漏块仍在、删除后的空查询与其他范围保留、非法身份、空/缺失保留ID、2块缩为1块、重复清理，以及旧BM25与重建实例的区别。汇总用例覆盖False保留、null分母、标签去重、输入不变和严格评分类型；离线 HTTP 使用检索和生成替身，ASGI模拟首个delta后断开并检查上游关闭、锁释放和下一次问答。TestClient缓冲不能证明真实事件到达时间，模拟断开也不代替真实网络或并发测试。
 
-冻结创建、校验、防覆盖、文件/模型漂移和缺失环境变量另经临时目录检查，不计入122项pytest；正式v3清单已校验通过。历史另用假解析结果、2维单位向量和临时库验证`retrieval.main()`写入/清理接线，亦不计入122项；两者不等于真实PDF全量重新入库、并发更新或故障恢复验收，没有改写或删除正式604条记录。
+冻结创建、校验、防覆盖、文件/模型漂移和缺失环境变量另经临时目录检查，不计入122项pytest；v3清单在历史配置下校验通过，不代表当前工作区仍与旧清单一致。历史另用假解析结果、2维单位向量和临时库验证`retrieval.main()`写入/清理接线，亦不计入122项；两者不等于真实PDF全量重新入库、并发更新或故障恢复验收，没有改写或删除正式604条记录。
 
 ## 代码导航
 

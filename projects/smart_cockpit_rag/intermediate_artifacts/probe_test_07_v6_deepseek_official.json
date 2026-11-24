@@ -1,0 +1,812 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "cases": [
+    {
+      "case_id": "test_07",
+      "retrieved_pages": [
+        351,
+        351,
+        351
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "制动系统参数表中，制动液规格和制动踏板自由行程范围分别是什么？",
+      "answerable": true,
+      "candidate_results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t1:r2",
+          "kind": "table",
+          "text": "表格数据：\n类型: 制动踏板自由行程\n规格: 10–15mm\n相邻上文（归属待核验）：\n技术资\n制动系统参数\n相邻下文（归属待核验）：\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2",
+          "chunk_index": 1,
+          "char_count": 116,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.7347256111059421,
+            "bm25": 33.58688060237878
+          },
+          "rrf_rank": 1,
+          "rerank_score": 6.892268180847168
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "body",
+          "kind": "text",
+          "text": "技术资料\n351\n注意！\n■ 所有车轮定位值均在车辆出厂载荷状态下（标准设备、所有必要\n的油液、少于10升的燃油）测得单侧轮胎参数值。\n轮胎规格\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n制动系统参数\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 191,
+          "score": 0.030834914611005692,
+          "retrieval_ranks": {
+            "vector": 8,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.5821917313698515,
+            "bm25": 18.036819170461712
+          },
+          "rrf_rank": 4,
+          "rerank_score": 0.27262407541275024
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t3:r4",
+          "kind": "table",
+          "text": "表格数据：\n制动盘/制动衬块: 制动衬块最小安全 厚度（a）\n尺寸（mm） / 前轮: 7.5（a）\n尺寸（mm） / 后轮: 7.5（a）\n相邻上文（归属待核验）：\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n相邻下文（归属待核验）：\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4",
+          "chunk_index": 1,
+          "char_count": 165,
+          "score": 0.030303030303030304,
+          "retrieval_ranks": {
+            "vector": 6,
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "vector": 0.6060383343019942,
+            "bm25": 15.9965441850835
+          },
+          "rrf_rank": 7,
+          "rerank_score": 0.058884330093860626
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t3:r2",
+          "kind": "table",
+          "text": "表格数据：\n制动盘/制动衬块: 制动盘最小安全厚 度\n尺寸（mm） / 前轮: 25（18\"）\n尺寸（mm） / 后轮: 9（16\"）\n相邻上文（归属待核验）：\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n相邻下文（归属待核验）：\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r2",
+          "chunk_index": 1,
+          "char_count": 162,
+          "score": 0.03055037313432836,
+          "retrieval_ranks": {
+            "vector": 4,
+            "bm25": 7
+          },
+          "retrieval_scores": {
+            "vector": 0.6108259379532226,
+            "bm25": 15.900177266850227
+          },
+          "rrf_rank": 6,
+          "rerank_score": -0.01897318661212921
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t1:r1",
+          "kind": "table",
+          "text": "表格数据：\n类型: 制动液\n规格: DOT4\n相邻上文（归属待核验）：\n技术资\n制动系统参数\n相邻下文（归属待核验）：\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r1",
+          "chunk_index": 1,
+          "char_count": 108,
+          "score": 0.03200204813108039,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.6198039286378978,
+            "bm25": 17.570992349147872
+          },
+          "rrf_rank": 2,
+          "rerank_score": -0.22014889121055603
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t3:r1",
+          "kind": "table",
+          "text": "表格数据：\n制动盘/制动衬块: 制动盘标准厚度\n尺寸（mm） / 前轮: 28（18\"）\n尺寸（mm） / 后轮: 12（16\"）\n相邻上文（归属待核验）：\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n相邻下文（归属待核验）：\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r1",
+          "chunk_index": 1,
+          "char_count": 160,
+          "score": 0.03076923076923077,
+          "retrieval_ranks": {
+            "vector": 5,
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.6087999076547893,
+            "bm25": 15.9965441850835
+          },
+          "rrf_rank": 5,
+          "rerank_score": -0.2917342483997345
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t3:r3",
+          "kind": "table",
+          "text": "表格数据：\n制动盘/制动衬块: 制动衬块标准厚度\n尺寸（mm） / 前轮: 16.5\n尺寸（mm） / 后轮: 16.5\n相邻上文（归属待核验）：\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n相邻下文（归属待核验）：\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r3",
+          "chunk_index": 1,
+          "char_count": 155,
+          "score": 0.03149801587301587,
+          "retrieval_ranks": {
+            "vector": 3,
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.6108998767363285,
+            "bm25": 16.193560685893594
+          },
+          "rrf_rank": 3,
+          "rerank_score": -0.5025306940078735
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 321,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "保养和维护",
+          "block_id": "p321:t1:r10",
+          "kind": "table",
+          "text": "表格数据：\n车辆系统: 制动器\n保养项目: 制动液(a)\n常规保养: 24个月\n相邻上文（归属待核验）：\n下表列举了您的爱车所需的常规保养项目。此外，您的维修技师可能\n会根据车辆的检查情况推荐额外的必要保养项目。\n相邻下文（归属待核验）：\n(a)：如果驾驶条件恶劣，推荐的保养间隔是常规驾驶条件下规定的时\n间和里程间隔的一半。例如，如果在山区或潮湿地区驾驶车辆，应每\n年更换一次制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r10",
+          "chunk_index": 1,
+          "char_count": 193,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "vector": 7
+          },
+          "retrieval_scores": {
+            "vector": 0.597286287624498
+          },
+          "rrf_rank": 8,
+          "rerank_score": -2.5561273097991943
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 17,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "用车前准备",
+          "block_id": "body",
+          "kind": "text",
+          "text": "用车前准备\n17\n远程查询车辆状况\n行程开始前，您可以通过Lynk&CoApp查看以下车辆状况，以确认是\n否满足行程需要：\n■ 轮胎胎压\n■ 剩余油量\n■ 剩余电量\n■ 可续航里程\n■ 车内温度\n■ 车辆位置\n安全检查\n每次驾车前，请务必注意下列事项：\n■ 确保所有车灯和转向指示灯工作正常。\n■ 确保所有轮胎压力处于正常范围内。\n■ 确保所有车窗玻璃干净、清晰度高。\n■ 确保驾驶员座椅、方向盘和后视镜已调节至正确位置。\n■ 确保仪表无警告灯点亮或故障警告信息。\n■ 确保无物品妨碍踏板行程。\n■ 确保所有装运的物件已固定到位。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p17:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 265,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "bm25": 15.165975222492115
+          },
+          "rrf_rank": 9,
+          "rerank_score": -4.63211727142334
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 161,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "启动和驾驶\n161\n01点击开启/关闭陡坡缓降系统。\n说明！\n□ 当车速在0–40km/h的范围内，且车辆在陡坡上低速下坡行驶\n时，HDC才会激活。\n□ 当车速在40-60km/h范围内无法激活HDC功能，车速超过60km/\nh时，HDC自动退出。\n□ 激活HDC后，您可以通过踩下制动踏板或油门踏板调整下坡车\n速。\n功能状态说明\n开启陡坡缓降系统后，组合仪表显示白色指示灯。\n激活陡坡缓降系统时，组合仪表显示绿色指示灯。\n当陡坡缓降系统出现故障时，组合仪表显示黄色指示灯。\n警告！\n■ 在下坡路段，当陡坡缓降系统出现故障时，请立刻踩下制动踏板\n主动控制下坡速度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p161:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 282,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "bm25": 9
+          },
+          "retrieval_scores": {
+            "bm25": 13.606996259994885
+          },
+          "rrf_rank": 10,
+          "rerank_score": -4.65289831161499
+        }
+      ],
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t1:r2",
+          "kind": "table",
+          "text": "表格数据：\n类型: 制动踏板自由行程\n规格: 10–15mm\n相邻上文（归属待核验）：\n技术资\n制动系统参数\n相邻下文（归属待核验）：\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2",
+          "chunk_index": 1,
+          "char_count": 116,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.7347256111059421,
+            "bm25": 33.58688060237878
+          },
+          "rrf_rank": 1,
+          "rerank_score": 6.892268180847168
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "body",
+          "kind": "text",
+          "text": "技术资料\n351\n注意！\n■ 所有车轮定位值均在车辆出厂载荷状态下（标准设备、所有必要\n的油液、少于10升的燃油）测得单侧轮胎参数值。\n轮胎规格\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n制动系统参数\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 191,
+          "score": 0.030834914611005692,
+          "retrieval_ranks": {
+            "vector": 8,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.5821917313698515,
+            "bm25": 18.036819170461712
+          },
+          "rrf_rank": 4,
+          "rerank_score": 0.27262407541275024
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "技术资料",
+          "block_id": "p351:t3:r4",
+          "kind": "table",
+          "text": "表格数据：\n制动盘/制动衬块: 制动衬块最小安全 厚度（a）\n尺寸（mm） / 前轮: 7.5（a）\n尺寸（mm） / 后轮: 7.5（a）\n相邻上文（归属待核验）：\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n相邻下文（归属待核验）：\n（a）：含背板厚度。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4",
+          "chunk_index": 1,
+          "char_count": 165,
+          "score": 0.030303030303030304,
+          "retrieval_ranks": {
+            "vector": 6,
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "vector": 0.6060383343019942,
+            "bm25": 15.9965441850835
+          },
+          "rrf_rank": 7,
+          "rerank_score": 0.058884330093860626
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 0.5,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": false,
+      "selected_evidence_set": 0,
+      "prompt_version": "cockpit-rag-json-v2.1",
+      "status": "generated",
+      "answer_status": "refused",
+      "answer": "资料中仅能确认制动踏板自由行程规格为10–15mm；制动液规格未提供，且相关表格数据的归属尚待核验，无法确认制动系统参数表中制动液规格和制动踏板自由行程范围的完整对应关系。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n类型: 制动踏板自由行程\n规格: 10–15mm\n相邻上文（归属待核验）：\n技术资\n制动系统参数\n相邻下文（归属待核验）：\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n类型: 制动踏板自由行程\n规格: 10–15mm\n相邻上文（归属待核验）：\n技术资\n制动系统参数\n相邻下文（归属待核验）：\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "技术资料\n351\n注意！\n■ 所有车轮定位值均在车辆出厂载荷状态下（标准设备、所有必要\n的油液、少于10升的燃油）测得单侧轮胎参数值。\n轮胎规格\n车轮动平衡：关于车轮/轮胎各侧的最大允许残余不平衡量，参见上\n表。\n轮胎压力\n制动系统参数\n说明！\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n（a）：含背板厚度。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 351,
+          "text": "表格数据：\n制动盘/制动衬块: 制动衬块最小安全 厚度（a）\n尺寸（mm） / 前轮: 7.5（a）\n尺寸（mm） / 后轮: 7.5（a）\n相邻上文（归属待核验）：\n□ 制动液必须定期更换，以保证制动系统效率。建议您在Lynk&Co\n领克中心更换制动液。\n制动摩擦副的合理使用范围\n相邻下文（归属待核验）：\n（a）：含背板厚度。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 73,
+        "prompt_tokens": 628,
+        "total_tokens": 701,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 0
+        },
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 628
+      },
+      "raw_answer": "{\"answer_status\": \"refused\", \"answer\": \"资料中仅能确认制动踏板自由行程规格为10–15mm；制动液规格未提供，且相关表格数据的归属尚待核验，无法确认制动系统参数表中制动液规格和制动踏板自由行程范围的完整对应关系。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 1.5281921999994665,
+      "split": "test",
+      "reference_answer": "制动液规格为DOT 4；制动踏板自由行程为10至15 mm。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 351,
+        "anchor": "制动踏板自由行程"
+      },
+      "reference_facts": [
+        {
+          "id": "F1",
+          "text": "制动液规格为DOT 4。"
+        },
+        {
+          "id": "F2",
+          "text": "制动踏板自由行程为10至15 mm。"
+        }
+      ]
+    }
+  ],
+  "split": "test",
+  "evidence_scoring_policy": "best_set_recall_rr_v1",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-textflow-v1",
+    "id_field": "chunk_id",
+    "case_file": "eval_test_v3.json",
+    "case_file_sha256": "1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e",
+    "annotation_status": "reviewed_not_frozen",
+    "annotation_policy": {
+      "version": "question_required_facts_v1",
+      "required_facts": "reference_facts仅列题目所问的必要事实，以及使该判断或所问操作成立所不可缺少的原因、条件与步骤；不把参考答案每一句都自动设为必答项。",
+      "supplemental_facts": "未询问且不影响当前问题完整性的背景、其他功能、扩展示例、操作反馈和补充建议不作为缺失扣分项；reference_answer仍可保留这些正确补充。",
+      "safety_boundary": "问题明确涉及的安全禁令、温度/电压/车速等必要条件，以及完成所问操作不可缺少的安全前提必须保留。未复述额外提醒不等于允许相反行为；主动提出违反原文安全限制的建议，仍判不忠实或任务失败。",
+      "semantic_equivalence": "按语义核对对象、关系、数值、单位、条件和先后顺序，不要求逐字复述；题干已给定的条件可以承接，不因没有机械重复题干就扣分。位置名、图标或术语的等价表达可接受。",
+      "alternatives": "事实中的或表示合法替代路径，回答任一完整有效路径即可，不要求同时执行所有替代路径；明确问有哪些或分别怎样时，仍须覆盖所问各项。",
+      "task_pass": "可回答题须直接正确完成所问任务，覆盖必要事实且无误导性或不受证据支持的陈述；参考答案比必要事实更丰富并不提高必答门槛。拒答题的判断与安全限制不因本轮审校放宽。",
+      "review_protocol": "使用相同政策审校开发集与测试集，测试集标注不依赖模型输出；旧生成与旧review保持原样，新口径须另建复核报告，不将标注修订带来的分数变化归为模型优化。"
+    },
+    "annotation_revision": {
+      "version": "v3",
+      "reviewed_at": "2026-11-19",
+      "base_file": "test_retrieval_gold_v2.json",
+      "base_sha256": "2759e3e62ac7b0938e64379e8983d6cf056188af1fc6d61b660387b72dc700b9",
+      "base_case_file": "eval_test_v2.json",
+      "base_case_file_sha256": "fb7412cd243406572a5de9a82c0e6c909476b15e988f035fef3cf7df8c88e20b",
+      "audit_file": "gold_annotation_revision_v3.json",
+      "final_test_run": false
+    },
+    "annotation_notes": {
+      "scope": "cases 只标注80道可回答题，每题列出一个已核验的主证据集合；20道不可回答题不设置必需块。块ID用于评测对照，不作为检索条件或模型输入。",
+      "interpretation": "主证据集合不是全部相关块的穷举。严格块ID未命中不等于没有语义等价证据；如发现替代证据，应结合实际块内容复核。",
+      "alternatives": "alternative_evidence_sets 已接入 add_block_scores，沿用 best_set_recall_rr_v1 和 selected_evidence_set，不拼接不同完整方案。本轮80题主证据集合和替代证据集合均未改动；题意范围已审校，正式运行前仍须完成输入校验与配置冻结。",
+      "table_context": "表格块中的相邻文字不能一律视为该表的说明；本次涉及脚注和说明的标注已核对题集所依据的原页归属。",
+      "test_14": "主证据为第48页正文第1块；第2块因正文重叠也完整包含锁止10秒后戒备、解锁后自动关闭两项事实，另列为替代集合，不与主集合合并为两个必需块。",
+      "test_32": "第109页正文第1块支持初始化步骤及约5秒，第2块支持每个车门上的车窗按钮分别初始化每扇车窗，两块共同覆盖参考事实。",
+      "test_72": "Ah、V、Nm、rpm分别位于4个独立表格行块，主证据集合含4块。最终Top3最多命中其中3块，严格必需块召回率上限为0.75且不能全齐；这是当前分块与上下文数量约束，不是本次已运行评测所得结果。",
+      "fact_review": "按 question_required_facts_v1 审查全部100题：80题必要事实从201条调整为197条，20道不可回答题及拒答依据未变。14题收窄必要事实范围，所有剩余事实仍由原有块支持，因此不改主集合或替代集合；详见 gold_annotation_revision_v3.json。"
+    },
+    "alternative_evidence_sets": {
+      "test_14": [
+        [
+          "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+        ]
+      ]
+    },
+    "cases": {
+      "test_01": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p64:c1:tables-textflow-v1:body"
+      ],
+      "test_02": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p110:c1:tables-textflow-v1:body"
+      ],
+      "test_03": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p85:c1:tables-textflow-v1:body"
+      ],
+      "test_04": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p297:c1:tables-textflow-v1:body"
+      ],
+      "test_05": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p325:c1:tables-textflow-v1:body"
+      ],
+      "test_06": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p339:c1:tables-textflow-v1:body"
+      ],
+      "test_07": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2"
+      ],
+      "test_08": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p336:c1:tables-textflow-v1:body"
+      ],
+      "test_11": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p12:c3:tables-textflow-v1:body"
+      ],
+      "test_12": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p21:c2:tables-textflow-v1:body"
+      ],
+      "test_13": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body"
+      ],
+      "test_14": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c1:tables-textflow-v1:body"
+      ],
+      "test_15": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p53:c1:tables-textflow-v1:body"
+      ],
+      "test_16": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p65:c1:tables-textflow-v1:body"
+      ],
+      "test_17": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-textflow-v1:body"
+      ],
+      "test_18": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:body"
+      ],
+      "test_19": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_20": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body"
+      ],
+      "test_21": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body"
+      ],
+      "test_22": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p330:c2:tables-textflow-v1:body"
+      ],
+      "test_23": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_24": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body"
+      ],
+      "test_25": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p292:c1:tables-textflow-v1:body"
+      ],
+      "test_26": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p307:c1:tables-textflow-v1:body"
+      ],
+      "test_27": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "test_28": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body"
+      ],
+      "test_29": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_30": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p59:c1:tables-textflow-v1:body"
+      ],
+      "test_31": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p60:c1:tables-textflow-v1:body"
+      ],
+      "test_32": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c2:tables-textflow-v1:body"
+      ],
+      "test_33": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p122:c1:tables-textflow-v1:body"
+      ],
+      "test_34": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_35": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p142:c1:tables-textflow-v1:body"
+      ],
+      "test_36": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p162:c2:tables-textflow-v1:body"
+      ],
+      "test_37": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p237:c1:tables-textflow-v1:body"
+      ],
+      "test_38": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p256:c1:tables-textflow-v1:body"
+      ],
+      "test_39": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body"
+      ],
+      "test_40": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p274:c1:tables-textflow-v1:body"
+      ],
+      "test_41": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_42": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p282:c1:tables-textflow-v1:body"
+      ],
+      "test_43": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p303:c1:tables-textflow-v1:body"
+      ],
+      "test_44": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p312:c1:tables-textflow-v1:body"
+      ],
+      "test_45": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p340:c1:tables-textflow-v1:body"
+      ],
+      "test_46": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+      ],
+      "test_47": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p61:c1:tables-textflow-v1:body"
+      ],
+      "test_48": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p99:c1:tables-textflow-v1:body"
+      ],
+      "test_49": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body"
+      ],
+      "test_50": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p129:c1:tables-textflow-v1:body"
+      ],
+      "test_51": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p143:c1:tables-textflow-v1:body"
+      ],
+      "test_52": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p161:c1:tables-textflow-v1:body"
+      ],
+      "test_53": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "test_54": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p170:c1:tables-textflow-v1:body"
+      ],
+      "test_55": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p214:c2:tables-textflow-v1:body"
+      ],
+      "test_56": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p298:c1:tables-textflow-v1:body"
+      ],
+      "test_57": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body"
+      ],
+      "test_58": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_59": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1"
+      ],
+      "test_60": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "test_61": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "test_62": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1"
+      ],
+      "test_63": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t3:r1"
+      ],
+      "test_64": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t5:r1"
+      ],
+      "test_65": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r2"
+      ],
+      "test_66": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1"
+      ],
+      "test_67": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r2"
+      ],
+      "test_68": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4"
+      ],
+      "test_69": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r4"
+      ],
+      "test_70": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r10",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5"
+      ],
+      "test_71": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r16",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r13"
+      ],
+      "test_72": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r13"
+      ],
+      "test_73": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_74": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p46:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p47:c1:tables-textflow-v1:body"
+      ],
+      "test_75": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p88:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p89:c1:tables-textflow-v1:body"
+      ],
+      "test_76": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body"
+      ],
+      "test_77": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body"
+      ],
+      "test_78": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body"
+      ],
+      "test_79": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p108:c1:tables-textflow-v1:body"
+      ],
+      "test_80": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p289:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p290:c1:tables-textflow-v1:body"
+      ],
+      "test_81": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p309:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_82": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p343:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p344:c1:tables-textflow-v1:body"
+      ]
+    }
+  },
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config_test_v3.json",
+  "config_snapshot": {
+    "case_files": [
+      "eval_test_v3.json"
+    ],
+    "manual_metadata": "manual_metadata.json",
+    "required_block_gold": "test_retrieval_gold_v3.json",
+    "split": "test",
+    "top_k": 3,
+    "qa_methods": [
+      "rerank"
+    ]
+  },
+  "run_at_utc": "2026-11-20T06:47:05.442430+00:00",
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-11-23T12:08:52.697386+00:00",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_v3.json",
+  "expected_records": 1,
+  "qa_methods": [
+    "rerank"
+  ]
+}
