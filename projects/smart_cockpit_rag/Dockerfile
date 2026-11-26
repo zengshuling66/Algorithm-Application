@@ -1,12 +1,15 @@
-#cockpit-rag:day6 是构建产物，装有 Linux 用户空间、Python 3.11、CPU PyTorch、依赖和项目代码。
+#cockpit-rag:day6 是构建产物/镜像，装有 Linux 用户空间、Python 3.11、CPU PyTorch、依赖和项目代码。
 #cockpit-rag-day6-api 是用这个镜像启动的一个容器。
 #docker build ... . 的 . 指定 Docker 能从哪里取文件。
 # .dockerignore 先过滤，Dockerfile 再复制和安装。
 #`RUN` 在构建时执行，`CMD` 在容器启动时执行。
-#Qdrant 和 Hugging Face 缓存用命名卷，由 Docker 管理，删除容器不会自动删除卷。
-#原始 PDF 已经在宿主机上，用只读绑定挂载给入库容器；API 容器直接读库，不挂原始 PDF。
+#Qdrant 和 Hugging Face 缓存用命名卷，删除容器不会自动删除卷；Docker 镜像和命名卷由 Ubuntu 里的 Docker Engine 管理。
+#原始 PDF 已经在宿主机上，用只读绑定挂载给入库容器；入库/模型权重下载用的 docker run --rm 是一次性容器，退出后会被自动移除。
 #换密钥只重建容器，命名卷重新挂载复用；改镜像内的代码，需要重新构建镜像再启动容器；换手册要核对资料身份和版本，重新解析、入库并刷新检索器。
 #镜像管程序，卷管数据，环境变量管本次运行配置。
+#容器里的 /app 是构建镜像时复制进去的代码。在 Windows 或 Ubuntu 修改项目源码，两边都能立即看到，但已经构建好的镜像和正在运行的容器不会自动更新。
+#docker run 创建容器时就确定了挂载关系：从哪里挂、挂到容器哪个路径、是否只读。`docker start` 或 docker restart 只会沿用这套配置，不会添加新挂载。
+#所以要给现有容器增减/修改一个挂载，也要重新创建容器，但不用重新构建镜像；但在已经绑定挂载的目录里新增文件则不需要，因为容器已经能访问这个目录。
 
 # 与本地开发环境保持 Python 3.11 一致，不依赖宿主机上的 Conda。
 FROM python:3.11-slim-bookworm
