@@ -2,7 +2,7 @@
 
 基于车主手册的检索增强问答原型：解析 PDF 正文与原生文本表格，使用本地 BGE、Qdrant 和 BM25 检索证据，通过兼容 Chat Completions 的接口生成结构化答案，并由程序组装可信来源引用。
 
-当前提供命令行问答、FastAPI 普通和 SSE 问答、请求追踪，以及从检索快照到逐题复核和报告导出的评测流程。历史冻结终测为 Top3、92/100；最新离线回归采用融合候选上限20、精排 Top5 和结构化 Prompt v2.6，三轮分别通过95、96、96题。API 默认仍是融合10、精排 Top3，离线结果不代表线上准确率。Docker和干净环境复现尚未验收。
+当前提供命令行问答、FastAPI 普通和 SSE 问答、请求追踪，以及从检索快照到逐题复核和报告导出的评测流程。历史冻结终测为 Top3、92/100；最新离线回归采用融合候选上限20、精排 Top5 和结构化 Prompt v2.6，三轮分别通过95、96、96题。API 默认仍是融合10、精排 Top3，离线结果不代表线上准确率。已在 WSL 2 Ubuntu 上验证[单容器部署](#docker-部署)。
 
 ## 架构与当前状态
 
@@ -61,7 +61,7 @@ conda activate cockpit-rag
 python -m pip check
 ~~~
 
-新机器可创建Python 3.11环境、按CPU官方安装源准备PyTorch，再安装 `requirements.txt`；整套干净环境复现尚未验收。当前导入检索模块仍依赖FAISS，不应直接移除该依赖。
+不使用 Docker 时，可在 Python 3.11 环境按 CPU 官方安装源准备 PyTorch，再安装 `requirements.txt`；容器复现见下方[部署步骤](#docker-部署)。当前导入检索模块仍依赖 FAISS，不应直接移除该依赖。
 
 BGE与精排模型均需已有权重缓存。日常可设置：
 ~~~powershell
@@ -228,7 +228,89 @@ Get-Process -Id $listener.OwningProcess
 curl.exe -i http://127.0.0.1:8001/health
 ~~~
 
-服务端Ctrl+C正常停机后，`curl.exe --max-time 3 http://127.0.0.1:8001/health` 应连接失败；启动前先确认没有其他服务占用该端口。Linux/容器复现仍需单独验收，不由Windows检查替代。
+服务端Ctrl+C正常停机后，`curl.exe --max-time 3 http://127.0.0.1:8001/health` 应连接失败；启动前先确认没有其他服务占用该端口。以下 Docker 路线使用独立端口和数据卷。
+
+## Docker 部署
+
+已在 WSL 2 Ubuntu 24.04、Linux/amd64 上验证。以下命令在 Ubuntu 的项目目录执行。[Dockerfile](Dockerfile) 使用 Python 3.11、CPU PyTorch、非 root 用户和一个 Uvicorn worker；Qdrant 仍是本地文件模式，不需要另起数据库容器。[.dockerignore](.dockerignore) 限制构建上下文，原始 PDF、模型缓存、向量库和密钥都不打进镜像。
+
+### 构建镜像与准备权重
+
+~~~bash
+sudo docker build --progress=plain -t cockpit-rag:day6 .
+sudo docker volume create cockpit-rag-day6-hf
+sudo docker volume create cockpit-rag-day6-qdrant
+
+sudo docker run --pull=never --rm -i \
+  --mount type=volume,source=cockpit-rag-day6-hf,target=/home/rag/.cache/huggingface \
+  cockpit-rag:day6 python - <<'PY'
+from sentence_transformers import SentenceTransformer
+from retrieval import MODEL_NAME
+from reranking import build_reranker
+
+SentenceTransformer(MODEL_NAME, device="cpu", local_files_only=False)
+print("embedding_ok")
+build_reranker(local_files_only=False)
+print("reranker_ok")
+PY
+~~~
+
+构建需访问 Docker Hub 和 Python 软件源；首次准备权重另需访问 Hugging Face。网络受限时，给 Docker 引擎和构建客户端分别配置可达代理，代理地址不写入 Dockerfile。若 WSL 使用镜像网络、代理只监听宿主机回环地址，可仅对**权重下载容器**使用 `--network host` 和 `-e HTTPS_PROXY=<代理地址>`；普通服务容器不使用 host 网络。缓存卷已有对应权重时，跳过下载。
+
+### 从授权 PDF 离线入库
+
+将 `pdf` 指向宿主机的可读手册，先检查 SHA-256 与 [manual_metadata.json](manual_metadata.json) 一致。服务运行期间不要对同一 Qdrant 卷执行入库或清理。
+
+~~~bash
+pdf=$(realpath -e '/path/to/train_a.pdf')
+sha256sum "$pdf"
+~~~
+
+核对一致后执行：
+
+~~~bash
+sudo docker run --pull=never --rm --network none -e HF_HUB_OFFLINE=1 \
+  --mount type=volume,source=cockpit-rag-day6-hf,target=/home/rag/.cache/huggingface \
+  --mount type=volume,source=cockpit-rag-day6-qdrant,target=/app/.qdrant \
+  --mount "type=bind,source=$pdf,target=/data/train_a.pdf,readonly" \
+  cockpit-rag:day6 python retrieval.py /data/train_a.pdf training_manual_a
+~~~
+
+当前手册首次入库得到 604 个 512 维向量，`counts (before/upsert/repeat)` 为 `0 604 604`；自检问题首位命中物理第 43 页。`--network none` 断开容器网络，验证入库使用已有的本地权重；`--rm` 只清理临时容器，保留命名卷。此流程不访问原 Windows Qdrant 库。
+
+### 启动服务与验证
+
+在同一 Bash 会话中单独执行 `read -r -s -p 'DeepSeek API Key: ' LLM_API_KEY`，粘贴 DeepSeek 官方密钥后按回车。输入不回显，也不显示星号。将变量按名称注入容器，不把密钥写到构建参数、命令文本或项目文件中；有 Docker 管理权限的用户仍可查看容器环境。
+
+~~~bash
+printf '\n'
+export LLM_API_KEY LLM_BASE_URL='https://api.deepseek.com' LLM_MODEL='deepseek-flash'
+
+sudo --preserve-env=LLM_API_KEY,LLM_BASE_URL,LLM_MODEL \
+  docker run -d --pull=never --name cockpit-rag-day6-api \
+  -p 127.0.0.1:8002:8001 \
+  -e LLM_API_KEY -e LLM_BASE_URL -e LLM_MODEL -e HF_HUB_OFFLINE=1 \
+  --mount type=volume,source=cockpit-rag-day6-hf,target=/home/rag/.cache/huggingface \
+  --mount type=volume,source=cockpit-rag-day6-qdrant,target=/app/.qdrant \
+  cockpit-rag:day6
+
+sudo docker logs --tail 30 cockpit-rag-day6-api
+curl -i --max-time 10 http://127.0.0.1:8002/health
+~~~
+
+服务不挂载 PDF。容器内监听 `8001`，仅向 Docker 宿主机的回环端口 `8002` 发布。待启动完成后，`/health` 应返回 HTTP 200、`status=ready` 和当前手册身份；它不调用 DeepSeek。以下两个请求会实际调用生成 API：
+
+~~~bash
+payload='{"question":"无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？"}'
+curl -sS -i --max-time 90 -H 'Content-Type: application/json' \
+  --data "$payload" http://127.0.0.1:8002/qa
+curl -sS -i -N --max-time 90 -H 'Content-Type: application/json' \
+  --data "$payload" http://127.0.0.1:8002/qa/stream
+~~~
+
+已实测普通问答返回正确答案和第 43 页引用，SSE 收到 `delta` 与通过契约检查的 `final`。客户端须解析 SSE 的 `data:` JSON；`curl` 原样显示的 `\uXXXX` 是合法转义。若本地 `/qa` 返回 500，用 `docker logs` 查看 `generation` 阶段的 `error_type` 和 `upstream_http_status`；例如上游 401 表示接口认证失败，不是 Docker Hub 拉取问题。不要分享完整异常堆栈或容器环境。
+
+停止和删除服务容器使用 `sudo docker stop cockpit-rag-day6-api` 和 `sudo docker rm cockpit-rag-day6-api`。已实测用相同镜像和两个命名卷重建后，服务无需重新入库或下载权重即可问答。更换密钥时也应重建容器，而不是仅 `docker restart`；不要删除命名卷。资料更新后需重建检索器，服务重启时会重新从库中构建 BM25。
 
 ## 数据身份与答案契约
 
@@ -502,7 +584,7 @@ python -X utf8 -B -m pytest -q -p no:cacheprovider
 python -m pip check
 ~~~
 
-2026-11-24整理后离线重跑122项通过，Top5问答预检仍读取100题且不调用生成 API。2026-11-20的 `pip check` 无依赖冲突。本轮未增加依赖；这些检查不等于干净机器已能完整复现。
+2026-11-24整理后离线重跑122项通过，Top5问答预检仍读取100题且不调用生成 API。容器构建的 `pip check` 通过；另在断网临时容器中单独运行 `test_prune_and_bm25_refresh`，验证缩块清理、版本隔离和 BM25 重建，未挂载服务数据卷。这是既有用例的容器内复跑，不是容器内全量122项测试，也未新增依赖。
 
 | 覆盖范围 | 项数 |
 | --- | --- |
@@ -568,7 +650,7 @@ python -m pip check
 - JSON/可信ID校验不等于自动引用语义评测；正文格式、证据充分性和拒答仍需回归，旧error行可能缺Prompt版本等元信息。
 - 保存QA逐条落盘但非原子检查点，无断点续跑或自动重试；批量评测报告尚未关联HTTP请求日志，API错误保留，不自动改写为正常拒答。
 - 入库CLI已接入同范围旧块清理，仅按单进程离线作业验证；尚无自动版本切换、写入/清理原子事务、并发更新或失败回滚，也未实现仅更新payload、跳过重复编码。保留旧集合不等于自动版本管理。
-- FastAPI 仅按本机单 worker 验证；进程内共享锁串行保护普通与流式问答，流式忙碌直接503。服务运行期间不要另起进程对同一 Qdrant 目录入库或清理。本地多进程、并发容量、故障恢复及新环境完整复现未验收；尚无 Docker 和 CI。
+- FastAPI 已在 Windows 本机及 WSL 2 的单容器、单 worker 环境验证；进程内共享锁串行保护普通与流式问答，流式忙碌直接503。服务运行期间不要另起进程对同一 Qdrant 目录入库或清理。多进程、并发容量、故障恢复和公网部署未验收，尚无 CI。
 - SSE已验证本机单题与主动断开后恢复，已有请求ID与三个粗阶段的本地日志；未实现断点续传、自动重连、前端流式界面或分布式追踪。流式降低等待完整输出前的可见延迟，不保证总耗时更短；取消不保证供应商即时停止或完整用量回传。
 - 密钥、原始PDF和数据库不随代码提交；生成报告含原文，公开或提交前须确认资料授权及敏感信息。
 
