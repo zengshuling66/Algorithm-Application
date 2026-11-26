@@ -1,0 +1,178 @@
+{
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "top_k": 3,
+  "cases": [
+    {
+      "case_id": "table_01",
+      "retrieved_pages": [
+        225,
+        226,
+        222
+      ],
+      "evidence_page_hit": true,
+      "question": "泊车辅助系统检测范围表中，前部中央和后部中央的检测范围分别是多少米？",
+      "answerable": true,
+      "scores": [
+        0.7041606350364734,
+        0.6412051840242943,
+        0.6336654752762523
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_02",
+      "retrieved_pages": [
+        227,
+        349,
+        60
+      ],
+      "evidence_page_hit": true,
+      "question": "车辆尺寸参数表中的车宽是多少毫米？这个宽度包含外后视镜吗？",
+      "answerable": true,
+      "scores": [
+        0.5883577437606042,
+        0.5664020200013775,
+        0.5544599706325495
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_03",
+      "retrieved_pages": [
+        349,
+        244,
+        147
+      ],
+      "evidence_page_hit": true,
+      "question": "发动机DHE15-ESZ的最大净功率和额定功率分别是多少？对应转速各是多少？",
+      "answerable": true,
+      "scores": [
+        0.5401022173131478,
+        0.5104404739052122,
+        0.5021089862974379
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_04",
+      "retrieved_pages": [
+        350,
+        112,
+        51
+      ],
+      "evidence_page_hit": true,
+      "question": "座椅参数表中，测量座垫深时前排座椅设定的前后位置分别怎样？后排座椅对应位置能否调节？",
+      "answerable": true,
+      "scores": [
+        0.7589294419666683,
+        0.6742682998673198,
+        0.6699107512662212
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_05",
+      "retrieved_pages": [
+        351,
+        62,
+        165
+      ],
+      "evidence_page_hit": true,
+      "question": "轮胎压力表中，235/50 R19轮胎在冷胎、空载条件下，前轮和后轮的推荐胎压分别是多少？",
+      "answerable": true,
+      "scores": [
+        0.6763918445518045,
+        0.6163603238987289,
+        0.5969269275555613
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_06",
+      "retrieved_pages": [
+        351,
+        62,
+        165
+      ],
+      "evidence_page_hit": true,
+      "question": "轮胎压力表中，235/50 R19轮胎在冷胎、满载条件下，前轮和后轮的推荐胎压分别是多少？",
+      "answerable": true,
+      "scores": [
+        0.6736862292952794,
+        0.6149965787103677,
+        0.6010177905892506
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_07",
+      "retrieved_pages": [
+        125,
+        123,
+        125
+      ],
+      "evidence_page_hit": true,
+      "question": "ISOFIX儿童安全座椅表中，I组9至18kg、尺寸等级D与B的第二排外侧座椅分别标注什么？",
+      "answerable": true,
+      "scores": [
+        0.735614618215637,
+        0.6738696913540071,
+        0.6615232117418427
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_08",
+      "retrieved_pages": [
+        321,
+        309,
+        320
+      ],
+      "evidence_page_hit": true,
+      "question": "常规保养表中，更换发动机机油和机油滤芯的间隔是多少？带(a)标记的项目在恶劣驾驶条件下怎样调整间隔？",
+      "answerable": true,
+      "scores": [
+        0.7141752851737304,
+        0.642632834503954,
+        0.6081210277018557
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_09",
+      "retrieved_pages": [
+        304,
+        304,
+        153
+      ],
+      "evidence_page_hit": null,
+      "question": "动力电池规格表给出的电池循环寿命是多少次？",
+      "answerable": false,
+      "scores": [
+        0.5390159663405869,
+        0.5218538829454845,
+        0.49209052373754925
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "table_10",
+      "retrieved_pages": [
+        316,
+        314,
+        62
+      ],
+      "evidence_page_hit": null,
+      "question": "我没有提供车型和年款，能仅凭这份手册的胎压表确定我这辆车应使用哪个胎压吗？",
+      "answerable": false,
+      "scores": [
+        0.5633050527985122,
+        0.5590986601821055,
+        0.5572707833038208
+      ],
+      "generation_status": "not_run"
+    }
+  ]
+}

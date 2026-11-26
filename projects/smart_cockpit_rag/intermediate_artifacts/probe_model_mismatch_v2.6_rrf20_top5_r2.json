@@ -1,0 +1,218 @@
+{
+  "question": "动力性能表中，MR6453DCHEV01的驱动方式、最大设计车速和最大爬坡度是什么？爬坡度脚注规定什么起步条件？",
+  "results": [
+    {
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 350,
+      "pipeline_version": "tables-textflow-v1",
+      "brand": "领克",
+      "vehicle_model": null,
+      "model_year": null,
+      "section": "技术资料",
+      "block_id": "p350:t1:r1",
+      "kind": "table",
+      "text": "表格数据：\n车型: MR6453DCH- EV02\n驱动方式: 两驱\n最大设计车 速（km/h）: 200\n最大爬坡度 （a）（%）: 40\n相邻上文（归属待核验）：\n术资料\n动力性能\n相邻下文（归属待核验）：\n（a）：车辆以坡底起步。\n油耗\n与车辆认证驾驶循环相比（下表所列油耗以车辆认证驾驶循环为基\n础），实际油耗可能略有变化。下列参数会影响油耗和排放：车辆载\n荷、轮胎气压、驾驶风格、车速和加速度。",
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1",
+      "chunk_index": 1,
+      "char_count": 202,
+      "score": 0.03278688524590164,
+      "retrieval_ranks": {
+        "vector": 1,
+        "bm25": 1
+      },
+      "retrieval_scores": {
+        "vector": 0.7239657630239629,
+        "bm25": 51.87381197479492
+      },
+      "rrf_rank": 1,
+      "rerank_score": 8.20057201385498
+    },
+    {
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 349,
+      "pipeline_version": "tables-textflow-v1",
+      "brand": "领克",
+      "vehicle_model": null,
+      "model_year": null,
+      "section": "技术资料",
+      "block_id": "p349:t1:r1",
+      "kind": "table",
+      "text": "表格数据：\n车型: MR6453DCHEV02\n前轴最大轴荷 （kg）: 1214\n后轴最大轴荷 （kg）: 1116\n相邻上文（归属待核验）：\n技术资\n汽车轴荷（满载状态）\n相邻下文（归属待核验）：\n发动机规格",
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+      "chunk_index": 1,
+      "char_count": 106,
+      "score": 0.031754032258064516,
+      "retrieval_ranks": {
+        "vector": 4,
+        "bm25": 2
+      },
+      "retrieval_scores": {
+        "vector": 0.6053300977297932,
+        "bm25": 18.18833547735921
+      },
+      "rrf_rank": 2,
+      "rerank_score": 2.4880576133728027
+    },
+    {
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 349,
+      "pipeline_version": "tables-textflow-v1",
+      "brand": "领克",
+      "vehicle_model": null,
+      "model_year": null,
+      "section": "技术资料",
+      "block_id": "p349:t5:r1",
+      "kind": "table",
+      "text": "表格数据：\n车型: MR6453DCHEV02\n整备质量（kg）: 1890\n最大允许总重量 （kg）: 2330\n相邻上文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n相邻下文（归属待核验）：\n",
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1",
+      "chunk_index": 1,
+      "char_count": 127,
+      "score": 0.030309988518943745,
+      "retrieval_ranks": {
+        "vector": 7,
+        "bm25": 5
+      },
+      "retrieval_scores": {
+        "vector": 0.5812507528181845,
+        "bm25": 16.77016207722952
+      },
+      "rrf_rank": 3,
+      "rerank_score": 0.4299212396144867
+    },
+    {
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 178,
+      "pipeline_version": "tables-textflow-v1",
+      "brand": "领克",
+      "vehicle_model": null,
+      "model_year": null,
+      "section": "驾驶辅助",
+      "block_id": "body",
+      "kind": "text",
+      "text": "行驶时，请选择更大的跟车距离间隔。\n□ 踩下加速踏板时，车辆将暂时加速；松开加速踏板后，车速将缓\n慢减速至目标车速。\n□ 若您开启了“巡航自动限速辅助”功能，系统可以将当前道路限\n速牌上的限速值自动设定为目标车速。",
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p178:c2:tables-textflow-v1:body",
+      "chunk_index": 2,
+      "char_count": 107,
+      "score": 0.014705882352941176,
+      "retrieval_ranks": {
+        "vector": 8
+      },
+      "retrieval_scores": {
+        "vector": 0.5779881625786596
+      },
+      "rrf_rank": 12,
+      "rerank_score": -0.3964129090309143
+    },
+    {
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 350,
+      "pipeline_version": "tables-textflow-v1",
+      "brand": "领克",
+      "vehicle_model": null,
+      "model_year": null,
+      "section": "技术资料",
+      "block_id": "body",
+      "kind": "text",
+      "text": "技术资料\n350\n动力性能\n（a）：车辆以坡底起步。\n油耗\n与车辆认证驾驶循环相比（下表所列油耗以车辆认证驾驶循环为基\n础），实际油耗可能略有变化。下列参数会影响油耗和排放：车辆载\n荷、轮胎气压、驾驶风格、车速和加速度。\n燃油规格\n注意！\n■ 因使用劣质燃油或燃油中掺入非Lynk&Co领克认证的添加剂而引\n起的损坏或故障不在Lynk&Co领克的保修范围内。\n座椅参数\n（a）：测量座垫深时。\n车轮定位参数",
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:body",
+      "chunk_index": 1,
+      "char_count": 203,
+      "score": 0.015873015873015872,
+      "retrieval_ranks": {
+        "bm25": 3
+      },
+      "retrieval_scores": {
+        "bm25": 17.635867183702704
+      },
+      "rrf_rank": 6,
+      "rerank_score": -0.4787432849407196
+    }
+  ],
+  "prompt_version": "cockpit-rag-json-v2.6",
+  "status": "generated",
+  "answer_status": "refused",
+  "answer": "资料未列出 MR6453DCHEV01 的参数，无法确认其驱动方式、最大设计车速和最大爬坡度。资料中动力性能表列出的车型为 MR6453DCH- EV02，其驱动方式为两驱、最大设计车速为200 km/h、最大爬坡度为40%；该表脚注（a）规定爬坡度测量时车辆以坡底起步。上述参数不能直接归给 MR6453DCHEV01，请核对车型标识。",
+  "evidence_ids": [
+    "E1"
+  ],
+  "citations": [
+    {
+      "evidence_id": "E1",
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1",
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 350,
+      "text": "表格数据：\n车型: MR6453DCH- EV02\n驱动方式: 两驱\n最大设计车 速（km/h）: 200\n最大爬坡度 （a）（%）: 40\n相邻上文（归属待核验）：\n术资料\n动力性能\n相邻下文（归属待核验）：\n（a）：车辆以坡底起步。\n油耗\n与车辆认证驾驶循环相比（下表所列油耗以车辆认证驾驶循环为基\n础），实际油耗可能略有变化。下列参数会影响油耗和排放：车辆载\n荷、轮胎气压、驾驶风格、车速和加速度。"
+    }
+  ],
+  "evidence_map": {
+    "E1": {
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1",
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 350,
+      "text": "表格数据：\n车型: MR6453DCH- EV02\n驱动方式: 两驱\n最大设计车 速（km/h）: 200\n最大爬坡度 （a）（%）: 40\n相邻上文（归属待核验）：\n术资料\n动力性能\n相邻下文（归属待核验）：\n（a）：车辆以坡底起步。\n油耗\n与车辆认证驾驶循环相比（下表所列油耗以车辆认证驾驶循环为基\n础），实际油耗可能略有变化。下列参数会影响油耗和排放：车辆载\n荷、轮胎气压、驾驶风格、车速和加速度。"
+    },
+    "E2": {
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1",
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 349,
+      "text": "表格数据：\n车型: MR6453DCHEV02\n前轴最大轴荷 （kg）: 1214\n后轴最大轴荷 （kg）: 1116\n相邻上文（归属待核验）：\n技术资\n汽车轴荷（满载状态）\n相邻下文（归属待核验）：\n发动机规格"
+    },
+    "E3": {
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1",
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 349,
+      "text": "表格数据：\n车型: MR6453DCHEV02\n整备质量（kg）: 1890\n最大允许总重量 （kg）: 2330\n相邻上文（归属待核验）：\n（a）：测量高度包含多波段天线。\n（b）：车辆宽度为不包括外后视镜的车宽。\n汽车重量\n相邻下文（归属待核验）：\n"
+    },
+    "E4": {
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p178:c2:tables-textflow-v1:body",
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 178,
+      "text": "行驶时，请选择更大的跟车距离间隔。\n□ 踩下加速踏板时，车辆将暂时加速；松开加速踏板后，车速将缓\n慢减速至目标车速。\n□ 若您开启了“巡航自动限速辅助”功能，系统可以将当前道路限\n速牌上的限速值自动设定为目标车速。"
+    },
+    "E5": {
+      "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:body",
+      "source": "train_a.pdf",
+      "source_id": "training_manual_a",
+      "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+      "page": 350,
+      "text": "技术资料\n350\n动力性能\n（a）：车辆以坡底起步。\n油耗\n与车辆认证驾驶循环相比（下表所列油耗以车辆认证驾驶循环为基\n础），实际油耗可能略有变化。下列参数会影响油耗和排放：车辆载\n荷、轮胎气压、驾驶风格、车速和加速度。\n燃油规格\n注意！\n■ 因使用劣质燃油或燃油中掺入非Lynk&Co领克认证的添加剂而引\n起的损坏或故障不在Lynk&Co领克的保修范围内。\n座椅参数\n（a）：测量座垫深时。\n车轮定位参数"
+    }
+  },
+  "model": "deepseek-flash",
+  "usage": {
+    "completion_tokens": 125,
+    "prompt_tokens": 917,
+    "total_tokens": 1042,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 768
+    },
+    "prompt_cache_hit_tokens": 768,
+    "prompt_cache_miss_tokens": 149
+  },
+  "generation_status": "generated",
+  "raw_answer": "{\"answer_status\": \"refused\", \"answer\": \"资料未列出 MR6453DCHEV01 的参数，无法确认其驱动方式、最大设计车速和最大爬坡度。资料中动力性能表列出的车型为 MR6453DCH- EV02，其驱动方式为两驱、最大设计车速为200 km/h、最大爬坡度为40%；该表脚注（a）规定爬坡度测量时车辆以坡底起步。上述参数不能直接归给 MR6453DCHEV01，请核对车型标识。\", \"evidence_ids\": [\"E1\"]}",
+  "qa_seconds": 2.578050100011751
+}

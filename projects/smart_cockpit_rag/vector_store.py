@@ -1,0 +1,204 @@
+import numpy as np
+from uuid import NAMESPACE_URL, uuid5
+#NAMESPACE_URL是固定的命名空间标记；uuid5() 根据“命名空间＋字符串”确定性生成 UUID，同一个命名空间、同一个 chunk ID，得到同一个 UUID。
+from qdrant_client import QdrantClient, models #models 是 Qdrant 的数据结构模块；QdrantClient 负责数据库操作
+from pathlib import Path
+
+STORAGE_PATH = Path(__file__).resolve().parent / ".qdrant"
+#__file__ 是当前脚本路径，resolve() 转成绝对路径，parent 取项目目录，/ ".qdrant" 拼接存储目录。这让终端切换目录时仍使用同一个数据库。
+#解析版本目前通过不同集合隔离
+# COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5" #COLLECTION_NAME 是集合名称，包含当前模型标识
+# COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_v1"
+COLLECTION_NAME = "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1"
+#save_points() 和 search_points() 都读取这个常量，所以以后会向新集合保存、从新集合查询。
+DEFAULT_TOP_K = 3
+
+# 1. 文档向量矩阵 (469, 512)
+# 它有 469 行，每行是一个文本块的向量；每条向量有 512 个数字：
+# vectors.shape       → (469, 512)
+# vectors.shape[0]    → 469：行数，也是 chunk 数量
+# vectors.shape[1]    → 512：列数，也是每条向量的维度
+
+# 2. 一个问题的向量批次 (1, 512)
+# 我们把 [query] 交给模型，一次只编码一个问题，因此：
+# query_batch.shape       → (1, 512)
+# query_batch.shape[0]    → 1：这一批有几个问题
+# query_batch.shape[1]    → 512：每个问题的向量维度
+# query_vector.shape[0]   → 512：单个问题的向量维度
+
+# 模型按批次输出问题向量
+#           ↓
+# query_batch：(1, 512)
+#           ↓ 取出第一个问题，query_batch[0]
+# query_vector：(512,)
+#           ↓
+# 交给接收单个问题向量的 search_points
+
+#组装数据库记录：把向量放入 vector，把完整 chunk 字典放入 payload；向量负责相似度计算，payload 负责保存正文与来源信息。
+def build_points(chunks: list[dict], vectors: np.ndarray):
+    if vectors.ndim != 2: #先确认二维
+        raise ValueError("vectors must be a 2D matrix")
+    if vectors.shape[0] != len(chunks): #再读取行数，行数必须等于块数
+        raise ValueError("chunk count and vector count must match")
+
+    points = []
+    for chunk, vector in zip(chunks, vectors): #zip(chunks, vectors) 按相同位置配对
+        point_id = str(uuid5(NAMESPACE_URL, chunk["chunk_id"])) #uuid5(...)返回 UUID 对象，外层 str() 转成数据库接受的 UUID 字符串。它用于数据库定位；原来的可读 chunk ID 用于追踪来源。
+        point = models.PointStruct( #PointStruct(...) 构造一条记录
+            id=point_id, #id 接收稳定 ID
+            vector=vector.tolist(), #vector.tolist() 把 NumPy 一维数组转为普通 Python 数字列表，长度仍是 512
+            payload=chunk.copy(), #保存正文、文件名、页码、source_id、content_hash 等字段的字典副本
+        )
+        points.append(point)
+    return points
+
+
+#真正写入数据库并持久化：单独负责数据库保存，写入本地 Qdrant，便于后续独立入库入口复用，也能测试重复导入行为
+def save_points(points, dimension: int): #输入是记录列表和向量维度，输出是写入前、写入后的数量
+    client = QdrantClient(path=str(STORAGE_PATH))
+    try: #try 包围数据库操作；finally 无论正常返回还是中途异常都会执行
+        if not client.collection_exists(COLLECTION_NAME): #collection_exists()返回布尔值，not表示不存在时才创建；不能每次启动都删除重建集合，否则会丢数据
+            client.create_collection(
+                collection_name=COLLECTION_NAME, #collection_name 指定集合；vectors_config 指定向量规则
+                vectors_config=models.VectorParams( #内层 VectorParams(...) 先构造配置，再传给外层 create_collection()
+                    size=dimension, #每条向量的长度，此处为 512
+                    distance=models.Distance.COSINE, #Distance.COSINE 指定余弦相似度规则
+                ),
+            )
+        config = client.get_collection(COLLECTION_NAME).config.params.vectors #get_collection() 返回集合信息对象，.config.params.vectors 逐层取出向量配置
+        if not isinstance(config, models.VectorParams): #isinstance() 检查类型，确保 config 是 VectorParams 类型
+            raise ValueError("Collection vector configuration is not VectorParams")
+        if config.size != dimension or config.distance != models.Distance.COSINE: #随后检查维度和距离规则，任一不匹配就报错
+            raise ValueError("Collection vector configuration does not match")
+        #before 在写入前取得，after 必须在写入后取得
+        before = client.count(collection_name=COLLECTION_NAME, exact=True).count #count()返回计数结果对象，最后的 .count 才取出整数；exact=True 要求精确计数。
+        #upsert()接收集合名称和整批记录，wait=True表示等待修改完成后再继续统计。
+        #已有 ID 会被覆盖，而不是另添一条；当前数据量较小，可以整批写入；资料明显增多后再考虑分批。
+        client.upsert(collection_name=COLLECTION_NAME, points=points, wait=True)
+        after = client.count(collection_name=COLLECTION_NAME, exact=True).count
+        return before, after
+    finally:
+        client.close() #close() 释放资源和本地锁，不删除数据库
+
+
+def search_points(query_vector, source_id, content_hash, top_k=DEFAULT_TOP_K):
+    if query_vector.ndim != 1 or top_k <= 0:
+        raise ValueError("Use a 1D query vector and positive top_k")
+    if not source_id or not content_hash:
+        raise ValueError("Explicit source_id and content_hash are required")
+
+    scope = models.Filter( #Filter 是过滤规则对象，限定资料及版本
+        must=[ #must 是条件列表，含义是列表里的条件全部满足，相当于逻辑 AND
+            models.FieldCondition( #FieldCondition 描述某个字段的要求
+                key="source_id", #数据库记录的字段名
+                match=models.MatchValue(value=source_id), #此次查询传入的值
+            ),
+            models.FieldCondition(
+                key="content_hash",
+                match=models.MatchValue(value=content_hash),
+            ),
+        ],
+    )
+    client = QdrantClient(path=str(STORAGE_PATH))
+    try:
+        config = client.get_collection(COLLECTION_NAME).config.params.vectors
+        if not isinstance(config, models.VectorParams): #单向量类型检查
+            raise ValueError("This collection must use a single unnamed vector")
+        if config.size != query_vector.shape[0] or config.distance != models.Distance.COSINE:
+        #单向量类型检查通过后，query_vector.shape[0] 才代表向量长度 512，用它核对集合维度，并确认余弦规则
+            raise ValueError("Query vector configuration does not match")
+
+        response = client.query_points( #执行相似度检索
+            collection_name=COLLECTION_NAME,
+            query=query_vector.tolist(),
+            query_filter=scope, #过滤器，只在符合身份和版本的记录中，找与问题向量最相似的top_k条。
+            limit=top_k, #指定最多返回几条，如果匹配记录少于 top_k，就返回实际可用数量
+            with_payload=True, #要求附带正文和来源
+            with_vectors=False, #不返回每条文档的 512 个原始数字，因为组织引用只需要正文、来源和分数
+        )
+        results = []
+        for hit in response.points: #每个 hit 是带属性的命中对象
+            result = hit.payload.copy() #.payload 包含入库时的 chunk 字典
+            result["score"] = float(hit.score) #.score 是相似度分数
+            results.append(result)
+        return results
+    finally:
+        client.close()
+
+
+#我们的payload保存了完整chunk字典，因此可以直接从数据库读取，不需要重新调用build_chunks()，重复处理PDF，也确保BM25和向量检索两路检索的语料一致。
+# 指定集合＋资料身份＋文件哈希
+# → 读取匹配记录的 payload
+# → 恢复成 Python 字典列表
+def load_stored_chunks(source_id, content_hash):
+    if not source_id or not content_hash:
+        raise ValueError("Explicit source_id and content_hash are required")
+    scope = models.Filter(must=[ #must 要求两个字段同时匹配
+        models.FieldCondition(key="source_id", match=models.MatchValue(value=source_id)),
+        models.FieldCondition(key="content_hash", match=models.MatchValue(value=content_hash)),
+    ])
+    client = QdrantClient(path=str(STORAGE_PATH))
+    try:
+        chunks, offset = [], None
+        while True: #points, offset 分别接收本批记录和下一批游标
+            points, offset = client.scroll( #scroll只遍历数据，不计算相似度；这里过滤参数叫 scroll_filter，不是原查询的 query_filter
+                collection_name=COLLECTION_NAME, scroll_filter=scope,
+                offset=offset, limit=128, with_payload=True, with_vectors=False, #128 是每批读取数量
+            )
+            chunks.extend(point.payload.copy() for point in points)
+            #extend(...)将每条 payload 副本逐一加入列表，而不是把整批列表作为一个元素加入。只读 payload、不取向量，因为 BM25 使用文字。
+            if offset is None: #第一次游标为 None，随后循环传入返回的游标；返回 None 才表示读完。
+                return chunks
+    finally:
+        client.close()
+
+
+#删除当前集合中指定资料的一个文件版本
+def delete_stored_version(source_id, content_hash):
+    if not isinstance(source_id, str) or not source_id.strip():
+        raise ValueError("source_id must be a nonempty string")
+    if not isinstance(content_hash, str) or not content_hash.strip():
+        raise ValueError("content_hash must be a nonempty string")
+    scope = models.Filter(must=[
+        models.FieldCondition(key="source_id", match=models.MatchValue(value=source_id)),
+        models.FieldCondition(key="content_hash", match=models.MatchValue(value=content_hash)),
+    ])
+    client = QdrantClient(path=str(STORAGE_PATH))
+    try:
+        if not client.collection_exists(COLLECTION_NAME):
+            return 0, 0 #集合不存在返回 (0,0)
+        before = client.count(COLLECTION_NAME, count_filter=scope, exact=True).count
+        #count_filter=scope只统计目标范围，exact=True要求精确计数，末尾 .count取出整数
+        if before: #表示有匹配记录才执行
+            client.delete(COLLECTION_NAME, models.FilterSelector(filter=scope), wait=True)
+            #FilterSelector把过滤条件交给删除接口，wait=True要求等待操作完成后再统计
+        after = client.count(COLLECTION_NAME, count_filter=scope, exact=True).count
+        return before, after
+    finally:
+        client.close()
+
+
+#只清理当前集合中同资料、同哈希的多余块；使用时要注意：先写入，再清理，写入时同id会更新，不同的id均保留
+def prune_stored_chunks(source_id, content_hash, keep_chunk_ids):
+    if any(not isinstance(v, str) or not v.strip() for v in (source_id, content_hash)):
+        raise ValueError("Explicit source_id and content_hash are required")
+    keep = set(keep_chunk_ids) #set()将保留ID转成集合
+    if not keep or any(not isinstance(key, str) or not key.strip() for key in keep):
+        raise ValueError("Use nonempty chunk IDs; use delete_stored_version for full removal")
+    stored = load_stored_chunks(source_id, content_hash)
+    existing = {row["chunk_id"] for row in stored} #读取的是本轮写入之后的数据库，不是写入之前的旧数据
+    if not keep <= existing: #keep <= existing表示所有预期ID都已存在，缺一个就停止
+        raise ValueError("Expected chunks are missing; skip cleanup")
+    stale = existing - keep #existing - keep只得到多余块
+    if stale:
+        client = QdrantClient(path=str(STORAGE_PATH))
+        try:
+            #使用 uuid5 为每个过期块生成唯一的 ID作为数据库实际ID
+            ids = [str(uuid5(NAMESPACE_URL, key)) for key in sorted(stale)]
+            client.delete(COLLECTION_NAME, models.PointIdsList(points=ids), wait=True) #PointIdsList按具体ID删除
+        finally:
+            client.close()
+    remaining = {row["chunk_id"] for row in load_stored_chunks(source_id, content_hash)}
+    if remaining != keep: #删除后重新读取，要求剩余ID恰好等于keep；不一致就报错
+        raise RuntimeError("Stored chunk IDs do not match the expected set")
+    return len(stale) #成功返回删除数量，重复清理返回0

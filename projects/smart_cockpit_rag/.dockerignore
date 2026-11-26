@@ -1,0 +1,8 @@
+#第一行 * 先排除全部，再按需放行；带 ! 的三行放行根目录的 Python 文件、依赖清单和手册配置；最后三行再排除测试、探针和评测入口的 py 文件，它们留在本地用，不是服务启动或入库的依赖；同一个文件匹配多条规则时，以最后一条匹配为准。
+*
+!*.py
+!requirements.txt
+!manual_metadata.json
+test_*.py
+*_probe.py
+evaluation.py

@@ -1,0 +1,11 @@
+{
+  "case_files": [
+    "eval_test_v3.json"
+  ],
+  "manual_metadata": "manual_metadata.json",
+  "required_block_gold": "test_retrieval_gold_v3.json",
+  "split": "test",
+  "top_k": 5,
+  "fusion_k": 20,
+  "qa_methods": ["rerank"]
+}

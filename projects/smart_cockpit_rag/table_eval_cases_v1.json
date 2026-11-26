@@ -1,0 +1,126 @@
+[
+  {
+    "id": "table_01",
+    "question": "泊车辅助系统检测范围表中，前部中央和后部中央的检测范围分别是多少米？",
+    "answerable": true,
+    "reference_answer": "前部中央为0.9米；后部中央为1.5米。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 225,
+      "anchor": "检测范围"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_02",
+    "question": "车辆尺寸参数表中的车宽是多少毫米？这个宽度包含外后视镜吗？",
+    "answerable": true,
+    "reference_answer": "车宽为1860毫米，不包括外后视镜。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 349,
+      "anchor": "车辆宽度为不包括外后视镜的车宽"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_03",
+    "question": "发动机DHE15-ESZ的最大净功率和额定功率分别是多少？对应转速各是多少？",
+    "answerable": true,
+    "reference_answer": "最大净功率为108kW，对应5500rpm；额定功率为110kW，对应5500rpm。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 349,
+      "anchor": "发动机规格"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_04",
+    "question": "座椅参数表中，测量座垫深时前排座椅设定的前后位置分别怎样？后排座椅对应位置能否调节？",
+    "answerable": true,
+    "reference_answer": "测量座垫深时，前排座椅设定位置为向前滑动210毫米、向后滑动50毫米；后排座椅对应位置不可调节。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 350,
+      "anchor": "座椅参数"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_05",
+    "question": "轮胎压力表中，235/50 R19轮胎在冷胎、空载条件下，前轮和后轮的推荐胎压分别是多少？",
+    "answerable": true,
+    "reference_answer": "235/50 R19轮胎在冷胎、空载条件下，前轮和后轮的推荐胎压均为230kPa。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 351,
+      "anchor": "轮胎压力"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_06",
+    "question": "轮胎压力表中，235/50 R19轮胎在冷胎、满载条件下，前轮和后轮的推荐胎压分别是多少？",
+    "answerable": true,
+    "reference_answer": "235/50 R19轮胎在冷胎、满载条件下，前轮和后轮的推荐胎压均为280kPa。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 351,
+      "anchor": "轮胎压力"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_07",
+    "question": "ISOFIX儿童安全座椅表中，I组9至18kg、尺寸等级D与B的第二排外侧座椅分别标注什么？",
+    "answerable": true,
+    "reference_answer": "I组9至18kg中，尺寸等级D的第二排外侧座椅标注IL；尺寸等级B的第二排外侧座椅标注IL、IUF。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 125,
+      "anchor": "ISOFIX儿童安全座椅表"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_08",
+    "question": "常规保养表中，更换发动机机油和机油滤芯的间隔是多少？带(a)标记的项目在恶劣驾驶条件下怎样调整间隔？",
+    "answerable": true,
+    "reference_answer": "更换发动机机油和机油滤芯的常规间隔为15000公里/12个月；驾驶条件恶劣时，带(a)标记项目的推荐时间和里程间隔为常规驾驶条件下的一半。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 321,
+      "anchor": "更换发动机机油和机油滤芯"
+    },
+    "question_origin": "manual_table_from_pdf",
+    "split": "dev"
+  },
+  {
+    "id": "table_09",
+    "question": "动力电池规格表给出的电池循环寿命是多少次？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第349页的动力电池规格表：表中给出电池类型、容量和额定电压，未给出循环寿命次数。回答应指出表中未提供，不能编造次数；不要求照抄某一种拒答措辞。此标注只针对该表，不能据此声称已证明整份PDF或其他资料均无相关信息。",
+    "question_origin": "manual_table_missing_field_probe",
+    "split": "dev"
+  },
+  {
+    "id": "table_10",
+    "question": "我没有提供车型和年款，能仅凭这份手册的胎压表确定我这辆车应使用哪个胎压吗？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "应说明不能仅凭该表直接确定未知车辆的适用胎压，需要确认车辆适用范围、轮胎规格及载荷等相关条件。允许把手册数值明确标为文档内示例，不允许把该数值直接断言为提问者车辆的建议；本题检查适用范围，不要求某种固定措辞。",
+    "question_origin": "manual_table_vehicle_scope_probe",
+    "split": "dev"
+  }
+]

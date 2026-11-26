@@ -1,0 +1,2899 @@
+{
+  "report_type": "retrieval_benchmark",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 3,
+  "candidate_k": 10,
+  "device": "cpu",
+  "repeats": 3,
+  "run_at_utc": "2026-11-03T05:35:30.495865+00:00",
+  "setup_seconds": {
+    "embedding": 0.1163500000257045,
+    "hybrid": 1.143275999929756,
+    "rerank": 1.2018848999869078
+  },
+  "cases": [
+    {
+      "case_id": "q_screen_auto_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.10500030010007322,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p262:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        263,
+        264,
+        262
+      ]
+    },
+    {
+      "case_id": "q_screen_auto_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6844420998822898,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p262:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        263,
+        264,
+        262
+      ]
+    },
+    {
+      "case_id": "q_outside_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.10808479995466769,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p331:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        321,
+        352,
+        331
+      ]
+    },
+    {
+      "case_id": "q_outside_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6544311000034213,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p333:c3:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p331:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        333,
+        331,
+        164
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.11827600002288818,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        41
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.7850114998873323,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        41
+      ]
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.11510240007191896,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        114,
+        115,
+        116
+      ]
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6718557998538017,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c6:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        4,
+        115,
+        114
+      ]
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.11576119996607304,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        115,
+        114,
+        107
+      ]
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6716741998679936,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        115,
+        114,
+        118
+      ]
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.11589349992573261,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p157:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p185:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        157,
+        159,
+        185
+      ]
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.9843428998719901,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p157:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        159,
+        160,
+        157
+      ]
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.11859440011903644,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p200:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p198:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p211:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        200,
+        198,
+        211
+      ]
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.8035671000834554,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p197:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p200:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p198:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        197,
+        200,
+        198
+      ]
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.1132408999837935,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p30:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        34,
+        34,
+        30
+      ]
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.8121821000240743,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p31:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        34,
+        34,
+        31
+      ]
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.11689059995114803,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        33,
+        34,
+        34
+      ]
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.9932126000057906,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        33,
+        34,
+        34
+      ]
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15773399989120662,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p106:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        107,
+        27,
+        106
+      ]
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.9087938999291509,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3"
+      ],
+      "pages": [
+        107,
+        27,
+        350
+      ]
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.1515844000969082,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p249:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p246:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        249,
+        246
+      ]
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6028195999097079,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        5,
+        243
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15023129992187023,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p241:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        244,
+        241
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.7108448001090437,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p250:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        154,
+        250
+      ]
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15823089983314276,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p179:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        176,
+        176,
+        179
+      ]
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 1.0722745000384748,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p180:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        176,
+        176,
+        180
+      ]
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.16590079991146922,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        136,
+        132,
+        133
+      ]
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.990371200023219,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        131,
+        136,
+        131
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15675400011241436,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        33
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.9598984001204371,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p283:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        283
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.1495185000821948,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        243,
+        5
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.7282928999047726,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p258:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        5,
+        258
+      ]
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15481050009839237,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        115
+      ]
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.7464393000118434,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        115
+      ]
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.17117400001734495,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        136,
+        132,
+        133
+      ]
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.9452551999129355,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        131,
+        136,
+        136
+      ]
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.13514150003902614,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        118
+      ]
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.789427800104022,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c6:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        4,
+        117,
+        118
+      ]
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.1452472999226302,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p287:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p153:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        287,
+        153
+      ]
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.800610699923709,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p287:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        287,
+        304
+      ]
+    },
+    {
+      "case_id": "table_01",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.13855860009789467,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r3"
+      ],
+      "pages": [
+        225,
+        225,
+        225
+      ]
+    },
+    {
+      "case_id": "table_01",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.7680184000637382,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r1"
+      ],
+      "pages": [
+        225,
+        225,
+        225
+      ]
+    },
+    {
+      "case_id": "table_02",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.14776639989577234,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2"
+      ],
+      "pages": [
+        349,
+        349,
+        349
+      ]
+    },
+    {
+      "case_id": "table_02",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6220046000089496,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2"
+      ],
+      "pages": [
+        349,
+        349,
+        349
+      ]
+    },
+    {
+      "case_id": "table_03",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.14307180000469089,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "pages": [
+        349,
+        306,
+        349
+      ]
+    },
+    {
+      "case_id": "table_03",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.943128899903968,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p71:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        349,
+        306,
+        71
+      ]
+    },
+    {
+      "case_id": "table_04",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15243609994649887,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3"
+      ],
+      "pages": [
+        350,
+        350,
+        350
+      ]
+    },
+    {
+      "case_id": "table_04",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.5909982000011951,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r2"
+      ],
+      "pages": [
+        350,
+        350,
+        350
+      ]
+    },
+    {
+      "case_id": "table_05",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15166700002737343,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_05",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 1.0367944999597967,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_06",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15322840004228055,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_06",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 1.0877223000861704,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_07",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.16390209994278848,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r9"
+      ],
+      "pages": [
+        125,
+        125,
+        125
+      ]
+    },
+    {
+      "case_id": "table_07",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.5868137998040766,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7"
+      ],
+      "pages": [
+        125,
+        125,
+        125
+      ]
+    },
+    {
+      "case_id": "table_08",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.16206190013326705,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r11"
+      ],
+      "pages": [
+        321,
+        321,
+        321
+      ]
+    },
+    {
+      "case_id": "table_08",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.6053857000079006,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r7"
+      ],
+      "pages": [
+        321,
+        321,
+        321
+      ]
+    },
+    {
+      "case_id": "table_09",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.15199890010990202,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t6:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "pages": [
+        349,
+        304,
+        349
+      ]
+    },
+    {
+      "case_id": "table_09",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.8498366000130773,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t6:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        349,
+        304
+      ]
+    },
+    {
+      "case_id": "table_10",
+      "method": "hybrid",
+      "repeat": 1,
+      "seconds": 0.1575645999982953,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        316,
+        314,
+        62
+      ]
+    },
+    {
+      "case_id": "table_10",
+      "method": "rerank",
+      "repeat": 1,
+      "seconds": 0.9809560000430793,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        62,
+        351,
+        351
+      ]
+    },
+    {
+      "case_id": "q_screen_auto_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1557098999619484,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p262:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        263,
+        264,
+        262
+      ]
+    },
+    {
+      "case_id": "q_screen_auto_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8446849000174552,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p262:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        263,
+        264,
+        262
+      ]
+    },
+    {
+      "case_id": "q_outside_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15379399992525578,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p331:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        321,
+        352,
+        331
+      ]
+    },
+    {
+      "case_id": "q_outside_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.7743153001647443,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p333:c3:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p331:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        333,
+        331,
+        164
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1507286000996828,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        41
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 1.0928122999612242,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        41
+      ]
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1622822000645101,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        114,
+        115,
+        116
+      ]
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.853273400105536,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c6:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        4,
+        115,
+        114
+      ]
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.34917499986477196,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        115,
+        114,
+        107
+      ]
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.7404312000144273,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        115,
+        114,
+        118
+      ]
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1119409000966698,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p157:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p185:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        157,
+        159,
+        185
+      ]
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8187666998710483,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p157:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        159,
+        160,
+        157
+      ]
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.12482240004464984,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p200:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p198:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p211:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        200,
+        198,
+        211
+      ]
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8865634999237955,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p197:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p200:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p198:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        197,
+        200,
+        198
+      ]
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15630899998359382,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p30:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        34,
+        34,
+        30
+      ]
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.9365826998837292,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p31:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        34,
+        34,
+        31
+      ]
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.14856910007074475,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        33,
+        34,
+        34
+      ]
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 1.0416540000587702,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        33,
+        34,
+        34
+      ]
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.16819090000353754,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p106:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        107,
+        27,
+        106
+      ]
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8926124998833984,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3"
+      ],
+      "pages": [
+        107,
+        27,
+        350
+      ]
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15166620002128184,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p249:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p246:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        249,
+        246
+      ]
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.5940626999363303,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        5,
+        243
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1504663999658078,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p241:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        244,
+        241
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.6728399998974055,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p250:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        154,
+        250
+      ]
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1541802000720054,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p179:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        176,
+        176,
+        179
+      ]
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 1.0084559000097215,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p180:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        176,
+        176,
+        180
+      ]
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15667870012111962,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        136,
+        132,
+        133
+      ]
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.9134430999401957,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        131,
+        136,
+        131
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1565847999881953,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        33
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8931638000067323,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p283:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        283
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1447301001753658,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        243,
+        5
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.7004805998876691,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p258:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        5,
+        258
+      ]
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15676190005615354,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        115
+      ]
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.7379044000990689,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        115
+      ]
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1427063001319766,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        136,
+        132,
+        133
+      ]
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8585035998839885,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        131,
+        136,
+        136
+      ]
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.16510619991458952,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        118
+      ]
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8555902999360114,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c6:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        4,
+        117,
+        118
+      ]
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.16356880008243024,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p287:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p153:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        287,
+        153
+      ]
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8896317998878658,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p287:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        287,
+        304
+      ]
+    },
+    {
+      "case_id": "table_01",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.16344799986109138,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r3"
+      ],
+      "pages": [
+        225,
+        225,
+        225
+      ]
+    },
+    {
+      "case_id": "table_01",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.7525200999807566,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r1"
+      ],
+      "pages": [
+        225,
+        225,
+        225
+      ]
+    },
+    {
+      "case_id": "table_02",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15382190002128482,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2"
+      ],
+      "pages": [
+        349,
+        349,
+        349
+      ]
+    },
+    {
+      "case_id": "table_02",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.6114817999769002,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2"
+      ],
+      "pages": [
+        349,
+        349,
+        349
+      ]
+    },
+    {
+      "case_id": "table_03",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1566829001531005,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "pages": [
+        349,
+        306,
+        349
+      ]
+    },
+    {
+      "case_id": "table_03",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.9328191000968218,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p71:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        349,
+        306,
+        71
+      ]
+    },
+    {
+      "case_id": "table_04",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15794850001111627,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3"
+      ],
+      "pages": [
+        350,
+        350,
+        350
+      ]
+    },
+    {
+      "case_id": "table_04",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.5875581000000238,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r2"
+      ],
+      "pages": [
+        350,
+        350,
+        350
+      ]
+    },
+    {
+      "case_id": "table_05",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15626530000008643,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_05",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 1.0426275997888297,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_06",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15721180010586977,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_06",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 1.0503887999802828,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_07",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.16609379998408258,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r9"
+      ],
+      "pages": [
+        125,
+        125,
+        125
+      ]
+    },
+    {
+      "case_id": "table_07",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.5717833999078721,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7"
+      ],
+      "pages": [
+        125,
+        125,
+        125
+      ]
+    },
+    {
+      "case_id": "table_08",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1610717000439763,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r11"
+      ],
+      "pages": [
+        321,
+        321,
+        321
+      ]
+    },
+    {
+      "case_id": "table_08",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.6104893998708576,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r7"
+      ],
+      "pages": [
+        321,
+        321,
+        321
+      ]
+    },
+    {
+      "case_id": "table_09",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.1710377000272274,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t6:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "pages": [
+        349,
+        304,
+        349
+      ]
+    },
+    {
+      "case_id": "table_09",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.8334580999799073,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t6:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        349,
+        304
+      ]
+    },
+    {
+      "case_id": "table_10",
+      "method": "hybrid",
+      "repeat": 2,
+      "seconds": 0.15721970004960895,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        316,
+        314,
+        62
+      ]
+    },
+    {
+      "case_id": "table_10",
+      "method": "rerank",
+      "repeat": 2,
+      "seconds": 0.9877188999671489,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        62,
+        351,
+        351
+      ]
+    },
+    {
+      "case_id": "q_screen_auto_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.17916860012337565,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p262:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        263,
+        264,
+        262
+      ]
+    },
+    {
+      "case_id": "q_screen_auto_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.8329459000378847,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p263:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p264:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p262:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        263,
+        264,
+        262
+      ]
+    },
+    {
+      "case_id": "q_outside_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15419140015728772,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p331:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        321,
+        352,
+        331
+      ]
+    },
+    {
+      "case_id": "q_outside_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7541701998561621,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p333:c3:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p331:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        333,
+        331,
+        164
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15458320011384785,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        41
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.9959617999847978,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        41
+      ]
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15513129997998476,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        114,
+        115,
+        116
+      ]
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7311760000884533,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c6:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        4,
+        115,
+        114
+      ]
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15105940005742013,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        115,
+        114,
+        107
+      ]
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7384607999119908,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        115,
+        114,
+        118
+      ]
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15384839987382293,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p157:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p185:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        157,
+        159,
+        185
+      ]
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.9103252999484539,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p159:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p157:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        159,
+        160,
+        157
+      ]
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15267139999195933,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p200:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p198:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p211:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        200,
+        198,
+        211
+      ]
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.873753699939698,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p197:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p200:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p198:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        197,
+        200,
+        198
+      ]
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15314180008135736,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p30:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        34,
+        34,
+        30
+      ]
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.9217126001603901,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p31:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        34,
+        34,
+        31
+      ]
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15420940006151795,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        33,
+        34,
+        34
+      ]
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.974794200155884,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p34:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        33,
+        34,
+        34
+      ]
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.154641899978742,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p106:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        107,
+        27,
+        106
+      ]
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.8968028998933733,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p107:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3"
+      ],
+      "pages": [
+        107,
+        27,
+        350
+      ]
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15691519994288683,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p249:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p246:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        249,
+        246
+      ]
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.5891067001502961,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        5,
+        243
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.16022379999049008,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p241:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        244,
+        241
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7688929000869393,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p250:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        154,
+        250
+      ]
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.1718733999878168,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p179:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        176,
+        176,
+        179
+      ]
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.9944358000066131,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p176:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p180:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        176,
+        176,
+        180
+      ]
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15192560013383627,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        136,
+        132,
+        133
+      ]
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.9051986001431942,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        131,
+        136,
+        131
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.14388760016299784,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        33
+      ]
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.8670628999825567,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p43:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p44:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p283:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        43,
+        44,
+        283
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.1421406001318246,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p244:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body"
+      ],
+      "pages": [
+        244,
+        243,
+        5
+      ]
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7110575998667628,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p243:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p5:c8:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p258:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        243,
+        5,
+        258
+      ]
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.14937459980137646,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        115
+      ]
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7225230999756604,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p115:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        115
+      ]
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.156995200086385,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p132:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        136,
+        132,
+        133
+      ]
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.8057868001051247,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p131:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        131,
+        136,
+        136
+      ]
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15781800006516278,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p116:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        116,
+        117,
+        118
+      ]
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7805796000175178,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c6:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p117:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p118:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        4,
+        117,
+        118
+      ]
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.16434000013396144,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p287:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p153:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        287,
+        153
+      ]
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.8570183999836445,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p287:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        287,
+        304
+      ]
+    },
+    {
+      "case_id": "table_01",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15591239999048412,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r3"
+      ],
+      "pages": [
+        225,
+        225,
+        225
+      ]
+    },
+    {
+      "case_id": "table_01",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.7524640001356602,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p225:c1:tables-textflow-v1:p225:t1:r1"
+      ],
+      "pages": [
+        225,
+        225,
+        225
+      ]
+    },
+    {
+      "case_id": "table_02",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15088099986314774,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2"
+      ],
+      "pages": [
+        349,
+        349,
+        349
+      ]
+    },
+    {
+      "case_id": "table_02",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.6051358999684453,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t3:r2"
+      ],
+      "pages": [
+        349,
+        349,
+        349
+      ]
+    },
+    {
+      "case_id": "table_03",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15665689995512366,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "pages": [
+        349,
+        306,
+        349
+      ]
+    },
+    {
+      "case_id": "table_03",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.9159866000991315,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p71:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        349,
+        306,
+        71
+      ]
+    },
+    {
+      "case_id": "table_04",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15930579998530447,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3"
+      ],
+      "pages": [
+        350,
+        350,
+        350
+      ]
+    },
+    {
+      "case_id": "table_04",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.5920371001120657,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t2:r2"
+      ],
+      "pages": [
+        350,
+        350,
+        350
+      ]
+    },
+    {
+      "case_id": "table_05",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.1559670998249203,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_05",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 1.034294500015676,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_06",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.1671467002015561,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_06",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 1.0671786000020802,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        351,
+        351,
+        62
+      ]
+    },
+    {
+      "case_id": "table_07",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.16580160008743405,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r9"
+      ],
+      "pages": [
+        125,
+        125,
+        125
+      ]
+    },
+    {
+      "case_id": "table_07",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.5768027999438345,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r5",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p125:c1:tables-textflow-v1:p125:t2:r7"
+      ],
+      "pages": [
+        125,
+        125,
+        125
+      ]
+    },
+    {
+      "case_id": "table_08",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.16256719990633428,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r11"
+      ],
+      "pages": [
+        321,
+        321,
+        321
+      ]
+    },
+    {
+      "case_id": "table_08",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.5851607997901738,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p321:c1:tables-textflow-v1:p321:t1:r7"
+      ],
+      "pages": [
+        321,
+        321,
+        321
+      ]
+    },
+    {
+      "case_id": "table_09",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.15328920003958046,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t6:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "pages": [
+        349,
+        304,
+        349
+      ]
+    },
+    {
+      "case_id": "table_09",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.807804100215435,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t6:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "pages": [
+        304,
+        349,
+        304
+      ]
+    },
+    {
+      "case_id": "table_10",
+      "method": "hybrid",
+      "repeat": 3,
+      "seconds": 0.1596140000037849,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p316:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        316,
+        314,
+        62
+      ]
+    },
+    {
+      "case_id": "table_10",
+      "method": "rerank",
+      "repeat": 3,
+      "seconds": 0.974530499894172,
+      "chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p62:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:body"
+      ],
+      "pages": [
+        62,
+        351,
+        351
+      ]
+    }
+  ]
+}

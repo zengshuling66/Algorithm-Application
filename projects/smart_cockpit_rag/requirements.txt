@@ -1,0 +1,16 @@
+pypdf==6.19.0
+pytest==8.4.2
+numpy==1.26.4
+torch==2.8.0
+sentence-transformers==5.1.2
+qdrant-client==1.15.1
+openai==2.48.0
+pdfplumber==0.11.9
+faiss-cpu==1.11.0
+langchain-core==1.6.13
+rank-bm25==0.2.2
+jieba==0.42.1
+pydantic==2.14.1
+fastapi==0.162.2
+uvicorn==0.54.0
+anyio==4.15.1

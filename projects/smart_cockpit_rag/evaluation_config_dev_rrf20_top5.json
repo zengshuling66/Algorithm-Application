@@ -1,0 +1,9 @@
+{
+  "case_files": ["eval_cases.json", "table_eval_cases_v1.json"],
+  "manual_metadata": "manual_metadata.json",
+  "required_block_gold": "dev_retrieval_gold_v3.json",
+  "split": "dev",
+  "fusion_k": 20,
+  "top_k": 5,
+  "qa_methods": ["rerank"]
+}

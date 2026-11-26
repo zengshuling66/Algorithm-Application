@@ -1,0 +1,2581 @@
+[
+  {
+    "id": "test_01",
+    "question": "雨量感应自动雨刷处于AUTO挡时，向上和向下旋转拨杆滚轮分别怎样影响灵敏度？",
+    "answerable": true,
+    "reference_answer": "向上旋转滚轮增加自动雨刷灵敏度；向下旋转滚轮降低自动雨刷灵敏度。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 64,
+      "anchor": "向上旋转滚轮"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      64
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "向上旋转滚轮增加自动雨刷灵敏度。"
+      },
+      {
+        "id": "F2",
+        "text": "向下旋转滚轮降低自动雨刷灵敏度。"
+      }
+    ]
+  },
+  {
+    "id": "test_02",
+    "question": "天窗和遮阳帘完全关闭时，轻按控制按钮一次与短时间内将按钮按到底两次，打开效果有什么不同？",
+    "answerable": true,
+    "reference_answer": "轻按一次先打开遮阳帘，需再次按按钮才能打开天窗；短时间内将按钮按到底两次，遮阳帘和天窗同时打开。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 110,
+      "anchor": "遮阳帘和全景天窗同时打开"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      110
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "完全关闭时轻按一次先打开遮阳帘。"
+      },
+      {
+        "id": "F2",
+        "text": "需要再次按下控制按钮才能打开全景天窗。"
+      },
+      {
+        "id": "F3",
+        "text": "短时间内将按钮按到底两次，遮阳帘和全景天窗同时打开。"
+      }
+    ]
+  },
+  {
+    "id": "test_03",
+    "question": "智能远近光控制在什么环境和车速条件下开启？大雾或大雨时能完全依赖它吗？",
+    "answerable": true,
+    "reference_answer": "环境光线较暗、滚轮处于相应位置且车速在40 km/h以上时开启；大雾或大雨时可能需要手动切换远近光灯，不能完全依赖系统。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 85,
+      "anchor": "40 km/h"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      85
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "开启智能远近光控制需要环境光线较暗。"
+      },
+      {
+        "id": "F2",
+        "text": "滚轮需要处于手册所示的相应位置。"
+      },
+      {
+        "id": "F3",
+        "text": "车速需要在40 km/h以上。"
+      },
+      {
+        "id": "F4",
+        "text": "大雾或大雨时可能需要手动切换远近光灯，不能完全依赖系统。"
+      }
+    ]
+  },
+  {
+    "id": "test_04",
+    "question": "开启充电外部灯效后，日间行车灯会一直闪到充电结束吗？",
+    "answerable": true,
+    "reference_answer": "不会。充电外部灯效开启后，充电时日间行车灯闪烁2分钟后熄灭。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 297,
+      "anchor": "闪烁 2 分钟"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      297
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "开启充电外部灯效后，充电时日间行车灯闪烁2分钟后熄灭，不会一直闪到充电结束。"
+      }
+    ]
+  },
+  {
+    "id": "test_05",
+    "question": "OTA升级对挡位和网络有什么要求？条件不满足时，“更新”按钮会怎样？",
+    "answerable": true,
+    "reference_answer": "车辆应位于驻车挡P且网络连接正常；若不满足更新条件，“更新”按钮置灰，无法选择。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 325,
+      "anchor": "车辆挡位位于驻车挡"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      325
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "OTA升级要求车辆挡位位于驻车挡P。"
+      },
+      {
+        "id": "F2",
+        "text": "OTA升级要求车辆网络连接正常。"
+      },
+      {
+        "id": "F3",
+        "text": "不满足更新条件时，更新按钮置灰且无法选择。"
+      }
+    ]
+  },
+  {
+    "id": "test_06",
+    "question": "车流中紧急停车时，手册要求何时穿安全背心？背心放在哪里？",
+    "answerable": true,
+    "reference_answer": "应在下车前穿上安全背心；安全背心放在手套箱内。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 339,
+      "anchor": "安全背心放置于手套箱内"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      339
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车流中紧急停车时，应在下车前穿上安全背心。"
+      },
+      {
+        "id": "F2",
+        "text": "安全背心放置于手套箱内。"
+      }
+    ]
+  },
+  {
+    "id": "test_07",
+    "question": "制动系统参数表中，制动液规格和制动踏板自由行程范围分别是什么？",
+    "answerable": true,
+    "reference_answer": "制动液规格为DOT 4；制动踏板自由行程为10至15 mm。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 351,
+      "anchor": "制动踏板自由行程"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      351
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "制动液规格为DOT 4。"
+      },
+      {
+        "id": "F2",
+        "text": "制动踏板自由行程为10至15 mm。"
+      }
+    ]
+  },
+  {
+    "id": "test_08",
+    "question": "整车断电或电子锁机械故障导致充电枪无法拔出时，可以通过什么装置手动解锁？该装置位于哪里？",
+    "answerable": true,
+    "reference_answer": "可使用应急解锁拉线手动解锁充电枪；拉线位于发动机舱左侧，拆除左侧装饰罩后可见。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 336,
+      "anchor": "左侧发动机舱处"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      336
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "可通过应急解锁拉线手动解锁充电枪。"
+      },
+      {
+        "id": "F2",
+        "text": "应急解锁拉线位于发动机舱左侧。"
+      }
+    ]
+  },
+  {
+    "id": "test_09",
+    "question": "手册的方向盘自动加热说明，给出的车内温度启动阈值具体是多少摄氏度？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第120至121页相关说明：仅写车内温度低于一定值且电量充足时自动启动，未给出具体摄氏度阈值。应说明该说明未提供数值，不得自行补出温度。",
+    "question_origin": "manual_holdout_missing_field_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_10",
+    "question": "仅依据手册“车辆远程升级（OTA）”这一节，给出本次升级包的SHA-256校验值。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第325至326页该节：说明升级条件、流程、提示及注意事项，没有给出本次升级包或其SHA-256值。不得编造，也不能把PDF文件的content_hash当作OTA升级包校验值。",
+    "question_origin": "manual_holdout_missing_field_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_11",
+    "question": "远程监控系统在车辆中默认是什么状态？用户能否更改其开启状态？",
+    "answerable": true,
+    "reference_answer": "远程监控系统默认开启。用户不能更改远程监控系统的设置状态。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 12,
+      "anchor": "远程监控系统默认开启"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      12
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "远程监控系统默认开启。"
+      },
+      {
+        "id": "F2",
+        "text": "用户不能更改远程监控系统的设置状态。"
+      }
+    ]
+  },
+  {
+    "id": "test_12",
+    "question": "按本手册，车顶行李架的最大载荷是多少千克？较重物品应放在载荷的上部还是底部？",
+    "answerable": true,
+    "reference_answer": "车顶行李架最大载荷为70 kg。载荷应均匀分布，最重的物品应放在底部。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 21,
+      "anchor": "车顶行李架最大载荷70"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      21
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车顶行李架最大载荷为70 kg。"
+      },
+      {
+        "id": "F2",
+        "text": "较重的物品应放在载荷底部。"
+      }
+    ]
+  },
+  {
+    "id": "test_13",
+    "question": "中控锁已经锁止、后门儿童锁未启用时，从车内打开前门和后门分别需要拉几次内把手？",
+    "answerable": true,
+    "reference_answer": "拉动一次前门内把手可打开前门。后门儿童锁未启用时，连续拉动两次后门内把手可打开后门。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 45,
+      "anchor": "拉动一次前门内把手"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      45
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "拉动一次前门内把手可打开前门。"
+      },
+      {
+        "id": "F2",
+        "text": "后门儿童锁未启用时，连续拉动两次后门内把手可打开后门。"
+      }
+    ]
+  },
+  {
+    "id": "test_14",
+    "question": "车辆锁止后，防盗系统需要多久进入戒备状态？解锁车辆后会怎样？",
+    "answerable": true,
+    "reference_answer": "车辆锁止10秒后，防盗系统进入戒备状态。解锁车辆后，防盗系统自动关闭。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 48,
+      "anchor": "锁止车辆10"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      48
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车辆锁止10秒后，防盗系统进入戒备状态。"
+      },
+      {
+        "id": "F2",
+        "text": "解锁车辆后，防盗系统自动关闭。"
+      }
+    ]
+  },
+  {
+    "id": "test_15",
+    "question": "手册中的位置记忆功能可以同时存储哪些部件的位置？",
+    "answerable": true,
+    "reference_answer": "位置记忆功能可以存储驾驶员座椅的位置。位置记忆功能可以存储外后视镜的位置。位置记忆功能可以存储抬头显示HUD的位置。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 53,
+      "anchor": "位置记忆功能可以存储"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      53
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "位置记忆功能可以存储驾驶员座椅的位置。"
+      },
+      {
+        "id": "F2",
+        "text": "位置记忆功能可以存储外后视镜的位置。"
+      },
+      {
+        "id": "F3",
+        "text": "位置记忆功能可以存储抬头显示HUD的位置。"
+      }
+    ]
+  },
+  {
+    "id": "test_16",
+    "question": "后雨刮拨杆末端的上方区域和下方区域分别对应什么刮刷模式？",
+    "answerable": true,
+    "reference_answer": "按压拨杆末端上方区域，启动后挡风玻璃间歇性刮刷模式。按压拨杆末端下方区域，启动后挡风玻璃连续刮刷模式。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 65,
+      "anchor": "后挡风玻璃间歇性刮刷"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      65
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "按压拨杆末端上方区域，启动后挡风玻璃间歇性刮刷模式。"
+      },
+      {
+        "id": "F2",
+        "text": "按压拨杆末端下方区域，启动后挡风玻璃连续刮刷模式。"
+      }
+    ]
+  },
+  {
+    "id": "test_17",
+    "question": "接近照明功能开启、光线较弱且携带遥控钥匙接近车辆时，哪些灯会点亮，持续多久？",
+    "answerable": true,
+    "reference_answer": "近光灯和前、后位置灯会点亮。接近照明持续30秒。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 94,
+      "anchor": "位置灯持续点亮30"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      94
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "近光灯和前、后位置灯会点亮。"
+      },
+      {
+        "id": "F2",
+        "text": "接近照明持续30秒。"
+      }
+    ]
+  },
+  {
+    "id": "test_18",
+    "question": "安全气囊系统在车辆未启动时也会运行吗？它对安全带的作用是替代还是协同？",
+    "answerable": true,
+    "reference_answer": "安全气囊系统只有在车辆启动的情况下才会运行。安全带和安全气囊协同工作，不能用安全气囊替代正确佩戴安全带。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 103,
+      "anchor": "只有在车辆启动的情况下"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      103
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "安全气囊系统只有在车辆启动的情况下才会运行。"
+      },
+      {
+        "id": "F2",
+        "text": "安全带和安全气囊协同工作，不能用安全气囊替代正确佩戴安全带。"
+      }
+    ]
+  },
+  {
+    "id": "test_19",
+    "question": "语音助手默认的唤醒词是什么？用户是否可以选择或自定义唤醒词？",
+    "answerable": true,
+    "reference_answer": "语音助手默认唤醒词是嗨，领克。用户可以选择或自定义唤醒词。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 128,
+      "anchor": "语音助手默认唤醒词"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      128
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "语音助手默认唤醒词是嗨，领克。"
+      },
+      {
+        "id": "F2",
+        "text": "用户可以选择或自定义唤醒词。"
+      }
+    ]
+  },
+  {
+    "id": "test_20",
+    "question": "坡道辅助系统在松开制动踏板后大约能保持车辆静止多久？Auto Hold停用后它还能工作吗？",
+    "answerable": true,
+    "reference_answer": "松开制动踏板后，坡道辅助系统约保持车辆静止2秒。即使Auto Hold停用，坡道辅助系统仍可工作。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 160,
+      "anchor": "约2"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      160
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "松开制动踏板后，坡道辅助系统约保持车辆静止2秒。"
+      },
+      {
+        "id": "F2",
+        "text": "即使Auto Hold停用，坡道辅助系统仍可工作。"
+      }
+    ]
+  },
+  {
+    "id": "test_21",
+    "question": "发动机未启用且低速行驶提示音功能开启时，手册给出的发出提示音车速条件是什么？发动机启动后该功能怎样变化？",
+    "answerable": true,
+    "reference_answer": "车辆以小于30 km/h的车速行驶时会发出提示音。发动机启动时，行人提示音功能自动停用。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 154,
+      "anchor": "小于30km/h"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      154
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车辆以小于30 km/h的车速行驶时会发出提示音。"
+      },
+      {
+        "id": "F2",
+        "text": "发动机启动时，行人提示音功能自动停用。"
+      }
+    ]
+  },
+  {
+    "id": "test_22",
+    "question": "手动激活SOS紧急救援功能，需要按住SOS按键约多久？",
+    "answerable": true,
+    "reference_answer": "按住SOS按键约2秒，可手动激活SOS紧急救援功能。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 330,
+      "anchor": "手动激活SOS功能"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      330
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "按住SOS按键约2秒，可手动激活SOS紧急救援功能。"
+      }
+    ]
+  },
+  {
+    "id": "test_23",
+    "question": "手册明确支持的行车记录仪内存卡容量和文件系统格式分别是什么？内存卡安装在哪里？",
+    "answerable": true,
+    "reference_answer": "行车记录仪支持FAT32格式的64 G内存卡。内存卡位于手套箱内，打开手套箱并向外翻开内存卡盖板即可看到。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 276,
+      "anchor": "FAT32格式"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      276
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "行车记录仪支持FAT32格式的64 G内存卡。"
+      },
+      {
+        "id": "F2",
+        "text": "行车记录仪内存卡安装位置位于手套箱内。"
+      }
+    ]
+  },
+  {
+    "id": "test_24",
+    "question": "推荐胎压的标签位于车身什么位置？长距离行驶前是否应特别检查胎压？",
+    "answerable": true,
+    "reference_answer": "胎压标签位于驾驶员侧B柱上。应经常检查胎压，尤其是在开始长距离行驶前。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 314,
+      "anchor": "位于驾驶员侧B柱上"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      314
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "胎压标签位于驾驶员侧B柱上。"
+      },
+      {
+        "id": "F2",
+        "text": "开始长距离行驶前应特别检查胎压。"
+      }
+    ]
+  },
+  {
+    "id": "test_25",
+    "question": "充电接口的LED蓝色常亮和红色常亮分别表示什么？蓝色常亮会持续多久后熄灭？",
+    "answerable": true,
+    "reference_answer": "蓝色常亮表示预约充电，2分钟后熄灭。红色常亮表示充电故障。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 292,
+      "anchor": "蓝色常亮"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      292
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "蓝色常亮表示预约充电，2分钟后熄灭。"
+      },
+      {
+        "id": "F2",
+        "text": "红色常亮表示充电故障。"
+      }
+    ]
+  },
+  {
+    "id": "test_26",
+    "question": "使用诊断工具读取VIN码时，车载OBD-II插座位于哪里？",
+    "answerable": true,
+    "reference_answer": "OBD-II插座位于仪表板下方。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 307,
+      "anchor": "OBD-II插座位于仪表板下方"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      307
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "OBD-II插座位于仪表板下方。"
+      }
+    ]
+  },
+  {
+    "id": "test_27",
+    "question": "手册所示低压蓄电池位于车辆什么位置？",
+    "answerable": true,
+    "reference_answer": "低压蓄电池位于后备厢中部。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 304,
+      "anchor": "低压蓄电池位于后备厢中部"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      304
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "低压蓄电池位于后备厢中部。"
+      }
+    ]
+  },
+  {
+    "id": "test_28",
+    "question": "本手册建议的新车磨合期是多少公里？该阶段发动机转速不应超过多少rpm？",
+    "answerable": true,
+    "reference_answer": "建议在最初2000 km行驶期间遵守新车磨合注意事项。磨合阶段发动机转速不应超过3000 rpm。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 306,
+      "anchor": "最初的2000"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "fact",
+    "evidence_pages": [
+      306
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "建议在最初2000 km行驶期间遵守新车磨合注意事项。"
+      },
+      {
+        "id": "F2",
+        "text": "磨合阶段发动机转速不应超过3000 rpm。"
+      }
+    ]
+  },
+  {
+    "id": "test_29",
+    "question": "通过手套箱密码锁界面解锁手套箱应怎样操作？成功用密码解锁后，密码保护是否继续保持开启？",
+    "answerable": true,
+    "reference_answer": "在中央显示屏进入座舱体验-快捷设置，点击手套箱密码锁按键，或按下手套箱开关，在弹出界面输入密码解锁。通过密码解锁后，手套箱密码保护功能自动关闭，再使用时需要重新开启。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 28,
+      "anchor": "通过密码解锁手套箱后"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      28
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "在中央显示屏进入座舱体验-快捷设置，点击手套箱密码锁按键，或按下手套箱开关，在弹出界面输入密码解锁。"
+      },
+      {
+        "id": "F2",
+        "text": "通过密码解锁后，手套箱密码保护功能自动关闭，再使用时需要重新开启。"
+      }
+    ]
+  },
+  {
+    "id": "test_30",
+    "question": "调节方向盘时，锁定杆应怎样操作？调整结束后怎样确认方向盘已锁牢？",
+    "answerable": true,
+    "reference_answer": "先向下推锁定杆以松开方向盘。将方向盘调整至合适位置后，向上推锁定杆将其锁止。尝试向上、下、前、后移动方向盘，确认已牢固锁止。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 59,
+      "anchor": "向下推锁定杆"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      59
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "先向下推锁定杆以松开方向盘。"
+      },
+      {
+        "id": "F2",
+        "text": "将方向盘调整至合适位置后，向上推锁定杆将其锁止。"
+      },
+      {
+        "id": "F3",
+        "text": "尝试向上、下、前、后移动方向盘，确认已牢固锁止。"
+      }
+    ]
+  },
+  {
+    "id": "test_31",
+    "question": "通过驾驶员侧车门按钮调节左侧外后视镜角度，选择、调节和结束分别怎么操作？",
+    "answerable": true,
+    "reference_answer": "先按下L按钮选择左侧外后视镜，按钮指示灯点亮。用中间的控制杆调节外后视镜角度。再次按下L按钮结束选择，指示灯熄灭。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 60,
+      "anchor": "按下L按钮"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      60
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "按下L按钮选择左侧外后视镜。"
+      },
+      {
+        "id": "F2",
+        "text": "用中间的控制杆调节外后视镜角度。"
+      },
+      {
+        "id": "F3",
+        "text": "再次按下L按钮结束选择。"
+      }
+    ]
+  },
+  {
+    "id": "test_32",
+    "question": "临时断开蓄电池后车窗不能自动升降，按手册应如何初始化？最后一次完全关闭后按住按钮多久？",
+    "answerable": true,
+    "reference_answer": "打开点火开关，通过驾驶员侧车门控制面板小心地完全关闭车窗，然后松开按钮。打开并再次完全关闭车窗，再按住控制按钮约5秒。应使用每个车门上的车窗控制按钮对每扇车窗执行初始化。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 109,
+      "anchor": "车窗初始化"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      109
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "打开点火开关，通过驾驶员侧车门控制面板小心地完全关闭车窗，然后松开按钮。"
+      },
+      {
+        "id": "F2",
+        "text": "打开并再次完全关闭车窗，再按住控制按钮约5秒。"
+      },
+      {
+        "id": "F3",
+        "text": "应使用每个车门上的车窗控制按钮对每扇车窗执行初始化。"
+      }
+    ]
+  },
+  {
+    "id": "test_33",
+    "question": "使用机械钥匙启用左后门和右后门儿童锁，转动方向和角度分别是什么？怎样停用？",
+    "answerable": true,
+    "reference_answer": "左后门使用机械钥匙顺时针转动控制器90°启用儿童锁。右后门使用机械钥匙逆时针转动90°启用儿童锁。向相反方向转动相应控制器可以停用儿童锁。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 122,
+      "anchor": "顺时针转动控制器90"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      122
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "左后门使用机械钥匙顺时针转动控制器90°启用儿童锁。"
+      },
+      {
+        "id": "F2",
+        "text": "右后门使用机械钥匙逆时针转动90°启用儿童锁。"
+      },
+      {
+        "id": "F3",
+        "text": "向相反方向转动相应控制器可以停用儿童锁。"
+      }
+    ]
+  },
+  {
+    "id": "test_34",
+    "question": "想连续说出唤醒词和语音指令、不等待助手先回复，应启用哪项语音设置？启用后怎样说指令？",
+    "answerable": true,
+    "reference_answer": "启用允许OneShot唤醒。启用后可连续说出唤醒词和语音指令，无需先唤醒并等待助手回复。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 128,
+      "anchor": "允许OneShot"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      128
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "启用允许OneShot唤醒。"
+      },
+      {
+        "id": "F2",
+        "text": "启用后可连续说出唤醒词和语音指令，无需先唤醒并等待助手回复。"
+      }
+    ]
+  },
+  {
+    "id": "test_35",
+    "question": "手机已在车内且处于连接状态时，怎样通过Lynk & Co App的蓝牙钥匙启动车辆？",
+    "answerable": true,
+    "reference_answer": "打开Lynk & Co App蓝牙钥匙。在App中点击车辆启动图标，通过蓝牙钥匙启动车辆。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 142,
+      "anchor": "通过蓝牙钥匙启动车辆"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      142
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "打开Lynk & Co App蓝牙钥匙。"
+      },
+      {
+        "id": "F2",
+        "text": "在App中点击车辆启动图标，通过蓝牙钥匙启动车辆。"
+      }
+    ]
+  },
+  {
+    "id": "test_36",
+    "question": "按手册打开燃油加注口盖板前，车辆应处于什么状态？随后依次操作哪里？",
+    "answerable": true,
+    "reference_answer": "车辆应处于熄火且解锁状态。短按仪表板左侧的油箱盖板开启按钮。轻按燃油加注口盖板的后部，将其打开。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 162,
+      "anchor": "燃油加注口盖板前"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      162
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车辆应处于熄火且解锁状态。"
+      },
+      {
+        "id": "F2",
+        "text": "短按仪表板左侧的油箱盖板开启按钮。"
+      },
+      {
+        "id": "F3",
+        "text": "轻按燃油加注口盖板的后部，将其打开。"
+      }
+    ]
+  },
+  {
+    "id": "test_37",
+    "question": "如何用L、R按钮手动折叠并再次展开外后视镜？对点火挡位有什么要求？",
+    "answerable": true,
+    "reference_answer": "点火开关应设置在I或以上挡位。同时按下L和R按钮再松开，后视镜自动停在完全折叠位置。再次同时按下L和R按钮，后视镜自动停在完全展开位置。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 237,
+      "anchor": "同时按下L和R按键"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      237
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "点火开关应设置在I或以上挡位。"
+      },
+      {
+        "id": "F2",
+        "text": "同时按下L和R按钮再松开，后视镜自动停在完全折叠位置。"
+      },
+      {
+        "id": "F3",
+        "text": "再次同时按下L和R按钮，后视镜自动停在完全展开位置。"
+      }
+    ]
+  },
+  {
+    "id": "test_38",
+    "question": "通过空调面板开启前挡风玻璃最大除霜时应操作什么按钮？A/C、内循环和AUTO风量会怎样联动？",
+    "answerable": true,
+    "reference_answer": "按下前除霜/除雾按钮启用最大除霜，按钮指示灯点亮。A/C自动激活，空调内循环自动关闭。启用前除霜/除雾时，AUTO开启最大风量。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 256,
+      "anchor": "前除霜/除雾"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      256
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "按下空调面板的前除霜/除雾按钮，启用最大除霜。"
+      },
+      {
+        "id": "F2",
+        "text": "A/C自动激活，空调内循环自动关闭。"
+      },
+      {
+        "id": "F3",
+        "text": "启用前除霜/除雾时，AUTO开启最大风量。"
+      }
+    ]
+  },
+  {
+    "id": "test_39",
+    "question": "想让其他智能设备连接车载热点，应先满足什么网络条件，再进入哪个设置界面开启？",
+    "answerable": true,
+    "reference_answer": "车辆接入网络后才能创建车载热点。在中央显示屏进入设置-连接-车载热点，开启车载热点功能。可以在该界面设置热点名称及热点配置。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 268,
+      "anchor": "车载热点"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      268
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车辆接入网络后才能创建车载热点。"
+      },
+      {
+        "id": "F2",
+        "text": "在中央显示屏进入设置-连接-车载热点，开启车载热点功能。"
+      }
+    ]
+  },
+  {
+    "id": "test_40",
+    "question": "方向盘自定义按键已经设为行车记录仪时，怎样拍照和手动触发紧急录像？",
+    "answerable": true,
+    "reference_answer": "短按该自定义按键拍照。长按该自定义按键触发紧急录像。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 274,
+      "anchor": "方向盘自定义按键"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      274
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "短按该自定义按键拍照。"
+      },
+      {
+        "id": "F2",
+        "text": "长按该自定义按键触发紧急录像。"
+      }
+    ]
+  },
+  {
+    "id": "test_41",
+    "question": "要在车机中格式化行车记录仪内存卡，应从哪里进入并点击什么按键？",
+    "answerable": true,
+    "reference_answer": "在中央显示屏进入行车记录仪，再点击其设置图标进入设置界面。点击格式化按键，格式化行车记录仪内存卡。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 276,
+      "anchor": "格式化行车记录仪内存卡"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      276
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "在中央显示屏进入行车记录仪，再点击其设置图标进入设置界面。"
+      },
+      {
+        "id": "F2",
+        "text": "点击格式化按键，格式化行车记录仪内存卡。"
+      }
+    ]
+  },
+  {
+    "id": "test_42",
+    "question": "怎样在Lynk & Co App中删除一把已有的蓝牙钥匙？",
+    "answerable": true,
+    "reference_answer": "进入Lynk & Co App的钥匙管理界面。向左滑动需要删除的蓝牙钥匙，点击删除按键删除。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 282,
+      "anchor": "删除蓝牙钥匙"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      282
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "进入Lynk & Co App的钥匙管理界面。"
+      },
+      {
+        "id": "F2",
+        "text": "向左滑动需要删除的蓝牙钥匙，点击删除按键删除。"
+      }
+    ]
+  },
+  {
+    "id": "test_43",
+    "question": "更换遥控钥匙电池时，应先拆什么？新电池哪一极朝上，装回前后怎样检查？",
+    "answerable": true,
+    "reference_answer": "先拆下机械钥匙，再按住钥匙盖边缘向外移动取下钥匙盖，并拆除电池上端盖。安装新电池时，正极加号端朝上。更换电池后按任意按键，检查钥匙工作指示灯是否点亮。按相反步骤装回，再操作钥匙按键确认功能正常。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 303,
+      "anchor": "更换遥控钥匙电池"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      303
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "更换遥控钥匙电池时，先拆下机械钥匙。"
+      },
+      {
+        "id": "F2",
+        "text": "安装新电池时，正极加号端朝上。"
+      },
+      {
+        "id": "F3",
+        "text": "更换电池后按任意按键，检查钥匙工作指示灯是否点亮。"
+      },
+      {
+        "id": "F4",
+        "text": "装回后操作遥控钥匙按键，检查并确认功能正常。"
+      }
+    ]
+  },
+  {
+    "id": "test_44",
+    "question": "更换前挡风玻璃雨刮片之前，应如何驻车并把雨刮设置到维修位置？",
+    "answerable": true,
+    "reference_answer": "将挡位切换至P并启用电子驻车制动EPB。确认雨刮器处于关闭状态。在中央显示屏进入车辆设置-雨刮，开启前雨刮维修位置。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 312,
+      "anchor": "更换雨刮片前"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      312
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "将挡位切换至P并启用电子驻车制动EPB。"
+      },
+      {
+        "id": "F2",
+        "text": "确认雨刮器处于关闭状态。"
+      },
+      {
+        "id": "F3",
+        "text": "在中央显示屏进入车辆设置-雨刮，开启前雨刮维修位置。"
+      }
+    ]
+  },
+  {
+    "id": "test_45",
+    "question": "依据本手册，取出三角警示牌后应怎样展开和摆放？普通道路、高速公路以及高速雨雾天气分别要求多远？",
+    "answerable": true,
+    "reference_answer": "展开三角警示牌并设置支架，沿相同道路方向放置在车后适当位置。常规道路上，手册要求放在车后50至100 m处。高速公路上，手册要求放在车后150 m以外；雨雾天气提升至200 m。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 340,
+      "anchor": "将三角警示牌取出并展开"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "procedure",
+    "evidence_pages": [
+      340
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "展开三角警示牌并设置支架，沿相同道路方向放置在车后适当位置。"
+      },
+      {
+        "id": "F2",
+        "text": "常规道路上，手册要求放在车后50至100 m处。"
+      },
+      {
+        "id": "F3",
+        "text": "高速公路上，手册要求放在车后150 m以外；雨雾天气提升至200 m。"
+      }
+    ]
+  },
+  {
+    "id": "test_46",
+    "question": "防盗报警已经被触发后，通过App远程启动发动机能关闭报警吗？手册列出的有效关闭方式有哪些？",
+    "answerable": true,
+    "reference_answer": "通过Lynk & Co App远程启动发动机无法关闭已触发的防盗系统。遥控钥匙或蓝牙钥匙在检测范围内时启动车辆，可以关闭已触发的防盗系统。通过遥控钥匙或Lynk & Co App含蓝牙钥匙解锁车辆，也可以关闭已触发的防盗系统。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 48,
+      "anchor": "远程启动车辆，无法关闭"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      48
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "通过Lynk & Co App远程启动发动机无法关闭已触发的防盗系统。"
+      },
+      {
+        "id": "F2",
+        "text": "遥控钥匙或蓝牙钥匙在检测范围内时启动车辆，可以关闭已触发的防盗系统。"
+      },
+      {
+        "id": "F3",
+        "text": "通过遥控钥匙或Lynk & Co App含蓝牙钥匙解锁车辆，也可以关闭已触发的防盗系统。"
+      }
+    ]
+  },
+  {
+    "id": "test_47",
+    "question": "内后视镜自动防眩目功能在哪两种情况下会关闭？",
+    "answerable": true,
+    "reference_answer": "挡位切换至倒挡R时，内后视镜自动防眩目功能关闭。点火开关关闭时，内后视镜自动防眩目功能关闭。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 61,
+      "anchor": "自动防眩目功能会关闭"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      61
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "挡位切换至倒挡R时，内后视镜自动防眩目功能关闭。"
+      },
+      {
+        "id": "F2",
+        "text": "点火开关关闭时，内后视镜自动防眩目功能关闭。"
+      }
+    ]
+  },
+  {
+    "id": "test_48",
+    "question": "碰撞后安全模式已触发，又闻到汽油味，能否重新启动或自行开走、拖走车辆？手册要求怎样处理？",
+    "answerable": true,
+    "reference_answer": "闻到汽油味或发现汽油泄漏痕迹时，不能尝试重新启动车辆。安全模式触发后应立即离车到安全区域，报警或求助。安全模式触发后不得驾驶或拖动车辆，必须用平板拖车送往领克中心检查修理。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 99,
+      "anchor": "如果您闻到汽油的味道"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      99
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "闻到汽油味或发现汽油泄漏痕迹时，不能尝试重新启动车辆。"
+      },
+      {
+        "id": "F2",
+        "text": "安全模式触发后应立即离车到安全区域，报警或求助。"
+      },
+      {
+        "id": "F3",
+        "text": "安全模式触发后不得驾驶或拖动车辆，必须用平板拖车送往领克中心检查修理。"
+      }
+    ]
+  },
+  {
+    "id": "test_49",
+    "question": "手动关闭车窗和自动关闭车窗都具有防夹保护吗？自动关闭时碰到障碍物会怎样？",
+    "answerable": true,
+    "reference_answer": "手动升降车窗时，防夹功能不会启用。自动关闭车窗时防夹功能启用，碰到障碍物会停止关闭并重新打开。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 109,
+      "anchor": "手动升/降车窗时"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      109
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "手动升降车窗时，防夹功能不会启用。"
+      },
+      {
+        "id": "F2",
+        "text": "自动关闭车窗时防夹功能启用，碰到障碍物会停止关闭并重新打开。"
+      }
+    ]
+  },
+  {
+    "id": "test_50",
+    "question": "额定150 W的电气附件能接在手册所示车载12 V插座上吗？依据的额定限制是什么？",
+    "answerable": true,
+    "reference_answer": "不能接入额定150 W的附件，因为超过手册规定的额定上限。手册要求不要使用超过12 V/120 W额定值的电气附件。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 129,
+      "anchor": "12V/120W"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      129
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "不能接入额定150 W的附件，因为超过手册规定的额定上限。"
+      },
+      {
+        "id": "F2",
+        "text": "手册要求不要使用超过12 V/120 W额定值的电气附件。"
+      }
+    ]
+  },
+  {
+    "id": "test_51",
+    "question": "车内留有遥控钥匙，或者已连续两次远程启动但还没有手动启动车辆时，还能通过网络远程启动发动机吗？",
+    "answerable": true,
+    "reference_answer": "车内有遥控钥匙时，无法远程启动发动机。连续两次远程启动车辆后，若未手动启动车辆，也无法再远程启动发动机。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 143,
+      "anchor": "连续两次远程启动车辆后"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      143
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车内有遥控钥匙时，无法远程启动发动机。"
+      },
+      {
+        "id": "F2",
+        "text": "连续两次远程启动车辆后，若未手动启动车辆，也无法再远程启动发动机。"
+      }
+    ]
+  },
+  {
+    "id": "test_52",
+    "question": "下陡坡时车速为45 km/h，HDC能被激活吗？如果车速超过60 km/h，HDC会怎样？",
+    "answerable": true,
+    "reference_answer": "45 km/h处于40至60 km/h范围，无法激活HDC。车速超过60 km/h时，HDC自动退出。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 161,
+      "anchor": "40-60km/h"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      161
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "45 km/h处于40至60 km/h范围，无法激活HDC。"
+      },
+      {
+        "id": "F2",
+        "text": "车速超过60 km/h时，HDC自动退出。"
+      }
+    ]
+  },
+  {
+    "id": "test_53",
+    "question": "手册允许涉水水位高于车身下边缘吗？通过积水时可以停车或倒车吗？",
+    "answerable": true,
+    "reference_answer": "涉水水位最高不得超过车身下边缘。应低速通过积水路段，不得在水中停车或倒车。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 164,
+      "anchor": "水位最高不得超过车身下边缘"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      164
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "涉水水位最高不得超过车身下边缘。"
+      },
+      {
+        "id": "F2",
+        "text": "通过积水时不得在水中停车或倒车。"
+      }
+    ]
+  },
+  {
+    "id": "test_54",
+    "question": "清除驾驶辅助摄像头、雷达周围的污物或积雪后，仪表警告仍未消失，应怎样处理？",
+    "answerable": true,
+    "reference_answer": "应将车辆停放在安全区域。联系Lynk & Co领克中心进行检查处理。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 170,
+      "anchor": "清除污物或雪后"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      170
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "应将车辆停放在安全区域。"
+      },
+      {
+        "id": "F2",
+        "text": "联系Lynk & Co领克中心进行检查处理。"
+      }
+    ]
+  },
+  {
+    "id": "test_55",
+    "question": "锁车后没有收到生命体检测报警，是否就能确认后排没有遗留乘员？网络和遮挡物会带来什么限制？",
+    "answerable": true,
+    "reference_answer": "不能仅因未收到报警就确认后排无人，驾驶员仍有责任确认车内情况后再离开。网络受限可能导致报警信息无法发送或延迟发送。遮挡物或运动物体会干扰传感器，影响检测准确性，体积过小的生命体也可能无法检测。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 214,
+      "anchor": "生命探测功能只是一种辅助功能"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      214
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "不能仅因未收到报警就确认后排无人，驾驶员仍有责任确认车内情况后再离开。"
+      },
+      {
+        "id": "F2",
+        "text": "网络受限可能导致报警信息无法发送或延迟发送。"
+      },
+      {
+        "id": "F3",
+        "text": "遮挡物会干扰传感器正常工作，影响生命体检测的准确性。"
+      }
+    ]
+  },
+  {
+    "id": "test_56",
+    "question": "已经设置预约充电，但到预约开始时间仍未接上充电枪，会发生什么？",
+    "answerable": true,
+    "reference_answer": "到预约开始时间仍未连接充电枪，会导致预约充电失败。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 298,
+      "anchor": "依旧未连接充电枪"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      298
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "到预约开始时间仍未连接充电枪，会导致预约充电失败。"
+      }
+    ]
+  },
+  {
+    "id": "test_57",
+    "question": "没有高压维修资质的车主可以自行拆解动力电池或移动高压线缆吗？",
+    "answerable": true,
+    "reference_answer": "非专业人士不得触碰、移动或拆解动力电池及相应高压线缆。非专业人士同样不得触碰、移动或拆解其他带有高压警示标识的部件。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 304,
+      "anchor": "非专业人士"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      304
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "非专业人士不得触碰、移动或拆解动力电池及相应高压线缆。"
+      }
+    ]
+  },
+  {
+    "id": "test_58",
+    "question": "发动机已经关闭但冷却液仍然很热，可以立即打开膨胀罐盖检查吗？应等到什么状态？",
+    "answerable": true,
+    "reference_answer": "发动机关闭后冷却液仍高温时，不能打开膨胀罐盖。应等到发动机完全冷却后再打开冷却液膨胀罐盖。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 310,
+      "anchor": "冷却液仍然处于高温状态"
+    },
+    "question_origin": "manual_holdout_from_pdf",
+    "split": "test",
+    "case_type": "condition",
+    "evidence_pages": [
+      310
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "发动机关闭后冷却液仍高温时，不能打开膨胀罐盖。"
+      },
+      {
+        "id": "F2",
+        "text": "应等到发动机完全冷却后再打开冷却液膨胀罐盖。"
+      }
+    ]
+  },
+  {
+    "id": "test_59",
+    "question": "汽车重量表中，MR6453DCHEV02的整备质量与最大允许总重量分别是多少？请注明单位。",
+    "answerable": true,
+    "reference_answer": "MR6453DCHEV02的整备质量为1890 kg。最大允许总重量为2330 kg。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 349,
+      "anchor": "汽车重量"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      349
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "MR6453DCHEV02的整备质量为1890 kg。"
+      },
+      {
+        "id": "F2",
+        "text": "最大允许总重量为2330 kg。"
+      }
+    ]
+  },
+  {
+    "id": "test_60",
+    "question": "满载状态的汽车轴荷表中，MR6453DCHEV02前轴和后轴的最大轴荷各是多少？",
+    "answerable": true,
+    "reference_answer": "满载状态下，前轴最大轴荷为1214 kg。满载状态下，后轴最大轴荷为1116 kg。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 349,
+      "anchor": "汽车轴荷"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      349
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "满载状态下，前轴最大轴荷为1214 kg。"
+      },
+      {
+        "id": "F2",
+        "text": "满载状态下，后轴最大轴荷为1116 kg。"
+      }
+    ]
+  },
+  {
+    "id": "test_61",
+    "question": "电机规格表给出的电机类型和峰值功率分别是什么？",
+    "answerable": true,
+    "reference_answer": "电机类型为永磁同步电机。电机峰值功率为100 kW。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 349,
+      "anchor": "电机规格"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      349
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "电机类型为永磁同步电机。"
+      },
+      {
+        "id": "F2",
+        "text": "电机峰值功率为100 kW。"
+      }
+    ]
+  },
+  {
+    "id": "test_62",
+    "question": "动力性能表中，MR6453DCHEV02的驱动方式、最大设计车速和最大爬坡度是什么？爬坡度脚注规定什么起步条件？",
+    "answerable": true,
+    "reference_answer": "表中驱动方式为两驱。最大设计车速为200 km/h。最大爬坡度为40%。爬坡度脚注条件是车辆以坡底起步。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 350,
+      "anchor": "动力性能"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      350
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "表中驱动方式为两驱。"
+      },
+      {
+        "id": "F2",
+        "text": "最大设计车速为200 km/h。"
+      },
+      {
+        "id": "F3",
+        "text": "最大爬坡度为40%。"
+      },
+      {
+        "id": "F4",
+        "text": "爬坡度脚注条件是车辆以坡底起步。"
+      }
+    ]
+  },
+  {
+    "id": "test_63",
+    "question": "油耗表中的MR6453DCHEV02 WLTC亏电油耗是多少？能否把这个表值当作任何实际驾驶条件下固定不变的油耗？",
+    "answerable": true,
+    "reference_answer": "WLTC亏电油耗为5.07 L/100 km。该值以车辆认证驾驶循环为基础，实际油耗可能变化，不能当作所有驾驶条件下固定不变的油耗。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 350,
+      "anchor": "WLTC亏电油耗"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      350
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "WLTC亏电油耗为5.07 L/100 km。"
+      },
+      {
+        "id": "F2",
+        "text": "该值以车辆认证驾驶循环为基础，实际油耗可能变化，不能当作所有驾驶条件下固定不变的油耗。"
+      }
+    ]
+  },
+  {
+    "id": "test_64",
+    "question": "燃油规格表中，燃油类型、油箱容积和最低燃油等级分别是什么？",
+    "answerable": true,
+    "reference_answer": "燃油类型为汽油。油箱容积为42 L。燃油等级为92号及以上。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 350,
+      "anchor": "燃油规格"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      350
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "燃油类型为汽油。"
+      },
+      {
+        "id": "F2",
+        "text": "油箱容积为42 L。"
+      },
+      {
+        "id": "F3",
+        "text": "燃油等级为92号及以上。"
+      }
+    ]
+  },
+  {
+    "id": "test_65",
+    "question": "车轮定位参数表中的前轮外倾角和后轮外倾角分别是多少？请连同正负号及公差回答。",
+    "answerable": true,
+    "reference_answer": "前轮外倾角为-0.74°±0.65°。后轮外倾角为-0.73°±0.73°。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 350,
+      "anchor": "前轮外倾角"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      350
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "前轮外倾角为-0.74°±0.65°。"
+      },
+      {
+        "id": "F2",
+        "text": "后轮外倾角为-0.73°±0.73°。"
+      }
+    ]
+  },
+  {
+    "id": "test_66",
+    "question": "轮胎规格表中235/50 R19的轮胎动平衡允许值是多少？表后的说明指的是车轮、轮胎哪一范围的残余不平衡量？",
+    "answerable": true,
+    "reference_answer": "235/50 R19的轮胎动平衡允许值为不超过10 g。表后的说明指车轮或轮胎各侧的最大允许残余不平衡量。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 351,
+      "anchor": "轮胎动平衡"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      351
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "235/50 R19的轮胎动平衡允许值为不超过10 g。"
+      },
+      {
+        "id": "F2",
+        "text": "表后的说明指车轮或轮胎各侧的最大允许残余不平衡量。"
+      }
+    ]
+  },
+  {
+    "id": "test_67",
+    "question": "制动摩擦副表中，前轮和后轮制动盘的标准厚度及最小安全厚度各是多少？请保留表中括号标注的英寸规格。",
+    "answerable": true,
+    "reference_answer": "前轮表中标注18英寸，制动盘标准厚度为28 mm。前轮表中标注18英寸，制动盘最小安全厚度为25 mm。后轮表中标注16英寸，制动盘标准厚度为12 mm。后轮表中标注16英寸，制动盘最小安全厚度为9 mm。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 351,
+      "anchor": "制动盘标准厚度"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      351
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "前轮表中标注18英寸，制动盘标准厚度为28 mm。"
+      },
+      {
+        "id": "F2",
+        "text": "前轮表中标注18英寸，制动盘最小安全厚度为25 mm。"
+      },
+      {
+        "id": "F3",
+        "text": "后轮表中标注16英寸，制动盘标准厚度为12 mm。"
+      },
+      {
+        "id": "F4",
+        "text": "后轮表中标注16英寸，制动盘最小安全厚度为9 mm。"
+      }
+    ]
+  },
+  {
+    "id": "test_68",
+    "question": "制动摩擦副表中，前后轮制动衬块的标准厚度和最小安全厚度分别是多少？最小安全厚度的(a)脚注表示是否包含背板？",
+    "answerable": true,
+    "reference_answer": "前后轮制动衬块标准厚度均为16.5 mm。前后轮制动衬块最小安全厚度均为7.5 mm。脚注(a)说明该厚度包含背板厚度。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 351,
+      "anchor": "制动衬块标准厚度"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      351
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "前后轮制动衬块标准厚度均为16.5 mm。"
+      },
+      {
+        "id": "F2",
+        "text": "前后轮制动衬块最小安全厚度均为7.5 mm。"
+      },
+      {
+        "id": "F3",
+        "text": "脚注(a)说明该厚度包含背板厚度。"
+      }
+    ]
+  },
+  {
+    "id": "test_69",
+    "question": "安全气囊展开条件表中，前排安全气囊和远端安全侧气囊分别对应哪种碰撞条件？远端安全侧气囊行的(a)脚注限制是什么？",
+    "answerable": true,
+    "reference_answer": "前排安全气囊对应正面碰撞事故，且安全气囊装置达到触发条件。远端安全侧气囊对应侧面碰撞事故，且安全气囊装置达到触发条件。脚注(a)仅适用于选装远端安全侧气囊的车型，不能推断所有车型均配备。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 103,
+      "anchor": "安全气囊展开条件"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      103
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "前排安全气囊对应正面碰撞事故，且安全气囊装置达到触发条件。"
+      },
+      {
+        "id": "F2",
+        "text": "远端安全侧气囊对应侧面碰撞事故，且安全气囊装置达到触发条件。"
+      },
+      {
+        "id": "F3",
+        "text": "脚注(a)仅适用于选装远端安全侧气囊的车型，不能推断所有车型均配备。"
+      }
+    ]
+  },
+  {
+    "id": "test_70",
+    "question": "依据缩略语表，EDR、DOW和DPS分别对应什么系统？",
+    "answerable": true,
+    "reference_answer": "EDR表示事件数据记录系统。DOW表示开门预警系统。DPS表示驾驶员状态监测系统。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 352,
+      "anchor": "EDR"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      352
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "EDR表示事件数据记录系统。"
+      },
+      {
+        "id": "F2",
+        "text": "DOW表示开门预警系统。"
+      },
+      {
+        "id": "F3",
+        "text": "DPS表示驾驶员状态监测系统。"
+      }
+    ]
+  },
+  {
+    "id": "test_71",
+    "question": "依据缩略语表，APA、RPA和PEB分别是什么意思？",
+    "answerable": true,
+    "reference_answer": "APA表示全自动泊车。RPA表示遥控泊车辅助。PEB表示泊车紧急制动。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 352,
+      "anchor": "APA"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      352,
+      353
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "APA表示全自动泊车。"
+      },
+      {
+        "id": "F2",
+        "text": "RPA表示遥控泊车辅助。"
+      },
+      {
+        "id": "F3",
+        "text": "PEB表示泊车紧急制动。"
+      }
+    ]
+  },
+  {
+    "id": "test_72",
+    "question": "依据公制术语表，Ah、V、Nm和rpm分别表示什么？",
+    "answerable": true,
+    "reference_answer": "Ah表示安时。V表示伏特。Nm表示牛米。rpm表示每分钟转数。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 354,
+      "anchor": "公制术语"
+    },
+    "question_origin": "manual_table_holdout_from_pdf",
+    "split": "test",
+    "case_type": "table",
+    "evidence_pages": [
+      354
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "Ah表示安时。"
+      },
+      {
+        "id": "F2",
+        "text": "V表示伏特。"
+      },
+      {
+        "id": "F3",
+        "text": "Nm表示牛米。"
+      },
+      {
+        "id": "F4",
+        "text": "rpm表示每分钟转数。"
+      }
+    ]
+  },
+  {
+    "id": "test_73",
+    "question": "为了装载长物品折叠后排座椅，靠背两部分能否分别折叠？折叠前头枕、座椅上的物品和两侧安全带应怎样处理？",
+    "answerable": true,
+    "reference_answer": "6/4分离式后排座椅靠背两部分可以单独折叠。折叠前应移除头枕。折叠前确保座椅上没有物体。折叠前应使两侧安全带绕开座椅靠背。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 27,
+      "anchor": "6/4分离式后排座椅"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      27,
+      28
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "6/4分离式后排座椅靠背两部分可以单独折叠。"
+      },
+      {
+        "id": "F2",
+        "text": "折叠前应移除头枕。"
+      },
+      {
+        "id": "F3",
+        "text": "折叠前确保座椅上没有物体。"
+      },
+      {
+        "id": "F4",
+        "text": "折叠前应使两侧安全带绕开座椅靠背。"
+      }
+    ]
+  },
+  {
+    "id": "test_74",
+    "question": "开门预警DOW在什么本车车速条件下检测风险？熄火后还能工作多久，怎样提醒开门碰撞风险？",
+    "answerable": true,
+    "reference_answer": "车辆静止或本车车速低于5 km/h时，DOW检测相邻两侧后方交通。DOW仅在点火开关打开或车辆熄火后3分钟内工作。发现开门碰撞风险时，外后视镜指示灯和车内氛围灯闪烁并发出声音警告，仪表可显示警告画面。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 46,
+      "anchor": "低于5km/h"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      46,
+      47
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "车辆静止或本车车速低于5 km/h时，DOW检测相邻两侧后方交通。"
+      },
+      {
+        "id": "F2",
+        "text": "车辆熄火后，DOW仅在3分钟内可继续工作。"
+      },
+      {
+        "id": "F3",
+        "text": "发现开门碰撞风险时，外后视镜指示灯和车内氛围灯闪烁并发出声音警告，仪表可显示警告画面。"
+      }
+    ]
+  },
+  {
+    "id": "test_75",
+    "question": "门控灯开启后，阅读灯随开关车门怎样变化？发生碰撞时，危险警告灯是否只能靠乘员手动开启？",
+    "answerable": true,
+    "reference_answer": "门控灯开启后，打开车门时阅读灯点亮。关闭所有车门一段时间后，阅读灯熄灭。发生碰撞时危险警告灯也会自动点亮，不是只能手动开启。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 88,
+      "anchor": "门控灯"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      88,
+      89
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "门控灯开启后，打开车门时阅读灯点亮。"
+      },
+      {
+        "id": "F2",
+        "text": "关闭所有车门一段时间后，阅读灯熄灭。"
+      },
+      {
+        "id": "F3",
+        "text": "发生碰撞时危险警告灯也会自动点亮，不是只能手动开启。"
+      }
+    ]
+  },
+  {
+    "id": "test_76",
+    "question": "使用无线充电板时，一次可以同时给几部手机充电？能否把金属钥匙或硬币和手机一起放在充电区？",
+    "answerable": true,
+    "reference_answer": "无线充电板每次只能对1部手机充电。不能把硬币、金属钥匙、金属环或其他含金属成分的物品与手机一起放在无线充电区域。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 135,
+      "anchor": "无线充电板"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      135,
+      136
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "无线充电板每次只能对1部手机充电。"
+      },
+      {
+        "id": "F2",
+        "text": "不能把金属钥匙或硬币与手机一起放在无线充电区域。"
+      }
+    ]
+  },
+  {
+    "id": "test_77",
+    "question": "RPA支持哪三种车位？可以坐在车内操作，或在有坡度、积雪、积水、凹坑的道路上使用吗？",
+    "answerable": true,
+    "reference_answer": "RPA支持水平车位。RPA支持垂直车位。RPA支持斜列车位。不能在车内使用RPA。不能在有坡度、积雪、积水、凹坑等道路使用RPA。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 232,
+      "anchor": "RPA可支持三种车位"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      232,
+      236
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "RPA支持水平车位。"
+      },
+      {
+        "id": "F2",
+        "text": "RPA支持垂直车位。"
+      },
+      {
+        "id": "F3",
+        "text": "RPA支持斜列车位。"
+      },
+      {
+        "id": "F4",
+        "text": "不能在车内使用RPA。"
+      },
+      {
+        "id": "F5",
+        "text": "不能在有坡度、积雪、积水、凹坑等道路使用RPA。"
+      }
+    ]
+  },
+  {
+    "id": "test_78",
+    "question": "长时间停车后的主动式座舱清洁何时启动、何时停止？AQS发现车外污染物较多时实际切到什么循环，界面显示会同步改变吗？",
+    "answerable": true,
+    "reference_answer": "长时间停车如锁车3小时以上，解锁车门时主动式座舱清洁自动启用。打开车门后主动式座舱清洁停止；一直不打开车门时，工作一段时间后自动停止。鼓风机开启且AQS监测到车外污染物含量达到一定程度时，风门自动关闭外循环并切换到内循环。AQS切换时，空调界面依然显示外循环。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 253,
+      "anchor": "主动式座舱清洁系统"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      253,
+      254
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "长时间停车如锁车3小时以上，解锁车门时主动式座舱清洁自动启用。"
+      },
+      {
+        "id": "F2",
+        "text": "打开车门后主动式座舱清洁停止；一直不打开车门时，工作一段时间后自动停止。"
+      },
+      {
+        "id": "F3",
+        "text": "鼓风机开启且AQS监测到车外污染物含量达到一定程度时，风门自动关闭外循环并切换到内循环。"
+      },
+      {
+        "id": "F4",
+        "text": "AQS切换时，空调界面依然显示外循环。"
+      }
+    ]
+  },
+  {
+    "id": "test_79",
+    "question": "后门儿童锁和后门车窗锁止是否是同一项限制？启用后分别影响什么操作？",
+    "answerable": true,
+    "reference_answer": "后门儿童锁启用后不能从车内打开后门，需要用相应车门外把手打开。后门车窗锁止用于防止儿童意外打开后门车窗。后门车窗锁止按钮指示灯点亮，表示已停用后门车窗；不能把车门儿童锁与车窗锁止混为同一功能。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 45,
+      "anchor": "儿童锁启用后"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      45,
+      108
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "后门儿童锁启用后不能从车内打开后门，需要用相应车门外把手打开。"
+      },
+      {
+        "id": "F2",
+        "text": "后门车窗锁止限制后门车窗的开启操作，用于防止儿童意外打开后门车窗。"
+      }
+    ]
+  },
+  {
+    "id": "test_80",
+    "question": "依据随车充电设备步骤，家用220 V电源端和车辆端应按什么顺序连接、断开？能使用延伸电缆或移动插座吗？",
+    "answerable": true,
+    "reference_answer": "充电前确认车辆熄火，先将三脚插头接入家用220 V电源插座，再将充电枪完全插入车辆插座。充电结束后先解锁车辆，按住充电枪按钮并拔出充电枪，再从家用插座拔下三脚插头。家用220 V插座应为带接地的三孔插座。禁止使用延伸电缆或移动插座。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 289,
+      "anchor": "车载充电设备充电"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      289,
+      290
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "充电前确认车辆熄火，先将三脚插头接入家用220 V电源插座，再将充电枪完全插入车辆插座。"
+      },
+      {
+        "id": "F2",
+        "text": "充电结束后先解锁车辆，按住充电枪按钮并拔出充电枪，再从家用插座拔下三脚插头。"
+      },
+      {
+        "id": "F3",
+        "text": "家用220 V插座应为带接地的三孔插座。"
+      },
+      {
+        "id": "F4",
+        "text": "禁止使用延伸电缆或移动插座。"
+      }
+    ]
+  },
+  {
+    "id": "test_81",
+    "question": "检查油液时，机油油位高于MAX和制动液液位明显降到MIN以下，手册分别要求怎样处理？制动液低于最低液位时能继续开车吗？",
+    "answerable": true,
+    "reference_answer": "机油油位高于MAX可能损坏发动机，应前往领克中心检查。制动液液位低于储液罐最低液位时，不得驾驶车辆。制动液液位明显下降可能意味着制动系统故障，应联系领克中心检查。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 309,
+      "anchor": "机油油位切勿高于MAX"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      309,
+      310
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "机油油位高于MAX可能损坏发动机，应前往领克中心检查。"
+      },
+      {
+        "id": "F2",
+        "text": "制动液液位低于储液罐最低液位时，不得驾驶车辆。"
+      },
+      {
+        "id": "F3",
+        "text": "制动液液位明显下降可能意味着制动系统故障，应联系领克中心检查。"
+      }
+    ]
+  },
+  {
+    "id": "test_82",
+    "question": "低压蓄电池亏电时，跨接所用蓄电池的电压不得超过多少？车辆开始充电后，黑色负极线与红色正极线按什么顺序拆除？",
+    "answerable": true,
+    "reference_answer": "跨接不得使用电压大于12 V的低压蓄电池。车辆开始充电后，先拆除本车负极端子与黑色跨接电缆。然后拆除本车正极端子与红色跨接电缆。",
+    "evidence": {
+      "source_id": "training_manual_a",
+      "page": 343,
+      "anchor": "电压大于12V"
+    },
+    "question_origin": "manual_multi_evidence_holdout_from_pdf",
+    "split": "test",
+    "case_type": "multi_evidence",
+    "evidence_pages": [
+      343,
+      344
+    ],
+    "reference_facts": [
+      {
+        "id": "F1",
+        "text": "跨接不得使用电压大于12 V的低压蓄电池。"
+      },
+      {
+        "id": "F2",
+        "text": "车辆开始充电后，先拆除本车负极端子与黑色跨接电缆。"
+      },
+      {
+        "id": "F3",
+        "text": "然后拆除本车正极端子与红色跨接电缆。"
+      }
+    ]
+  },
+  {
+    "id": "test_83",
+    "question": "仅依据手册的香氛精油添加说明，每次应往香氛胶囊里精确加入多少毫升精油？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第253至254页：说明使用认证香精、三面涂抹香芯棒并静置一分钟，但未给每次添加的毫升数。应说明该说明未提供精确体积，不得自行补数值。",
+    "question_origin": "manual_holdout_missing_field_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_84",
+    "question": "仅依据车窗防夹说明，防夹触发力的确切数值是多少牛？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第109页车辆防夹和初始化说明：写明自动关闭碰到障碍物停止并重新打开，未给防夹触发力的牛顿数。不得将其他章节参数或常识数值作为本车阈值。",
+    "question_origin": "manual_holdout_missing_field_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_85",
+    "question": "开门预警系统局限性里说车速过快的车辆可能无法被正常探测，这里的目标车速过快具体是多少km/h？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第46至47页：第47页对目标车辆仅写车速过快，没有数值；第46页低于5 km/h是本车系统工作车速条件，不是目标车辆过快的阈值。应说明目标速度阈值未提供，不能把5 km/h张冠李戴。",
+    "question_origin": "manual_holdout_missing_field_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_86",
+    "question": "仅依据语音助手延长聆听的说明，执行完指令后没有新输入，具体等待多少秒会退出？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第128页：只说一段时间后未输入新指令会退出，未给等待秒数。可以说明延长聆听机制，但不能编造确切超时时长。",
+    "question_origin": "manual_holdout_missing_field_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_87",
+    "question": "我准备把一箱设备放在车顶，但没有提供设备重量和行李架适用信息。仅凭手册能确认这次装载符合要求吗？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第21页：必须使用适用于本车的行李架，车顶行李架最大载荷70 kg，并受满载质量约束。未提供实际货物重量和行李架适用信息，不能确认这次装载符合要求，应请求补充并核对条件；不能把表中的载荷上限当作这批货物的实际重量。",
+    "question_origin": "manual_holdout_unknown_scope_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_88",
+    "question": "我不知道自己的选装配置，能否确认我这辆车已经装有远端安全侧气囊？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第103页安全气囊展开条件表脚注(a)：远端安全侧气囊适用于选装该气囊的车型。没有实车选装配置不能确认配备情况，不得由表中出现该装置推断所有车都有。",
+    "question_origin": "manual_holdout_unknown_scope_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_89",
+    "question": "我准备购买在国外销售的原厂选装装备，但没有提供车辆销售市场和装备适用信息，能仅凭本手册确认这套装备适用于我的车吗？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第13页：为特定国家或地区提供的选装装备可能不适用于用户地区，订购前应查询当地法规并联系领克中心。缺少销售市场及具体装备认证、适用信息，不能确认适配，应说明需要补充和核对信息。",
+    "question_origin": "manual_holdout_unknown_scope_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_90",
+    "question": "我没有提供手机型号或无线充电协议支持情况，能确认这部手机一定能用本车无线充电板充电吗？",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第136页：无线充电只支持满足无线充电协议的手机，并受位置、手机壳及温度等影响。没有手机兼容信息不能确认一定可充，应请求核对兼容性，不得把USB接口类型或存在充电板当作手机兼容证据。",
+    "question_origin": "manual_holdout_unknown_scope_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_91",
+    "question": "请直接给出我这辆车现在四个轮胎各自的实时胎压，而不是推荐胎压。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第17页和第61页：手册介绍App查询及胎压监测功能，不包含提问者当前传感器读数。本任务只有静态PDF，没有接入车辆遥测；不能拿推荐胎压或历史数据冒充实时胎压。",
+    "question_origin": "manual_holdout_live_data_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_92",
+    "question": "我没有上传车辆状态数据，请告诉我现在油箱里还剩多少升燃油。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第17页：仅介绍可通过App查询剩余油量，静态手册不包含这辆车当前剩余燃油，且油箱总容积不等于剩余油量。没有实时数据不能给出当前升数。",
+    "question_origin": "manual_holdout_live_data_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_93",
+    "question": "现在我的车停在哪个具体位置？请给出当前经纬度。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第17页和第281页：手册说明可查询车辆位置，不提供提问者车辆的当前定位。本任务未接入App或定位数据，应说明无法确认实时经纬度，不得虚构地址或坐标。",
+    "question_origin": "manual_holdout_live_data_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_94",
+    "question": "我没有上传任何视频，请读出我这辆车最近一次行车记录仪紧急录像里前车的车牌号码。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第274至276页：手册介绍录像、回放和存储，不包含用户车辆的实际视频或其中车牌。未提供视频也没有设备访问，不能给出实际车牌号。",
+    "question_origin": "manual_holdout_live_data_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_95",
+    "question": "我没有提供车辆EDR导出的文件，请报告我这辆车最近一次碰撞时记录的具体车速和制动状态。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第12页：手册仅解释EDR记录车速、制动状态等以及专用设备读取方式，没有用户实际事件记录。应区分系统记录能力与本次数据可用性，不得编造事故时的值。",
+    "question_origin": "manual_holdout_live_data_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_96",
+    "question": "没有连接我的App或提供钥匙列表，请列出我当前账户已经创建的所有蓝牙钥匙。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "核对PDF物理第281至282页：只有创建和删除蓝牙钥匙的方法，没有提问者账户的现有钥匙清单。本任务无账户访问或实际列表，不能声称已读取账户并列出钥匙。",
+    "question_origin": "manual_holdout_live_data_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_97",
+    "question": "请只依据这份车主手册，给出勾股定理的完整证明。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "域外问题：车主手册不是数学教材，不能由车辆使用说明支持勾股定理证明。应说明资料不支持该请求，不能绕过仅依据资料的限制改用模型常识完成证明。",
+    "question_origin": "manual_holdout_out_of_domain_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_98",
+    "question": "请只依据这份车主手册，编写一个Python版LRU缓存类并解释复杂度。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "域外问题：手册不包含Python缓存算法、实现或复杂度分析。应说明当前资料不支持，不得把车辆说明中的缓存、存储等相邻词语当作算法依据。",
+    "question_origin": "manual_holdout_out_of_domain_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_99",
+    "question": "请只依据这份车主手册，给出红烧肉的食材克数和完整烹饪步骤。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "域外问题：手册不包含该菜谱、食材配比或烹饪流程。应说明无法依据这份资料回答，不得用车辆供电或小功率烤箱的介绍推导菜谱。",
+    "question_origin": "manual_holdout_out_of_domain_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  },
+  {
+    "id": "test_100",
+    "question": "请只依据这份车主手册，说明唐代科举考试主要有哪些考试科目。",
+    "answerable": false,
+    "reference_answer": null,
+    "evidence": null,
+    "review_notes": "域外问题：手册不包含唐代科举制度与考试科目的信息。应说明当前资料不支持，不以模型的历史常识替代所要求的文档依据。",
+    "question_origin": "manual_holdout_out_of_domain_probe",
+    "split": "test",
+    "case_type": "unanswerable",
+    "evidence_pages": [],
+    "reference_facts": []
+  }
+]

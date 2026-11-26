@@ -10,3 +10,5 @@ __pycache__/
 *.log
 .DS_Store
 *.db
+
+/projects/smart_cockpit_rag/.qdrant/

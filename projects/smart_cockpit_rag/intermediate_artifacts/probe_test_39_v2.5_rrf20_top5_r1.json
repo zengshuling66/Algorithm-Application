@@ -1,0 +1,1083 @@
+{
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "reranker_model": "BAAI/bge-reranker-base",
+  "reranker_revision": "2cfc18c9415c912f9d8155881c133215df768a70",
+  "top_k": 5,
+  "candidate_k": 20,
+  "cases": [
+    {
+      "case_id": "test_39",
+      "retrieved_pages": [
+        268,
+        267,
+        135,
+        130,
+        141
+      ],
+      "retrieved_chunk_ids": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p267:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p130:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p141:c2:tables-textflow-v1:body"
+      ],
+      "evidence_page_hit": true,
+      "annotated_page_rr": 1.0,
+      "method": "rerank",
+      "question": "想让其他智能设备连接车载热点，应先满足什么网络条件，再进入哪个设置界面开启？",
+      "answerable": true,
+      "candidate_results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 268,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "中央显示屏",
+          "block_id": "body",
+          "kind": "text",
+          "text": "中央显示屏\n268\n01点击开启/关闭Wi-Fi功能。\n在Wi-Fi功能设置界面，可查看已连接的网络、系统搜索到的网络，\n可重新选择希望连接的网络。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入Wi-Fi功能\n设置界面。\n车载热点\n接入网络后，可以创建车载热点，为其他智能设备提供网络。\n在中央显示屏上点击 -设置-连接-车载热点，进入车载热点设置界\n面。\n01点击开启/关闭车载热点功能。\n在车载热点功能设置界面，可设置热点名称、热点配置等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入车载热点功\n能设置界面。\n系统设置\n在中央显示屏中点击 -设置-系统，进入系统设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 303,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.755237857742455,
+            "bm25": 44.7990622106192
+          },
+          "rrf_rank": 1,
+          "rerank_score": 4.112453937530518
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 267,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "中央显示屏",
+          "block_id": "body",
+          "kind": "text",
+          "text": "中央显示屏\n267\n说明！\n□ 点击界面上的“编辑”按键，可以选择删除或添加快捷开关图\n标。\n连接设置\n在中央显示屏中点击 -设置-连接，进入连接设置界面。\n在连接界面可以进行以下设置：\n■ 蓝牙：设置蓝牙名称、查看已连接的蓝牙、系统搜索到的蓝牙、\n重新选择希望连接的蓝牙。\n■ Wi-Fi：查看已连接的网络、系统搜索到的网络，可重新选择希\n望连接的网络。\n■ 车载热点：设置热点名称、热点配置。\n蓝牙连接\n在中央显示屏上点击 -设置-连接-蓝牙，进入蓝牙设置界面。\n01点击开启/关闭蓝牙功能。\n在蓝牙功能设置界面，可设置蓝牙名称、查看已连接的蓝牙、系统搜\n索到的蓝牙、重新选择希望连接的蓝牙等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入蓝牙功能设\n置界面。\nWi-Fi连接\n在中央显示屏上点击 -设置-连接-Wi-Fi，进入Wi-Fi设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p267:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 383,
+          "score": 0.03225806451612903,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.5926334512908966,
+            "bm25": 30.588902343640825
+          },
+          "rrf_rank": 2,
+          "rerank_score": 2.184872627258301
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 135,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n135\n智能设备充电\n无线充电板\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。\n01点击打开/关闭无线充电。\n注意！\n■ 请勿将信用卡或其他磁性物体放在无线充电板上，以免损坏。\n■ 请勿将硬币、金属钥匙、金属环或其他含有金属成分的物品与手\n机一起放置在无线充电区域。\n■ 驾驶员不在车内时，请不要放置手机在车内充电，以免造成安全\n隐患。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 181,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "vector": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.5875874197184755
+          },
+          "rrf_rank": 7,
+          "rerank_score": -0.7249201536178589
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 130,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n130\n前排扶手箱12V电源插座\n警告！\n■ 不使用插座时，务必盖上保护盖。请勿让水或任何其他液体接触\n插座。\n■ 接入的设备在充电时可能会发热。请注意确保高温设备不危害个\n人或造成财产损失。\n注意！\n■ 请勿使用超过额定值12V/120W以上的电气附件。\n■ 请勿使用过大或过重的插头连接设备，驾驶时插头可能会松动。\n■ 请勿使用会对车辆无线电接收器或电气系统造成干扰的设备。\n智能设备充电\n无线充电板\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p130:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 238,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "bm25": 19.993807632437015
+          },
+          "rrf_rank": 3,
+          "rerank_score": -0.9908304214477539
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 141,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "能，例如电动车窗等。\n■ 点火模式II：在探测到遥控钥匙的情况下，不踩下制动踏板。长\n按START/STOP按钮，从模式0或I变换到模式II。大灯和雾灯均\n可使用，系统在几秒钟内完成自检，此模式下大多数电气设备均\n可使用。\n说明！\n□ 遥控钥匙和手机、发射机、无线电广播设备等无线装置放在一起\n可能会干扰点火模式进行切换。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p141:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 161,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "vector": 7
+          },
+          "retrieval_scores": {
+            "vector": 0.5740519845420948
+          },
+          "rrf_rank": 11,
+          "rerank_score": -1.1793547868728638
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 149,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "启动和驾驶\n149\nHUD可显示驾驶辅助、警告、导航和通话等信息。\n通过中央显示屏设置抬头显示\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。\n01点击开启/关闭HUD。\n您还可以在中央显示屏中点击 -座舱体验-HUD抬头显示，进入\nHUD抬头显示设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p149:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 136,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "vector": 9
+          },
+          "retrieval_scores": {
+            "vector": 0.5665222999636841
+          },
+          "rrf_rank": 15,
+          "rerank_score": -1.2637001276016235
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 325,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "OTA升级",
+          "block_id": "body",
+          "kind": "text",
+          "text": "OTA升级\n325\n车辆远程升级（OTA)\n您的车辆可以通过远程无线升级，完成车辆固件和版本升级，实现新\n功能升级，让车辆性能更优，功能更丰富。\n说明！\n□ 当系统检测到有可更新的软件版本时，“系统更新”右上角会显\n示红色小圆点提醒您更新。\n您可以在中央显示屏上点击 -系统更新，进入系统更新设置界面。\n01点击“更新”按键，进入更新提示界面。\n车辆OTA升级需满足以下条件：\n■ 车辆挡位位于驻车挡（P）。\n■ 车辆网络连接正常。\n说明！\n□ 若不满足更新条件，则“更新”按键处于置灰状态，无法选择。\nOTA升级提示信息\n车辆进入OTA升级过程时会检测车辆状态，中央显示屏弹出相关提示\n信息：\n■ 如果不满足OTA升级条件，下次启动车辆时，弹出升级推迟消息\n提醒推迟升级原因。\n■ 如果升级成功，下次启动车辆时，弹出消息提醒您升级成功。\n■ 如果升级失败，下次启动车辆时，弹出消息提醒您升级失败。\n注意！\n■ OTA升级期间，请关闭车窗和车门，锁止并离开车辆，并确保车\n内无人。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p325:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 440,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "bm25": 7
+          },
+          "retrieval_scores": {
+            "bm25": 15.077801070891233
+          },
+          "rrf_rank": 12,
+          "rerank_score": -1.9331204891204834
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 283,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "Lynk&CoApp",
+          "block_id": "body",
+          "kind": "text",
+          "text": "Lynk&CoApp\n283\n■ 车辆位置靠近无线电塔/电视塔或发电站。\n■ 车辆周围存在无线设备，如发射机或无线电广播设备。\n说明！\n□ 蓝牙钥匙有效范围约30m左右。\n□ 使用蓝牙钥匙前，请确保钥匙管理界面蓝牙钥匙已经连接车辆。\n□ 如果蓝牙钥匙无法正常使用，可尝试先删除蓝牙钥匙再创建一\n次。如果重新创建后，蓝牙钥匙仍不可用，建议您联系Lynk&Co\n领克中心。\n□ 寒冷天气下，解锁车辆前应清除车门外把手区域的冰雪，避免影\n响车门外把手正常工作。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p283:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 227,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "vector": 3
+          },
+          "retrieval_scores": {
+            "vector": 0.5905383636629108
+          },
+          "rrf_rank": 4,
+          "rerank_score": -2.8298397064208984
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 4,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "目录",
+          "block_id": "body",
+          "kind": "text",
+          "text": "............................128\n车载12V电源.........................................................129\n智能设备充电..........................................................130\n智能设备充电..........................................................132\n智能设备充电..........................................................133\n智能设备充电..........................................................135\n外接行车记录仪.......................................................137\n遮阳板...........................................................",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p4:c8:tables-textflow-v1:body",
+          "chunk_index": 8,
+          "char_count": 500,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "bm25": 6
+          },
+          "retrieval_scores": {
+            "bm25": 16.08854258458484
+          },
+          "rrf_rank": 10,
+          "rerank_score": -2.9755544662475586
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 133,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n133\n01TypeC\n02TypeA\n说明！\n所支持的U盘及数据传输格式：\n□ U盘格式：FAT16、FAT32、NTFS、exFAT。\n□ 音频格式：MP3、AAC、WAV、FLAC、OGG。\n□ 视频格式：3GP、FLV、MKV、WMV、MPG、MP4、AVI、MOV。\n□ 图片格式：BMP、JPG、JPEG、PNG、GIF。\n后排乘客使用的USB接口\n中央扶手箱后部，设置有两个供第二排乘客使用的USB接口，能为手\n机/平板等智能设备充电。\n输出电压5V（快充情况下最大9V），支持快充，最大输出功率18\nW。请勿将风扇或照明灯具等设备连接到USB接口。\n01TypeC\n02TypeA\n智能设备充电\n中央扶手箱的USB接口\n在中央扶手箱内，设置有两个USB接口。TypeA接口支持数据传输和\n充电，可用于手机/U盘及平板等智能设备与车机的数据传输，也可为\n智能设备充电。TypeC接口能为手机/平板等智能设备充电。\n输出电压5V，最大输出电流大约1.5A（TypeA）/3A（TypeC）。请\n勿将风扇或照明灯具等设备连接到USB接口。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p133:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 479,
+          "score": 0.014285714285714285,
+          "retrieval_ranks": {
+            "bm25": 10
+          },
+          "retrieval_scores": {
+            "bm25": 14.200140306437778
+          },
+          "rrf_rank": 17,
+          "rerank_score": -3.0176825523376465
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 41,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "上车和下车",
+          "block_id": "body",
+          "kind": "text",
+          "text": "步解锁功能\n在中央显示屏中点击 -车辆设置-门锁，进入门锁设置界面。\n01点击开启/关闭两步解锁功能。\n两步解锁功能设置为仅主驾时，短时间内连续两次按下解锁按键或在\n驾驶员侧车门打开后按下解锁按键，会解锁所有车门。\n警告！\n■ 下车时，请务必关闭点火开关，带走遥控钥匙，特别是在车内有\n儿童的情况下。因为儿童可能会启动车辆或激活电动车窗，进而\n造成事故或人身伤害。\n注意！\n■ 请勿改装钥匙或用硬物敲击钥匙，否则可能影响钥匙功能。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p41:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 215,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "vector": 8
+          },
+          "retrieval_scores": {
+            "vector": 0.5738880363691516
+          },
+          "rrf_rank": 14,
+          "rerank_score": -3.058819055557251
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 33,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "装载货物",
+          "block_id": "body",
+          "kind": "text",
+          "text": "装载货物\n33\n使用Lynk&CoApp车外解锁尾门\n解锁尾门图标：登录Lynk&CoApp，按下该图标可以解锁\n尾门。\n走近走远感应式电动尾门\n1 在中央显示屏中点击 -车辆设置-门锁，进入门锁设置界面。\n01点击按键，开启靠近解锁远离上锁功能。\n2在中央显示屏中点击 -车辆设置-电动尾门，进入尾门设置界\n面。\n01点击按键，开启靠近自动开启功能。\n3携带遥控钥匙在距离尾门0.8m左右的区域内站立2秒。\n4当转向灯缓慢闪烁时再后退一小步，转向灯再次快速闪烁，尾门\n将自动打开。\n说明！\n□ 如果在转向灯缓慢闪烁时离开车辆感应区域，尾门将不会开启。\n□ 当整车处于充电桩、大型停车场、变电站等有信号干扰的地方时\n或智能钥匙和干扰设备放在一起时，智能钥匙会受到干扰。因此\n会偶发出现功能异常情况，当出现异常时，请使用其他方式或者\n排除掉干扰后再次尝试。\n□ 为了节约整车功耗，该功能在一些情况下可能会自动关闭，可以\n通过启动车辆重新激活。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p33:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 420,
+          "score": 0.014705882352941176,
+          "retrieval_ranks": {
+            "bm25": 8
+          },
+          "retrieval_scores": {
+            "bm25": 15.0146535252348
+          },
+          "rrf_rank": 13,
+          "rerank_score": -3.2814748287200928
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 298,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "高压系统",
+          "block_id": "body",
+          "kind": "text",
+          "text": "高压系统\n298\n01点击开启/关闭预约充电。\n02设置预约充电每天或单次。\n03设置预约充电开始时间和充电结束时间。\n2将车载充电设备或充电桩的充电枪完全插入到车辆充电插座上。\n车辆充电插座上的蓝色充电指示灯常亮，表示预约充电成功。\n说明！\n□ 使用预约充电功能时，应尽量使用车载充电设备或领克智能充电\n桩进行充电，避免因刷卡认证等原因造成的充电失败。\n□ 若截止到预约充电开始时间，依旧未连接充电枪，则会导致预约\n充电失败。\n车辆供电\n外出时，车辆可以作为电源对照明、小功率烤箱、微波炉等家用电器\n或其它新能源车辆进行供电。\n设置综合里程保护\n在中央显示屏中点击 -充电供电-供电，进入供电设置界面。\n01点击开启/关闭综合里程保护。\n02滑动滑块设置综合里程保护里程数。\n供电过程中，若动力电池达到设置的目标供电量时，将自动停止供\n电。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p298:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 371,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "bm25": 5
+          },
+          "retrieval_scores": {
+            "bm25": 17.15779758325258
+          },
+          "rrf_rank": 8,
+          "rerank_score": -4.235358238220215
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 137,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n137\n输出电压5V（快充情况下最大9V），支持快充，最大输出功率18\nW。请勿将风扇或照明灯具等设备连接到USB接口。\n外接行车记录仪\n车顶USB接口\n说明！\n□ 图片仅供说明使用，具体请以实车为准。\n5VUSB接口位于前排乘客侧车顶内衬内。该接口可为行车记录仪供\n电。\n注意！\n■ 将插头插入USB接口时，请勿用力过猛。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p137:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 167,
+          "score": 0.014285714285714285,
+          "retrieval_ranks": {
+            "vector": 10
+          },
+          "retrieval_scores": {
+            "vector": 0.5634359966483659
+          },
+          "rrf_rank": 18,
+          "rerank_score": -4.506204605102539
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 142,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "启动和驾驶\n142\n通过手机APP启动车辆\n您可以通过Lynk&CoAPP使用以下方式启用车辆：\n■ 蓝牙启动：手机在车内时且处于连接状态时，可以通过蓝牙钥匙\n启动车辆。\n■ 远程启动：距离车辆较远时，可以通过网络远程启动发动机。\n说明！\n□ 通过蓝牙钥匙成功连接车辆后是通过蓝牙方式控制车辆。未连接\n蓝牙钥匙是通过远程方式控制车辆。\n□ 您可以在冬季寒冷条件下，远程启动发动机，提前对发动机预热\n（暖机）。\n通过蓝牙钥匙启动车辆\n您可以通过以下方式启动车辆：\n1 打开Lynk&CoAPP蓝牙钥匙。\n2在Lynk&CoAPP中点击 图标。\n说明！\n出现以下任一情况时，无法通过蓝牙钥匙启动车辆：\n□ 燃油油位较低。\n□ 手机在车外或Lynk&CoAPP处于关闭状态。\n□ 发动机出现故障（例如出现发动机关键故障代码）。\n□ 车辆位置靠近无线电塔/电视塔或发电站。\n□ 车辆周围存在无线设备，如发射机或无线电广播设备。\n通过网络远程启动发动机\n车辆已锁且挡位处于驻车挡（P）的情况下，登录Lynk&CoApp，按\n下 图标可以远程启动发动机。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p142:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 471,
+          "score": 0.015151515151515152,
+          "retrieval_ranks": {
+            "vector": 6
+          },
+          "retrieval_scores": {
+            "vector": 0.583582787057549
+          },
+          "rrf_rank": 9,
+          "rerank_score": -4.63801908493042
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 129,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n129\n前排扶手箱12V电源插座\n后备厢12V电源插座\n警告！\n■ 不使用插座时，务必盖上保护盖。请勿让水或任何其他液体接触\n插座。\n■ 接入的设备在充电时可能会发热。请注意确保高温设备不危害个\n人或造成财产损失。\n注意！\n■ 请勿使用超过额定值12V/120W以上的电气附件。\n■ 请勿使用过大或过重的插头连接设备，驾驶时插头可能会松动。\n■ 请勿使用会对车辆无线电接收器或电气系统造成干扰的设备。\n车载12V电源\n通过12V电源插座，可以给电子设备（例如：音乐播放器、车载冰箱\n和移动手机）充电。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p129:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 255,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "bm25": 4
+          },
+          "retrieval_scores": {
+            "bm25": 17.40880560781353
+          },
+          "rrf_rank": 6,
+          "rerank_score": -4.649516582489014
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 86,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "仪表和灯光",
+          "block_id": "body",
+          "kind": "text",
+          "text": "仪表和灯光\n86\n大灯随动转向功能\n大灯随动转向功能根据车速和方向盘转角智能调节近光灯照射角度，\n在车辆转弯过程中，可以提高更好的弯道视野。\n此功能仅在满足以下条件后启用：\n■ 在黄昏或夜间驾驶。\n■ 车速高于10km/h。\n■ 开启近光灯或远光灯。\n在中央显示屏中点击 -车辆设置-外部照明，进入外部照明设置界\n面。\n01点击开启/关闭大灯随动转向功能。\n打开/关闭后雾灯",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p86:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 187,
+          "score": 0.014492753623188406,
+          "retrieval_ranks": {
+            "bm25": 9
+          },
+          "retrieval_scores": {
+            "bm25": 14.815086558449984
+          },
+          "rrf_rank": 16,
+          "rerank_score": -5.126924514770508
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 114,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n114\n2点击 、 等指示箭头，调节选择的座椅功能。\n前排座椅加热\n通过中央显示屏调节\n设计前排座椅加热功能的目的在于通过加热前排座椅，提高环境舒适\n度。\n您可以通过中央显示屏，设置驾驶员/副驾驶员侧座椅加热强度或关\n闭座椅加热功能。\n在中央显示屏中点击 ，进入驾驶员侧座椅加热控制界面。\n01设置驾驶员侧座椅加热强度及开关控制。\n在中央显示屏中点击 ，进入副驾驶员侧座椅加热控制界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p114:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 198,
+          "score": 0.015625,
+          "retrieval_ranks": {
+            "vector": 4
+          },
+          "retrieval_scores": {
+            "vector": 0.5901080875813443
+          },
+          "rrf_rank": 5,
+          "rerank_score": -6.683748245239258
+        }
+      ],
+      "results": [
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 268,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "中央显示屏",
+          "block_id": "body",
+          "kind": "text",
+          "text": "中央显示屏\n268\n01点击开启/关闭Wi-Fi功能。\n在Wi-Fi功能设置界面，可查看已连接的网络、系统搜索到的网络，\n可重新选择希望连接的网络。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入Wi-Fi功能\n设置界面。\n车载热点\n接入网络后，可以创建车载热点，为其他智能设备提供网络。\n在中央显示屏上点击 -设置-连接-车载热点，进入车载热点设置界\n面。\n01点击开启/关闭车载热点功能。\n在车载热点功能设置界面，可设置热点名称、热点配置等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入车载热点功\n能设置界面。\n系统设置\n在中央显示屏中点击 -设置-系统，进入系统设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 303,
+          "score": 0.03278688524590164,
+          "retrieval_ranks": {
+            "vector": 1,
+            "bm25": 1
+          },
+          "retrieval_scores": {
+            "vector": 0.755237857742455,
+            "bm25": 44.7990622106192
+          },
+          "rrf_rank": 1,
+          "rerank_score": 4.112453937530518
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 267,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "中央显示屏",
+          "block_id": "body",
+          "kind": "text",
+          "text": "中央显示屏\n267\n说明！\n□ 点击界面上的“编辑”按键，可以选择删除或添加快捷开关图\n标。\n连接设置\n在中央显示屏中点击 -设置-连接，进入连接设置界面。\n在连接界面可以进行以下设置：\n■ 蓝牙：设置蓝牙名称、查看已连接的蓝牙、系统搜索到的蓝牙、\n重新选择希望连接的蓝牙。\n■ Wi-Fi：查看已连接的网络、系统搜索到的网络，可重新选择希\n望连接的网络。\n■ 车载热点：设置热点名称、热点配置。\n蓝牙连接\n在中央显示屏上点击 -设置-连接-蓝牙，进入蓝牙设置界面。\n01点击开启/关闭蓝牙功能。\n在蓝牙功能设置界面，可设置蓝牙名称、查看已连接的蓝牙、系统搜\n索到的蓝牙、重新选择希望连接的蓝牙等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入蓝牙功能设\n置界面。\nWi-Fi连接\n在中央显示屏上点击 -设置-连接-Wi-Fi，进入Wi-Fi设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p267:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 383,
+          "score": 0.03225806451612903,
+          "retrieval_ranks": {
+            "vector": 2,
+            "bm25": 2
+          },
+          "retrieval_scores": {
+            "vector": 0.5926334512908966,
+            "bm25": 30.588902343640825
+          },
+          "rrf_rank": 2,
+          "rerank_score": 2.184872627258301
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 135,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n135\n智能设备充电\n无线充电板\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。\n01点击打开/关闭无线充电。\n注意！\n■ 请勿将信用卡或其他磁性物体放在无线充电板上，以免损坏。\n■ 请勿将硬币、金属钥匙、金属环或其他含有金属成分的物品与手\n机一起放置在无线充电区域。\n■ 驾驶员不在车内时，请不要放置手机在车内充电，以免造成安全\n隐患。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 181,
+          "score": 0.015384615384615385,
+          "retrieval_ranks": {
+            "vector": 5
+          },
+          "retrieval_scores": {
+            "vector": 0.5875874197184755
+          },
+          "rrf_rank": 7,
+          "rerank_score": -0.7249201536178589
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 130,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "安全出行",
+          "block_id": "body",
+          "kind": "text",
+          "text": "安全出行\n130\n前排扶手箱12V电源插座\n警告！\n■ 不使用插座时，务必盖上保护盖。请勿让水或任何其他液体接触\n插座。\n■ 接入的设备在充电时可能会发热。请注意确保高温设备不危害个\n人或造成财产损失。\n注意！\n■ 请勿使用超过额定值12V/120W以上的电气附件。\n■ 请勿使用过大或过重的插头连接设备，驾驶时插头可能会松动。\n■ 请勿使用会对车辆无线电接收器或电气系统造成干扰的设备。\n智能设备充电\n无线充电板\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p130:c1:tables-textflow-v1:body",
+          "chunk_index": 1,
+          "char_count": 238,
+          "score": 0.015873015873015872,
+          "retrieval_ranks": {
+            "bm25": 3
+          },
+          "retrieval_scores": {
+            "bm25": 19.993807632437015
+          },
+          "rrf_rank": 3,
+          "rerank_score": -0.9908304214477539
+        },
+        {
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 141,
+          "pipeline_version": "tables-textflow-v1",
+          "brand": "领克",
+          "vehicle_model": null,
+          "model_year": null,
+          "section": "启动和驾驶",
+          "block_id": "body",
+          "kind": "text",
+          "text": "能，例如电动车窗等。\n■ 点火模式II：在探测到遥控钥匙的情况下，不踩下制动踏板。长\n按START/STOP按钮，从模式0或I变换到模式II。大灯和雾灯均\n可使用，系统在几秒钟内完成自检，此模式下大多数电气设备均\n可使用。\n说明！\n□ 遥控钥匙和手机、发射机、无线电广播设备等无线装置放在一起\n可能会干扰点火模式进行切换。",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p141:c2:tables-textflow-v1:body",
+          "chunk_index": 2,
+          "char_count": 161,
+          "score": 0.014925373134328358,
+          "retrieval_ranks": {
+            "vector": 7
+          },
+          "retrieval_scores": {
+            "vector": 0.5740519845420948
+          },
+          "rrf_rank": 11,
+          "rerank_score": -1.1793547868728638
+        }
+      ],
+      "generation_status": "generated",
+      "required_block_recall": 1.0,
+      "required_block_rr": 1.0,
+      "all_required_blocks_hit": true,
+      "selected_evidence_set": 0,
+      "prompt_version": "cockpit-rag-json-v2.5",
+      "status": "generated",
+      "answer_status": "answered",
+      "answer": "需先接入网络，然后在中央显示屏上点击“设置-连接-车载热点”进入车载热点设置界面，再点击开启车载热点功能；也可通过点击中央显示屏状态栏上的相应图标进入车载热点功能设置界面。",
+      "evidence_ids": [
+        "E1"
+      ],
+      "citations": [
+        {
+          "evidence_id": "E1",
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 268,
+          "text": "中央显示屏\n268\n01点击开启/关闭Wi-Fi功能。\n在Wi-Fi功能设置界面，可查看已连接的网络、系统搜索到的网络，\n可重新选择希望连接的网络。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入Wi-Fi功能\n设置界面。\n车载热点\n接入网络后，可以创建车载热点，为其他智能设备提供网络。\n在中央显示屏上点击 -设置-连接-车载热点，进入车载热点设置界\n面。\n01点击开启/关闭车载热点功能。\n在车载热点功能设置界面，可设置热点名称、热点配置等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入车载热点功\n能设置界面。\n系统设置\n在中央显示屏中点击 -设置-系统，进入系统设置界面。"
+        }
+      ],
+      "evidence_map": {
+        "E1": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 268,
+          "text": "中央显示屏\n268\n01点击开启/关闭Wi-Fi功能。\n在Wi-Fi功能设置界面，可查看已连接的网络、系统搜索到的网络，\n可重新选择希望连接的网络。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入Wi-Fi功能\n设置界面。\n车载热点\n接入网络后，可以创建车载热点，为其他智能设备提供网络。\n在中央显示屏上点击 -设置-连接-车载热点，进入车载热点设置界\n面。\n01点击开启/关闭车载热点功能。\n在车载热点功能设置界面，可设置热点名称、热点配置等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入车载热点功\n能设置界面。\n系统设置\n在中央显示屏中点击 -设置-系统，进入系统设置界面。"
+        },
+        "E2": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p267:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 267,
+          "text": "中央显示屏\n267\n说明！\n□ 点击界面上的“编辑”按键，可以选择删除或添加快捷开关图\n标。\n连接设置\n在中央显示屏中点击 -设置-连接，进入连接设置界面。\n在连接界面可以进行以下设置：\n■ 蓝牙：设置蓝牙名称、查看已连接的蓝牙、系统搜索到的蓝牙、\n重新选择希望连接的蓝牙。\n■ Wi-Fi：查看已连接的网络、系统搜索到的网络，可重新选择希\n望连接的网络。\n■ 车载热点：设置热点名称、热点配置。\n蓝牙连接\n在中央显示屏上点击 -设置-连接-蓝牙，进入蓝牙设置界面。\n01点击开启/关闭蓝牙功能。\n在蓝牙功能设置界面，可设置蓝牙名称、查看已连接的蓝牙、系统搜\n索到的蓝牙、重新选择希望连接的蓝牙等。\n说明！\n□ 您还可以通过点击中央显示屏状态栏上的 图标进入蓝牙功能设\n置界面。\nWi-Fi连接\n在中央显示屏上点击 -设置-连接-Wi-Fi，进入Wi-Fi设置界面。"
+        },
+        "E3": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 135,
+          "text": "安全出行\n135\n智能设备充电\n无线充电板\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。\n01点击打开/关闭无线充电。\n注意！\n■ 请勿将信用卡或其他磁性物体放在无线充电板上，以免损坏。\n■ 请勿将硬币、金属钥匙、金属环或其他含有金属成分的物品与手\n机一起放置在无线充电区域。\n■ 驾驶员不在车内时，请不要放置手机在车内充电，以免造成安全\n隐患。"
+        },
+        "E4": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p130:c1:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 130,
+          "text": "安全出行\n130\n前排扶手箱12V电源插座\n警告！\n■ 不使用插座时，务必盖上保护盖。请勿让水或任何其他液体接触\n插座。\n■ 接入的设备在充电时可能会发热。请注意确保高温设备不危害个\n人或造成财产损失。\n注意！\n■ 请勿使用超过额定值12V/120W以上的电气附件。\n■ 请勿使用过大或过重的插头连接设备，驾驶时插头可能会松动。\n■ 请勿使用会对车辆无线电接收器或电气系统造成干扰的设备。\n智能设备充电\n无线充电板\n在中央显示屏中点击 -座舱体验-快捷设置，进入快捷设置界面。"
+        },
+        "E5": {
+          "chunk_id": "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p141:c2:tables-textflow-v1:body",
+          "source": "train_a.pdf",
+          "source_id": "training_manual_a",
+          "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+          "page": 141,
+          "text": "能，例如电动车窗等。\n■ 点火模式II：在探测到遥控钥匙的情况下，不踩下制动踏板。长\n按START/STOP按钮，从模式0或I变换到模式II。大灯和雾灯均\n可使用，系统在几秒钟内完成自检，此模式下大多数电气设备均\n可使用。\n说明！\n□ 遥控钥匙和手机、发射机、无线电广播设备等无线装置放在一起\n可能会干扰点火模式进行切换。"
+        }
+      },
+      "model": "deepseek-flash",
+      "usage": {
+        "completion_tokens": 69,
+        "prompt_tokens": 1189,
+        "total_tokens": 1258,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": {
+          "audio_tokens": null,
+          "cache_write_tokens": null,
+          "cached_tokens": 128
+        },
+        "prompt_cache_hit_tokens": 128,
+        "prompt_cache_miss_tokens": 1061
+      },
+      "raw_answer": "{\"answer_status\": \"answered\", \"answer\": \"需先接入网络，然后在中央显示屏上点击“设置-连接-车载热点”进入车载热点设置界面，再点击开启车载热点功能；也可通过点击中央显示屏状态栏上的相应图标进入车载热点功能设置界面。\", \"evidence_ids\": [\"E1\"]}",
+      "qa_seconds": 1.6450912000145763,
+      "split": "test",
+      "reference_answer": "车辆接入网络后才能创建车载热点。在中央显示屏进入设置-连接-车载热点，开启车载热点功能。可以在该界面设置热点名称及热点配置。",
+      "reference_evidence": {
+        "source_id": "training_manual_a",
+        "page": 268,
+        "anchor": "车载热点"
+      },
+      "reference_facts": [
+        {
+          "id": "F1",
+          "text": "车辆接入网络后才能创建车载热点。"
+        },
+        {
+          "id": "F2",
+          "text": "在中央显示屏进入设置-连接-车载热点，开启车载热点功能。"
+        }
+      ]
+    }
+  ],
+  "split": "test",
+  "evidence_scoring_policy": "best_set_recall_rr_v1",
+  "required_block_gold": {
+    "collection": "cockpit_manual_bge_small_zh_v1_5_tables_textflow_v1",
+    "source_id": "training_manual_a",
+    "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+    "pipeline_version": "tables-textflow-v1",
+    "id_field": "chunk_id",
+    "case_file": "eval_test_v3.json",
+    "case_file_sha256": "1253735b8ed9954fd7f8e96e958aa0820665cdf6247851d04963a43593e2bd9e",
+    "annotation_status": "reviewed_not_frozen",
+    "annotation_policy": {
+      "version": "question_required_facts_v1",
+      "required_facts": "reference_facts仅列题目所问的必要事实，以及使该判断或所问操作成立所不可缺少的原因、条件与步骤；不把参考答案每一句都自动设为必答项。",
+      "supplemental_facts": "未询问且不影响当前问题完整性的背景、其他功能、扩展示例、操作反馈和补充建议不作为缺失扣分项；reference_answer仍可保留这些正确补充。",
+      "safety_boundary": "问题明确涉及的安全禁令、温度/电压/车速等必要条件，以及完成所问操作不可缺少的安全前提必须保留。未复述额外提醒不等于允许相反行为；主动提出违反原文安全限制的建议，仍判不忠实或任务失败。",
+      "semantic_equivalence": "按语义核对对象、关系、数值、单位、条件和先后顺序，不要求逐字复述；题干已给定的条件可以承接，不因没有机械重复题干就扣分。位置名、图标或术语的等价表达可接受。",
+      "alternatives": "事实中的或表示合法替代路径，回答任一完整有效路径即可，不要求同时执行所有替代路径；明确问有哪些或分别怎样时，仍须覆盖所问各项。",
+      "task_pass": "可回答题须直接正确完成所问任务，覆盖必要事实且无误导性或不受证据支持的陈述；参考答案比必要事实更丰富并不提高必答门槛。拒答题的判断与安全限制不因本轮审校放宽。",
+      "review_protocol": "使用相同政策审校开发集与测试集，测试集标注不依赖模型输出；旧生成与旧review保持原样，新口径须另建复核报告，不将标注修订带来的分数变化归为模型优化。"
+    },
+    "annotation_revision": {
+      "version": "v3",
+      "reviewed_at": "2026-11-19",
+      "base_file": "test_retrieval_gold_v2.json",
+      "base_sha256": "2759e3e62ac7b0938e64379e8983d6cf056188af1fc6d61b660387b72dc700b9",
+      "base_case_file": "eval_test_v2.json",
+      "base_case_file_sha256": "fb7412cd243406572a5de9a82c0e6c909476b15e988f035fef3cf7df8c88e20b",
+      "audit_file": "gold_annotation_revision_v3.json",
+      "final_test_run": false
+    },
+    "annotation_notes": {
+      "scope": "cases 只标注80道可回答题，每题列出一个已核验的主证据集合；20道不可回答题不设置必需块。块ID用于评测对照，不作为检索条件或模型输入。",
+      "interpretation": "主证据集合不是全部相关块的穷举。严格块ID未命中不等于没有语义等价证据；如发现替代证据，应结合实际块内容复核。",
+      "alternatives": "alternative_evidence_sets 已接入 add_block_scores，沿用 best_set_recall_rr_v1 和 selected_evidence_set，不拼接不同完整方案。本轮80题主证据集合和替代证据集合均未改动；题意范围已审校，正式运行前仍须完成输入校验与配置冻结。",
+      "table_context": "表格块中的相邻文字不能一律视为该表的说明；本次涉及脚注和说明的标注已核对题集所依据的原页归属。",
+      "test_14": "主证据为第48页正文第1块；第2块因正文重叠也完整包含锁止10秒后戒备、解锁后自动关闭两项事实，另列为替代集合，不与主集合合并为两个必需块。",
+      "test_32": "第109页正文第1块支持初始化步骤及约5秒，第2块支持每个车门上的车窗按钮分别初始化每扇车窗，两块共同覆盖参考事实。",
+      "test_72": "Ah、V、Nm、rpm分别位于4个独立表格行块，主证据集合含4块。最终Top3最多命中其中3块，严格必需块召回率上限为0.75且不能全齐；这是当前分块与上下文数量约束，不是本次已运行评测所得结果。",
+      "fact_review": "按 question_required_facts_v1 审查全部100题：80题必要事实从201条调整为197条，20道不可回答题及拒答依据未变。14题收窄必要事实范围，所有剩余事实仍由原有块支持，因此不改主集合或替代集合；详见 gold_annotation_revision_v3.json。"
+    },
+    "alternative_evidence_sets": {
+      "test_14": [
+        [
+          "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+        ]
+      ]
+    },
+    "cases": {
+      "test_01": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p64:c1:tables-textflow-v1:body"
+      ],
+      "test_02": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p110:c1:tables-textflow-v1:body"
+      ],
+      "test_03": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p85:c1:tables-textflow-v1:body"
+      ],
+      "test_04": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p297:c1:tables-textflow-v1:body"
+      ],
+      "test_05": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p325:c1:tables-textflow-v1:body"
+      ],
+      "test_06": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p339:c1:tables-textflow-v1:body"
+      ],
+      "test_07": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t1:r2"
+      ],
+      "test_08": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p336:c1:tables-textflow-v1:body"
+      ],
+      "test_11": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p12:c3:tables-textflow-v1:body"
+      ],
+      "test_12": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p21:c2:tables-textflow-v1:body"
+      ],
+      "test_13": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body"
+      ],
+      "test_14": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c1:tables-textflow-v1:body"
+      ],
+      "test_15": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p53:c1:tables-textflow-v1:body"
+      ],
+      "test_16": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p65:c1:tables-textflow-v1:body"
+      ],
+      "test_17": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p94:c1:tables-textflow-v1:body"
+      ],
+      "test_18": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:body"
+      ],
+      "test_19": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_20": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p160:c1:tables-textflow-v1:body"
+      ],
+      "test_21": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p154:c1:tables-textflow-v1:body"
+      ],
+      "test_22": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p330:c2:tables-textflow-v1:body"
+      ],
+      "test_23": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_24": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p314:c1:tables-textflow-v1:body"
+      ],
+      "test_25": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p292:c1:tables-textflow-v1:body"
+      ],
+      "test_26": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p307:c1:tables-textflow-v1:body"
+      ],
+      "test_27": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c2:tables-textflow-v1:body"
+      ],
+      "test_28": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p306:c1:tables-textflow-v1:body"
+      ],
+      "test_29": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_30": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p59:c1:tables-textflow-v1:body"
+      ],
+      "test_31": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p60:c1:tables-textflow-v1:body"
+      ],
+      "test_32": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c2:tables-textflow-v1:body"
+      ],
+      "test_33": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p122:c1:tables-textflow-v1:body"
+      ],
+      "test_34": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p128:c1:tables-textflow-v1:body"
+      ],
+      "test_35": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p142:c1:tables-textflow-v1:body"
+      ],
+      "test_36": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p162:c2:tables-textflow-v1:body"
+      ],
+      "test_37": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p237:c1:tables-textflow-v1:body"
+      ],
+      "test_38": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p256:c1:tables-textflow-v1:body"
+      ],
+      "test_39": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p268:c1:tables-textflow-v1:body"
+      ],
+      "test_40": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p274:c1:tables-textflow-v1:body"
+      ],
+      "test_41": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p276:c1:tables-textflow-v1:body"
+      ],
+      "test_42": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p282:c1:tables-textflow-v1:body"
+      ],
+      "test_43": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p303:c1:tables-textflow-v1:body"
+      ],
+      "test_44": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p312:c1:tables-textflow-v1:body"
+      ],
+      "test_45": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p340:c1:tables-textflow-v1:body"
+      ],
+      "test_46": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p48:c2:tables-textflow-v1:body"
+      ],
+      "test_47": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p61:c1:tables-textflow-v1:body"
+      ],
+      "test_48": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p99:c1:tables-textflow-v1:body"
+      ],
+      "test_49": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p109:c1:tables-textflow-v1:body"
+      ],
+      "test_50": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p129:c1:tables-textflow-v1:body"
+      ],
+      "test_51": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p143:c1:tables-textflow-v1:body"
+      ],
+      "test_52": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p161:c1:tables-textflow-v1:body"
+      ],
+      "test_53": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p164:c1:tables-textflow-v1:body"
+      ],
+      "test_54": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p170:c1:tables-textflow-v1:body"
+      ],
+      "test_55": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p214:c2:tables-textflow-v1:body"
+      ],
+      "test_56": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p298:c1:tables-textflow-v1:body"
+      ],
+      "test_57": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p304:c1:tables-textflow-v1:body"
+      ],
+      "test_58": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_59": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t5:r1"
+      ],
+      "test_60": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t1:r1"
+      ],
+      "test_61": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p349:c1:tables-textflow-v1:p349:t4:r1"
+      ],
+      "test_62": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t1:r1"
+      ],
+      "test_63": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t3:r1"
+      ],
+      "test_64": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t5:r1"
+      ],
+      "test_65": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p350:c1:tables-textflow-v1:p350:t4:r2"
+      ],
+      "test_66": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t2:r1"
+      ],
+      "test_67": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r2"
+      ],
+      "test_68": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p351:c1:tables-textflow-v1:p351:t3:r4"
+      ],
+      "test_69": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r1",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p103:c1:tables-textflow-v1:p103:t1:r4"
+      ],
+      "test_70": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r10",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t1:r5"
+      ],
+      "test_71": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p352:c1:tables-textflow-v1:p352:t2:r7",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r16",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p353:c1:tables-textflow-v1:p353:t1:r13"
+      ],
+      "test_72": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r4",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r3",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t1:r2",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p354:c1:tables-textflow-v1:p354:t2:r13"
+      ],
+      "test_73": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p27:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p28:c1:tables-textflow-v1:body"
+      ],
+      "test_74": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p46:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p47:c1:tables-textflow-v1:body"
+      ],
+      "test_75": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p88:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p89:c1:tables-textflow-v1:body"
+      ],
+      "test_76": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p135:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p136:c1:tables-textflow-v1:body"
+      ],
+      "test_77": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p232:c2:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p236:c1:tables-textflow-v1:body"
+      ],
+      "test_78": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p253:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p254:c1:tables-textflow-v1:body"
+      ],
+      "test_79": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p45:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p108:c1:tables-textflow-v1:body"
+      ],
+      "test_80": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p289:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p290:c1:tables-textflow-v1:body"
+      ],
+      "test_81": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p309:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p310:c1:tables-textflow-v1:body"
+      ],
+      "test_82": [
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p343:c1:tables-textflow-v1:body",
+        "training_manual_a:d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1:s500:o100:p344:c1:tables-textflow-v1:body"
+      ]
+    }
+  },
+  "config_file": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\evaluation_config_test_rrf20_top5.json",
+  "config_snapshot": {
+    "case_files": [
+      "eval_test_v3.json"
+    ],
+    "manual_metadata": "manual_metadata.json",
+    "required_block_gold": "test_retrieval_gold_v3.json",
+    "split": "test",
+    "top_k": 5,
+    "fusion_k": 20,
+    "qa_methods": [
+      "rerank"
+    ]
+  },
+  "run_at_utc": "2026-11-24T03:39:43.353048+00:00",
+  "per_route_k": 10,
+  "source_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_v3.json",
+  "report_type": "qa",
+  "run_status": "complete",
+  "qa_run_at_utc": "2026-11-24T08:10:45.591718+00:00",
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "retrieval_report": "C:\\Users\\Administrator\\Desktop\\OneDrive - 南方科技大学\\丁师兄训练营\\WEEK\\projects\\smart_cockpit_rag\\test_retrieval_rrf20_top5.json",
+  "expected_records": 1,
+  "qa_methods": [
+    "rerank"
+  ]
+}

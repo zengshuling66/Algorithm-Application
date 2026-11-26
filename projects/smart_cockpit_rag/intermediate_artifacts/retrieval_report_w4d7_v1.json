@@ -1,0 +1,348 @@
+{
+  "embedding_model": "BAAI/bge-small-zh-v1.5",
+  "source_id": "training_manual_a",
+  "content_hash": "d6509e2e55a17e9145b9af6883ef4629c380e7213944b9fcd8ee3b050ed7d2a1",
+  "top_k": 3,
+  "cases": [
+    {
+      "case_id": "q_screen_auto_001",
+      "retrieved_pages": [
+        263,
+        264,
+        262
+      ],
+      "evidence_page_hit": true,
+      "question": "中央显示屏自动模式怎样切换日夜显示？",
+      "answerable": true,
+      "scores": [
+        0.7394322115171035,
+        0.711455865016047,
+        0.5906062388504933
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_outside_001",
+      "retrieved_pages": [
+        22,
+        24,
+        176
+      ],
+      "evidence_page_hit": null,
+      "question": "中国足球的队长是谁？",
+      "answerable": false,
+      "scores": [
+        0.2508528367448505,
+        0.24832475015638034,
+        0.2276225743160854
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_unlock_scope_001",
+      "retrieved_pages": [
+        43,
+        44,
+        41
+      ],
+      "evidence_page_hit": true,
+      "question": "无钥匙解锁设为单门和全车时，触摸前门把手内部传感器区域有什么区别？",
+      "answerable": true,
+      "scores": [
+        0.8006592752075761,
+        0.6840811733885287,
+        0.6371452871848171
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_heat_level_001",
+      "retrieved_pages": [
+        115,
+        114,
+        251
+      ],
+      "evidence_page_hit": true,
+      "question": "前排座椅加热有几级？控制开关会按什么顺序切换？",
+      "answerable": true,
+      "scores": [
+        0.7007603208476233,
+        0.6926058090073453,
+        0.6207467311989888
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_heat_warning_001",
+      "retrieved_pages": [
+        114,
+        115,
+        118
+      ],
+      "evidence_page_hit": true,
+      "question": "什么情况下不应使用前排座椅加热？",
+      "answerable": true,
+      "scores": [
+        0.6822634501038515,
+        0.6406517463277548,
+        0.5456763450332375
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_autohold_epb_001",
+      "retrieved_pages": [
+        159,
+        159,
+        157
+      ],
+      "evidence_page_hit": true,
+      "question": "Auto Hold 已激活时，哪些情况会使它停用并启用 EPB？",
+      "answerable": true,
+      "scores": [
+        0.6987334996574311,
+        0.6630557973780853,
+        0.6515979013027198
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_fcta_alert_001",
+      "retrieved_pages": [
+        200,
+        198,
+        211
+      ],
+      "evidence_page_hit": false,
+      "question": "FCTA 在什么车速和场景下，会怎样提醒前方侧向碰撞风险？",
+      "answerable": true,
+      "scores": [
+        0.6881372434476802,
+        0.6857291175868515,
+        0.6730391063026204
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_tailgate_obstacle_001",
+      "retrieved_pages": [
+        34,
+        32,
+        30
+      ],
+      "evidence_page_hit": true,
+      "question": "尾门关闭时碰到障碍物，车辆运动与静止时的动作有何不同？",
+      "answerable": true,
+      "scores": [
+        0.6514022615327153,
+        0.6226439588297115,
+        0.6138910350010105
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_key_interference_001",
+      "retrieved_pages": [
+        33,
+        34,
+        44
+      ],
+      "evidence_page_hit": true,
+      "question": "使用走近走远感应式电动尾门时，哪些情况可能使智能钥匙偶发异常？",
+      "answerable": true,
+      "scores": [
+        0.6519335239346121,
+        0.6211419361646517,
+        0.5774452364190553
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_neck_collision_001",
+      "retrieved_pages": [
+        107,
+        350,
+        27
+      ],
+      "evidence_page_hit": true,
+      "question": "车辆追尾后，前排座椅外观看起来没坏，还需要检查吗？",
+      "answerable": true,
+      "scores": [
+        0.6072539569960377,
+        0.5661172716217894,
+        0.56468934160373
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_fan_panel_001",
+      "retrieved_pages": [
+        250,
+        251,
+        244
+      ],
+      "evidence_page_hit": true,
+      "question": "不使用中央显示屏，怎样通过空调面板调节风量？",
+      "answerable": true,
+      "scores": [
+        0.6531204832180224,
+        0.6161094747675829,
+        0.6045263971853891
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_fan_levels_001",
+      "retrieved_pages": [
+        250,
+        243,
+        244
+      ],
+      "evidence_page_hit": true,
+      "question": "空调风速共有几个可设置的等级？",
+      "answerable": true,
+      "scores": [
+        0.6121633602490133,
+        0.5950666900237205,
+        0.5941764183764281
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_acc_limits_001",
+      "retrieved_pages": [
+        176,
+        176,
+        180
+      ],
+      "evidence_page_hit": true,
+      "question": "ACC 能代替驾驶员驾驶吗？严重雨雪或能见度低时应怎样使用？",
+      "answerable": true,
+      "scores": [
+        0.7303778082921768,
+        0.7188477114612063,
+        0.6894388372903708
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_usb_uses_001",
+      "retrieved_pages": [
+        131,
+        132,
+        133
+      ],
+      "evidence_page_hit": true,
+      "question": "手册明确写了中央扶手箱的 Type A 和 Type C 接口分别能做什么？",
+      "answerable": true,
+      "scores": [
+        0.6440444115042274,
+        0.6352775795653404,
+        0.6319783089040976
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_unlock_scope_para_001",
+      "retrieved_pages": [
+        43,
+        44,
+        33
+      ],
+      "evidence_page_hit": true,
+      "question": "触摸前门外把手内部感应区，为什么有时只解锁一扇门，有时全部解锁？",
+      "answerable": true,
+      "scores": [
+        0.6578717852230656,
+        0.6118196147070643,
+        0.5707210235136991
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_fan_levels_para_001",
+      "retrieved_pages": [
+        250,
+        244,
+        251
+      ],
+      "evidence_page_hit": false,
+      "question": "空调风量能调几档？",
+      "answerable": true,
+      "scores": [
+        0.6156994862134855,
+        0.5860982867712796,
+        0.5606816138233145
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_ventilation_levels_001",
+      "retrieved_pages": [
+        116,
+        251,
+        117
+      ],
+      "evidence_page_hit": true,
+      "question": "前排座椅通风有几档强度？点击控制开关怎样切换？",
+      "answerable": true,
+      "scores": [
+        0.7369533789746292,
+        0.7074555609740737,
+        0.6954719254582316
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_usb_pd_unknown_001",
+      "retrieved_pages": [
+        132,
+        133,
+        136
+      ],
+      "evidence_page_hit": null,
+      "question": "中央扶手箱里的Type C接口采用哪一代USB PD协议？",
+      "answerable": false,
+      "scores": [
+        0.6062949372613868,
+        0.6050259121611332,
+        0.6036620330174975
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_vehicle_scope_unknown_001",
+      "retrieved_pages": [
+        116,
+        117,
+        118
+      ],
+      "evidence_page_hit": null,
+      "question": "我没有提供车型和年款，我的车是否一定配有前排座椅通风？",
+      "answerable": false,
+      "scores": [
+        0.5648011864648018,
+        0.5462053894120757,
+        0.5459571994639763
+      ],
+      "generation_status": "not_run"
+    },
+    {
+      "case_id": "q_live_health_unknown_001",
+      "retrieved_pages": [
+        304,
+        349,
+        287
+      ],
+      "evidence_page_hit": null,
+      "question": "我这辆车现在的动力电池健康度是多少？请给出当前百分比。",
+      "answerable": false,
+      "scores": [
+        0.5084087211389632,
+        0.4907880205705325,
+        0.48405106289649064
+      ],
+      "generation_status": "not_run"
+    }
+  ]
+}
